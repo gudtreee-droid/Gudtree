@@ -365,19 +365,17 @@ export default function BlogDiscoveryTabsShelf({
                   type="button"
                   onClick={() => handleTabSwitch(tab.id)}
                   aria-pressed={isActive}
-                  className={`relative z-20 w-full sm:w-[92px] lg:w-[100px] sm:shrink-0 flex flex-col items-center text-center pt-2 pb-1.5 px-1 cursor-pointer transition-all select-none focus:outline-none border-0 rounded-[14px] sm:rounded-none ${
-                    isActive
-                      ? 'bg-[#EEF4FF] sm:bg-transparent'
-                      : 'bg-transparent'
-                  }`}
+                  className={`relative z-20 w-full sm:w-[92px] lg:w-[100px] sm:shrink-0 flex flex-col items-center text-center pt-2 pb-1.5 px-1 cursor-pointer transition-all select-none focus:outline-none border-0 rounded-[14px] sm:rounded-none ${isActive
+                    ? 'bg-[#EEF4FF] sm:bg-transparent'
+                    : 'bg-transparent'
+                    }`}
                 >
                   {/* Circular / Soft Halo Thumbnail */}
                   <div
-                    className={`w-[46px] h-[46px] sm:w-[60px] sm:h-[60px] rounded-full flex items-center justify-center p-1.5 sm:p-2 mb-1.5 sm:mb-2 transition-transform duration-200 ${
-                      isActive
-                        ? 'bg-[#FFFFFF] sm:bg-[#F4F7FF] scale-[1.04] shadow-xs sm:shadow-none'
-                        : 'bg-[#F6F7FA] hover:bg-[#F0F4FF]'
-                    }`}
+                    className={`w-[46px] h-[46px] sm:w-[60px] sm:h-[60px] rounded-full flex items-center justify-center p-1.5 sm:p-2 mb-1.5 sm:mb-2 transition-transform duration-200 ${isActive
+                      ? 'bg-[#FFFFFF] sm:bg-[#F4F7FF] scale-[1.04] shadow-xs sm:shadow-none'
+                      : 'bg-[#F6F7FA] hover:bg-[#F0F4FF]'
+                      }`}
                   >
                     <img
                       src={tab.thumbSrc}
@@ -388,11 +386,10 @@ export default function BlogDiscoveryTabsShelf({
 
                   {/* Two-line Clean Category Name */}
                   <span
-                    className={`whitespace-pre-line text-[11px] sm:text-[12.5px] leading-[1.18] tracking-[-0.01em] transition-colors ${
-                      isActive
-                        ? 'font-bold text-[#0A6C33] sm:text-[#2F54EB]'
-                        : 'font-medium text-[#1F2937]/75 hover:text-[#102A56]'
-                    }`}
+                    className={`whitespace-pre-line text-[11px] sm:text-[12.5px] leading-[1.18] tracking-[-0.01em] transition-colors ${isActive
+                      ? 'font-bold text-[#0A6C33] sm:text-[#2F54EB]'
+                      : 'font-medium text-[#1F2937]/75 hover:text-[#102A56]'
+                      }`}
                   >
                     {tab.label}
                   </span>
@@ -433,11 +430,10 @@ export default function BlogDiscoveryTabsShelf({
                       onClick={(e) => toggleSave(e, article.slug)}
                       title={isSaved ? 'Saved' : 'Bookmark Guide'}
                       aria-label={isSaved ? 'Remove Bookmark' : 'Bookmark Guide'}
-                      className={`absolute top-1.5 right-1.5 w-8 h-8 rounded-full flex items-center justify-center backdrop-blur-md transition-colors cursor-pointer z-10 ${
-                        isSaved
-                          ? 'bg-[#2F54EB] text-white shadow-sm'
-                          : 'bg-white/88 text-[#102A56]/75 hover:text-[#2F54EB]'
-                      }`}
+                      className={`absolute top-1.5 right-1.5 w-8 h-8 rounded-full flex items-center justify-center backdrop-blur-md transition-colors cursor-pointer z-10 ${isSaved
+                        ? 'bg-[#2F54EB] text-white shadow-sm'
+                        : 'bg-white/88 text-[#102A56]/75 hover:text-[#2F54EB]'
+                        }`}
                     >
                       <Bookmark
                         className={`w-3.5 h-3.5 ${isSaved ? 'fill-current' : ''}`}

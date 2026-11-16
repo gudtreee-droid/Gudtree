@@ -7,7 +7,7 @@ import {
 } from 'next/font/google';
 import './globals.css';
 import './gudtree.css';
-import NavigationProgress from '@/components/newsflash/NavigationProgress';
+import NavigationProgress from '@/components/gudtree/NavigationProgress';
 import FloatingNavbar from '@/components/gudtree/FloatingNavbar';
 import GudTreeFooter from '@/components/gudtree/GudTreeFooter';
 import Analytics from '@/components/Analytics';

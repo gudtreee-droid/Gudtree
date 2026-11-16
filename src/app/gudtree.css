@@ -16,6 +16,7 @@
 }
 
 @media (max-width: 768px) {
+
   .gt-container,
   .nf-container {
     padding-left: 16px;
@@ -47,11 +48,13 @@
   line-height: 0.92;
   letter-spacing: -0.04em;
 }
+
 @media (min-width: 768px) {
   .sc-display-hero {
     font-size: 80px;
   }
 }
+
 @media (min-width: 1200px) {
   .sc-display-hero {
     font-size: 92px;
@@ -65,11 +68,13 @@
   line-height: 1.05;
   letter-spacing: -0.04em;
 }
+
 @media (min-width: 768px) {
   .sc-display-h2 {
     font-size: 48px;
   }
 }
+
 @media (min-width: 1200px) {
   .sc-display-h2 {
     font-size: 60px;
@@ -83,11 +88,13 @@
   line-height: 1.1;
   letter-spacing: -0.04em;
 }
+
 @media (min-width: 768px) {
   .sc-display-h3 {
     font-size: 24px;
   }
 }
+
 @media (min-width: 1200px) {
   .sc-display-h3 {
     font-size: 28px;
@@ -101,6 +108,7 @@
   line-height: 1.5;
   letter-spacing: -0.02em;
 }
+
 @media (min-width: 1200px) {
   .sc-display-sm {
     font-size: 18px;
@@ -115,11 +123,13 @@
   letter-spacing: -0.01em;
   color: #334155;
 }
+
 @media (min-width: 768px) {
   .sc-lead {
     font-size: 18.5px;
   }
 }
+
 @media (min-width: 1200px) {
   .sc-lead {
     font-size: 20px;
@@ -134,6 +144,7 @@
   letter-spacing: -0.005em;
   color: #334155;
 }
+
 @media (min-width: 1200px) {
   .sc-body {
     font-size: 17px;
@@ -219,6 +230,7 @@
 }
 
 @media (min-width: 1200px) {
+
   .gt-article-body,
   .nf-article-body {
     font-size: 18px;
@@ -243,6 +255,7 @@
 }
 
 @media (min-width: 768px) {
+
   .gt-article-body h2,
   .nf-article-body h2 {
     font-size: 34px;
@@ -385,11 +398,9 @@
   height: 100%;
   transform: scale(2.8);
   transform-origin: center center;
-  background: repeating-conic-gradient(
-    from 0deg,
-    rgba(255, 255, 255, 0.085) 0deg 10deg,
-    transparent 10deg 20deg
-  );
+  background: repeating-conic-gradient(from 0deg,
+      rgba(255, 255, 255, 0.085) 0deg 10deg,
+      transparent 10deg 20deg);
   -webkit-mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.55) 40%, rgba(0, 0, 0, 0.1) 75%, transparent 100%);
   mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.55) 40%, rgba(0, 0, 0, 0.1) 75%, transparent 100%);
   pointer-events: none;
@@ -400,6 +411,7 @@
   from {
     transform: scale(2.8) rotate(0deg);
   }
+
   to {
     transform: scale(2.8) rotate(360deg);
   }
@@ -436,15 +448,19 @@
 .gt-focus-hero-diabetes {
   background: radial-gradient(circle at 50% 42%, #ff7a4d 0%, #e85022 56%, #bf340b 100%);
 }
+
 .gt-focus-hero-heart {
   background: radial-gradient(circle at 50% 42%, #478eff 0%, #1e56c9 56%, #102a56 100%);
 }
+
 .gt-focus-hero-gut {
   background: radial-gradient(circle at 50% 42%, #24926c 0%, #0f5c41 58%, #073827 100%);
 }
+
 .gt-focus-hero-pcos {
   background: radial-gradient(circle at 50% 42%, #a95ef7 0%, #7625c9 58%, #471485 100%);
 }
+
 .gt-focus-hero-weight {
   background: radial-gradient(circle at 50% 42%, #f7a728 0%, #da6d0e 58%, #9c3807 100%);
 }
@@ -453,6 +469,7 @@
   0% {
     background-position: 0 0;
   }
+
   100% {
     background-position: 64px 64px;
   }
@@ -463,10 +480,12 @@
     transform: translate(-50%, -50%) scale(0.88);
     opacity: 0.4;
   }
+
   50% {
     transform: translate(-50%, -50%) scale(1.06);
     opacity: 0.18;
   }
+
   100% {
     transform: translate(-50%, -50%) scale(0.88);
     opacity: 0.4;
@@ -474,13 +493,11 @@
 }
 
 .gt-pattern-stripes {
-  background-image: repeating-linear-gradient(
-    -45deg,
-    rgba(255, 255, 255, 0.08) 0px,
-    rgba(255, 255, 255, 0.08) 12px,
-    transparent 12px,
-    transparent 32px
-  );
+  background-image: repeating-linear-gradient(-45deg,
+      rgba(255, 255, 255, 0.08) 0px,
+      rgba(255, 255, 255, 0.08) 12px,
+      transparent 12px,
+      transparent 32px);
   background-size: 64px 64px;
   animation: gtDriftDiagonal 12s linear infinite;
 }
