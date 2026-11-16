@@ -1,77 +1,70 @@
+import React, { Suspense } from 'react';
 import type { Metadata } from 'next';
-import { Playfair_Display, Libre_Baskerville, Inter, Oswald, Bebas_Neue } from 'next/font/google';
+import {
+  Lilita_One,
+  Inter,
+  JetBrains_Mono,
+} from 'next/font/google';
 import './globals.css';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import SearchModal from '@/components/SearchModal';
+import './gudtree.css';
+import NavigationProgress from '@/components/newsflash/NavigationProgress';
+import FloatingNavbar from '@/components/gudtree/FloatingNavbar';
+import GudTreeFooter from '@/components/gudtree/GudTreeFooter';
 import Analytics from '@/components/Analytics';
 import MainWrapper from '@/components/MainWrapper';
-import WhatsAppFloatingWidget from '@/components/WhatsAppFloatingWidget';
 import FaviconManager from '@/components/FaviconManager';
-import { siteConfig } from '@/data/siteConfig';
 
-const playfair = Playfair_Display({
+const lilitaOne = Lilita_One({
   subsets: ['latin'],
-  variable: '--font-playfair',
-  display: 'swap',
-});
-
-const baskerville = Libre_Baskerville({
-  weight: ['400', '700'],
-  style: ['normal', 'italic'],
-  subsets: ['latin'],
-  variable: '--font-baskerville',
+  weight: ['400'],
+  variable: '--font-lilita',
   display: 'swap',
 });
 
 const inter = Inter({
   subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  style: ['normal', 'italic'],
   variable: '--font-inter',
   display: 'swap',
 });
 
-const oswald = Oswald({
+const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
-  variable: '--font-oswald',
-  display: 'swap',
-});
-
-const bebas = Bebas_Neue({
-  weight: ['400'],
-  subsets: ['latin'],
-  variable: '--font-bebas',
+  weight: ['400', '500', '700'],
+  variable: '--font-mono',
   display: 'swap',
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://www.apexchief.com'),
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+  ),
   title: {
-    default: 'ApexChief | Business, Technology & Global News',
-    template: '%s | ApexChief',
+    default: 'GudTree | Clean Eating, Healthy Snacking & Nutrition for India',
+    template: '%s | GudTree',
   },
   description:
-    'ApexChief is a digital media platform covering business, leadership, technology, startups, innovation, and emerging industry trends. We share insightful stories, expert perspectives, executive interviews, and inspiring success stories from leaders and entrepreneurs shaping the future.',
+    'GudTree is India’s premier clean snacking and nutrition publication, delivering honest packed food audits, desi diet frameworks, and patient-safe wellness guides.',
   keywords: [
-    'ApexChief',
-    'Apex Chief',
-    'Business',
-    'Leadership',
-    'Technology',
-    'Interview',
-    'Executive Interviews',
-    'Startups',
-    'Innovation',
-    'Emerging Industry Trends',
-    'Founder Stories',
-    'CEOs',
-    'Digital Media',
+    'GudTree',
+    'Healthy Snacking',
+    'Clean Eating',
+    'Diet and Nutrition India',
+    'Healthy Indian Snacks',
+    'Makhana Snacks',
+    'Jaggery Gud Snacks',
+    'Diabetic Friendly Indian Snacks',
+    'PCOS Clean Diet',
+    'Weight Loss Snacks India',
+    'Zero Palm Oil Snacks',
   ],
-  authors: [{ name: 'ApexChief Editorial Team', url: 'https://www.apexchief.com' }],
-  creator: 'ApexChief',
-  publisher: 'ApexChief',
-  applicationName: 'ApexChief',
+  authors: [{ name: 'GudTree Editorial Team', url: 'http://localhost:3000' }],
+  creator: 'GudTree',
+  publisher: 'GudTree',
+  applicationName: 'GudTree',
   alternates: {
-    canonical: 'https://www.apexchief.com',
+    canonical: '/',
   },
   icons: {
     icon: [
@@ -83,33 +76,33 @@ export const metadata: Metadata = {
     apple: '/apple-icon.png',
   },
   openGraph: {
-    title: 'ApexChief | Business, Technology & Global News',
+    title: 'GudTree | Clean Eating, Healthy Snacking & Nutrition for India',
     description:
-      'ApexChief is a digital media platform covering business, leadership, technology, startups, innovation, and emerging industry trends. We share insightful stories, expert perspectives, executive interviews, and inspiring success stories from leaders and entrepreneurs shaping the future.',
-    url: 'https://www.apexchief.com',
-    siteName: 'ApexChief',
+      'GudTree is India’s premier clean snacking and nutrition publication, delivering honest packed food audits, desi diet frameworks, and patient-safe wellness guides.',
+    url: 'http://localhost:3000',
+    siteName: 'GudTree',
     images: [
       {
-        url: 'https://www.apexchief.com/images/apexchief-logo-light.png',
+        url: '/icon.png',
         width: 1200,
         height: 630,
-        alt: 'ApexChief | Business, Technology & Global News',
+        alt: 'GudTree | Clean Eating, Healthy Snacking & Nutrition for India',
       },
     ],
-    locale: 'en_US',
+    locale: 'en_IN',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'ApexChief | Business, Technology & Global News',
+    title: 'GudTree | Clean Eating, Healthy Snacking & Nutrition for India',
     description:
-      'ApexChief is a digital media platform covering business, leadership, technology, startups, innovation, and emerging industry trends. We share insightful stories, expert perspectives, executive interviews, and inspiring success stories from leaders and entrepreneurs shaping the future.',
-    site: '@apexchief01',
-    creator: '@apexchief01',
-    images: ['https://www.apexchief.com/images/apexchief-logo-light.png'],
+      'GudTree is India’s premier clean snacking and nutrition publication, delivering honest packed food audits, desi diet frameworks, and patient-safe wellness guides.',
+    site: '@gudtree',
+    creator: '@gudtree',
+    images: ['/icon.png'],
   },
   verification: {
-    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || 't9na2oTjNEA-Mnwuiyo_dsyflp-do8ND3iAhF4KAMVY',
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || '',
   },
   robots: {
     index: true,
@@ -127,35 +120,25 @@ export const metadata: Metadata = {
 const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  '@id': 'https://www.apexchief.com/#organization',
-  name: 'ApexChief',
-  url: 'https://www.apexchief.com/',
-  logo: {
-    '@type': 'ImageObject',
-    url: 'https://www.apexchief.com/images/apexchief-logo-light.png',
-  },
+  '@id': 'http://localhost:3000/#organization',
+  name: 'GudTree',
+  url: 'http://localhost:3000/',
+  logo: 'http://localhost:3000/images/gudtree-logo.png',
   description:
-    'ApexChief delivers executive interviews, startup innovations, emerging tech breakthroughs, and market intelligence for modern leaders and entrepreneurs.',
-  sameAs: [
-    'https://x.com/apexchief01',
-    'https://linkedin.com/company/apexchief',
-    'https://facebook.com/ApexChief',
-    'https://www.instagram.com/apex.chief',
-  ],
+    'GudTree is India’s premier healthy eating and snacking publication, delivering honest nutrition guides, clean snacking reviews, and patient-safe diet frameworks.',
 };
 
 const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
-  '@id': 'https://www.apexchief.com/#website',
-  url: 'https://www.apexchief.com/',
-  name: 'ApexChief',
-  description:
-    'Global Business, Technology & Leadership News. ApexChief delivers executive interviews, startup innovations, emerging tech breakthroughs, and market intelligence for modern leaders and entrepreneurs.',
+  '@id': 'http://localhost:3000/#website',
+  url: 'http://localhost:3000/',
+  name: 'GudTree',
+  description: 'Clean Eating, Healthy Snacking & Nutrition for India.',
   publisher: {
-    '@id': 'https://www.apexchief.com/#organization',
+    '@id': 'http://localhost:3000/#organization',
   },
-  inLanguage: 'en',
+  inLanguage: 'en-IN',
 };
 
 export default function RootLayout({
@@ -164,10 +147,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${playfair.variable} ${baskerville.variable} ${inter.variable} ${oswald.variable} ${bebas.variable}`}>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${lilitaOne.variable} ${inter.variable} ${jetbrainsMono.variable}`}
+    >
       <head>
-        <meta name="google-site-verification" content="t9na2oTjNEA-Mnwuiyo_dsyflp-do8ND3iAhF4KAMVY" />
-        <meta name="google-site-verification" content="google-site-verification=t9na2oTjNEA-Mnwuiyo_dsyflp-do8ND3iAhF4KAMVY" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
@@ -179,16 +164,15 @@ export default function RootLayout({
       </head>
       <body
         suppressHydrationWarning
-        className="min-h-screen w-full max-w-full overflow-x-hidden bg-white dark:bg-[#121212] text-black dark:text-[#f8fafc] flex flex-col font-sans selection:bg-[#f7413e] selection:text-white transition-colors duration-200"
+        className="min-h-screen w-full max-w-full overflow-x-clip flex flex-col gt-font-sans bg-[#FFF9EC] text-[#102A56]"
       >
-        <Header initialConfig={siteConfig} />
-        <MainWrapper>
-          {children}
-        </MainWrapper>
-        <Footer initialConfig={siteConfig} />
-        <SearchModal />
+        <Suspense fallback={null}>
+          <NavigationProgress />
+        </Suspense>
+        <FloatingNavbar />
+        <MainWrapper>{children}</MainWrapper>
+        <GudTreeFooter />
         <Analytics />
-        <WhatsAppFloatingWidget />
         <FaviconManager />
       </body>
     </html>

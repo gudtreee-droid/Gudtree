@@ -1,0 +1,510 @@
+/* ==========================================================================
+   GUDTREE × SUNDAY CRUMB TYPOGRAPHY & COLOR ARCHITECTURE
+   Display: Lilita One (Weight 400, -0.04em) | Body: Inter (OpenType tuned)
+   Colors: #FFF9EC Buttercream | #102A56 Navy | #DA440D Tangerine | #0944BA Cobalt | #E5F36D Lime
+   ========================================================================== */
+
+.gt-container,
+.nf-container {
+  width: 100%;
+  max-width: 1060px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .gt-container,
+  .nf-container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+.gt-font-display {
+  font-family: var(--font-lilita), var(--font-inter), sans-serif;
+  font-weight: 400;
+}
+
+.gt-font-sans {
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, sans-serif;
+  font-feature-settings: "blwf" on, "cv03" on, "cv04" on, "cv09" on, "cv11" on, "ss03" on;
+}
+
+.gt-font-mono {
+  font-family: var(--font-mono), ui-monospace, SFMono-Regular, monospace;
+}
+
+/* ==========================================================================
+   SUNDAY CRUMB EXACT TYPOGRAPHY SIZE GUIDE
+   ========================================================================== */
+.sc-display-hero {
+  font-family: var(--font-lilita), sans-serif;
+  font-weight: 400;
+  font-size: 57px;
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+}
+@media (min-width: 768px) {
+  .sc-display-hero {
+    font-size: 80px;
+  }
+}
+@media (min-width: 1200px) {
+  .sc-display-hero {
+    font-size: 92px;
+  }
+}
+
+.sc-display-h2 {
+  font-family: var(--font-lilita), sans-serif;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+@media (min-width: 768px) {
+  .sc-display-h2 {
+    font-size: 48px;
+  }
+}
+@media (min-width: 1200px) {
+  .sc-display-h2 {
+    font-size: 60px;
+  }
+}
+
+.sc-display-h3 {
+  font-family: var(--font-lilita), sans-serif;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+}
+@media (min-width: 768px) {
+  .sc-display-h3 {
+    font-size: 24px;
+  }
+}
+@media (min-width: 1200px) {
+  .sc-display-h3 {
+    font-size: 28px;
+  }
+}
+
+.sc-display-sm {
+  font-family: var(--font-lilita), sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+}
+@media (min-width: 1200px) {
+  .sc-display-sm {
+    font-size: 18px;
+  }
+}
+
+.sc-lead {
+  font-family: var(--font-inter), sans-serif;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.58;
+  letter-spacing: -0.01em;
+  color: #334155;
+}
+@media (min-width: 768px) {
+  .sc-lead {
+    font-size: 18.5px;
+  }
+}
+@media (min-width: 1200px) {
+  .sc-lead {
+    font-size: 20px;
+  }
+}
+
+.sc-body {
+  font-family: var(--font-inter), sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.65;
+  letter-spacing: -0.005em;
+  color: #334155;
+}
+@media (min-width: 1200px) {
+  .sc-body {
+    font-size: 17px;
+  }
+}
+
+/* Signature Oversized First Letter (Monumental Sunday Crumb Lilita Drop-Initial) */
+.gt-title-first-big {
+  display: inline;
+}
+
+.gt-title-lead-char {
+  font-family: var(--font-lilita), sans-serif;
+  font-weight: 400;
+  color: #DA440D;
+  display: inline-block;
+  line-height: 0.82;
+  margin-right: 0.05em;
+  vertical-align: baseline;
+  letter-spacing: -0.04em;
+}
+
+/* Pill Badges (Sunday Crumb Colors) */
+.gt-badge-caramel {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 9999px;
+  background-color: #FFF0EA;
+  border: 1px solid rgba(218, 68, 13, 0.35);
+  color: #DA440D;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  line-height: 1;
+}
+
+.gt-badge-olive {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 9999px;
+  background-color: #D6EDFF;
+  border: 1px solid #ADC3DE;
+  color: #102A56;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  line-height: 1;
+}
+
+.gt-badge-marigold {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 9999px;
+  background-color: #E5F36D;
+  border: 1px solid #C8D946;
+  color: #102A56;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  line-height: 1;
+}
+
+/* Article Editorial Prose Styling (Sunday Crumb Inter + Lilita Display Headings) */
+.gt-article-body,
+.nf-article-body {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 16.5px;
+  line-height: 1.68;
+  letter-spacing: -0.012em;
+  color: inherit;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+@media (min-width: 1200px) {
+  .gt-article-body,
+  .nf-article-body {
+    font-size: 18px;
+  }
+}
+
+.gt-article-body p,
+.nf-article-body p {
+  margin-bottom: 1.75rem;
+}
+
+.gt-article-body h2,
+.nf-article-body h2 {
+  font-family: var(--font-lilita), sans-serif;
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  scroll-margin-top: 110px;
+}
+
+@media (min-width: 768px) {
+  .gt-article-body h2,
+  .nf-article-body h2 {
+    font-size: 34px;
+  }
+}
+
+.gt-article-body h3,
+.nf-article-body h3 {
+  font-family: var(--font-lilita), sans-serif;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  scroll-margin-top: 110px;
+}
+
+.gt-article-body ul,
+.gt-article-body ol,
+.nf-article-body ul,
+.nf-article-body ol {
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.gt-article-body ul,
+.nf-article-body ul {
+  list-style-type: disc;
+}
+
+.gt-article-body ol,
+.nf-article-body ol {
+  list-style-type: decimal;
+}
+
+.gt-article-body li,
+.nf-article-body li {
+  margin-bottom: 0.55rem;
+}
+
+.gt-article-body a,
+.nf-article-body a {
+  color: #0944BA;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(9, 68, 186, 0.35);
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+.gt-article-body a:hover,
+.nf-article-body a:hover {
+  color: #DA440D;
+  text-decoration-color: #DA440D;
+}
+
+.gt-article-body blockquote,
+.nf-article-body blockquote {
+  border-left: 4px solid #DA440D;
+  background-color: #D6EDFF;
+  color: #102A56;
+  padding: 1.25rem 1.5rem;
+  border-radius: 0 16px 16px 0;
+  margin: 2rem 0;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.55;
+  letter-spacing: -0.02em;
+}
+
+.gt-article-body img,
+.nf-article-body img {
+  border-radius: 20px;
+  margin: 1.75rem 0;
+  max-width: 100%;
+  height: auto;
+  box-shadow: var(--gt-shadow-card);
+}
+
+.gt-article-body table,
+.nf-article-body table {
+  display: block;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  max-width: 100%;
+  width: 100%;
+  margin: 1.75rem 0;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+  border-radius: 12px;
+  border: 1px solid #ADC3DE;
+}
+
+.gt-article-body th,
+.gt-article-body td,
+.nf-article-body th,
+.nf-article-body td {
+  border: 1px solid #ADC3DE;
+  padding: 0.75rem 1rem;
+  text-align: left;
+}
+
+.gt-article-body th,
+.nf-article-body th {
+  background-color: #D6EDFF;
+  color: #102A56;
+  font-weight: 700;
+}
+
+/* Smooth Image Hover Zoom */
+.gt-img-wrap {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  background-color: #DFE5D7;
+}
+
+.gt-img-wrap img {
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.group:hover .gt-img-wrap img {
+  transform: scale(1.045);
+}
+
+/* ==========================================================================
+   BULLEN'S-STYLE SKY SUNBURST + SCALLOPED HERO SECTION (GUDTREE EDITION)
+   ========================================================================== */
+.gt-hero-sky {
+  position: relative;
+  background: radial-gradient(circle at 50% 48%, #47b7ff 0%, #24a3ff 46%, #1492f4 100%);
+  overflow: clip !important;
+  contain: layout paint;
+}
+
+.gt-hero-rays {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform: scale(2.8);
+  transform-origin: center center;
+  background: repeating-conic-gradient(
+    from 0deg,
+    rgba(255, 255, 255, 0.085) 0deg 10deg,
+    transparent 10deg 20deg
+  );
+  -webkit-mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.55) 40%, rgba(0, 0, 0, 0.1) 75%, transparent 100%);
+  mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.55) 40%, rgba(0, 0, 0, 0.1) 75%, transparent 100%);
+  pointer-events: none;
+  animation: gtRaysSpin 90s linear infinite;
+}
+
+@keyframes gtRaysSpin {
+  from {
+    transform: scale(2.8) rotate(0deg);
+  }
+  to {
+    transform: scale(2.8) rotate(360deg);
+  }
+}
+
+.gt-hero-comic-title {
+  font-family: var(--font-lilita), sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: #ffffff;
+  letter-spacing: -0.015em;
+  line-height: 0.94;
+  -webkit-text-stroke: 2px #14181e;
+  paint-order: stroke fill;
+  text-shadow:
+    0 3px 0 #14181e,
+    0 5px 0 #14181e,
+    0 10px 22px rgba(16, 42, 86, 0.25);
+}
+
+@media (max-width: 640px) {
+  .gt-hero-comic-title {
+    -webkit-text-stroke: 1.5px #14181e;
+    text-shadow:
+      0 2px 0 #14181e,
+      0 4px 0 #14181e,
+      0 8px 16px rgba(16, 42, 86, 0.22);
+  }
+}
+
+/* ==========================================================================
+   DEDICATED FOCUS PAGE HERO PALETTES & UNIQUE ANIMATED BACKDROP PATTERNS
+   ========================================================================== */
+.gt-focus-hero-diabetes {
+  background: radial-gradient(circle at 50% 42%, #ff7a4d 0%, #e85022 56%, #bf340b 100%);
+}
+.gt-focus-hero-heart {
+  background: radial-gradient(circle at 50% 42%, #478eff 0%, #1e56c9 56%, #102a56 100%);
+}
+.gt-focus-hero-gut {
+  background: radial-gradient(circle at 50% 42%, #24926c 0%, #0f5c41 58%, #073827 100%);
+}
+.gt-focus-hero-pcos {
+  background: radial-gradient(circle at 50% 42%, #a95ef7 0%, #7625c9 58%, #471485 100%);
+}
+.gt-focus-hero-weight {
+  background: radial-gradient(circle at 50% 42%, #f7a728 0%, #da6d0e 58%, #9c3807 100%);
+}
+
+@keyframes gtDriftDiagonal {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 64px 64px;
+  }
+}
+
+@keyframes gtPulseRipples {
+  0% {
+    transform: translate(-50%, -50%) scale(0.88);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.06);
+    opacity: 0.18;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0.88);
+    opacity: 0.4;
+  }
+}
+
+.gt-pattern-stripes {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(255, 255, 255, 0.08) 0px,
+    rgba(255, 255, 255, 0.08) 12px,
+    transparent 12px,
+    transparent 32px
+  );
+  background-size: 64px 64px;
+  animation: gtDriftDiagonal 12s linear infinite;
+}
+
+.gt-pattern-dots {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.16) 2.2px, transparent 2.2px);
+  background-size: 32px 32px;
+  animation: gtDriftDiagonal 16s linear infinite;
+}
+
+.gt-pattern-grid {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 32px 32px;
+  animation: gtDriftDiagonal 14s linear infinite;
+}
+
+.gt-pattern-ripple-ring {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border-radius: 9999px;
+  border: 2px solid rgba(255, 255, 255, 0.22);
+  pointer-events: none;
+  animation: gtPulseRipples 6s ease-in-out infinite;
+}

@@ -1,47 +1,47 @@
 import { SiteConfig } from '@/types';
 
 export const siteConfig: SiteConfig = {
-  name: "ApexChief",
-  shortName: "ApexChief",
-  tagline: "Business, Leadership, Technology & interview",
-  description: "ApexChief is a digital media platform covering business, leadership, technology, startups, innovation, and emerging industry trends. We share insightful stories, expert perspectives, executive interviews, and inspiring success stories from leaders and entrepreneurs shaping the future.",
-  establishedYear: "2026",
-  currentDate: "Sunday, September 20, 2026",
-  edition: "Global Edition",
-  logo: "/images/apexchief-logo-light.png",
-  logoLight: "/images/apexchief-logo-light.png",
-  logoDark: "/images/apexchief-logo-dark.png",
-  favicon: "/favicon.ico",
-  socialLinks: {
-    twitter: "https://x.com/apexchief01?s=11",
-    linkedin: "https://linkedin.com/company/apexchief",
-    facebook: "https://facebook.com/ApexChief",
-    instagram: "https://www.instagram.com/apex.chief?stkn=cjBuZXkxNzZoZXR1&utm_source=qr",
-    youtube: "https://youtube.com/@ApexChief",
-    telegram: "https://t.me/apexchief_intel",
-    whatsapp: "https://wa.me/916206539717?text=Hello%20ApexChief%20Editorial%20Team%2C%20I%20would%20like%20to%20inquire%20about...",
-    phoneUrl: "tel:+916206539717",
-    github: ""
+  "name": "GudTree",
+  "shortName": "GudTree",
+  "tagline": "Clean Eating, Healthy Snacking & Nutrition for India",
+  "description": "GudTree is India's dedicated clean food and healthy snacking publication, sharing honest dietary science, healthy snack reviews, and practical desi wellness guides.",
+  "establishedYear": "2026",
+  "currentDate": "Sunday, November 15, 2026",
+  "edition": "India Edition",
+  "logo": "/images/gudtree-logo.png",
+  "logoLight": "/images/gudtree-logo.png",
+  "logoDark": "/images/gudtree-logo.png",
+  "favicon": "/favicon.ico",
+  "socialLinks": {
+    "twitter": "https://twitter.com/gudtree",
+    "linkedin": "https://www.linkedin.com/company/gudtree",
+    "facebook": "https://www.facebook.com/gudtree",
+    "instagram": "https://www.instagram.com/gudtree",
+    "youtube": "https://www.youtube.com/@gudtree",
+    "telegram": "",
+    "whatsapp": "",
+    "phoneUrl": "",
+    "github": ""
   },
-  contact: {
-    email: "sales@apexchief.com",
-    phone: "+91 6206539717",
-    logo: "/images/apexchief-logo-light.png",
-    logoLight: "/images/apexchief-logo-light.png",
-    logoDark: "/images/apexchief-logo-dark.png",
-    favicon: "/favicon.ico",
-    addressNY: {
-      title: "Global Headquarters - New York",
-      street: "100 Financial Center Blvd, Suite 4800",
-      city: "New York, NY 10005",
-      country: "United States"
+  "contact": {
+    "email": "contact@gudtree.in",
+    "phone": "+91 98765 43210",
+    "logo": "/images/gudtree-logo.png",
+    "logoLight": "/images/gudtree-logo.png",
+    "logoDark": "/images/gudtree-logo.png",
+    "favicon": "/favicon.ico",
+    "addressNY": {
+      "title": "Editorial Desk",
+      "street": "Cyber City, DLF Phase 2",
+      "city": "Gurugram, Haryana",
+      "country": "India"
     },
-    addressLondon: {
-      title: "European Bureau - London",
-      street: "1 Canada Square, Canary Wharf",
-      city: "London E14 5AA",
-      country: "United Kingdom"
+    "addressLondon": {
+      "title": "Nutrition Research Lab",
+      "street": "Koramangala 4th Block",
+      "city": "Bengaluru, Karnataka",
+      "country": "India"
     }
   },
-  copyright: "© 2026 ApexChief Media Group. All rights reserved."
+  "copyright": "© 2026 GudTree. All Rights Reserved."
 };

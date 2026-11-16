@@ -25,26 +25,26 @@ export default function Footer({ initialConfig }: { initialConfig?: SiteConfig }
           <div className="sm:col-span-2 lg:col-span-2 space-y-4">
             <Link href="/" className="inline-block group">
               <img
-                src={site.logoDark || '/images/apexchief-logo-dark.png'}
-                alt={site.name || 'ApexChief'}
+                src={site.logoDark || '/images/gudtree-logo.png'}
+                alt={site.name || 'GudTree'}
                 className="h-10 sm:h-12 w-auto max-w-[220px] object-contain transition-transform duration-200 group-hover:scale-[1.02]"
               />
             </Link>
             <p className="text-sm text-neutral-300 font-medium leading-relaxed max-w-sm">
-              Global Business, Technology &amp; Leadership News
+              Clean Eating, Healthy Snacking &amp; Nutrition for India
             </p>
             <p className="text-xs text-neutral-400 leading-relaxed max-w-sm">
-              ApexChief delivers executive interviews, startup innovations, emerging tech breakthroughs, and market intelligence for modern leaders and entrepreneurs.
+              {site.name} delivers honest nutrition guides, clean snacking reviews, and desi dietary frameworks for mindful living.
             </p>
 
             <div className="pt-2 space-y-2 text-sm text-neutral-400">
               <div>
                 <a
-                  href={`mailto:${site.contact?.email || 'sales@apexchief.com'}`}
+                  href={`mailto:${site.contact?.email || 'contact@gudtree.in'}`}
                   className="inline-flex items-center gap-2 hover:text-white transition-colors"
                 >
                   <Mail className="w-4 h-4 text-[#f7413e] shrink-0" />
-                  <span>{site.contact?.email || 'sales@apexchief.com'}</span>
+                  <span>{site.contact?.email || 'contact@gudtree.in'}</span>
                 </a>
               </div>
               {site.contact?.phone && (
@@ -59,42 +59,57 @@ export default function Footer({ initialConfig }: { initialConfig?: SiteConfig }
           {/* Column 2: Popular Categories */}
           <div className="space-y-4">
             <h3 className="text-xs font-semibold uppercase tracking-wider text-white">
-              Categories
+              Editorial Categories
             </h3>
-            <ul className="space-y-2.5 text-sm text-neutral-400">
-              <li>
-                <Link href="/category/technology" className="hover:text-white transition-colors">
-                  Technology
-                </Link>
-              </li>
+            <ul className="space-y-2 text-sm text-neutral-400">
               <li>
                 <Link href="/category/business" className="hover:text-white transition-colors">
                   Business
                 </Link>
               </li>
               <li>
-                <Link href="/category/leadership" className="hover:text-white transition-colors">
-                  Leadership
-                </Link>
-              </li>
-              <li>
-                <Link href="/category/startups" className="hover:text-white transition-colors">
-                  Startups
+                <Link href="/category/technology" className="hover:text-white transition-colors">
+                  Technology
                 </Link>
               </li>
               <li>
                 <Link href="/category/interview" className="hover:text-white transition-colors">
-                  Interviews
+                  Interview
                 </Link>
               </li>
               <li>
-                <Link href="/category/opinion" className="hover:text-white transition-colors">
-                  Opinion
+                <Link href="/category/news" className="hover:text-white transition-colors">
+                  News
+                </Link>
+              </li>
+              <li>
+                <Link href="/category/world" className="hover:text-white transition-colors">
+                  World
+                </Link>
+              </li>
+              <li>
+                <Link href="/category/lifestyle" className="hover:text-white transition-colors">
+                  Lifestyle
+                </Link>
+              </li>
+              <li>
+                <Link href="/category/metaverse" className="hover:text-white transition-colors">
+                  Metaverse
+                </Link>
+              </li>
+              <li>
+                <Link href="/category/crypto" className="hover:text-white transition-colors">
+                  Crypto
+                </Link>
+              </li>
+              <li>
+                <Link href="/category/real-estate" className="hover:text-white transition-colors">
+                  Real Estate
                 </Link>
               </li>
               <li>
                 <Link href="/category" className="text-[#f7413e] hover:underline font-medium transition-colors">
-                  All Categories →
+                  All 16 Categories →
                 </Link>
               </li>
             </ul>
@@ -170,7 +185,7 @@ export default function Footer({ initialConfig }: { initialConfig?: SiteConfig }
               onClick={() => {
                 try {
                   localStorage.removeItem('admin_logged_in');
-                  localStorage.removeItem('apexchief_auth_session');
+                  localStorage.removeItem('gudtree_auth_session');
                 } catch (e) {}
               }}
               className="text-inherit hover:text-inherit no-underline cursor-default focus:outline-none"

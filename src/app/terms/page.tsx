@@ -1,35 +1,32 @@
 import React from 'react';
-import Link from 'next/link';
-import { ArrowLeft, Scale, BookOpen, AlertCircle, FileCheck, ShieldCheck, Mail } from 'lucide-react';
+import { Mail } from 'lucide-react';
 import { Metadata } from 'next';
 import Breadcrumbs from '@/components/Breadcrumbs';
+import EditorialTitle from '@/components/gudtree/EditorialTitle';
+import { getSiteBaseUrl } from '@/lib/articlePageHelpers';
+
+const baseUrl = getSiteBaseUrl();
 
 export const metadata: Metadata = {
-  title: 'Terms of Service',
-  description: 'Read the official Terms of Service governing access, editorial syndication, copyright, and usage across ApexChief media properties.',
-  alternates: {
-    canonical: 'https://www.apexchief.com/terms',
-  },
+  title: 'Terms of Service | GudTree',
+  description:
+    'Read the Terms of Service governing nutrition guides, snack audits, content rights, and readership across GudTree.',
+  alternates: { canonical: `${baseUrl}/terms` },
   openGraph: {
-    title: 'Terms of Service | ApexChief',
-    description: 'Read the official Terms of Service governing access, editorial syndication, copyright, and usage across ApexChief media properties.',
-    url: 'https://www.apexchief.com/terms',
-    siteName: 'ApexChief',
+    title: 'Terms of Service | GudTree',
+    description:
+      'Terms of Service for GudTree nutrition dispatches, clean snacking guides, and digital properties.',
+    url: `${baseUrl}/terms`,
+    siteName: 'GudTree',
     type: 'website',
-  },
-  twitter: {
-    card: 'summary',
-    title: 'Terms of Service | ApexChief',
-    description: 'Read the official Terms of Service governing access, editorial syndication, copyright, and usage across ApexChief media properties.',
   },
 };
 
 export default function TermsOfServicePage() {
-  const lastUpdated = 'September 2026';
+  const lastUpdated = 'November 2026';
 
   return (
-    <div className="w-full max-w-4xl mx-auto py-4">
-      {/* Top Breadcrumb */}
+    <div className="nf-container max-w-4xl py-6 sm:py-10">
       <Breadcrumbs
         items={[
           { label: 'Home', href: '/' },
@@ -41,99 +38,58 @@ export default function TermsOfServicePage() {
         rightBadge="Editorial Terms"
       />
 
-      {/* Header */}
-      <div className="mb-10 pb-8 border-b border-[#211d1d]/15 dark:border-white/15">
-        <div className="inline-flex items-center space-x-2 bg-[#0a0a0a] dark:bg-white text-[#fefdf3] dark:text-black text-[10px] font-oswald uppercase px-2.5 py-1 tracking-widest font-bold mb-3">
-          <Scale className="w-3 h-3 text-[#f7413e]" />
-          <span>Legal Standards</span>
-        </div>
-        <h1 className="font-serif text-3xl sm:text-5xl font-bold text-[#0a0a0a] dark:text-white tracking-tight mb-3">
-          ApexChief Terms of Service
-        </h1>
-        <p className="font-mono text-xs text-[#575757] dark:text-[#a3a3a3]">
-          Effective Date &amp; Last Revised: <span className="font-semibold text-[#0a0a0a] dark:text-white">{lastUpdated}</span> • Standard Editorial Agreement
+      <header className="mb-10 pb-6 border-b border-[#ADC3DE]/60 flex flex-col items-start gap-3">
+        <span className="gt-badge-olive">Editorial Terms</span>
+        <EditorialTitle
+          as="h1"
+          title="GudTree Terms of Service"
+          variant="hero"
+          className="text-[#102A56]"
+        />
+        <p className="text-[13px] text-[#666666] gt-font-sans">
+          Effective Date: <span className="font-semibold text-[#102A56]">{lastUpdated}</span>
         </p>
-      </div>
+      </header>
 
-      {/* Main Legal Content */}
-      <div className="prose prose-lg dark:prose-invert max-w-none font-serif text-[#211d1d] dark:text-[#eff0e0] leading-relaxed space-y-8">
-        <section className="space-y-3">
-          <h2 className="font-oswald text-xl sm:text-2xl font-bold uppercase tracking-wide text-[#0a0a0a] dark:text-white flex items-center gap-2">
-            <span className="text-[#f7413e]">01.</span> Acceptance of Terms
-          </h2>
-          <p className="text-sm sm:text-base font-sans text-[#404040] dark:text-[#cccccc] leading-relaxed">
-            By accessing or browsing <strong>apexchief.com</strong>, subscribing to our publications, or utilizing any affiliated digital features, you agree to comply with and be bound by these Terms of Service. If you do not agree with any portion of these terms, you should discontinue use of the platform.
+      <div className="gt-article-body space-y-8">
+        <section>
+          <h2>01. Acceptance of Terms</h2>
+          <p>
+            By accessing or reading publications distributed through GudTree, you agree to observe these Terms of Service and applicable intellectual property laws.
           </p>
         </section>
 
-        <section className="space-y-3">
-          <h2 className="font-oswald text-xl sm:text-2xl font-bold uppercase tracking-wide text-[#0a0a0a] dark:text-white flex items-center gap-2">
-            <span className="text-[#f7413e]">02.</span> Intellectual Property &amp; Editorial Copyright
-          </h2>
-          <p className="text-sm sm:text-base font-sans text-[#404040] dark:text-[#cccccc] leading-relaxed">
-            All original journalism, investigative essays, executive interviews, photography, infographics, audio, layout architecture, and codebases displayed across ApexChief are the proprietary intellectual property of ApexChief Media Group and are protected by international copyright laws.
+        <section>
+          <h2>02. Editorial Copyright &amp; Fair Quotation</h2>
+          <p>
+            All articles, guides, imagery, and editorial design assets published on GudTree remain the property of their respective authors and GudTree. Excerpts quoted for commentary or educational sharing must clearly attribute GudTree and link to the source dispatch.
           </p>
         </section>
 
-        <section className="space-y-3">
-          <h2 className="font-oswald text-xl sm:text-2xl font-bold uppercase tracking-wide text-[#0a0a0a] dark:text-white flex items-center gap-2">
-            <span className="text-[#f7413e]">03.</span> Syndication, Quotation &amp; Fair Use Policy
-          </h2>
-          <p className="text-sm sm:text-base font-sans text-[#404040] dark:text-[#cccccc] leading-relaxed">
-            We support healthy journalistic discourse, academic research, and media citation under fair use provisions subject to the following rules:
-          </p>
-          <ul className="list-disc pl-5 space-y-2 font-sans text-xs sm:text-sm text-[#404040] dark:text-[#cccccc]">
-            <li>
-              <strong>Mandatory Attribution:</strong> Any quotation or excerpt from an ApexChief article must explicitly credit <strong>ApexChief</strong> as the original publisher and include a direct, do-follow hyperlink back to the canonical story URL.
-            </li>
-            <li>
-              <strong>Excerpt Limits:</strong> Non-commercial publications may quote up to 100 words of text. Systematic full-article scraping, automated republishing, or bulk reproduction without explicit written licensing is strictly prohibited.
-            </li>
-            <li>
-              <strong>Syndication Licensing:</strong> For commercial syndication, enterprise reprints, or translation rights, please contact <a href="mailto:sales@apexchief.com" className="text-[#f7413e] underline">sales@apexchief.com</a>.
-            </li>
-          </ul>
-        </section>
-
-        <section className="space-y-3">
-          <h2 className="font-oswald text-xl sm:text-2xl font-bold uppercase tracking-wide text-[#0a0a0a] dark:text-white flex items-center gap-2">
-            <span className="text-[#f7413e]">04.</span> Editorial Independence &amp; Financial Disclaimer
-          </h2>
-          <div className="p-4 bg-amber-50 dark:bg-amber-950/30 border border-amber-300 dark:border-amber-700/50 font-sans text-xs sm:text-sm text-amber-900 dark:text-amber-200">
-            <strong>Important Notice:</strong> Content published by ApexChief — including market analysis, macroeconomic commentary, startup coverage, and technology insights — is provided strictly for educational and informational journalism purposes. Nothing on this website constitutes personalized investment, financial, tax, or legal advice. Readers should consult accredited financial advisors before executing financial transactions.
+        <section>
+          <h2>03. Informational Purpose &amp; Health Disclaimer</h2>
+          <div className="p-5 rounded-[20px] bg-[#D6EDFF]/55 border border-[#ADC3DE] text-[14px] text-[#102A56]">
+            <strong>Notice:</strong> Coverage across diet, snacking, nutrition, and wellness is published solely for educational and informational purposes. Nothing on GudTree constitutes personalized medical, dietary, or healthcare diagnosis or prescription.
           </div>
         </section>
 
-        <section className="space-y-3">
-          <h2 className="font-oswald text-xl sm:text-2xl font-bold uppercase tracking-wide text-[#0a0a0a] dark:text-white flex items-center gap-2">
-            <span className="text-[#f7413e]">05.</span> Reader Submissions &amp; Story Pitches
-          </h2>
-          <p className="text-sm sm:text-base font-sans text-[#404040] dark:text-[#cccccc] leading-relaxed">
-            By transmitting story tips, op-ed pitches, or letters to the editor through our platform, you grant ApexChief a non-exclusive, worldwide, royalty-free license to publish, edit for length and clarity, and archive the submission across our editorial channels. We uphold rigorous source confidentiality where explicitly requested.
+        <section>
+          <h2>04. Contributor &amp; Reader Submissions</h2>
+          <p>
+            Story pitches, clean food reviews, and dietary tips sent to our newsroom are reviewed at editorial discretion and subject to verification for factual accuracy.
           </p>
         </section>
 
-        <section className="space-y-3">
-          <h2 className="font-oswald text-xl sm:text-2xl font-bold uppercase tracking-wide text-[#0a0a0a] dark:text-white flex items-center gap-2">
-            <span className="text-[#f7413e]">06.</span> Disclaimer of Warranties &amp; Limitation of Liability
-          </h2>
-          <p className="text-sm sm:text-base font-sans text-[#404040] dark:text-[#cccccc] leading-relaxed">
-            ApexChief is provided on an &ldquo;as is&rdquo; and &ldquo;as available&rdquo; basis. While our newsroom verifies information with highest journalistic diligence, we make no warranties regarding 100% real-time accuracy, uninterrupted platform uptime, or external links beyond our editorial control. In no event shall ApexChief Media Group be liable for direct or indirect losses arising from platform usage.
-          </p>
-        </section>
-
-        <section className="p-6 bg-[#faf8f2] dark:bg-[#151922] border-l-4 border-[#f7413e] space-y-2 mt-8">
-          <h3 className="font-oswald text-lg font-bold uppercase tracking-wide text-[#0a0a0a] dark:text-white flex items-center gap-2">
-            <Mail className="w-4 h-4 text-[#f7413e]" />
-            Legal &amp; Syndication Inquiries
+        <section className="p-6 rounded-[24px] bg-white border border-[#ADC3DE]/65 border-l-4 border-l-[#DA440D]">
+          <h3 className="flex items-center gap-2 sc-display-sm text-[19px] text-[#102A56] !mt-0">
+            <Mail className="w-4 h-4 text-[#DA440D]" />
+            <span>Syndication &amp; Rights Inquiries</span>
           </h3>
-          <p className="text-xs sm:text-sm font-sans text-[#575757] dark:text-gray-300">
-            For intellectual property queries, syndication requests, or formal legal correspondence:
-          </p>
-          <p className="font-mono text-xs text-[#0a0a0a] dark:text-white font-semibold">
-            Email: <a href="mailto:sales@apexchief.com" className="text-[#f7413e] underline">sales@apexchief.com</a>
-            <br />
-            ApexChief Media Group • Legal &amp; Corporate Affairs Division
+          <p className="!mb-0 text-[13px] font-medium text-[#102A56]">
+            Email:{' '}
+            <a href="mailto:contact@gudtree.in" className="text-[#DA440D] hover:underline">
+              contact@gudtree.in
+            </a>
           </p>
         </section>
       </div>

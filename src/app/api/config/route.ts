@@ -9,13 +9,13 @@ export async function GET() {
   try {
     const dbConfig = await getSiteConfigFromDB();
     if (dbConfig && dbConfig.name) {
-      let activeLogoLight = dbConfig.logoLight || localConfig.logoLight || '/images/apexchief-logo-light.png';
+      let activeLogoLight = dbConfig.logoLight || localConfig.logoLight || '/images/gudtree-logo.png';
       if (activeLogoLight.includes('logo-dark')) {
-        activeLogoLight = '/images/apexchief-logo-light.png';
+        activeLogoLight = '/images/gudtree-logo.png';
       }
-      let activeLogoDark = dbConfig.logoDark || localConfig.logoDark || '/images/apexchief-logo-dark.png';
+      let activeLogoDark = dbConfig.logoDark || localConfig.logoDark || '/images/gudtree-logo.png';
       if (activeLogoDark.includes('logo-light') || activeLogoDark === activeLogoLight) {
-        activeLogoDark = '/images/apexchief-logo-dark.png';
+        activeLogoDark = '/images/gudtree-logo.png';
       }
       const activeLogo = activeLogoLight;
 
@@ -49,7 +49,7 @@ export async function PUT(request: Request) {
       newConfig.logo = newConfig.logoLight;
     }
     if (!newConfig.logoDark || newConfig.logoDark === newConfig.logoLight) {
-      newConfig.logoDark = localConfig.logoDark || '/images/apexchief-logo-dark.png';
+      newConfig.logoDark = localConfig.logoDark || '/images/gudtree-logo.png';
     }
 
     if (newConfig.favicon || newConfig.faviconUrl) {

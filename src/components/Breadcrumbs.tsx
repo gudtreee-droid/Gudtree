@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { ArrowLeft, ChevronRight, Home } from 'lucide-react';
+import { getSiteBaseUrl } from '@/lib/siteUrl';
 
 export interface BreadcrumbItem {
   label: string;
@@ -26,7 +27,7 @@ export default function Breadcrumbs({
   rightBadge,
   includeJsonLd = true,
 }: BreadcrumbsProps) {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.apexchief.com';
+  const baseUrl = getSiteBaseUrl();
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -57,19 +58,19 @@ export default function Breadcrumbs({
       )}
       <nav
         aria-label="Breadcrumb"
-        className={`w-full flex items-center justify-between flex-wrap gap-2 py-3 mb-6 border-b border-[#211d1d]/15 dark:border-white/15 text-xs font-mono uppercase text-[#575757] dark:text-[#a3a3a3] ${className}`}
+        className={`w-full flex items-center justify-between flex-wrap gap-2 py-3 mb-6 border-b border-[#ADC3DE]/60 text-[12px] text-[#666666] gt-font-sans ${className}`}
       >
-        <div className="flex items-center space-x-1.5 flex-wrap overflow-hidden no-scrollbar">
+        <div className="flex items-center gap-1.5 flex-wrap overflow-hidden gt-no-scrollbar">
           {showBackLink && (
             <>
               <Link
                 href={backHref}
-                className="hover:text-black dark:hover:text-white flex items-center space-x-1 mr-2 text-black dark:text-white font-semibold transition-colors"
+                className="hover:text-[#DA440D] flex items-center gap-1 mr-2 text-[#102A56] font-semibold transition-colors"
               >
                 <ArrowLeft className="w-3.5 h-3.5" />
                 <span>{backLabel}</span>
               </Link>
-              <span className="text-[#211d1d]/30 dark:text-white/30 mr-2">|</span>
+              <span className="text-[#ADC3DE] mr-1">|</span>
             </>
           )}
 
@@ -79,12 +80,10 @@ export default function Breadcrumbs({
 
             return (
               <React.Fragment key={`${item.label}-${idx}`}>
-                {idx > 0 && (
-                  <span className="text-[#211d1d]/40 dark:text-white/40 select-none">/</span>
-                )}
+                {idx > 0 && <ChevronRight className="w-3.5 h-3.5 text-[#999999] select-none" />}
                 {isLast || !item.href ? (
                   <span
-                    className="font-bold text-[#0a0a0a] dark:text-white truncate max-w-[200px] sm:max-w-[360px]"
+                    className="font-semibold text-[#102A56] truncate max-w-[200px] sm:max-w-[360px]"
                     title={item.label}
                     aria-current="page"
                   >
@@ -93,7 +92,7 @@ export default function Breadcrumbs({
                 ) : (
                   <Link
                     href={item.href}
-                    className="hover:text-[#f7413e] dark:hover:text-[#f7413e] transition-colors flex items-center gap-1 font-medium text-[#575757] dark:text-[#a3a3a3]"
+                    className="hover:text-[#DA440D] transition-colors flex items-center gap-1 text-[#666666]"
                   >
                     {isFirst && <Home className="w-3 h-3 inline-block -mt-0.5" />}
                     <span>{item.label}</span>
@@ -105,7 +104,7 @@ export default function Breadcrumbs({
         </div>
 
         {rightBadge && (
-          <span className="shrink-0 text-[#f7413e] font-semibold text-[11px] tracking-wider uppercase">
+          <span className="gt-badge-olive shrink-0">
             {rightBadge}
           </span>
         )}

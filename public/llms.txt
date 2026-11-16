@@ -1,27 +1,19 @@
-# ApexChief
+# GudTree
 
-> ApexChief is a premier global digital media platform covering business, executive leadership, technology, artificial intelligence, startups, innovation, and emerging industry trends.
+> GudTree is India's premier digital publication covering clean eating, healthy snacking, Indian dietary frameworks, superfoods, and mindful nutrition.
 
 ## Core Editorial Pillars
 
-- [Technology & AI](https://www.apexchief.com/category/technology): Enterprise artificial intelligence, quantum computing, autonomous agents, and cybersecurity grids.
-- [Leadership & Governance](https://www.apexchief.com/category/leadership): C-suite decision frameworks, corporate strategy, board governance, and executive interviews.
-- [Global Business & Markets](https://www.apexchief.com/category/business): Macroeconomic trends, private markets, capital deployment, and corporate finance.
-- [Startups & Venture Capital](https://www.apexchief.com/category/startups): Bootstrapped scaleups, unicorn growth, seed-stage investing, and founder case studies.
-- [Executive Interviews](https://www.apexchief.com/category/interview): Exclusive long-form dialogues with founders, CEOs, and industry visionaries.
-- [Top Ranked Articles](https://www.apexchief.com/category/top-list): Curated power indexes, top 10 frameworks, and market leaderboards.
-- [Opinion & Columns](https://www.apexchief.com/category/opinion): Critical thought leadership and expert market critiques.
-- [Commercial Real Estate](https://www.apexchief.com/category/real-estate): PropTech innovations, mass-timber architecture, and sustainable commercial developments.
+- [Healthy Snacking](http://localhost:3000/category/snacking): Clean snacking reviews, roasted makhana, seed mixes, low-calorie namkeens, and guilt-free munching.
+- [Indian Diet & Nutrition](http://localhost:3000/category/diet): Practical desi meal plans, high-protein vegetarian diets, diabetes-friendly options, and balanced thali guides.
+- [Superfoods & Ingredients](http://localhost:3000/category/superfoods): Jaggery (Gud), millets (Ragi, Jowar, Bajra), turmeric, ashwagandha, and desi seeds.
+- [Snack Brand Reviews](http://localhost:3000/category/reviews): Unbiased ingredient audits, palm oil checks, sugar breakdown, and clean label verifications.
+- [Weight Management & Fitness](http://localhost:3000/category/fitness): Portion control strategies, pre/post workout Indian snacks, and sustainable fat loss tips.
 
 ## Key Pages & Information
 
-- [Newsroom Archive](https://www.apexchief.com/news): Complete searchable directory of investigative reporting and editorial articles.
-- [Write For Us / Contributors](https://www.apexchief.com/write-for-us): Contributor guidelines, editorial criteria, and pitch submissions for authors and executives.
-- [Contact Editorial Desk](https://www.apexchief.com/contact): Newsroom bureau contact details in New York and London, press releases, and editorial inquiries.
-- [Privacy Policy](https://www.apexchief.com/privacy): Data handling, privacy protection, and journalistic governance standards.
-- [Terms of Service](https://www.apexchief.com/terms): Terms of access, copyright, and syndication policies.
-- [XML Sitemap](https://www.apexchief.com/sitemap.xml): Full machine-readable URL index.
-
-## Optional Extended Documentation
-
-- [Full LLMs Context Directory](https://www.apexchief.com/llms-full.txt): Comprehensive plain-text archive of ApexChief editorial guides and dispatches.
+- [Articles Archive](http://localhost:3000/news): Complete searchable directory of nutrition guides and healthy recipes.
+- [Write For Us / Nutritionists](http://localhost:3000/write-for-us): Contributor guidelines for dietitians, food scientists, and wellness writers.
+- [Contact Editorial Desk](http://localhost:3000/contact): Editorial inquiries, brand audits, and nutrition inquiries.
+- [Privacy Policy](http://localhost:3000/privacy): Reader privacy and data governance policies.
+- [Terms of Service](http://localhost:3000/terms): Terms of access and health disclaimer.

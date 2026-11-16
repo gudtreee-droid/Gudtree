@@ -2,65 +2,69 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Newspaper, ArrowLeft, Search } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
+import { CATEGORIES as INITIAL_CATEGORIES } from '@/data/categories';
+import { Category } from '@/types';
+import EditorialTitle from '@/components/gudtree/EditorialTitle';
 
 export default function NotFound() {
-  const [categories, setCategories] = useState<any[]>([]);
+  const [categories, setCategories] = useState<Category[]>(INITIAL_CATEGORIES);
 
   useEffect(() => {
     fetch('/api/categories')
-      .then((res) => {
-        if (!res.ok) return null;
-        return res.json();
-      })
-      .then((data) => {
-        if (Array.isArray(data)) {
-          setCategories(data.filter((cat) => cat.isVisible !== false));
+      .then((res) => (res.ok ? res.json() : null))
+      .then((payload) => {
+        const list = Array.isArray(payload) ? payload : payload?.data;
+        if (Array.isArray(list) && list.length > 0) {
+          setCategories(list.filter((cat: Category) => cat.isVisible !== false));
         }
       })
       .catch(() => {});
   }, []);
+
   return (
-    <div className="py-16 sm:py-24 text-center max-w-2xl mx-auto">
-      <div className="inline-flex items-center space-x-2 bg-[#eff0e0] border border-[#211d1d]/20 px-3 py-1 rounded-full text-xs font-mono uppercase tracking-widest text-[#575757] mb-6">
-        <Newspaper className="w-3.5 h-3.5 text-[#f7413e]" />
-        <span>Edition Error 404</span>
+    <div className="gt-container py-16 sm:py-24 text-center max-w-2xl mx-auto">
+      <div className="mb-5 flex justify-center">
+        <span className="gt-badge-caramel">Edition Error 404</span>
       </div>
 
-      <h1 className="font-serif text-5xl sm:text-7xl font-bold text-[#0a0a0a] tracking-tight mb-4">
-        Story Not Found
-      </h1>
+      <EditorialTitle
+        as="h1"
+        title="Story Not Found"
+        variant="hero"
+        className="text-[#102A56] mb-4 justify-center"
+      />
 
-      <p className="font-serif italic text-base sm:text-lg text-[#575757] leading-relaxed mb-8 max-w-xl mx-auto">
-        The requested editorial story or section dispatch could not be located in our current edition or digital archives.
+      <p className="sc-lead mb-8 max-w-xl mx-auto">
+        The requested nutrition guide, snack review, or editorial shelf could not be found in the current GudTree archives.
       </p>
 
-      <div className="flex flex-wrap items-center justify-center gap-4 mb-12">
+      <div className="flex flex-wrap items-center justify-center gap-3 mb-12">
         <Link
           href="/"
-          className="bg-[#211d1d] hover:bg-[#f7413e] text-[#fefdf3] font-oswald text-xs font-bold uppercase tracking-widest px-6 py-3 rounded transition-all inline-flex items-center space-x-2"
+          className="bg-[#102A56] hover:bg-[#DA440D] text-[#FFF9EC] sc-display-sm text-[14px] px-6 h-11 rounded-full transition-colors inline-flex items-center gap-2 no-underline"
         >
           <ArrowLeft className="w-4 h-4" />
-          <span>Return To Front Page</span>
+          <span>Return To GudTree Home</span>
         </Link>
         <Link
           href="/news"
-          className="border border-[#211d1d] hover:bg-[#211d1d] hover:text-[#fefdf3] text-[#211d1d] font-oswald text-xs font-bold uppercase tracking-widest px-6 py-3 rounded transition-all inline-flex items-center space-x-2"
+          className="border border-[#ADC3DE] bg-white hover:border-[#DA440D] text-[#102A56] sc-display-sm text-[14px] px-6 h-11 rounded-full transition-colors inline-flex items-center gap-2 no-underline"
         >
-          <span>Browse Editorial Archive</span>
+          <span>Browse All Guides</span>
         </Link>
       </div>
 
-      <div className="pt-8 border-t border-[#211d1d]/15">
-        <div className="text-xs font-mono uppercase font-bold text-[#575757] mb-3">
-          Popular Editorial Desks
+      <div className="pt-8 border-t border-[#ADC3DE]/60">
+        <div className="text-[11px] font-bold uppercase tracking-[0.12em] text-[#666666] mb-4">
+          Explore Nutrition Shelves
         </div>
         <div className="flex flex-wrap items-center justify-center gap-2">
-          {categories.map((cat) => (
+          {categories.slice(0, 14).map((cat) => (
             <Link
               key={cat.slug}
               href={`/category/${cat.slug}`}
-              className="text-xs bg-[#eff0e0] hover:bg-[#211d1d] hover:text-[#fefdf3] px-3 py-1.5 rounded transition-colors text-[#211d1d]"
+              className="text-[12px] font-semibold bg-white hover:bg-[#DA440D] hover:text-white border border-[#ADC3DE]/70 px-3.5 py-1.5 rounded-full transition-colors text-[#102A56] no-underline"
             >
               {cat.name}
             </Link>

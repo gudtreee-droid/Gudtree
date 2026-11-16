@@ -1,43 +1,31 @@
 import React from 'react';
 import { Metadata } from 'next';
-import Link from 'next/link';
-import {
-  PenTool,
-  ArrowLeft,
-  CheckCircle2,
-  Send,
-  BookOpen,
-  Sparkles,
-  Users,
-  ShieldCheck,
-  TrendingUp,
-  Mail,
-  Award,
-  HelpCircle,
-} from 'lucide-react';
+import { BookOpen, Users, ShieldCheck, TrendingUp, Award, HelpCircle, Sparkles } from 'lucide-react';
 import WriteForUsForm from './WriteForUsForm';
 import Breadcrumbs from '@/components/Breadcrumbs';
+import EditorialTitle from '@/components/gudtree/EditorialTitle';
+import { getSiteBaseUrl } from '@/lib/articlePageHelpers';
+
+const baseUrl = getSiteBaseUrl();
 
 export const metadata: Metadata = {
-  title: 'Write For Us | Editorial Submission Guidelines',
+  title: 'Write For Us | Nutrition & Clean Snacking Contributors | GudTree',
   description:
-    'Contribute thought leadership, executive perspectives, founder retrospectives, and industry analyses to ApexChief. Review our contributor guidelines and submit your editorial pitch.',
-  alternates: {
-    canonical: 'https://www.apexchief.com/write-for-us',
-  },
+    'Contribute nutrition essays, packaged snack label audits, dietitian perspectives, and patient-friendly meal guides to GudTree.',
+  alternates: { canonical: `${baseUrl}/write-for-us` },
   openGraph: {
-    title: 'Write For Us | Editorial Submission Guidelines | ApexChief',
+    title: 'Write For Us | Contributor Guidelines | GudTree',
     description:
-      'Contribute thought leadership, executive perspectives, founder retrospectives, and industry analyses to ApexChief. Review our contributor guidelines and submit your editorial pitch.',
-    url: 'https://www.apexchief.com/write-for-us',
-    siteName: 'ApexChief',
+      'Contribute evidence-backed nutrition stories, clean snacking guides, and ingredient breakdowns to GudTree.',
+    url: `${baseUrl}/write-for-us`,
+    siteName: 'GudTree',
     type: 'website',
   },
   twitter: {
     card: 'summary',
-    title: 'Write For Us | Contributor Guidelines | ApexChief',
+    title: 'Write For Us | GudTree',
     description:
-      'Submit guest columns, executive insights, and industry deep dives to ApexChief editors.',
+      'Submit nutrition guides, clean-label food audits, and dietitian insights to GudTree editors.',
   },
 };
 
@@ -46,34 +34,24 @@ const jsonLd = {
   '@graph': [
     {
       '@type': 'WebPage',
-      '@id': 'https://www.apexchief.com/write-for-us#webpage',
-      url: 'https://www.apexchief.com/write-for-us',
-      name: 'Write For Us - Editorial Contributor Guidelines',
+      '@id': `${baseUrl}/write-for-us#webpage`,
+      url: `${baseUrl}/write-for-us`,
+      name: 'Write For Us - GudTree Contributor Guidelines',
       description:
-        'Contribute thought leadership, executive perspectives, founder retrospectives, and industry analyses to ApexChief.',
+        'Contribute nutrition essays, packaged snack audits, and wellness perspectives to GudTree.',
       isPartOf: {
         '@type': 'WebSite',
-        '@id': 'https://www.apexchief.com/#website',
-        name: 'ApexChief',
-        url: 'https://www.apexchief.com',
+        '@id': `${baseUrl}/#website`,
+        name: 'GudTree',
+        url: baseUrl,
       },
     },
     {
       '@type': 'BreadcrumbList',
-      '@id': 'https://www.apexchief.com/write-for-us#breadcrumb',
+      '@id': `${baseUrl}/write-for-us#breadcrumb`,
       itemListElement: [
-        {
-          '@type': 'ListItem',
-          position: 1,
-          name: 'Home',
-          item: 'https://www.apexchief.com',
-        },
-        {
-          '@type': 'ListItem',
-          position: 2,
-          name: 'Write For Us',
-          item: 'https://www.apexchief.com/write-for-us',
-        },
+        { '@type': 'ListItem', position: 1, name: 'Home', item: baseUrl },
+        { '@type': 'ListItem', position: 2, name: 'Write For Us', item: `${baseUrl}/write-for-us` },
       ],
     },
   ],
@@ -81,13 +59,12 @@ const jsonLd = {
 
 export default function WriteForUsPage() {
   return (
-    <div className="w-full max-w-5xl mx-auto py-4 px-4 sm:px-6">
+    <div className="gt-container py-6 sm:py-10">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* Top Breadcrumb */}
       <Breadcrumbs
         items={[
           { label: 'Home', href: '/' },
@@ -95,193 +72,171 @@ export default function WriteForUsPage() {
         ]}
         showBackLink
         backHref="/"
-        backLabel="Front Page"
-        rightBadge="Contributor Network"
+        backLabel="Home"
+        rightBadge="Contributors"
         includeJsonLd={false}
       />
 
-      {/* Hero Header */}
-      <div className="mb-12 text-left">
-        <div className="inline-flex items-center space-x-2 bg-[#0a0a0a] dark:bg-white text-white dark:text-black text-[10px] font-oswald uppercase px-2.5 py-1 tracking-widest font-bold mb-3">
-          <PenTool className="w-3 h-3 text-[#f7413e]" />
-          <span>ApexChief Editorial Contributor Program</span>
-        </div>
-        <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold text-black dark:text-white tracking-tight mb-4">
-          Write For ApexChief
-        </h1>
-        <p className="font-serif italic text-base sm:text-lg text-gray-700 dark:text-gray-300 max-w-3xl leading-relaxed">
-          Share your executive perspectives, industry breakthroughs, founder journeys, and strategic insights with a global audience of CEOs, investors, technologists, and decision-makers.
+      <header className="max-w-3xl mb-10 flex flex-col items-start gap-3">
+        <span className="gt-badge-olive">Nutrition Contributor Network</span>
+        <EditorialTitle
+          as="h1"
+          title="Write For GudTree"
+          variant="hero"
+          className="text-[#102A56]"
+        />
+        <p className="sc-lead">
+          Share nutritionist guides, packaged snack audits, glycemic-friendly recipes, and real patient wellness insights with GudTree readers across India.
         </p>
-      </div>
+      </header>
 
-      {/* Why Write For ApexChief - 3 Feature Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
-        <div className="p-6 bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 rounded-sm">
-          <div className="w-10 h-10 rounded-sm bg-[#f7413e]/10 text-[#f7413e] flex items-center justify-center mb-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <div className="p-6 rounded-[24px] bg-white border border-[#ADC3DE]/65">
+          <div className="w-10 h-10 rounded-full bg-[#DA440D]/12 text-[#DA440D] flex items-center justify-center mb-4">
             <Users className="w-5 h-5" />
           </div>
-          <h3 className="font-oswald text-lg font-bold uppercase tracking-wider text-black dark:text-white mb-2">
-            Executive Readership
+          <h3 className="sc-display-sm text-[19px] text-[#102A56] mb-2">
+            Health-Conscious Audience
           </h3>
-          <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed font-sans">
-            Reach hundreds of thousands of monthly executives, venture capitalists, founders, and tech pioneers across the US, Europe, Asia, and the Middle East.
+          <p className="text-[13px] text-[#666666] leading-relaxed">
+            Reach Indian families, diabetics, fitness seekers, and clean-snacking shoppers looking for trustworthy label advice.
           </p>
         </div>
 
-        <div className="p-6 bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 rounded-sm">
-          <div className="w-10 h-10 rounded-sm bg-[#f7413e]/10 text-[#f7413e] flex items-center justify-center mb-4">
+        <div className="p-6 rounded-[24px] bg-white border border-[#ADC3DE]/65">
+          <div className="w-10 h-10 rounded-full bg-[#DA440D]/12 text-[#DA440D] flex items-center justify-center mb-4">
             <Award className="w-5 h-5" />
           </div>
-          <h3 className="font-oswald text-lg font-bold uppercase tracking-wider text-black dark:text-white mb-2">
-            Author Byline &amp; Authority
+          <h3 className="sc-display-sm text-[19px] text-[#102A56] mb-2">
+            Verified Nutrition Byline
           </h3>
-          <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed font-sans">
-            Every published contributor receives a verified author profile, biographical blurb, social links, and Google News indexed authorship credit.
+          <p className="text-[13px] text-[#666666] leading-relaxed">
+            Every published contributor receives a verified author profile and full attribution across our archive.
           </p>
         </div>
 
-        <div className="p-6 bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 rounded-sm">
-          <div className="w-10 h-10 rounded-sm bg-[#f7413e]/10 text-[#f7413e] flex items-center justify-center mb-4">
+        <div className="p-6 rounded-[24px] bg-white border border-[#ADC3DE]/65">
+          <div className="w-10 h-10 rounded-full bg-[#DA440D]/12 text-[#DA440D] flex items-center justify-center mb-4">
             <TrendingUp className="w-5 h-5" />
           </div>
-          <h3 className="font-oswald text-lg font-bold uppercase tracking-wider text-black dark:text-white mb-2">
-            Global Syndication
+          <h3 className="sc-display-sm text-[19px] text-[#102A56] mb-2">
+            Curated Editorial Reach
           </h3>
-          <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed font-sans">
-            Selected editorial pieces are featured across ApexChief daily dispatches, social feeds, and premier industry syndication networks.
+          <p className="text-[13px] text-[#666666] leading-relaxed">
+            Selected snacking guides and label deep-dives are spotlighted across GudTree homepage shelves.
           </p>
         </div>
       </div>
 
-      {/* Main Guidelines & Form Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 mb-16">
-        {/* Left: Editorial Guidelines (7 Cols) */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 mb-14">
         <div className="lg:col-span-7 space-y-8">
           <section className="space-y-4">
-            <h2 className="font-oswald text-2xl font-bold uppercase tracking-wide text-black dark:text-white flex items-center gap-2 border-b border-gray-200 dark:border-white/10 pb-2">
-              <BookOpen className="w-5 h-5 text-[#f7413e]" />
-              <span>Topics We Welcome</span>
+            <h2 className="sc-display-h3 text-[#102A56] flex items-center gap-2 pb-3 border-b border-[#ADC3DE]/55">
+              <BookOpen className="w-5 h-5 text-[#DA440D]" />
+              <span>Beats &amp; Topics We Welcome</span>
             </h2>
-            <p className="text-sm text-gray-700 dark:text-gray-300 font-sans leading-relaxed">
-              We seek deep, rigorous, original analysis rather than generic overviews or overt promotional material. We are actively accepting pitches on:
+            <p className="text-[14px] text-[#666666] leading-relaxed">
+              We prioritize clear, label-checked, practical writing across core healthy eating topics:
             </p>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-medium text-gray-800 dark:text-gray-200 font-sans">
-              <li className="flex items-center space-x-2">
-                <span className="text-[#f7413e] font-bold">✓</span>
-                <span>C-Suite Leadership &amp; Board Governance</span>
-              </li>
-              <li className="flex items-center space-x-2">
-                <span className="text-[#f7413e] font-bold">✓</span>
-                <span>Enterprise AI &amp; Autonomous Systems</span>
-              </li>
-              <li className="flex items-center space-x-2">
-                <span className="text-[#f7413e] font-bold">✓</span>
-                <span>Venture Capital &amp; Private Equity</span>
-              </li>
-              <li className="flex items-center space-x-2">
-                <span className="text-[#f7413e] font-bold">✓</span>
-                <span>Early-Stage Startup Scaling ($0 to $10M ARR)</span>
-              </li>
-              <li className="flex items-center space-x-2">
-                <span className="text-[#f7413e] font-bold">✓</span>
-                <span>Commercial Real Estate &amp; PropTech</span>
-              </li>
-              <li className="flex items-center space-x-2">
-                <span className="text-[#f7413e] font-bold">✓</span>
-                <span>Sustainable Energy &amp; Deep Tech</span>
-              </li>
-              <li className="flex items-center space-x-2">
-                <span className="text-[#f7413e] font-bold">✓</span>
-                <span>Market Macroeconomics &amp; Geopolitics</span>
-              </li>
-              <li className="flex items-center space-x-2">
-                <span className="text-[#f7413e] font-bold">✓</span>
-                <span>Founder Retrospectives &amp; Lessons</span>
-              </li>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-[13px] font-medium text-[#102A56]">
+              {[
+                'Clean Packaged Snack Audits',
+                'Diabetes & Low-GI Eating',
+                'PCOS & Hormone-Friendly Diets',
+                'Heart-Healthy & Zero-Palm-Oil Swaps',
+                'Gut Microbiome & Fermented Foods',
+                'Reading Indian Nutrition Labels',
+                'High-Protein Vegetarian Snacks',
+                'Millets, Seeds & Traditional Pantry',
+              ].map((topic) => (
+                <li key={topic} className="flex items-center gap-2">
+                  <span className="text-[#DA440D] font-bold">•</span>
+                  <span>{topic}</span>
+                </li>
+              ))}
             </ul>
           </section>
 
           <section className="space-y-4">
-            <h2 className="font-oswald text-2xl font-bold uppercase tracking-wide text-black dark:text-white flex items-center gap-2 border-b border-gray-200 dark:border-white/10 pb-2">
-              <ShieldCheck className="w-5 h-5 text-[#f7413e]" />
-              <span>Editorial Standards &amp; Criteria</span>
+            <h2 className="sc-display-h3 text-[#102A56] flex items-center gap-2 pb-3 border-b border-[#ADC3DE]/55">
+              <ShieldCheck className="w-5 h-5 text-[#DA440D]" />
+              <span>Editorial Standards</span>
             </h2>
-            <div className="space-y-3 text-xs text-gray-700 dark:text-gray-300 font-sans leading-relaxed">
-              <div className="p-3 bg-gray-50 dark:bg-white/[0.02] border-l-2 border-[#f7413e]">
-                <strong className="text-black dark:text-white block mb-1">1. 100% Original Content:</strong>
-                All submissions must be original work not published elsewhere. We maintain a zero-tolerance policy toward plagiarism or generic AI hallucinations.
+            <div className="space-y-3 text-[13px] text-[#666666] leading-relaxed">
+              <div className="p-4 rounded-[18px] bg-[#D6EDFF]/45 border-l-4 border-[#DA440D]">
+                <strong className="text-[#102A56] block mb-1">1. Evidence &amp; Label Transparency</strong>
+                Submissions should cite real nutrition panels, peer-reviewed guidance, or clear ingredient breakdowns rather than generic claims.
               </div>
-              <div className="p-3 bg-gray-50 dark:bg-white/[0.02] border-l-2 border-[#f7413e]">
-                <strong className="text-black dark:text-white block mb-1">2. Word Count &amp; Structure:</strong>
-                Articles generally range between 900 and 2,500 words. Organize your piece with clear H2/H3 subheadings, bullet points, and authoritative source citations.
+              <div className="p-4 rounded-[18px] bg-[#D6EDFF]/45 border-l-4 border-[#DA440D]">
+                <strong className="text-[#102A56] block mb-1">2. Structure &amp; Easy Readability</strong>
+                Target 800 to 2,000 words with crisp subheadings, scannable takeaways, and everyday Indian food examples.
               </div>
-              <div className="p-3 bg-gray-50 dark:bg-white/[0.02] border-l-2 border-[#f7413e]">
-                <strong className="text-black dark:text-white block mb-1">3. Non-Promotional Stance:</strong>
-                Submissions must educate, analyze, or provoke thoughtful debate. Pitches that serve purely as company sales pitches or affiliate plugs will be rejected.
-              </div>
-              <div className="p-3 bg-gray-50 dark:bg-white/[0.02] border-l-2 border-[#f7413e]">
-                <strong className="text-black dark:text-white block mb-1">4. Author Transparency:</strong>
-                Include full author name, current executive title, company affiliation, headshot image, and a 2-3 sentence biography.
+              <div className="p-4 rounded-[18px] bg-[#D6EDFF]/45 border-l-4 border-[#DA440D]">
+                <strong className="text-[#102A56] block mb-1">3. Unbiased, Reader-First Tone</strong>
+                Reader health comes first; hidden brand promos or unverified miracle cure claims are declined.
               </div>
             </div>
           </section>
 
-          {/* Submission Review Steps */}
           <section className="space-y-4">
-            <h2 className="font-oswald text-2xl font-bold uppercase tracking-wide text-black dark:text-white flex items-center gap-2 border-b border-gray-200 dark:border-white/10 pb-2">
-              <Sparkles className="w-5 h-5 text-[#f7413e]" />
-              <span>Editorial Workflow</span>
+            <h2 className="sc-display-h3 text-[#102A56] flex items-center gap-2 pb-3 border-b border-[#ADC3DE]/55">
+              <Sparkles className="w-5 h-5 text-[#DA440D]" />
+              <span>Publication Workflow</span>
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-center">
-              <div className="p-3 bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/10 rounded">
-                <span className="font-mono text-lg font-bold text-[#f7413e]">01</span>
-                <h4 className="font-oswald text-sm font-bold uppercase mt-1 text-black dark:text-white">Pitch Submission</h4>
-                <p className="text-[11px] text-gray-500 mt-1">Submit your outline and thesis through our form or email.</p>
-              </div>
-              <div className="p-3 bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/10 rounded">
-                <span className="font-mono text-lg font-bold text-[#f7413e]">02</span>
-                <h4 className="font-oswald text-sm font-bold uppercase mt-1 text-black dark:text-white">Editorial Review</h4>
-                <p className="text-[11px] text-gray-500 mt-1">Our editors review your draft within 48 to 72 business hours.</p>
-              </div>
-              <div className="p-3 bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/10 rounded">
-                <span className="font-mono text-lg font-bold text-[#f7413e]">03</span>
-                <h4 className="font-oswald text-sm font-bold uppercase mt-1 text-black dark:text-white">Publication &amp; Reach</h4>
-                <p className="text-[11px] text-gray-500 mt-1">Approved stories are scheduled for global newsroom release.</p>
-              </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              {[
+                { num: '01', title: 'Pitch Outline', desc: 'Send your headline and angle through our contributor form.' },
+                { num: '02', title: 'Nutrition Desk Review', desc: 'Editors review pitches within 48–72 business hours.' },
+                { num: '03', title: 'Feature Release', desc: 'Approved guides go live on GudTree shelves.' },
+              ].map((step) => (
+                <div
+                  key={step.num}
+                  className="p-4 rounded-[20px] bg-white border border-[#ADC3DE]/65 text-center"
+                >
+                  <span className="sc-display-sm text-[20px] text-[#DA440D]">{step.num}</span>
+                  <h4 className="sc-display-sm text-[15px] text-[#102A56] mt-1">{step.title}</h4>
+                  <p className="text-[12px] text-[#666666] mt-1">{step.desc}</p>
+                </div>
+              ))}
             </div>
           </section>
         </div>
 
-        {/* Right: Pitch Submission Form (5 Cols) */}
         <div className="lg:col-span-5">
-          <div className="sticky top-24">
+          <div className="lg:sticky lg:top-[110px]">
             <WriteForUsForm />
           </div>
         </div>
       </div>
 
-      {/* Contributor FAQs */}
-      <div className="border-t border-gray-200 dark:border-white/10 pt-10 mb-12">
-        <h2 className="font-oswald text-2xl font-bold uppercase tracking-wide text-black dark:text-white mb-6 flex items-center gap-2">
-          <HelpCircle className="w-5 h-5 text-[#f7413e]" />
-          <span>Frequently Asked Questions</span>
+      <div className="border-t border-[#ADC3DE]/60 pt-10">
+        <h2 className="sc-display-h3 text-[#102A56] mb-6 flex items-center gap-2">
+          <HelpCircle className="w-5 h-5 text-[#DA440D]" />
+          <span>Contributor FAQs</span>
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs text-gray-700 dark:text-gray-300 font-sans">
-          <div className="p-4 bg-gray-50 dark:bg-white/[0.02] border border-gray-200 dark:border-white/10 rounded">
-            <h4 className="font-bold text-sm text-black dark:text-white mb-1.5">How long does the editorial review take?</h4>
-            <p className="leading-relaxed">Our editorial team reviews all contributor pitches within 2 to 3 business days. If your pitch is selected, we will reply with draft formatting instructions.</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 text-[13px] text-[#666666]">
+          <div className="p-5 rounded-[20px] bg-white border border-[#ADC3DE]/65">
+            <h4 className="sc-display-sm text-[16px] text-[#102A56] mb-1.5">
+              How long does editorial review take?
+            </h4>
+            <p className="leading-relaxed">
+              Our desk reviews pitches within 2 to 3 business days and replies directly by email if approved for drafting.
+            </p>
           </div>
-          <div className="p-4 bg-gray-50 dark:bg-white/[0.02] border border-gray-200 dark:border-white/10 rounded">
-            <h4 className="font-bold text-sm text-black dark:text-white mb-1.5">Can I include backlinks in my article?</h4>
-            <p className="leading-relaxed">Relevant, contextual links to primary data sources, research reports, or cited studies are encouraged. Self-promotional or spammy affiliate links will be removed.</p>
-          </div>
-          <div className="p-4 bg-gray-50 dark:bg-white/[0.02] border border-gray-200 dark:border-white/10 rounded">
-            <h4 className="font-bold text-sm text-black dark:text-white mb-1.5">Do you accept syndicated or republished content?</h4>
-            <p className="leading-relaxed">We strongly prioritize original, exclusive content. On rare occasions, we consider strategic syndication with appropriate canonical tags and permission.</p>
-          </div>
-          <div className="p-4 bg-gray-50 dark:bg-white/[0.02] border border-gray-200 dark:border-white/10 rounded">
-            <h4 className="font-bold text-sm text-black dark:text-white mb-1.5">Where should I send PR pitches or press releases?</h4>
-            <p className="leading-relaxed">For breaking press releases or company announcements, please email our newsroom desk directly at <a href="mailto:sales@apexchief.com" className="text-[#f7413e] underline">sales@apexchief.com</a>.</p>
+          <div className="p-5 rounded-[20px] bg-white border border-[#ADC3DE]/65">
+            <h4 className="sc-display-sm text-[16px] text-[#102A56] mb-1.5">
+              Can snack brands send samples for label review?
+            </h4>
+            <p className="leading-relaxed">
+              Yes — brands and nutritionists can reach our editorial review team directly at{' '}
+              <a
+                href="mailto:contact@gudtree.in"
+                className="text-[#DA440D] font-medium underline"
+              >
+                contact@gudtree.in
+              </a>
+              . Note that all reviews follow an independent label audit standard.
+            </p>
           </div>
         </div>
       </div>

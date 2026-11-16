@@ -37,8 +37,8 @@ export default function FaviconManager() {
 
     const syncFavicon = () => {
       try {
-        const customFav = localStorage.getItem('apexchief_custom_favicon');
-        const settings = localStorage.getItem('apexchief_site_settings');
+        const customFav = localStorage.getItem('gudtree_custom_favicon');
+        const settings = localStorage.getItem('gudtree_site_settings');
         let chosenFavicon = '';
         if (settings) {
           const parsed = JSON.parse(settings);
@@ -63,7 +63,7 @@ export default function FaviconManager() {
         if (data && data.favicon) {
           updateFaviconInHead(data.favicon);
           try {
-            localStorage.setItem('apexchief_custom_favicon', data.favicon);
+            localStorage.setItem('gudtree_custom_favicon', data.favicon);
           } catch (e) {}
         }
       })
@@ -71,7 +71,7 @@ export default function FaviconManager() {
 
     // 3. Listen for cross-tab storage changes
     const handleStorage = (e: StorageEvent) => {
-      if (e.key === 'apexchief_custom_favicon' || e.key === 'apexchief_site_settings') {
+      if (e.key === 'gudtree_custom_favicon' || e.key === 'gudtree_site_settings') {
         syncFavicon();
       }
     };
@@ -86,7 +86,7 @@ export default function FaviconManager() {
     // 5. BroadcastChannel for instant cross-tab sync
     let bc: BroadcastChannel | null = null;
     try {
-      bc = new BroadcastChannel('apexchief_config_channel');
+      bc = new BroadcastChannel('gudtree_config_channel');
       bc.onmessage = (event) => {
         if (event.data && (event.data.favicon || (event.data.type === 'FAVICON_UPDATED' && event.data.favicon))) {
           updateFaviconInHead(event.data.favicon);

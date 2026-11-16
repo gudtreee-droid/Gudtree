@@ -65,7 +65,7 @@ export async function POST(req: NextRequest) {
           seoTitle: cleanTitle.length > 60 ? cleanTitle.slice(0, 57) + '...' : cleanTitle,
           metaDescription: rawExcerpt
             ? (rawExcerpt.slice(0, 155) + (rawExcerpt.length > 155 ? '...' : ''))
-            : `Discover the strategic implications of ${mainSubject}. Expert reporting, market dynamics, and editorial foresight on ApexChief.`,
+            : `Discover the healthy benefits of ${mainSubject}. Expert nutritional advice, clean diet tips, and snacking guides on GudTree.`,
         },
         keywords: [
           rawCat || 'Business',
@@ -255,8 +255,8 @@ Respond ONLY with a valid, parseable JSON object matching this schema:
         },
       ],
       suggestedMeta: {
-        seoTitle: body.title || 'ApexChief Editorial Story',
-        metaDescription: body.excerpt || 'Read the full in-depth story on ApexChief.',
+        seoTitle: body.title || 'GudTree Nutrition & Snacking Story',
+        metaDescription: body.excerpt || 'Read the full in-depth healthy eating story on GudTree.',
       },
       keywords: ['Analysis', 'Strategy', 'Report'],
       checklist: [],

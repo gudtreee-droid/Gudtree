@@ -72,17 +72,17 @@ export default function Header({ initialConfig }: { initialConfig?: SiteConfig }
   const [config, setConfig] = useState<SiteConfig>(initialConfig || siteConfig);
 
   const getCleanLogoLight = (cfg: SiteConfig) => {
-    let src = cfg.logoLight || cfg.logo || '/images/apexchief-logo-light.png';
+    let src = cfg.logoLight || cfg.logo || '/images/gudtree-logo.png';
     if (!src || src.includes('logo-dark')) {
-      src = '/images/apexchief-logo-light.png';
+      src = '/images/gudtree-logo.png';
     }
     return src;
   };
 
   const getCleanLogoDark = (cfg: SiteConfig) => {
-    let src = cfg.logoDark || '/images/apexchief-logo-dark.png';
+    let src = cfg.logoDark || '/images/gudtree-logo.png';
     if (!src || src.includes('logo-light') || src === cfg.logoLight) {
-      src = '/images/apexchief-logo-dark.png';
+      src = '/images/gudtree-logo.png';
     }
     return src;
   };
@@ -162,31 +162,31 @@ export default function Header({ initialConfig }: { initialConfig?: SiteConfig }
     const syncFromLocalStorage = () => {
       try {
         // Clean up any stale dark logo paths mistakenly placed in light mode
-        const customLogoLight = localStorage.getItem('apexchief_custom_logo_light');
+        const customLogoLight = localStorage.getItem('gudtree_custom_logo_light');
         if (customLogoLight && customLogoLight.includes('logo-dark')) {
-          localStorage.removeItem('apexchief_custom_logo_light');
+          localStorage.removeItem('gudtree_custom_logo_light');
         }
-        const customLogo = localStorage.getItem('apexchief_custom_logo');
+        const customLogo = localStorage.getItem('gudtree_custom_logo');
         if (customLogo && customLogo.includes('logo-dark')) {
-          localStorage.removeItem('apexchief_custom_logo');
+          localStorage.removeItem('gudtree_custom_logo');
         }
 
-        const savedSettings = localStorage.getItem('apexchief_site_settings');
-        const customLogoDark = localStorage.getItem('apexchief_custom_logo_dark');
-        const validCustomLight = localStorage.getItem('apexchief_custom_logo_light');
-        const validCustomLogo = localStorage.getItem('apexchief_custom_logo');
+        const savedSettings = localStorage.getItem('gudtree_site_settings');
+        const customLogoDark = localStorage.getItem('gudtree_custom_logo_dark');
+        const validCustomLight = localStorage.getItem('gudtree_custom_logo_light');
+        const validCustomLogo = localStorage.getItem('gudtree_custom_logo');
 
         if (savedSettings) {
           const parsed = JSON.parse(savedSettings);
           let activeLight = parsed.logoLight || validCustomLight || parsed.logo || validCustomLogo || '';
           if (activeLight.includes('logo-dark')) {
-            activeLight = '/images/apexchief-logo-light.png';
+            activeLight = '/images/gudtree-logo.png';
             parsed.logoLight = activeLight;
-            try { localStorage.setItem('apexchief_site_settings', JSON.stringify(parsed)); } catch (e) {}
+            try { localStorage.setItem('gudtree_site_settings', JSON.stringify(parsed)); } catch (e) {}
           }
           let activeDark = parsed.logoDark || customLogoDark || '';
           if (activeDark.includes('logo-light') || activeDark === activeLight) {
-            activeDark = '/images/apexchief-logo-dark.png';
+            activeDark = '/images/gudtree-logo.png';
           }
           const activeLogo = activeLight;
           setConfig((prev: SiteConfig) => ({
@@ -194,13 +194,13 @@ export default function Header({ initialConfig }: { initialConfig?: SiteConfig }
             ...parsed,
             logo: activeLogo || prev.logo,
             logoLight: activeLight || prev.logoLight,
-            logoDark: activeDark || prev.logoDark || '/images/apexchief-logo-dark.png',
+            logoDark: activeDark || prev.logoDark || '/images/gudtree-logo.png',
           }));
         } else if (validCustomLight || customLogoDark || validCustomLogo) {
           setConfig((prev: SiteConfig) => ({
             ...prev,
             logoLight: validCustomLight || validCustomLogo || prev.logoLight,
-            logoDark: customLogoDark || '/images/apexchief-logo-dark.png',
+            logoDark: customLogoDark || '/images/gudtree-logo.png',
             logo: validCustomLogo || validCustomLight || prev.logo,
           }));
         }
@@ -219,11 +219,11 @@ export default function Header({ initialConfig }: { initialConfig?: SiteConfig }
           if (data && (data.name || data.logo || data.logoLight || data.logoDark)) {
             let activeLight = data.logoLight || data.logo || '';
             if (activeLight.includes('logo-dark')) {
-              activeLight = '/images/apexchief-logo-light.png';
+              activeLight = '/images/gudtree-logo.png';
             }
             let activeDark = data.logoDark || '';
             if (activeDark.includes('logo-light') || activeDark === activeLight) {
-              activeDark = '/images/apexchief-logo-dark.png';
+              activeDark = '/images/gudtree-logo.png';
             }
             setConfig((prev: SiteConfig) => ({
               ...prev,
@@ -248,10 +248,10 @@ export default function Header({ initialConfig }: { initialConfig?: SiteConfig }
     // 3. Cross-tab real-time storage event listener
     const handleStorage = (e: StorageEvent) => {
       if (
-        e.key === 'apexchief_site_settings' ||
-        e.key === 'apexchief_custom_logo' ||
-        e.key === 'apexchief_custom_logo_light' ||
-        e.key === 'apexchief_custom_logo_dark'
+        e.key === 'gudtree_site_settings' ||
+        e.key === 'gudtree_custom_logo' ||
+        e.key === 'gudtree_custom_logo_light' ||
+        e.key === 'gudtree_custom_logo_dark'
       ) {
         syncFromLocalStorage();
       }
@@ -274,7 +274,7 @@ export default function Header({ initialConfig }: { initialConfig?: SiteConfig }
     // 5. BroadcastChannel for instant same-browser cross-tab sync
     let bc: BroadcastChannel | null = null;
     try {
-      bc = new BroadcastChannel('apexchief_config_channel');
+      bc = new BroadcastChannel('gudtree_config_channel');
       bc.onmessage = (event) => {
         if (event.data && (event.data.logoLight || event.data.logoDark || event.data.logo)) {
           setConfig((prev: SiteConfig) => ({
@@ -336,20 +336,20 @@ export default function Header({ initialConfig }: { initialConfig?: SiteConfig }
           </button>
         </div>
 
-        {/* Center: ApexChief Logo */}
+        {/* Center: GudTree Logo */}
         <div className="flex items-center justify-center text-center px-1 sm:px-2 flex-1 min-w-0">
           <Link href="/" className="inline-flex items-center justify-center group py-0.5">
             {logoLightSrc || logoDarkSrc ? (
               <>
                 <img
                   src={logoLightSrc}
-                  alt={config.name || 'ApexChief'}
+                  alt={config.name || 'GudTree'}
                   suppressHydrationWarning={true}
                   className="h-[34px] sm:h-10 md:h-11 lg:h-13 xl:h-[58px] w-auto max-w-[175px] sm:max-w-[220px] md:max-w-[270px] lg:max-w-[320px] xl:max-w-[350px] object-contain transition-transform duration-200 group-hover:scale-[1.02] dark:hidden block"
                 />
                 <img
                   src={logoDarkSrc}
-                  alt={config.name || 'ApexChief'}
+                  alt={config.name || 'GudTree'}
                   suppressHydrationWarning={true}
                   className="h-[34px] sm:h-10 md:h-11 lg:h-13 xl:h-[58px] w-auto max-w-[175px] sm:max-w-[220px] md:max-w-[270px] lg:max-w-[320px] xl:max-w-[350px] object-contain transition-transform duration-200 group-hover:scale-[1.02] hidden dark:block"
                 />
@@ -451,13 +451,13 @@ export default function Header({ initialConfig }: { initialConfig?: SiteConfig }
                   <>
                     <img
                       src={logoLightSrc}
-                      alt={config.name || 'ApexChief'}
+                      alt={config.name || 'GudTree'}
                       suppressHydrationWarning={true}
                       className="h-8 sm:h-9 w-auto max-w-[160px] object-contain dark:hidden block"
                     />
                     <img
                       src={logoDarkSrc}
-                      alt={config.name || 'ApexChief'}
+                      alt={config.name || 'GudTree'}
                       suppressHydrationWarning={true}
                       className="h-8 sm:h-9 w-auto max-w-[160px] object-contain hidden dark:block"
                     />
@@ -520,7 +520,7 @@ export default function Header({ initialConfig }: { initialConfig?: SiteConfig }
 
             <div className="pt-6 border-t border-gray-200 dark:border-white/10 flex items-center justify-between mt-6">
               <span className="text-xs font-mono uppercase text-gray-600 dark:text-gray-400">
-                ApexChief Media
+                {config.name} Media
               </span>
               <button
                 onClick={toggleDarkMode}

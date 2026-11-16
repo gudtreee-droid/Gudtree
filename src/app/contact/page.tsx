@@ -1,24 +1,28 @@
 import React from 'react';
 import { Metadata } from 'next';
 import ContactClient from './ContactClient';
+import { getSiteBaseUrl } from '@/lib/articlePageHelpers';
+
+const baseUrl = getSiteBaseUrl();
 
 export const metadata: Metadata = {
-  title: 'Contact Editorial Desk',
-  description: 'Connect with ApexChief editors, submit executive pitch decks, investigative tips, press releases, or reach our global business newsroom bureaus in New York and London.',
-  alternates: {
-    canonical: 'https://www.apexchief.com/contact',
-  },
+  title: 'Contact Nutrition & Editorial Desk | GudTree',
+  description:
+    'Connect with GudTree editors, pitch clean-label snack reviews, patient nutrition guides, or reach our healthy living editorial desk.',
+  alternates: { canonical: `${baseUrl}/contact` },
   openGraph: {
-    title: 'Contact Editorial Desk | ApexChief',
-    description: 'Connect with ApexChief editors, submit executive pitch decks, investigative tips, press releases, or reach our global business newsroom bureaus in New York and London.',
-    url: 'https://www.apexchief.com/contact',
-    siteName: 'ApexChief',
+    title: 'Contact Editorial Desk | GudTree',
+    description:
+      'Connect with GudTree editors, submit clean snacking pitches, nutrition stories, or reach our editorial desk.',
+    url: `${baseUrl}/contact`,
+    siteName: 'GudTree',
     type: 'website',
   },
   twitter: {
     card: 'summary',
-    title: 'Contact Editorial Desk | ApexChief',
-    description: 'Connect with ApexChief editors, submit executive pitch decks, investigative tips, press releases, or reach our global business newsroom bureaus.',
+    title: 'Contact Editorial Desk | GudTree',
+    description:
+      'Connect with GudTree editors, submit clean snacking pitches, nutrition stories, or reach our editorial desk.',
   },
 };
 
@@ -27,59 +31,31 @@ const jsonLd = {
   '@graph': [
     {
       '@type': 'ContactPage',
-      '@id': 'https://www.apexchief.com/contact#webpage',
-      url: 'https://www.apexchief.com/contact',
-      name: 'Contact ApexChief Editorial Desk',
+      '@id': `${baseUrl}/contact#webpage`,
+      url: `${baseUrl}/contact`,
+      name: 'Contact GudTree Editorial Desk',
       description:
-        'Connect with ApexChief editors, submit executive pitch decks, investigative tips, press releases, or reach our global business newsroom bureaus in New York and London.',
+        'Connect with GudTree editors, submit clean snacking pitches, nutrition articles, or reach our healthy living editorial desks.',
       isPartOf: {
         '@type': 'WebSite',
-        '@id': 'https://www.apexchief.com/#website',
-        name: 'ApexChief',
-        url: 'https://www.apexchief.com',
+        '@id': `${baseUrl}/#website`,
+        name: 'GudTree',
+        url: baseUrl,
       },
       mainEntity: {
         '@type': 'NewsMediaOrganization',
-        '@id': 'https://www.apexchief.com/#organization',
-        name: 'ApexChief',
-        url: 'https://www.apexchief.com',
-        email: 'sales@apexchief.com',
-        telephone: '+916206539717',
-        address: [
-          {
-            '@type': 'PostalAddress',
-            streetAddress: '100 Financial Center Blvd, Suite 4800',
-            addressLocality: 'New York',
-            addressRegion: 'NY',
-            postalCode: '10005',
-            addressCountry: 'US',
-          },
-          {
-            '@type': 'PostalAddress',
-            streetAddress: '1 Canada Square, Canary Wharf',
-            addressLocality: 'London',
-            postalCode: 'E14 5AA',
-            addressCountry: 'GB',
-          },
-        ],
+        '@id': `${baseUrl}/#organization`,
+        name: 'GudTree',
+        url: baseUrl,
+        email: 'contact@gudtree.in',
       },
     },
     {
       '@type': 'BreadcrumbList',
-      '@id': 'https://www.apexchief.com/contact#breadcrumb',
+      '@id': `${baseUrl}/contact#breadcrumb`,
       itemListElement: [
-        {
-          '@type': 'ListItem',
-          position: 1,
-          name: 'Home',
-          item: 'https://www.apexchief.com',
-        },
-        {
-          '@type': 'ListItem',
-          position: 2,
-          name: 'Contact Editorial Desk',
-          item: 'https://www.apexchief.com/contact',
-        },
+        { '@type': 'ListItem', position: 1, name: 'Home', item: baseUrl },
+        { '@type': 'ListItem', position: 2, name: 'Contact', item: `${baseUrl}/contact` },
       ],
     },
   ],
