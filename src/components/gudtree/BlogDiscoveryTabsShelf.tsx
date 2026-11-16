@@ -313,11 +313,11 @@ export default function BlogDiscoveryTabsShelf({
           <LightningIcon />
         </div>
 
-        {/* Category Tabs: Compact 4x2 Grid on Mobile + Continuous Faded Curved Folder Line on sm+ */}
+        {/* Category Tabs: Contained Horizontal Swipe on Mobile + Continuous Faded Curved Folder Line on sm+ */}
         <div className="relative w-full pb-1">
           <div
             ref={tabsTrackRef}
-            className="relative grid grid-cols-4 gap-1.5 sm:flex sm:items-stretch sm:justify-center sm:gap-2 px-0 sm:px-6 pt-2 pb-3 sm:pb-4"
+            className="gt-hscroll-sm gap-2 sm:flex sm:items-stretch sm:justify-center sm:gap-2 px-0 sm:px-6 pt-2 pb-2 sm:pb-4"
           >
             {/* Smooth Continuous SVG Line on Desktop/Tablet (sm+) */}
             {curveMetrics && continuousCurvePath && (
@@ -365,7 +365,7 @@ export default function BlogDiscoveryTabsShelf({
                   type="button"
                   onClick={() => handleTabSwitch(tab.id)}
                   aria-pressed={isActive}
-                  className={`relative z-20 w-full sm:w-[92px] lg:w-[100px] sm:shrink-0 flex flex-col items-center text-center pt-2 pb-1.5 px-1 cursor-pointer transition-all select-none focus:outline-none border-0 rounded-[14px] sm:rounded-none ${isActive
+                  className={`relative z-20 w-[78px] sm:w-[92px] lg:w-[100px] shrink-0 flex flex-col items-center text-center pt-2 pb-1.5 px-1 cursor-pointer transition-all select-none focus:outline-none border-0 rounded-[14px] sm:rounded-none ${isActive
                     ? 'bg-[#EEF4FF] sm:bg-transparent'
                     : 'bg-transparent'
                     }`}
@@ -399,17 +399,19 @@ export default function BlogDiscoveryTabsShelf({
           </div>
         </div>
 
-        {/* Clean, Airy Blog Card Shelf (2-Col Mobile Grid + 4-Col Desktop Grid, Zero Horizontal Overflow) */}
+        {/* Clean, Airy Blog Card Shelf (Horizontal Swipe on Mobile + 4-Col Desktop Grid) */}
         <div className="relative mt-4 sm:mt-6 w-full">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-            {tabArticles.slice(0, 4).map((article) => {
+          <div className="gt-hscroll-md md:grid md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 pb-2 md:pb-0">
+            {tabArticles.slice(0, 6).map((article, idx) => {
               const isSaved = savedSlugs.includes(article.slug);
               const meta = getArticleScore(article.slug);
 
               return (
                 <article
                   key={`${activeTab.id}-${article.slug}`}
-                  className="group min-w-0 flex flex-col bg-[#FFFFFF] rounded-[16px] p-2 sm:p-3 border border-[#ADC3DE]/35 hover:border-[#2F54EB] transition-all"
+                  className={`group w-[212px] sm:w-[230px] md:w-full min-w-0 flex flex-col bg-[#FFFFFF] rounded-[16px] p-2.5 sm:p-3 border border-[#ADC3DE]/35 hover:border-[#2F54EB] transition-all ${
+                    idx >= 4 ? 'lg:hidden' : ''
+                  }`}
                 >
                   {/* Clean Image + Single Subtle Bookmark */}
                   <div className="relative w-full aspect-[16/11] rounded-[12px] bg-[#F5F7FA] overflow-hidden mb-2 border border-[#ADC3DE]/25">

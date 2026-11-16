@@ -190,13 +190,13 @@ export default function GudTreeFooter() {
             ))}
           </nav>
 
-          {/* Clean Topic Pills (All 8 GudTree Categories) */}
-          <div className="flex flex-wrap items-center justify-center gap-2 mb-8">
+          {/* Clean Topic Pills (Horizontal Swipe on Mobile + Wrapped Desktop) */}
+          <div className="gt-hscroll-sm sm:flex sm:flex-wrap items-center justify-start sm:justify-center gap-2 mb-8 pb-1 sm:pb-0">
             {visibleCats.map((c) => (
               <Link
                 key={c.slug}
                 href={`/category/${c.slug}`}
-                className="px-3.5 py-1 rounded-full bg-[#FFFFFF]/16 hover:bg-[#FFFFFF] text-[#FFFFFF] hover:text-[#102A56] border border-[#FFFFFF]/30 text-[12px] font-semibold transition-colors no-underline"
+                className="whitespace-nowrap px-3.5 py-2 sm:py-1 rounded-full bg-[#FFFFFF]/16 hover:bg-[#FFFFFF] text-[#FFFFFF] hover:text-[#102A56] border border-[#FFFFFF]/30 text-[12px] font-semibold transition-colors no-underline"
               >
                 {normalizeCatName(c.name)}
               </Link>

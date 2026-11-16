@@ -312,15 +312,16 @@ export default function GudTreeHomeView({ articles }: { articles: Article[] }) {
               )}
             </div>
 
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4">
+            <div className="gt-hscroll-sm sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 pb-2 sm:pb-0">
               {snacksCategoryArticles.map((article, idx) => (
-                <UnifiedCleanBlogCard
-                  key={article.slug}
-                  article={article}
-                  index={idx}
-                  isSaved={savedSlugs.includes(article.slug)}
-                  onToggleSave={toggleSave}
-                />
+                <div key={article.slug} className="w-[224px] sm:w-auto min-w-0">
+                  <UnifiedCleanBlogCard
+                    article={article}
+                    index={idx}
+                    isSaved={savedSlugs.includes(article.slug)}
+                    onToggleSave={toggleSave}
+                  />
+                </div>
               ))}
             </div>
 
@@ -353,15 +354,16 @@ export default function GudTreeHomeView({ articles }: { articles: Article[] }) {
               </p>
             </div>
 
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4">
+            <div className="gt-hscroll-sm sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 pb-2 sm:pb-0">
               {healthCategoryArticles.map((article, idx) => (
-                <UnifiedCleanBlogCard
-                  key={article.slug}
-                  article={article}
-                  index={idx + 4}
-                  isSaved={savedSlugs.includes(article.slug)}
-                  onToggleSave={toggleSave}
-                />
+                <div key={article.slug} className="w-[224px] sm:w-auto min-w-0">
+                  <UnifiedCleanBlogCard
+                    article={article}
+                    index={idx + 4}
+                    isSaved={savedSlugs.includes(article.slug)}
+                    onToggleSave={toggleSave}
+                  />
+                </div>
               ))}
             </div>
 

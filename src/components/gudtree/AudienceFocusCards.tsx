@@ -129,14 +129,10 @@ export default function AudienceFocusCards({
           </p>
         </motion.div>
 
-        {/* 5 Playful Scalloped Medallion Cards — Compact 2-Column Mobile Grid + 5-Across Desktop */}
-        <div className="grid grid-cols-2 lg:grid-cols-5 gap-y-7 gap-x-3 sm:gap-x-5 items-start">
+        {/* 5 Playful Scalloped Medallion Cards — Horizontal Swipe on Mobile + 5-Across Desktop */}
+        <div className="gt-hscroll-md md:grid md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-5 items-start pb-2 md:pb-0">
           {AUDIENCE_FOCUS_CARDS.map((item, idx) => {
             const isActive = activeId === item.id;
-            const spanLastOnMobile =
-              idx === 4
-                ? 'col-span-2 lg:col-span-1 max-w-[185px] sm:max-w-[230px] lg:max-w-none mx-auto w-full min-w-0'
-                : 'w-full min-w-0';
             return (
               <motion.div
                 key={item.id}
@@ -144,7 +140,7 @@ export default function AudienceFocusCards({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.45, delay: idx * 0.06, ease: GT_EASE }}
-                className={spanLastOnMobile}
+                className="w-[152px] sm:w-[172px] md:w-full min-w-0"
               >
                 <Link
                   href={`/focus/${item.id}`}
@@ -155,8 +151,8 @@ export default function AudienceFocusCards({
                   }`}
                 >
                   {/* Medallion Blob + Overlapping Cutout Object */}
-                  <div className="relative w-[124px] h-[120px] sm:w-[168px] sm:h-[162px] flex items-center justify-center">
-                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none scale-[0.76] sm:scale-100">
+                  <div className="relative w-[132px] h-[126px] sm:w-[158px] sm:h-[152px] flex items-center justify-center">
+                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none scale-[0.82] sm:scale-95">
                       <ScallopedBlobSvg
                         color={item.blobColor}
                         rotation={item.blobRotation}
@@ -167,17 +163,17 @@ export default function AudienceFocusCards({
                       src={item.imageSrc}
                       alt={item.imageAlt}
                       loading="lazy"
-                      className="relative z-10 w-[104px] h-[104px] sm:w-[148px] sm:h-[148px] object-contain drop-shadow-[0_12px_16px_rgba(16,42,86,0.18)] transition-transform duration-300 group-hover:scale-108 group-hover:-translate-y-1.5 pointer-events-none select-none"
+                      className="relative z-10 w-[112px] h-[112px] sm:w-[140px] sm:h-[140px] object-contain drop-shadow-[0_12px_16px_rgba(16,42,86,0.18)] transition-transform duration-300 group-hover:scale-108 group-hover:-translate-y-1.5 pointer-events-none select-none"
                     />
                   </div>
 
                   {/* Bold Centered Card Title */}
-                  <h3 className="mt-2 sm:mt-3 gt-font-display text-[17px] sm:text-[21px] leading-[1.15] tracking-[-0.02em] text-[#102A56] group-hover:text-[#DA440D] transition-colors">
+                  <h3 className="mt-2 sm:mt-3 gt-font-display text-[17px] sm:text-[20px] leading-[1.15] tracking-[-0.02em] text-[#102A56] group-hover:text-[#DA440D] transition-colors">
                     {item.title}
                   </h3>
 
                   {/* Crisp 2-Line Description */}
-                  <p className="mt-1 text-[12px] sm:text-[13.5px] leading-[1.45] text-[#334155] max-w-[215px] line-clamp-2 sm:line-clamp-none">
+                  <p className="mt-1 text-[12px] sm:text-[13.5px] leading-[1.45] text-[#334155] max-w-[210px] line-clamp-2 sm:line-clamp-none">
                     {item.description}
                   </p>
                 </Link>

@@ -215,7 +215,7 @@ export default function GudTreeArchiveClient({
       {/* SINGLE-PAGE INTERACTIVE CATEGORY FILTER TABS + BLOG CARDS */}
       <div className="gt-container py-6 sm:py-10 overflow-hidden">
         {!isDedicatedCategoryRoute && (
-          <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 pb-2 mb-6">
+          <div className="gt-hscroll-sm sm:flex sm:flex-wrap items-center justify-start sm:justify-center gap-2 pb-2 mb-6">
             <button
               type="button"
               onClick={() => {

@@ -189,29 +189,29 @@ export default function SundayCrumbFocusPage({
               />
             </motion.div>
 
-            {/* Clean Minimalist Anchor Links */}
-            <div className="flex flex-wrap items-center justify-center gap-2">
+            {/* Clean Minimalist Anchor Links (Horizontal Swipe Pills on Mobile) */}
+            <div className="gt-hscroll-sm sm:flex sm:flex-wrap items-center justify-start sm:justify-center gap-2 pb-1 sm:pb-0">
               <a
                 href="#deep-info"
-                className="px-4 py-1.5 rounded-full bg-[#FFFFFF] text-[#102A56] hover:bg-[#E5F36D] text-[12.5px] font-semibold no-underline transition-colors"
+                className="whitespace-nowrap px-4 py-2 sm:py-1.5 rounded-full bg-[#FFFFFF] text-[#102A56] hover:bg-[#E5F36D] text-[12.5px] font-semibold no-underline transition-colors"
               >
                 Diet Info
               </a>
               <a
                 href="#best-guides"
-                className="px-4 py-1.5 rounded-full bg-white/16 hover:bg-white/25 text-white border border-white/25 text-[12.5px] font-medium no-underline transition-colors"
+                className="whitespace-nowrap px-4 py-2 sm:py-1.5 rounded-full bg-white/16 hover:bg-white/25 text-white border border-white/25 text-[12.5px] font-medium no-underline transition-colors"
               >
                 Curated Blogs
               </a>
               <a
                 href="#swap-routine"
-                className="px-4 py-1.5 rounded-full bg-white/16 hover:bg-white/25 text-white border border-white/25 text-[12.5px] font-medium no-underline transition-colors"
+                className="whitespace-nowrap px-4 py-2 sm:py-1.5 rounded-full bg-white/16 hover:bg-white/25 text-white border border-white/25 text-[12.5px] font-medium no-underline transition-colors"
               >
                 Daily Swaps
               </a>
               <a
                 href="#timing-guide"
-                className="px-4 py-1.5 rounded-full bg-white/16 hover:bg-white/25 text-white border border-white/25 text-[12.5px] font-medium no-underline transition-colors"
+                className="whitespace-nowrap px-4 py-2 sm:py-1.5 rounded-full bg-white/16 hover:bg-white/25 text-white border border-white/25 text-[12.5px] font-medium no-underline transition-colors"
               >
                 Snack Schedule
               </a>
@@ -321,7 +321,7 @@ export default function SundayCrumbFocusPage({
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+            <div className="gt-hscroll-md md:grid md:grid-cols-3 gap-4 md:gap-6 pb-2 md:pb-0">
               {topShowcaseBlogs.map((article, idx) => {
                 const isSaved = savedSlugs.includes(article.slug);
                 const mins = getScoreMeta(article.slug);
@@ -330,7 +330,7 @@ export default function SundayCrumbFocusPage({
                     key={article.slug}
                     whileHover={{ y: -5 }}
                     transition={GT_SPRING}
-                    className="group min-w-0 flex flex-col bg-[#FFF9EC] rounded-[22px] p-4 sm:p-5 border border-[#102A56]/10 shadow-[0_8px_24px_-8px_rgba(16,42,86,0.08)]"
+                    className="group w-[252px] md:w-auto min-w-0 flex flex-col bg-[#FFF9EC] rounded-[22px] p-4 sm:p-5 border border-[#102A56]/10 shadow-[0_8px_24px_-8px_rgba(16,42,86,0.08)]"
                   >
                     <div className="flex items-center justify-between gap-2 mb-3">
                       <span className="text-[12px] font-bold text-[#0944BA]">
@@ -601,13 +601,13 @@ export default function SundayCrumbFocusPage({
             </p>
           </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
+          <div className="gt-hscroll-sm sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-5 pb-2 sm:pb-0">
             {moreBlogs.map((article, idx) => {
               const mins = getScoreMeta(article.slug);
               return (
                 <article
                   key={article.slug}
-                  className="group h-full min-w-0 flex flex-col bg-[#FFFFFF] rounded-[18px] p-2.5 sm:p-3.5 border border-[#102A56]/10 hover:border-[#0944BA] transition-all"
+                  className="group h-full w-[224px] sm:w-auto min-w-0 flex flex-col bg-[#FFFFFF] rounded-[18px] p-2.5 sm:p-3.5 border border-[#102A56]/10 hover:border-[#0944BA] transition-all"
                 >
                   <Link
                     href={getBlogUrl(article)}
@@ -711,7 +711,7 @@ export default function SundayCrumbFocusPage({
           <div className="text-[12px] font-semibold uppercase tracking-[0.1em] text-[#334155] mb-4">
             Other Diet &amp; Clean Snack Hubs
           </div>
-          <div className="flex flex-wrap items-center justify-center gap-2.5">
+          <div className="gt-hscroll-sm sm:flex sm:flex-wrap items-center justify-start sm:justify-center gap-2 sm:gap-2.5 pb-1 sm:pb-0">
             {FOCUS_SLUGS.map((slug) => {
               const item = FOCUS_PAGES_MAP[slug];
               const isCurrent = slug === config.slug;
@@ -719,7 +719,7 @@ export default function SundayCrumbFocusPage({
                 <Link
                   key={slug}
                   href={`/focus/${slug}`}
-                  className={`px-4 py-2 rounded-full text-[13px] font-semibold no-underline transition-colors ${isCurrent
+                  className={`whitespace-nowrap px-4 py-2.5 sm:py-2 rounded-full text-[13px] font-semibold no-underline transition-colors ${isCurrent
                     ? 'bg-[#102A56] text-[#E5F36D]'
                     : 'bg-[#FFF9EC] text-[#102A56] hover:bg-[#D6EDFF]'
                     }`}

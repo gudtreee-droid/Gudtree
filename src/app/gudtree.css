@@ -525,3 +525,50 @@
   pointer-events: none;
   animation: gtPulseRipples 6s ease-in-out infinite;
 }
+
+/* Mobile-only Strictly Contained Horizontal Swipe Rails (Zero Viewport Expansion) */
+@media (max-width: 639px) {
+  .gt-hscroll-sm {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    width: 100% !important;
+    max-width: 100% !important;
+    contain: layout inline-size;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+  }
+  .gt-hscroll-sm::-webkit-scrollbar {
+    display: none !important;
+  }
+  .gt-hscroll-sm > * {
+    flex-shrink: 0 !important;
+    scroll-snap-align: start;
+  }
+}
+
+@media (max-width: 767px) {
+  .gt-hscroll-md {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    width: 100% !important;
+    max-width: 100% !important;
+    contain: layout inline-size;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+  }
+  .gt-hscroll-md::-webkit-scrollbar {
+    display: none !important;
+  }
+  .gt-hscroll-md > * {
+    flex-shrink: 0 !important;
+    scroll-snap-align: start;
+  }
+}

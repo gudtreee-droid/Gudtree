@@ -1262,7 +1262,7 @@ export default function GudTreeArticleView({
                 </Link>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 md:gap-5">
+              <div className="gt-hscroll-md md:grid md:grid-cols-3 gap-3.5 md:gap-5 pb-2 md:pb-0">
                 {relatedGrid.map((rel) => {
                   const relHref = getBlogUrl(rel);
                   const relCat = normalizeCatName(rel.category);
@@ -1271,7 +1271,7 @@ export default function GudTreeArticleView({
                   return (
                     <article
                       key={rel.slug}
-                      className="group min-w-0 rounded-[18px] md:rounded-[22px] border p-2.5 md:p-3.5 flex flex-row md:flex-col items-stretch gap-3 shadow-[0_4px_18px_-8px_rgba(16,42,86,0.08)] hover:border-[#DA440D] hover:-translate-y-1 transition-all duration-300"
+                      className="group w-[238px] md:w-auto min-w-0 rounded-[20px] md:rounded-[22px] border p-3 md:p-3.5 flex flex-col gap-2.5 md:gap-3 shadow-[0_4px_18px_-8px_rgba(16,42,86,0.08)] hover:border-[#DA440D] hover:-translate-y-1 transition-all duration-300"
                       style={{
                         borderColor: activeTheme.border,
                         backgroundColor: activeTheme.cardSurface,
@@ -1279,7 +1279,7 @@ export default function GudTreeArticleView({
                     >
                       <Link
                         href={relHref}
-                        className="relative w-[108px] h-[96px] md:w-full md:h-[185px] shrink-0 rounded-[14px] md:rounded-[16px] overflow-hidden block border no-underline"
+                        className="relative w-full h-[146px] md:h-[185px] shrink-0 rounded-[14px] md:rounded-[16px] overflow-hidden block border no-underline"
                         style={{ borderColor: activeTheme.border }}
                       >
                         <div className="w-full h-full transition-transform duration-500 ease-out group-hover:scale-[1.04]">
@@ -1287,7 +1287,7 @@ export default function GudTreeArticleView({
                         </div>
 
                         <span
-                          className="hidden md:inline-block absolute top-2.5 left-2.5 px-2.5 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider backdrop-blur-md border"
+                          className="inline-block absolute top-2 left-2 md:top-2.5 md:left-2.5 px-2.5 py-0.5 md:py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider backdrop-blur-md border"
                           style={{
                             backgroundColor: activeTheme.isDark
                               ? 'rgba(13,18,11,0.88)'
@@ -1305,8 +1305,7 @@ export default function GudTreeArticleView({
                           className="flex items-center gap-2 text-[11px] font-semibold"
                           style={{ color: activeTheme.muted }}
                         >
-                          <span className="md:hidden text-[#0944BA] truncate">{relCat}</span>
-                          <span className="hidden md:inline">{formatNfDate(rel.date)}</span>
+                          <span>{formatNfDate(rel.date)}</span>
                           <span>&bull;</span>
                           <span className="shrink-0">{rel.readTime || '4 min read'}</span>
                         </div>
@@ -1319,7 +1318,7 @@ export default function GudTreeArticleView({
                             title={rel.title}
                             variant="card"
                             light={activeTheme.isDark}
-                            className="gt-font-display text-[16px] md:text-[19px] leading-[1.2] line-clamp-2 group-hover:text-[#0944BA] transition-colors"
+                            className="gt-font-display text-[17px] md:text-[19px] leading-[1.2] line-clamp-2 group-hover:text-[#0944BA] transition-colors"
                           />
                           {relExcerpt && (
                             <p

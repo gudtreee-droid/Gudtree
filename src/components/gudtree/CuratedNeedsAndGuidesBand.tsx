@@ -156,8 +156,8 @@ export default function CuratedNeedsAndGuidesBand({
             <ColorLightning fill="#E5F36D" stroke="#073124" />
           </div>
 
-          {/* Arched Botanical Domes Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-5">
+          {/* Arched Botanical Domes Row: Horizontal Swipe on Mobile + 6-Col Desktop Grid */}
+          <div className="gt-hscroll-sm sm:grid sm:grid-cols-3 lg:grid-cols-6 gap-3.5 sm:gap-5 pb-2 sm:pb-0">
             {NEED_DOMES.map((item) => {
               const targetHref =
                 item.id === 'packed' ? '/news' : `/focus/${item.id}`;
@@ -167,7 +167,7 @@ export default function CuratedNeedsAndGuidesBand({
                   whileHover={{ y: -4 }}
                   whileTap={{ scale: 0.97 }}
                   transition={GT_SPRING}
-                  className="min-w-0"
+                  className="w-[132px] sm:w-full min-w-0"
                 >
                   <Link
                     href={targetHref}
@@ -206,12 +206,12 @@ export default function CuratedNeedsAndGuidesBand({
             <ColorLightning fill="#F59E0B" stroke="#102A56" />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
+          <div className="gt-hscroll-md md:grid md:grid-cols-3 gap-3.5 sm:gap-5 pb-2 md:pb-0">
             {FEATURE_SPOTLIGHT_BANNERS.map((banner) => (
               <Link
                 key={banner.brand}
                 href={banner.href}
-                className={`group relative rounded-[20px] bg-gradient-to-r ${banner.gradient} px-5 py-4 h-[108px] flex items-center justify-between gap-3 overflow-hidden border border-[#102A56]/8 shadow-sm hover:shadow-md transition-all no-underline min-w-0`}
+                className={`group relative rounded-[20px] bg-gradient-to-r ${banner.gradient} px-5 py-4 w-[274px] md:w-auto h-[108px] flex items-center justify-between gap-3 overflow-hidden border border-[#102A56]/8 shadow-sm hover:shadow-md transition-all no-underline min-w-0`}
               >
                 <div className="flex flex-col justify-center min-w-0 pr-2">
                   <span
@@ -262,7 +262,7 @@ export default function CuratedNeedsAndGuidesBand({
             <ColorLightning fill="#64B5FF" stroke="#102A56" />
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
+          <div className="gt-hscroll-sm sm:grid sm:grid-cols-4 gap-3.5 sm:gap-6 pb-2 sm:pb-0">
             {QUICK_DIET_PILLS.map((pill) => {
               const handlePillClick = (e: React.MouseEvent) => {
                 if (pill.href === '#patient-care') {
@@ -277,7 +277,7 @@ export default function CuratedNeedsAndGuidesBand({
                   whileHover={{ y: -4, scale: 1.03 }}
                   whileTap={{ scale: 0.97 }}
                   transition={GT_SPRING}
-                  className="min-w-0"
+                  className="w-[144px] sm:w-full min-w-0"
                 >
                   <Link
                     href={pill.href}
