@@ -47,6 +47,12 @@ export function buildArticleMetadata(article: Article | undefined): Metadata {
   const resolvedMetaTitle = article.metaTitle || `${article.title} | ${siteConfig.name}`;
   const resolvedMetaDesc = article.metaDescription || article.excerpt;
 
+  const absoluteImageUrl = article.image
+    ? article.image.startsWith('http')
+      ? article.image
+      : `${baseUrl}${article.image.startsWith('/') ? '' : '/'}${article.image}`
+    : `${baseUrl}/icon.png`;
+
   return {
     title: { absolute: resolvedMetaTitle },
     description: resolvedMetaDesc,
@@ -54,7 +60,14 @@ export function buildArticleMetadata(article: Article | undefined): Metadata {
     authors: [{ name: article.author || siteConfig.name }],
     creator: article.author || siteConfig.name,
     publisher: siteConfig.name,
-    alternates: { canonical: articleUrl },
+    alternates: {
+      canonical: articleUrl,
+      languages: {
+        'en-IN': articleUrl,
+        'hi-IN': articleUrl,
+        'x-default': articleUrl,
+      },
+    },
     robots: {
       index: true,
       follow: true,
@@ -77,15 +90,20 @@ export function buildArticleMetadata(article: Article | undefined): Metadata {
       authors: [article.author],
       section: article.category,
       tags: [article.tag || article.category],
-      images: article.image
-        ? [{ url: article.image, width: 1200, height: 630, alt: article.title }]
-        : [],
+      images: [
+        {
+          url: absoluteImageUrl,
+          width: 1200,
+          height: 630,
+          alt: article.title,
+        },
+      ],
     },
     twitter: {
       card: 'summary_large_image',
       title: resolvedMetaTitle,
       description: resolvedMetaDesc,
-      images: article.image ? [article.image] : [],
+      images: [absoluteImageUrl],
       creator: siteConfig.socialLinks?.twitter || '@gudtree',
     },
   };
@@ -177,22 +195,56 @@ export function buildArticleJsonLd(article: Article, articleUrl: string) {
           { '@type': 'ListItem', position: 3, name: article.title, item: articleUrl },
         ],
       },
-      ...(article.sections && article.sections.length >= 2
-        ? [
+      ...(() => {
+        const faqItems: Array<{ q: string; a: string }> = [];
+
+        if (article.sections && article.sections.length > 0) {
+          for (const sec of article.sections) {
+            if (sec.heading && sec.content) {
+              faqItems.push({
+                q: sec.heading.trim().endsWith('?')
+                  ? sec.heading.trim()
+                  : `What should you know about ${sec.heading.trim()}?`,
+                a: sec.content.trim(),
+              });
+            }
+          }
+        }
+
+        if (faqItems.length === 0 && article.content) {
+          const h2pRegex = /<h2[^>]*>([\s\S]*?)<\/h2>[\s\S]*?<p[^>]*>([\s\S]*?)<\/p>/gi;
+          let match: RegExpExecArray | null;
+          while ((match = h2pRegex.exec(article.content)) !== null) {
+            const q = match[1].replace(/<[^>]+>/g, '').trim();
+            const a = match[2].replace(/<[^>]+>/g, '').trim();
+            if (q && a && q.length > 5 && a.length > 20) {
+              faqItems.push({
+                q: q.endsWith('?') ? q : `What should you know about ${q}?`,
+                a,
+              });
+            }
+          }
+        }
+
+        if (faqItems.length >= 2) {
+          return [
             {
               '@type': 'FAQPage',
               '@id': `${articleUrl}#faq`,
-              mainEntity: article.sections.map((sec) => ({
+              mainEntity: faqItems.slice(0, 6).map((faq) => ({
                 '@type': 'Question',
-                name: sec.heading,
+                name: faq.q,
                 acceptedAnswer: {
                   '@type': 'Answer',
-                  text: sec.content,
+                  text: faq.a,
                 },
               })),
             },
-          ]
-        : []),
+          ];
+        }
+
+        return [];
+      })(),
     ],
   };
 }

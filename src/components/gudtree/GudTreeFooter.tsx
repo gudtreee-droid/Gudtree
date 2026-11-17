@@ -190,6 +190,28 @@ export default function GudTreeFooter() {
             ))}
           </nav>
 
+          {/* Health Goal Focus Hubs (Pillar Pages for Topic Authority) */}
+          <div className="flex flex-wrap items-center justify-center gap-2 mb-3">
+            <span className="text-[11px] font-extrabold uppercase tracking-wider text-[#FFFFFF]/70 mr-1">
+              Health Goals:
+            </span>
+            {[
+              { label: 'Diabetes & Low-GI', href: '/focus/diabetes' },
+              { label: 'Gut & Digestion', href: '/focus/gut' },
+              { label: 'Heart & Zero Palm Oil', href: '/focus/heart' },
+              { label: 'PCOS Clean Diet', href: '/focus/pcos' },
+              { label: 'Weight & Fuel', href: '/focus/weight' },
+            ].map((hub) => (
+              <Link
+                key={hub.href}
+                href={hub.href}
+                className="px-3 py-1 rounded-full bg-[#FFFFFF]/20 hover:bg-[#FFFFFF] text-[#FFFFFF] hover:text-[#102A56] text-[12px] font-semibold transition-colors no-underline"
+              >
+                {hub.label}
+              </Link>
+            ))}
+          </div>
+
           {/* Clean Topic Pills (Horizontal Swipe on Mobile + Wrapped Desktop) */}
           <div className="gt-hscroll-sm sm:flex sm:flex-wrap items-center justify-start sm:justify-center gap-2 mb-8 pb-1 sm:pb-0">
             {visibleCats.map((c) => (

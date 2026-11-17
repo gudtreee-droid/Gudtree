@@ -30,12 +30,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.85,
   }));
 
-  const articlePages: MetadataRoute.Sitemap = articles.map((article) => ({
-    url: `${baseUrl}${getBlogUrl(article)}`,
-    lastModified: new Date(article.date || Date.now()),
-    changeFrequency: 'weekly',
-    priority: 0.8,
-  }));
+  const articlePages: MetadataRoute.Sitemap = articles.map((article) => {
+    const imageUrl = article.image
+      ? article.image.startsWith('http')
+        ? article.image
+        : `${baseUrl}${article.image}`
+      : undefined;
+
+    return {
+      url: `${baseUrl}${getBlogUrl(article)}`,
+      lastModified: new Date(article.date || Date.now()),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+      ...(imageUrl ? { images: [imageUrl] } : {}),
+    };
+  });
 
   const categoryPages: MetadataRoute.Sitemap = categories
     .filter((cat) => cat.slug !== 'home')

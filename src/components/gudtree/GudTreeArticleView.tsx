@@ -19,6 +19,7 @@ import {
   Bookmark,
   RotateCcw,
   SlidersHorizontal,
+  Sparkles,
 } from 'lucide-react';
 import { Article } from '@/types';
 import { getCategorySlug } from '@/data/categories';
@@ -155,6 +156,43 @@ function buildSourceHtml(article: Article): string {
   return parts.join('\n');
 }
 
+function inferFocusHub(article: Article): { slug: string; title: string; desc: string } {
+  const text = `${article.title || ''} ${article.category || ''} ${article.tag || ''} ${(article.keywords || []).toString()}`.toLowerCase();
+  if (/diabet|sugar|glucose|insulin|low-gi|sweetener|jaggery|gud/.test(text)) {
+    return {
+      slug: 'diabetes',
+      title: 'Diabetes & Low-GI Hub',
+      desc: 'Tested swaps to prevent blood sugar spikes without giving up evening crunch.',
+    };
+  }
+  if (/pcos|hormon|period|women|fertilit|cycle|seed/.test(text)) {
+    return {
+      slug: 'pcos',
+      title: 'PCOS Clean Diet Hub',
+      desc: 'Insulin-sensitizing Indian foods, seed cycling, and anti-inflammatory swaps.',
+    };
+  }
+  if (/heart|cholesterol|bp|pressure|cardio|palm oil|palmolein|artery/.test(text)) {
+    return {
+      slug: 'heart',
+      title: 'Heart & Zero Palm Oil Hub',
+      desc: 'Protect arteries with unrefined cold-pressed fats and clean snack roasts.',
+    };
+  }
+  if (/gut|microbiome|digest|bloat|probiotic|fiber|constipat|acidity/.test(text)) {
+    return {
+      slug: 'gut',
+      title: 'Gut Health & Digestion Hub',
+      desc: 'Desi probiotics, spiced chaas, and prebiotic millets for bloating relief.',
+    };
+  }
+  return {
+    slug: 'weight',
+    title: 'Weight & Clean Fuel Hub',
+    desc: 'High-protein whole grain snacks that curb 4 PM cravings sustainably.',
+  };
+}
+
 const SAVED_STORAGE_KEY = 'gudtree_saved_blogs';
 const LANG_PREF_KEY = 'gudtree_reader_lang_v1';
 
@@ -201,6 +239,7 @@ export default function GudTreeArticleView({
 
   const rawLeadExcerpt = article.excerpt || article.paragraphs?.[0] || '';
   const sourceHtml = useMemo(() => buildSourceHtml(article), [article]);
+  const focusHub = useMemo(() => inferFocusHub(article), [article]);
 
   // Close popovers when clicking outside
   useEffect(() => {
@@ -1003,6 +1042,42 @@ export default function GudTreeArticleView({
                     )}
                   </div>
                 )}
+              </div>
+
+              {/* Contextual Focus Hub Pillar Link (Topic Cluster SEO) */}
+              <div
+                className="rounded-[18px] border p-4 flex flex-col gap-2.5 transition-colors"
+                style={{
+                  borderColor: activeTheme.border,
+                  backgroundColor: activeTheme.cardSurface,
+                }}
+              >
+                <div className="text-[11px] font-extrabold uppercase tracking-wider text-[#DA440D] flex items-center gap-1.5">
+                  <Sparkles className="w-3.5 h-3.5 text-[#DA440D]" />
+                  <span>Health Goal Hub</span>
+                </div>
+                <div>
+                  <Link
+                    href={`/focus/${focusHub.slug}`}
+                    className="gt-font-display text-[15px] leading-tight text-[#102A56] hover:text-[#0944BA] block transition-colors no-underline"
+                    style={{ color: activeTheme.isDark ? '#E5F36D' : '#102A56' }}
+                  >
+                    {focusHub.title}
+                  </Link>
+                  <p
+                    className="mt-1 text-[12px] leading-relaxed line-clamp-2"
+                    style={{ color: activeTheme.muted }}
+                  >
+                    {focusHub.desc}
+                  </p>
+                </div>
+                <Link
+                  href={`/focus/${focusHub.slug}`}
+                  className="mt-0.5 inline-flex items-center gap-1 text-[12px] font-bold text-[#0944BA] hover:underline"
+                >
+                  <span>Explore Pillar Guide</span>
+                  <ArrowRight className="w-3 h-3" />
+                </Link>
               </div>
 
               <Link

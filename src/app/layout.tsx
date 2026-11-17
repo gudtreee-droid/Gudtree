@@ -38,6 +38,11 @@ export const metadata: Metadata = {
   applicationName: 'GudTree',
   alternates: {
     canonical: '/',
+    languages: {
+      'en-IN': '/',
+      'hi-IN': '/',
+      'x-default': '/',
+    },
   },
   icons: {
     icon: [
@@ -94,13 +99,35 @@ export const metadata: Metadata = {
 
 const organizationSchema = {
   '@context': 'https://schema.org',
-  '@type': 'Organization',
+  '@type': 'NewsMediaOrganization',
   '@id': 'https://www.gudtree.in/#organization',
   name: 'GudTree',
+  alternateName: ['GudTree India', 'Gud Tree', 'GudTree Nutrition Desk'],
   url: 'https://www.gudtree.in/',
-  logo: 'https://www.gudtree.in/icon.png',
+  logo: {
+    '@type': 'ImageObject',
+    url: 'https://www.gudtree.in/icon.png',
+    width: 512,
+    height: 512,
+  },
   description:
-    'GudTree is India’s premier healthy eating and snacking publication, delivering honest nutrition guides, clean snacking reviews, and health-first diet frameworks.',
+    'GudTree is India’s premier healthy eating and snacking publication, delivering honest food label audits, clean snacking reviews, and clinical nutrition frameworks.',
+  areaServed: {
+    '@type': 'Country',
+    name: 'India',
+  },
+  knowsAbout: [
+    'Clean Eating India',
+    'Healthy Snacking',
+    'Food Label Audits',
+    'Zero Palm Oil Foods',
+    'Low Glycemic Index Diets',
+    'Diabetic Friendly Snacks',
+    'PCOS Nutrition',
+    'Gut Health & Microbiome',
+    'Makhana & Millets Nutrition',
+    'Desi Superfoods',
+  ],
   sameAs: [
     'https://twitter.com/gudtree',
     'https://www.instagram.com/gudtree',
