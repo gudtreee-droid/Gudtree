@@ -78,9 +78,10 @@ export default async function CategorySlugPage({ params }: CategoryPageProps) {
 
   const categoryArticles = allArticles.filter((a) => {
     if (normalizeCatKey(a.category) === normCat) return true;
+    if (getCategorySlug(a.category) === catSlug) return true;
     if (
       Array.isArray(a.categories) &&
-      a.categories.some((c) => normalizeCatKey(c) === normCat)
+      a.categories.some((c) => normalizeCatKey(c) === normCat || getCategorySlug(c) === catSlug)
     ) {
       return true;
     }

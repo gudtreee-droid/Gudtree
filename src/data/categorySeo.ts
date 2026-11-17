@@ -10,93 +10,128 @@ export interface CategorySeoData {
 export const CATEGORY_SEO_DATA: Record<string, CategorySeoData> = {
   'all': {
     slug: 'all',
-    metaTitle: 'All Clean Snack & Diet Guides | GudTree',
+    metaTitle: 'All Clean Snacks, Desk Fuel & Nutrition Guides | GudTree',
     metaDescription:
-      'Explore honest Indian packaged snack audits, clean home diet swaps, gut wellness, low-GI guides, and desi superfood stories on GudTree.',
-    h1: 'All Snacking & Diet Guides',
+      'Explore label-verified Indian snack audits, desk study fuel, women hormone nutrition, vegan plant protein, and honest kitchen guides on GudTree.',
+    h1: 'All Clean Snacking & Nutrition Guides',
     introContent:
-      'Independent, label-verified Indian clean eating guides spanning healthy snacks, gut wellness, low-GI swaps, heart care, and honest kitchen staples.',
-    keywords: 'gudtree, clean snacking india, healthy indian snacks, diet guides, label audits',
+      'Independent, label-verified Indian snacking guides built for students and young professionals (15–35). Zero palm oil, no hidden maltodextrin, and real desi kitchen swaps.',
+    keywords: 'gudtree, clean snacking india, desk fuel, students study snacks, label audits, pcos snacks, vegan indian snacks',
   },
   'clean-snacks': {
     slug: 'clean-snacks',
-    metaTitle: 'Clean Snacks & Healthy Chai-Time Swaps | GudTree',
+    metaTitle: 'Clean Snacks & Desk Fuel (Late Night & 4 PM Slump) | GudTree',
     metaDescription:
-      'Discover roasted makhana, bhuna chana, zero-maida biscuits, and palm-oil-free snack swaps on GudTree.',
-    h1: 'Clean Snacks',
+      'Non-greasy keyboard-friendly snacks, roasted makhana, bhuna chana, and 4 PM office slump rescues with zero palm oil.',
+    h1: 'Clean Snacks & Desk Fuel',
     introContent:
-      'Roasted foxnuts, crispy chana, spiced murmura, and zero-maida tea-time snacks built for everyday Indian homes.',
-    keywords: 'clean snacks, roasted makhana, healthy chai time snacks, zero palm oil',
+      'Non-greasy, high-crunch snacks engineered for late-night coding, exam prep, and 4 PM office slumps without afternoon brain fog or sugar crashes.',
+    keywords: 'clean snacks, desk fuel, late night study snacks, 4 pm office slump, roasted makhana, non greasy keyboard snacks, healthy tea time snacks',
+  },
+  'pcos-hormones': {
+    slug: 'pcos-hormones',
+    metaTitle: "Women's Health & Hormones (PCOS, Period Cramps & PMS) | GudTree",
+    metaDescription:
+      'Evidence-backed PCOS insulin resistance swaps, period cramp relief, clean pregnancy munches, and hormonal acne diet guides for Indian women.',
+    h1: "Women's Health & Hormones",
+    introContent:
+      'Empowering nutrition guides for young Indian women: seed cycling, low-insulin-spike whole foods, PMS emergency craving fixes, and gentle gut-skin acne care.',
+    keywords: 'pcos diet india, period cramp relief food, pms craving snacks, clean pregnancy snacks, seed cycling mix, hormonal acne diet, spearmint tea',
+  },
+  'vegan-plant-based': {
+    slug: 'vegan-plant-based',
+    metaTitle: 'Vegan & Plant-Based Clean Snacking (Desi Sattu & Dairy-Free) | GudTree',
+    metaDescription:
+      'Desi sattu protein shakes, lactose-free chai munches, Blinkit plant milk label audits, and zero-dairy Indian sweets on GudTree.',
+    h1: 'Vegan & Plant-Based',
+    introContent:
+      'Clean, plant-powered Indian nutrition for anyone avoiding lactose bloating or seeking ethical, cruelty-free snacks. Sattu fuel, roasted legumes, and whole pantry swaps.',
+    keywords: 'vegan snacks india, sattu protein, lactose free chai snacks, plant milk audit, zero dairy sweets, dairy free acne, oat milk blinkit',
+  },
+  'label-audits': {
+    slug: 'label-audits',
+    metaTitle: 'Label Audits & Quick-Commerce (Blinkit, Zepto, Too Yumm) | GudTree',
+    metaDescription:
+      'Back-of-pack supermarket checks exposing maltodextrin, hidden palm oil, 50+ sugar names, and fake protein claims on Indian shelves.',
+    h1: 'Label Audits & Quick-Commerce',
+    introContent:
+      'Unbiased ingredient breakdowns of top quick-commerce brands (Blinkit, Zepto, Too Yumm, 4700BC). We decode front-of-pack buzzwords into back-panel facts.',
+    keywords: 'nutrition label audit india, blinkit snack audit, maltodextrin trap, hidden sugars list, zero palm oil check, too yumm audit, fssai labels',
+  },
+  'weight-protein': {
+    slug: 'weight-protein',
+    metaTitle: 'Budget Fitness & Clean Protein Under ₹50 | GudTree',
+    metaDescription:
+      'High-protein Indian meal prep under ₹50, sattu vs whey comparisons, roasted chana fuel, and 150-calorie high-satiety snacking guides.',
+    h1: 'Budget Fitness & Protein',
+    introContent:
+      'Practical fitness nutrition for hostel students and freshers: hit your daily protein goals without expensive imported supplements or starvation diets.',
+    keywords: 'clean protein under 50, sattu vs whey, 150 calorie snacks india, roasted chana protein, peanut butter audit, gym evening snacks',
   },
   'gut-health': {
     slug: 'gut-health',
-    metaTitle: 'Gut Health, Probiotics & Bloating-Free Snacks | GudTree',
+    metaTitle: 'Gut Health & Bloat Relief (Desk Sitting & Post-Lunch Acidity) | GudTree',
     metaDescription:
-      'Desi probiotics, homemade jeera chaas, prebiotic fibre, and clean label guides for lighter digestion.',
-    h1: 'Gut Health',
+      'Relief from 8-hour desk-sitting bloat, post-lunch acidity, desi probiotics (jeera chaas, beet kanji), and prebiotic fiber on GudTree.',
+    h1: 'Gut Health & Bloat Relief',
     introContent:
-      'Gentle digestive habits, fermented Indian staples like kanji and chaas, and prebiotic fibre snacks free of artificial emulsifiers.',
-    keywords: 'gut health india, desi probiotics, bloating relief, clean digestion snacks',
+      'Targeted digestive fixes for sedentary desk workers: fermented Indian staples, calming seed waters, and emulsifier-free clean snacks to stop daily bloating.',
+    keywords: 'gut health india, desk bloat relief, post lunch acidity, jeera chaas, beet kanji, prebiotic fiber snacks, digestive enzymes',
   },
   'diabetes-low-gi': {
     slug: 'diabetes-low-gi',
     metaTitle: 'Diabetes & Low-GI Clean Snack Guides | GudTree',
     metaDescription:
-      'Steady blood sugar snacks, glycemic index comparisons, maltodextrin alerts, and millet swaps for India.',
+      'Flat continuous glucose curves: low-glycemic evening crunch, foxtail millet swaps, and meal sequencing tricks to prevent post-snack spikes.',
     h1: 'Diabetes & Low-GI',
     introContent:
-      'Low-glycemic Indian evening snacks, smart food-order sequencing, and no-maida swaps to prevent sugar spikes cleanly.',
-    keywords: 'low gi snacks india, diabetic friendly snacks, steady blood sugar, makhana gi',
-  },
-  'heart-liver-care': {
-    slug: 'heart-liver-care',
-    metaTitle: 'Heart & Fatty Liver Clean Eating Guides | GudTree',
-    metaDescription:
-      'Zero palm oil swaps, omega-3 walnut-flax habits, low-sodium seasonings, and fatty liver kitchen guides.',
-    h1: 'Heart & Liver Care',
-    introContent:
-      'Clean-fat swaps replacing repeated refined palmolein oils with walnuts, flax, cold-pressed oils, and low-sodium Indian spices.',
-    keywords: 'fatty liver diet india, zero palm oil, low sodium snacks, heart healthy nuts',
-  },
-  'pcos-hormones': {
-    slug: 'pcos-hormones',
-    metaTitle: 'PCOS & Hormone Balance Snack Guides | GudTree',
-    metaDescription:
-      'Seed cycling snack bars, cinnamon roasted nuts, savoury protein breakfasts, and anti-inflammatory guides.',
-    h1: 'PCOS & Hormones',
-    introContent:
-      'Indian seed cycling simplified, high-protein savoury breakfasts, and calm 4 PM nutrition swaps.',
-    keywords: 'pcos diet india, seed cycling snacks, cinnamon almonds, hormone balance',
-  },
-  'weight-protein': {
-    slug: 'weight-protein',
-    metaTitle: 'Weight & Clean Protein Snacking Under 150 Kcal | GudTree',
-    metaDescription:
-      'High-satiety Indian snacks under 150 calories, sattu protein drinks, paneer crisps, and sustainable diet guides.',
-    h1: 'Weight & Protein',
-    introContent:
-      'Volume-rich snacks, traditional roasted sattu drinks, and paneer-lentil fuel that keep you satisfied without crash dieting.',
-    keywords: '150 calorie snacks india, sattu protein, weight loss clean snacks',
-  },
-  'label-audits': {
-    slug: 'label-audits',
-    metaTitle: 'Supermarket Food Label Audits & Red Flags | GudTree',
-    metaDescription:
-      'Back-of-pack checks exposing hidden sugars, maltodextrin, palm oil, and marketing claims in Indian food packs.',
-    h1: 'Label Audits',
-    introContent:
-      'Honest ingredient breakdowns decoding hidden sugars, fake whole-wheat claims, protein bar hype, and INS food additives.',
-    keywords: 'nutrition label audit india, hidden sugar names, maltodextrin trap, fssai labels',
+      'Low-glycemic Indian evening snacks, smart food-ordering habits, and zero-maida swaps tested for flat glucose curves and sustained energy.',
+    keywords: 'low gi snacks india, diabetic friendly snacks, sugar spike control, foxtail millet puffs, makhana glycemic index, meal sequencing',
   },
   'desi-pantry': {
     slug: 'desi-pantry',
-    metaTitle: 'Desi Pantry, Millets, Palm Jaggery & Wood-Pressed Oils | GudTree',
+    metaTitle: 'Desi Superfoods & Pantry (Millets, Palm Jaggery & Cold-Pressed Oils) | GudTree',
     metaDescription:
-      'Guides on foxtail and ragi millets, karupatti palm jaggery, til-gud chikki, and cold-pressed Indian cooking oils.',
-    h1: 'Desi Pantry',
+      'Ancient positive millets (ragi, jowar), unrefined palm jaggery (karupatti), til-gud chikki, and kachi ghani cold-pressed oils on GudTree.',
+    h1: 'Desi Superfoods & Pantry',
     introContent:
-      'Timeless Indian kitchen ingredients—millets, palm jaggery, sesame seeds, and traditional oils—adapted for modern clean eating.',
-    keywords: 'desi pantry staples, palm jaggery gud, positive millets india, cold pressed oils',
+      'Timeless Indian superfoods updated for modern kitchens: unpolished positive millets, mineral-dense palm jaggery, and hexane-free cold-pressed oils.',
+    keywords: 'desi pantry staples, palm jaggery karupatti, positive millets india, ragi snacks, cold pressed oils, til gud chikki',
+  },
+  'heart-liver-care': {
+    slug: 'heart-liver-care',
+    metaTitle: 'Zero Palm Oil & Clean Fats (Palmolein Checks & Raw Walnuts) | GudTree',
+    metaDescription:
+      'Why Indian packaged snacks use palmolein oil, raw walnut-flax ALA omega-3 habits, low-sodium spices, and clean cold-pressed fat guides.',
+    h1: 'Zero Palm Oil & Clean Fats',
+    introContent:
+      'Practical guides to eliminating cheap fractionated palmolein oils and oxidized trans-fats from your daily snack cupboard with clean plant fats.',
+    keywords: 'zero palm oil snacks, palmolein red flags, raw walnuts brain fuel, flaxseed omega 3, low sodium namkeen, fatty liver diet india',
+  },
+  // Legacy aliases to prevent 404 / undefined metadata
+  'womens-health': {
+    slug: 'pcos-hormones',
+    metaTitle: "Women's Health & Hormones (PCOS, Period Cramps & PMS) | GudTree",
+    metaDescription:
+      'Evidence-backed PCOS insulin resistance swaps, period cramp relief, clean pregnancy munches, and hormonal acne diet guides for Indian women.',
+    h1: "Women's Health & Hormones",
+    keywords: 'pcos diet india, period cramp relief food, pms craving snacks, clean pregnancy snacks, seed cycling mix',
+  },
+  'vegan': {
+    slug: 'vegan-plant-based',
+    metaTitle: 'Vegan & Plant-Based Clean Snacking (Desi Sattu & Dairy-Free) | GudTree',
+    metaDescription:
+      'Desi sattu protein shakes, lactose-free chai munches, Blinkit plant milk label audits, and zero-dairy Indian sweets on GudTree.',
+    h1: 'Vegan & Plant-Based',
+    keywords: 'vegan snacks india, sattu protein, lactose free chai snacks, plant milk audit, zero dairy sweets',
+  },
+  'desk-fuel': {
+    slug: 'clean-snacks',
+    metaTitle: 'Desk & Study Fuel (Late Night & 4 PM Slump) | GudTree',
+    metaDescription:
+      'Non-greasy keyboard-friendly snacks, roasted makhana, bhuna chana, and 4 PM office slump rescues with zero palm oil.',
+    h1: 'Desk & Study Fuel',
+    keywords: 'desk fuel, late night study snacks, 4 pm office slump, roasted makhana, non greasy keyboard snacks',
   },
 };
 
@@ -113,10 +148,10 @@ export function getCategorySeo(slug: string): CategorySeoData {
 
   return {
     slug: cleanSlug,
-    metaTitle: `${formatted} Clean Eating Guides | GudTree`,
-    metaDescription: `Explore ${formatted} snack audits, clean recipes, and practical nutrition guides on GudTree.`,
+    metaTitle: `${formatted} Clean Snacking & Nutrition Guides | GudTree`,
+    metaDescription: `Explore ${formatted} snack audits, clean recipes, and practical 15-35 nutrition guides on GudTree.`,
     h1: formatted || 'Clean Guides',
     introContent: `Label-checked ${formatted.toLowerCase()} articles, whole-food swaps, and everyday nutrition guides on GudTree.`,
-    keywords: `${slug}, gudtree, healthy snacks, clean diet`,
+    keywords: `${slug}, gudtree, healthy snacks, clean diet, students, working professionals`,
   };
 }

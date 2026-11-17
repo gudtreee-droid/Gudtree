@@ -17,20 +17,30 @@ export interface AudienceCardItem {
 
 export const AUDIENCE_FOCUS_CARDS: AudienceCardItem[] = [
   {
-    id: 'diabetes',
-    title: 'Diabetes & Low-GI',
+    id: 'desk',
+    title: 'Desk & Study Fuel',
     description:
-      'Roasted chana, foxnuts (makhana), jowar puffs, methi khakhra, zero sugar',
+      'Non-greasy makhana, roasted chana, zero brain fog for late-night & 4 PM work',
     blobColor: '#FF5A3D',
     blobRotation: -8,
     imageSrc: '/images/card-diabetes.png',
     imageAlt: 'Low-GI roasted makhana and chana bowl',
   },
   {
-    id: 'heart',
-    title: 'Heart & Fatty Liver',
+    id: 'pcos',
+    title: "Women's Health & PCOS",
     description:
-      'Fresh avocado, walnuts, flaxseeds, zero palm oil, low-sodium crunch',
+      'Seed cycling bars, cinnamon almonds, PMS cramp relief & hormonal acne swaps',
+    blobColor: '#4CC36B',
+    blobRotation: 9,
+    imageSrc: '/images/card-pcos.png',
+    imageAlt: 'Seed-cycling granola bars and almonds',
+  },
+  {
+    id: 'vegan',
+    title: 'Vegan & Plant-Based',
+    description:
+      'Desi sattu protein shakes, lactose-free chai munches, clean oat milk audits',
     blobColor: '#2BA6FF',
     blobRotation: 12,
     imageSrc: '/images/card-heart.png',
@@ -38,29 +48,19 @@ export const AUDIENCE_FOCUS_CARDS: AudienceCardItem[] = [
   },
   {
     id: 'gut',
-    title: 'Gut Health & Fiber',
+    title: 'Gut & Bloat Relief',
     description:
-      'Probiotic dahi jar, soaked chia, prebiotic millet crisps, zero bloating',
+      'Probiotic jeera chaas, beet kanji, prebiotic millet crisps, zero desk bloat',
     blobColor: '#9B51E0',
     blobRotation: -15,
     imageSrc: '/images/card-gut.png',
     imageAlt: 'Probiotic yogurt jar with chia seeds and millet crackers',
   },
   {
-    id: 'pcos',
-    title: 'PCOS & Diet Plan',
-    description:
-      'Pumpkin & sunflower seed bars, cinnamon almonds, hormone-safe protein',
-    blobColor: '#4CC36B',
-    blobRotation: 9,
-    imageSrc: '/images/card-pcos.png',
-    imageAlt: 'Seed-cycling granola bars and almonds',
-  },
-  {
     id: 'weight',
-    title: 'Weight & Clean Fuel',
+    title: 'Budget Fitness (<₹50)',
     description:
-      'Multigrain lentil crisps, spiced paneer cubes, cucumber, 150-kcal swaps',
+      'Under ₹40 clean protein, sattu vs whey, peanut butter palm oil audits',
     blobColor: '#F5A623',
     blobRotation: -5,
     imageSrc: '/images/card-weight.png',

@@ -35,29 +35,29 @@ function ColorLightning({
 
 const NEED_DOMES = [
   {
-    id: 'weight',
-    label: 'Protein Corner',
-    img: '/images/card-weight.png',
-  },
-  {
-    id: 'diabetes',
-    label: 'Diabetes Care',
+    id: 'desk',
+    label: 'Desk Fuel',
     img: '/images/card-diabetes.png',
   },
   {
-    id: 'gut',
-    label: 'Gut & Digestion',
-    img: '/images/card-gut.png',
+    id: 'pcos',
+    label: "Women's Health",
+    img: '/images/card-pcos.png',
   },
   {
-    id: 'heart',
-    label: 'Fatty Liver',
+    id: 'vegan',
+    label: 'Vegan & Plant',
     img: '/images/card-heart.png',
   },
   {
-    id: 'pcos',
-    label: 'PCOS Plan',
-    img: '/images/card-pcos.png',
+    id: 'weight',
+    label: 'Budget Protein',
+    img: '/images/card-weight.png',
+  },
+  {
+    id: 'gut',
+    label: 'Bloat Relief',
+    img: '/images/card-gut.png',
   },
   {
     id: 'packed',
