@@ -16,22 +16,19 @@ import FaviconManager from '@/components/FaviconManager';
 
 const lilitaOne = Lilita_One({
   subsets: ['latin'],
-  weight: ['400'],
+  weight: '400',
   variable: '--font-lilita',
   display: 'swap',
 });
 
 const inter = Inter({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  style: ['normal', 'italic'],
   variable: '--font-inter',
   display: 'swap',
 });
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
-  weight: ['400', '500', '700'],
   variable: '--font-mono',
   display: 'swap',
 });
