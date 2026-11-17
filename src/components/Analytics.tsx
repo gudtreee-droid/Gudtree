@@ -6,13 +6,13 @@ import Script from 'next/script';
 
 export default function Analytics() {
   const pathname = usePathname();
-  const clarityId = process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID || 'yqgk6g2wdg';
-  const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || 'G-T7QCMV9GG6';
+  const clarityId = process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID || 'zez99wao9l';
+  const gtmId = process.env.NEXT_PUBLIC_GTM_ID || 'GTM-NHHRH6MQ';
 
   useEffect(() => {
     if (!pathname || pathname.startsWith('/admin') || typeof window === 'undefined') return;
 
-    const visitorKey = 'apex_visitor_tracked';
+    const visitorKey = 'gudtree_visitor_tracked';
     const isNewVisitor = !localStorage.getItem(visitorKey);
     if (isNewVisitor) {
       localStorage.setItem(visitorKey, Date.now().toString());
@@ -52,29 +52,50 @@ export default function Analytics() {
         />
       )}
 
-      {/* 2. Google Analytics 4 (Traffic & Pageviews) */}
-      {gaId && (
+      {/* 2. Google Tag Manager / GA4 (Container: GTM-NHHRH6MQ) */}
+      {gtmId && (
         <>
           <Script
+            id="gtm-loader"
             strategy="afterInteractive"
-            src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
+            src={`https://www.googletagmanager.com/gtm.js?id=${gtmId}`}
           />
           <Script
-            id="google-analytics"
+            id="google-tag-manager"
             strategy="afterInteractive"
             dangerouslySetInnerHTML={{
               __html: `
                 window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
-                gtag('config', '${gaId}', {
-                  page_path: window.location.pathname,
-                });
               `,
             }}
           />
         </>
       )}
+
+      {/* 3. Plerdy (Heatmaps, Click Tracking & SEO) */}
+      <Script
+        id="plerdy-tracking"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            (function(w,d){
+              if(w.__plerdyCode)return;
+              w.__plerdyCode=1;
+              w._protocol=w.location.protocol=="https:"?"https://":"http://";
+              w._site_hash_code="86b992955c304735651131148b9cfb06";
+              w._suid=83360;
+              var s=d.createElement("script");
+              s.async=true;
+              s.referrerPolicy="strict-origin-when-cross-origin";
+              s.src="https://a.plerdy.com/public/js/click/main.js?v="+Math.random();
+              d.head.appendChild(s);
+            })(window,document);
+          `,
+        }}
+      />
     </>
   );
 }
