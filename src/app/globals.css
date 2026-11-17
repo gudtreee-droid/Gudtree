@@ -3,6 +3,11 @@
 @tailwind utilities;
 
 :root {
+  /* Fonts */
+  --font-lilita: 'Lilita One', cursive, sans-serif;
+  --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+
   /* Sunday Crumb × GudTree Color & Typography Tokens */
   --gt-bg-canvas: #FFF9EC;           /* Warm Buttercream Canvas */
   --gt-surface-card: #FFFFFF;         /* Crisp White Surface */

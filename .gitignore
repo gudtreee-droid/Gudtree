@@ -31,3 +31,5 @@ yarn-error.log*
 # Temporary / Scratch
 scratch/
 _archive/
+__pycache__/
+*.pyc
