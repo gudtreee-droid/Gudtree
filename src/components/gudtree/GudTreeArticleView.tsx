@@ -316,12 +316,18 @@ export default function GudTreeArticleView({
         return;
       }
 
-      const cacheKey = `gudtree_tr_v2_${langCode}_${article.slug}`;
+      const cacheKey = `gudtree_tr_v4_${langCode}_${article.slug}`;
       try {
         const cachedRaw = localStorage.getItem(cacheKey);
         if (cachedRaw) {
           const parsed = JSON.parse(cachedRaw) as TranslatedArticleData;
-          if (parsed && (parsed.title || parsed.content)) {
+          // Discard corrupt/stale caches where translation was skipped or identical to English
+          const isBasicallyEnglish =
+            langCode !== 'hinglish' &&
+            parsed.title === article.title &&
+            parsed.content === sourceHtml;
+
+          if (parsed && (parsed.title || parsed.content) && !isBasicallyEnglish) {
             translationCacheRef.current[langCode] = parsed;
             setTranslated(parsed);
             setIsTranslating(false);
@@ -360,9 +366,23 @@ export default function GudTreeArticleView({
           title?: string;
           excerpt?: string;
           content?: string;
+          error?: string;
         };
 
         if (seq !== requestSeqRef.current) return;
+
+        if (data.error) {
+          throw new Error(data.error);
+        }
+
+        const isBasicallyEnglish =
+          langCode !== 'hinglish' &&
+          data.title === article.title &&
+          data.content === sourceHtml;
+
+        if (isBasicallyEnglish) {
+          throw new Error('Translation server returned original language');
+        }
 
         const payload: TranslatedArticleData = {
           title: data.title || article.title,
@@ -377,11 +397,12 @@ export default function GudTreeArticleView({
 
         setTranslated(payload);
         setIsTranslating(false);
+        setTranslateError('');
       } catch (err) {
         if ((err as Error)?.name === 'AbortError') return;
         if (seq !== requestSeqRef.current) return;
         setIsTranslating(false);
-        setTranslateError('Could not translate right now.');
+        setTranslateError('Translation service is temporarily busy. Click to retry.');
       }
     },
     [article.slug, article.title, rawLeadExcerpt, sourceHtml]
@@ -793,16 +814,29 @@ export default function GudTreeArticleView({
 
             {/* Translation Error Notice (only if failed) */}
             {translateError && !isTranslating && (
-              <div className="mt-3 px-4 py-2 rounded-[12px] bg-[#FFF0EA] border border-[#DA440D]/30 text-[#DA440D] text-[13px] font-medium flex items-center justify-between">
+              <div className="mt-3 px-4 py-2.5 rounded-[12px] bg-[#FFF0EA] border border-[#DA440D]/30 text-[#DA440D] text-[13px] font-medium flex flex-wrap items-center justify-between gap-2">
                 <span>{translateError}</span>
-                <button
-                  type="button"
-                  onClick={() => fetchTranslation(selectedLang)}
-                  className="inline-flex items-center gap-1 font-bold hover:underline cursor-pointer"
-                >
-                  <RotateCcw className="w-3.5 h-3.5" />
-                  <span>Retry</span>
-                </button>
+                <div className="flex items-center gap-3">
+                  <button
+                    type="button"
+                    onClick={() => fetchTranslation(selectedLang)}
+                    className="inline-flex items-center gap-1 font-bold text-[#DA440D] hover:underline cursor-pointer"
+                  >
+                    <RotateCcw className="w-3.5 h-3.5" />
+                    <span>Retry</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setSelectedLang('en');
+                      setTranslated(null);
+                      setTranslateError('');
+                    }}
+                    className="font-bold text-[#102A56] hover:underline cursor-pointer text-[12px]"
+                  >
+                    Read in English
+                  </button>
+                </div>
               </div>
             )}
 
@@ -994,9 +1028,21 @@ export default function GudTreeArticleView({
                   borderColor: activeTheme.border,
                 }}
               >
-                {selectedLang !== 'en' && (
+                {isTranslating ? (
                   <div
-                    className="mb-6 px-3.5 py-2 rounded-[12px] border flex flex-wrap items-center justify-between gap-2 text-[12.5px]"
+                    className="mb-6 px-4 py-3 rounded-[14px] border border-[#0944BA]/30 bg-[#D6EDFF]/50 text-[#102A56] flex items-center justify-between gap-3 text-[13px] animate-pulse"
+                  >
+                    <div className="flex items-center gap-2.5">
+                      <Loader2 className="w-4 h-4 text-[#0944BA] animate-spin shrink-0" />
+                      <span className="font-semibold">
+                        Translating article to {activeLangObj.nativeLabel} ({activeLangObj.label})...
+                      </span>
+                    </div>
+                    <span className="text-[11.5px] opacity-75 hidden sm:inline">Takes ~1 second</span>
+                  </div>
+                ) : selectedLang !== 'en' ? (
+                  <div
+                    className="mb-6 px-3.5 py-2.5 rounded-[12px] border flex flex-wrap items-center justify-between gap-2 text-[12.5px]"
                     style={{
                       backgroundColor: activeTheme.isDark
                         ? 'rgba(229,243,109,0.08)'
@@ -1012,13 +1058,17 @@ export default function GudTreeArticleView({
                     </span>
                     <button
                       type="button"
-                      onClick={() => setSelectedLang('en')}
+                      onClick={() => {
+                        setSelectedLang('en');
+                        setTranslated(null);
+                        setTranslateError('');
+                      }}
                       className="font-bold text-[#0944BA] hover:underline cursor-pointer"
                     >
                       Switch to English
                     </button>
                   </div>
-                )}
+                ) : null}
 
                 {/* Prose Body */}
                 <div

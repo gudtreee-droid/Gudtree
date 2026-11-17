@@ -16,6 +16,7 @@ export const READER_LANGUAGES: ReaderLanguage[] = [
   { code: 'gu', label: 'Gujarati', nativeLabel: 'ગુજરાતી', shortCode: 'GU' },
   { code: 'kn', label: 'Kannada', nativeLabel: 'ಕನ್ನಡ', shortCode: 'KN' },
   { code: 'pa', label: 'Punjabi', nativeLabel: 'ਪੰਜਾਬੀ', shortCode: 'PA' },
+  { code: 'ml', label: 'Malayalam', nativeLabel: 'മലയാളം', shortCode: 'ML' },
 ];
 
 export function isSupportedLang(code: string): boolean {
