@@ -103,19 +103,19 @@ const QUICK_DIET_PILLS = [
   {
     top: 'LOW GI',
     bottom: '< 45',
-    href: '#patient-care',
+    href: '#health-goals',
     conditionId: 'diabetes',
   },
   {
     top: '150 KCAL',
     bottom: 'SWAPS',
-    href: '#patient-care',
+    href: '#health-goals',
     conditionId: 'weight',
   },
   {
     top: 'ZERO',
     bottom: 'PALM OIL',
-    href: '#patient-care',
+    href: '#health-goals',
     conditionId: 'packed',
   },
 ];
@@ -127,7 +127,7 @@ export default function CuratedNeedsAndGuidesBand({
 }) {
   const jumpToCondition = (id: string) => {
     onSelectCondition(id);
-    const el = document.getElementById('patient-care');
+    const el = document.getElementById('health-goals');
     if (el) {
       el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }

@@ -3,7 +3,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Bookmark, Star, X, BookOpen } from 'lucide-react';
+import { Bookmark, Clock, X, BookOpen } from 'lucide-react';
 import { Article } from '@/types';
 import { getBlogUrl } from '@/lib/blogUrl';
 import { normalizeCatName, formatNfDate } from '@/lib/newsflashFormat';
@@ -88,15 +88,14 @@ function UnifiedCleanBlogCard({
         />
       </Link>
 
-      <div className="mt-auto pt-1 flex items-center gap-1.5 text-[11.5px] font-medium text-[#334155]">
-        <span className="inline-flex items-center gap-0.5 font-semibold text-[#15803D]">
-          <Star className="w-3 h-3 fill-[#15803D] text-[#15803D]" />
-          {meta.rating}
+      <div className="mt-auto pt-1 flex items-center justify-between text-[11.5px] font-medium text-[#334155]">
+        <span className="inline-flex items-center gap-1 text-[#0944BA] font-semibold">
+          <Clock className="w-3 h-3" />
+          <span>{article.readTime || meta.mins}</span>
         </span>
-        <span className="text-[#999999]">•</span>
-        <span>{article.readTime || meta.mins}</span>
-        <span className="text-[#999999]">•</span>
-        <span className="truncate">{formatNfDate(article.date)}</span>
+        <span className="text-[10.5px] font-semibold text-[#15803D] bg-[#EAF7EE] px-2 py-0.5 rounded-full">
+          Clean Swap
+        </span>
       </div>
     </article>
   );
@@ -196,15 +195,15 @@ export default function GudTreeHomeView({ articles }: { articles: Article[] }) {
           >
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFFFFF] border-2 border-[#14181E] shadow-[0_3px_0_#14181E] text-[10.5px] sm:text-[11px] font-bold uppercase tracking-[0.06em] text-[#102A56] mb-2.5 sm:mb-3">
               <BookOpen className="w-3.5 h-3.5 text-[#DA440D]" />
-              <span>Healthy Food, Clean Snacks &amp; Diet Blog</span>
+              <span>India's Clean Snacking &amp; Nutrition Guide</span>
             </div>
 
             <h1 className="gt-hero-comic-title text-[30px] sm:text-[46px] lg:text-[54px]">
-              READ CLEAN. EAT GOOD.
+              READ CLEAN. SNACK HONEST.
             </h1>
 
             <p className="mt-1.5 sm:mt-2 text-[13.5px] sm:text-[15.5px] font-medium text-[#FFFFFF] leading-[1.42] max-w-xl drop-shadow-[0_1px_2px_rgba(16,42,86,0.22)]">
-              Honest blogs and practical info strictly about healthy snacks, clean home diets, and wholesome eating.
+              We audit packed Indian snacks, expose hidden sugars &amp; palm oil, and find healthy swaps your family will actually love.
             </p>
 
             {/* 4 Real-Blinking 3D Animated Characters (Eating, Reading, Exercising vs Junk Fatigue) */}
@@ -276,7 +275,7 @@ export default function GudTreeHomeView({ articles }: { articles: Article[] }) {
       {/* BAND 6: CATEGORY 1 — CENTERED HEADER + UNIFIED CLEAN BLOG CARDS */}
       {snacksCategoryArticles.length > 0 && (
         <section
-          id="patient-care"
+          id="health-goals"
           className="w-full max-w-full overflow-x-clip bg-[#FFFFFF] py-12 sm:py-16 scroll-mt-20 border-b border-[#ADC3DE]/35"
         >
           <div className="max-w-[1060px] mx-auto px-4 sm:px-5">
@@ -284,8 +283,8 @@ export default function GudTreeHomeView({ articles }: { articles: Article[] }) {
             <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
               <span className="inline-block px-3 py-1 rounded-full bg-[#EEF4FF] text-[#2F54EB] text-[11px] font-bold uppercase tracking-[0.1em] mb-2.5">
                 {selectedCondition !== 'all' && activeConditionMeta
-                  ? `Filtered Focus • ${activeConditionMeta.giFocus}`
-                  : 'Category Shelf • Healthy Snacking'}
+                  ? `Curated Focus • ${activeConditionMeta.giFocus}`
+                  : 'Clean Pantry • Healthy Snacking'}
               </span>
               <h2 className="gt-font-display text-[28px] sm:text-[36px] lg:text-[40px] leading-[1.08] tracking-[-0.025em] text-[#102A56]">
                 {selectedCondition !== 'all' && activeConditionMeta
@@ -295,7 +294,7 @@ export default function GudTreeHomeView({ articles }: { articles: Article[] }) {
               <p className="mt-2 text-[14.5px] sm:text-[15.5px] text-[#334155] leading-[1.5]">
                 {selectedCondition !== 'all' && activeConditionMeta
                   ? activeConditionMeta.hinglishHint
-                  : 'Roasted makhana, millet crunch, and zero-palm-oil alternatives tested for daily snacking.'}
+                  : 'Roasted makhana, millet crunch, and zero-palm-oil alternatives tested for daily tea-time.'}
               </p>
 
               {selectedCondition !== 'all' && (
@@ -330,7 +329,7 @@ export default function GudTreeHomeView({ articles }: { articles: Article[] }) {
                 href="/category/clean-snacks"
                 className="w-full sm:w-auto sm:min-w-[300px] h-11 px-8 rounded-full bg-[#EEF4FF] hover:bg-[#DCE8FF] text-[#2F54EB] text-[14px] font-bold inline-flex items-center justify-center gap-1.5 no-underline transition-colors"
               >
-                <span>See All Snack Guides</span>
+                <span>Explore Clean Snack Swaps</span>
                 <span aria-hidden="true">&raquo;</span>
               </Link>
             </div>
@@ -344,10 +343,10 @@ export default function GudTreeHomeView({ articles }: { articles: Article[] }) {
           <div className="max-w-[1060px] mx-auto px-4 sm:px-5">
             <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
               <span className="inline-block px-3 py-1 rounded-full bg-[#FFFFFF] border border-[#ADC3DE]/60 text-[#DA440D] text-[11px] font-bold uppercase tracking-[0.1em] mb-2.5">
-                Category Shelf • Diet &amp; Gut Wellness
+                Daily Nutrition • Gut Wellness &amp; Diets
               </span>
               <h2 className="gt-font-display text-[28px] sm:text-[36px] lg:text-[40px] leading-[1.08] tracking-[-0.025em] text-[#102A56]">
-                Gut Health &amp; Patient Diet Guides
+                Gut Health &amp; Daily Diet Guides
               </h2>
               <p className="mt-2 text-[14.5px] sm:text-[15.5px] text-[#334155] leading-[1.55]">
                 Practical probiotic foods, low-GI meal ordering hacks, and label audits for Indian families.
@@ -372,7 +371,7 @@ export default function GudTreeHomeView({ articles }: { articles: Article[] }) {
                 href="/category/gut-health"
                 className="w-full sm:w-auto sm:min-w-[300px] h-11 px-8 rounded-full bg-[#102A56] hover:bg-[#DA440D] text-[#FFFFFF] text-[14px] font-semibold inline-flex items-center justify-center gap-1.5 no-underline transition-colors shadow-sm"
               >
-                <span>See All Gut &amp; Diet Guides</span>
+                <span>Explore Gut &amp; Digestion Swaps</span>
                 <span aria-hidden="true">&raquo;</span>
               </Link>
             </div>

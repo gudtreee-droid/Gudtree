@@ -154,7 +154,7 @@ export default function ContactClient() {
                     <option value="Nutritionist Pitch">Nutritionist &amp; Dietitian Pitch</option>
                     {categories.map((cat) => (
                       <option key={cat.slug} value={cat.name}>
-                        {cat.name} Shelf
+                        {cat.name}
                       </option>
                     ))}
                   </select>

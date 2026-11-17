@@ -62,7 +62,7 @@ export default function GudTreeFooter() {
 
   const mainLinks = [
     { label: 'Home', href: '/' },
-    { label: 'All Guides', href: '/news' },
+    { label: 'All Guides', href: '/category/clean-snacks' },
     { label: 'Topics', href: '/category' },
     { label: 'Write for Us', href: '/write-for-us' },
     { label: 'Contact', href: '/contact' },
@@ -127,11 +127,11 @@ export default function GudTreeFooter() {
 
           {/* Crisp Stroke-Free Sunday Crumb Headline */}
           <h2 className="gt-font-display text-[34px] sm:text-[46px] lg:text-[52px] leading-[1.0] tracking-[-0.03em] text-[#FFFFFF]">
-            Eat Clean. Snack Smart.
+            Eat Clean. Snack Honest.
           </h2>
 
           <p className="mt-3 text-[15px] sm:text-[16px] font-medium text-[#FFFFFF]/92 max-w-xl leading-[1.55]">
-            Honest Indian snack audits, clean home diet swaps, and wholesome ingredient guides every week.
+            Honest Indian snack audits, clean home diet swaps, and decoded ingredient guides every week.
           </p>
 
           {/* Clean Newsletter Pill */}
@@ -139,7 +139,7 @@ export default function GudTreeFooter() {
             {subscribed ? (
               <div className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-[#FFFFFF] border border-[#102A56]/15 text-[#102A56] text-[13.5px] font-bold shadow-md">
                 <CheckCircle2 className="w-4 h-4 text-[#15803D] shrink-0" />
-                <span>Welcome! Weekly clean snack swaps coming soon.</span>
+                <span>Welcome! Weekly clean snack audits coming to your inbox.</span>
               </div>
             ) : (
               <form
@@ -151,14 +151,14 @@ export default function GudTreeFooter() {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email for diet swaps..."
+                  placeholder="Enter your email (e.g. rahul@gmail.com)..."
                   className="flex-1 min-w-0 bg-transparent px-4 py-2.5 text-[16px] sm:text-[14px] text-[#102A56] placeholder:text-[#526071] focus:outline-none"
                 />
                 <button
                   type="submit"
                   className="shrink-0 inline-flex items-center gap-1.5 px-5 min-h-[44px] sm:min-h-0 sm:h-10 rounded-full bg-[#102A56] hover:bg-[#DA440D] text-[#FFFFFF] text-[13.5px] font-semibold transition-colors cursor-pointer"
                 >
-                  <span>Join Free</span>
+                  <span>Get Free Audits</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </button>
               </form>
@@ -206,16 +206,12 @@ export default function GudTreeFooter() {
           {/* Bottom Strip */}
           <div className="w-full pt-5 border-t border-[#FFFFFF]/25 flex flex-col sm:flex-row items-center justify-center sm:justify-between gap-2 text-[12px] font-medium text-[#FFFFFF]/90">
             <div>
-              &copy;{' '}
-              <Link href="/admin" className="text-inherit hover:text-[#E5F36D] no-underline">
-                2026
-              </Link>{' '}
-              GudTree. Clean Indian Snacking &amp; Honest Food Info.
+              &copy; 2026 GudTree. Clean Indian Snacking &amp; Honest Food Audits.
             </div>
             <div className="flex items-center gap-3">
-              <span>Zero Palm Oil Promise</span>
+              <span>Zero Palm Oil Audits</span>
               <span className="w-1.5 h-1.5 rounded-full bg-[#E5F36D]" />
-              <span>0g Refined Sugar</span>
+              <span>No Hidden Maltodextrin</span>
             </div>
           </div>
         </div>

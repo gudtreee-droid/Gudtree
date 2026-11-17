@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import { useSearchParams, usePathname } from 'next/navigation';
-import { Search, X, Bookmark, Star, BookOpen } from 'lucide-react';
+import { Search, X, Bookmark, Clock, BookOpen } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Article, Category } from '@/types';
 import { CATEGORIES as INITIAL_CATEGORIES } from '@/data/categories';
@@ -373,15 +373,13 @@ export default function GudTreeArchiveClient({
                       )}
 
                       <div className="mt-auto pt-1.5 sm:pt-2 sm:border-t sm:border-[#ADC3DE]/30 flex items-center justify-between text-[11.5px] sm:text-[12px] font-medium text-[#526071]">
-                        <span className="inline-flex items-center gap-1 font-semibold text-[#15803D]">
-                          <Star className="w-3 h-3 fill-[#15803D] text-[#15803D]" />
-                          {meta.rating}
-                          <span className="text-[#94A3B8] font-normal">•</span>
-                          <span className="text-[#526071] font-normal">
-                            {article.readTime || meta.mins}
-                          </span>
+                        <span className="inline-flex items-center gap-1 font-semibold text-[#0944BA]">
+                          <Clock className="w-3 h-3" />
+                          <span>{article.readTime || meta.mins}</span>
                         </span>
-                        <span className="hidden xs:inline sm:inline">{formatNfDate(article.date)}</span>
+                        <span className="text-[10px] sm:text-[10.5px] font-semibold text-[#15803D] bg-[#EAF7EE] px-2 py-0.5 rounded-full">
+                          Clean Guide
+                        </span>
                       </div>
                     </div>
                   </motion.article>
@@ -396,7 +394,7 @@ export default function GudTreeArchiveClient({
                   onClick={() => setVisibleCount((prev) => prev + 12)}
                   className="px-7 py-3 rounded-full bg-[#102A56] hover:bg-[#DA440D] text-[#E5F36D] hover:text-white text-[14px] font-bold transition-colors cursor-pointer shadow-sm"
                 >
-                  Show More Blogs ({filteredArticles.length - visibleCount} remaining)
+                  Show More Guides ({filteredArticles.length - visibleCount} remaining)
                 </button>
               </div>
             )}

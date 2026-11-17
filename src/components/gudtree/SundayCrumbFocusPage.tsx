@@ -634,8 +634,8 @@ export default function SundayCrumbFocusPage({
                     />
                   </Link>
 
-                  <div className="mt-auto text-[12px] text-[#334155]">
-                    {article.readTime || mins} • {formatNfDate(article.date)}
+                  <div className="mt-auto text-[12px] font-medium text-[#0944BA]">
+                    {article.readTime || mins}
                   </div>
                 </article>
               );

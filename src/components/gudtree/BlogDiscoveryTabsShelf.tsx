@@ -13,7 +13,7 @@ import {
   Bookmark,
   ChevronLeft,
   ChevronRight,
-  Star,
+  Clock,
 } from 'lucide-react';
 import { Article } from '@/types';
 import { getBlogUrl } from '@/lib/blogUrl';
@@ -464,13 +464,14 @@ export default function BlogDiscoveryTabsShelf({
                   </Link>
 
                   {/* Single Clean Bottom Meta Line */}
-                  <div className="mt-auto flex items-center gap-1.5 text-[11px] sm:text-[12px] font-medium text-[#526071]">
-                    <span className="inline-flex items-center gap-0.5 font-semibold text-[#15803D]">
-                      <Star className="w-3 h-3 fill-[#15803D] text-[#15803D]" />
-                      {meta.rating}
+                  <div className="mt-auto flex items-center justify-between text-[11px] sm:text-[12px] font-medium text-[#526071]">
+                    <span className="inline-flex items-center gap-1 text-[#0944BA] font-semibold">
+                      <Clock className="w-3 h-3" />
+                      <span>{article.readTime || meta.mins}</span>
                     </span>
-                    <span className="text-[#94A3B8]">•</span>
-                    <span className="truncate">{article.readTime || meta.mins}</span>
+                    <span className="text-[10px] sm:text-[10.5px] font-semibold text-[#15803D] bg-[#EAF7EE] px-2 py-0.5 rounded-full">
+                      Clean Swap
+                    </span>
                   </div>
                 </article>
               );

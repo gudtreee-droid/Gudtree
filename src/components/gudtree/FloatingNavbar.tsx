@@ -89,10 +89,10 @@ export default function FloatingNavbar() {
 
   const navLinks = [
     { label: 'Home', href: '/' },
-    { label: 'Snack Guides', href: '/news' },
-    { label: 'Patient Care', href: '/#patient-care' },
+    { label: 'Snack Audits', href: '/category/clean-snacks' },
+    { label: 'Health Goals', href: '/#health-goals' },
     { label: 'Topics', href: '/category' },
-    { label: 'Get in touch', href: '/contact' },
+    { label: 'Contact', href: '/contact' },
   ];
 
   return (
@@ -237,7 +237,7 @@ export default function FloatingNavbar() {
                         <div className="flex items-center gap-2 text-[10.5px] font-bold uppercase tracking-wider text-[#0944BA] mb-1">
                           <span>{normalizeCatName(art.category)}</span>
                           <span className="text-[#999999] font-normal">
-                            • {formatNfDate(art.date)}
+                            • {art.readTime || '4 min read'}
                           </span>
                         </div>
                         <EditorialTitle

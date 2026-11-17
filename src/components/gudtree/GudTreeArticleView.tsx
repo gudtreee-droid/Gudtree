@@ -848,40 +848,17 @@ export default function GudTreeArticleView({
 
                 {/* Clean Minimal Inline Meta Row */}
                 <div
-                  className="pt-2 flex flex-wrap items-center gap-x-5 gap-y-2 text-[13px] font-medium"
+                  className="pt-2 flex flex-wrap items-center gap-x-4 gap-y-2 text-[13px] font-medium"
                   style={{ color: activeTheme.muted }}
                 >
-                  <div className="flex items-center gap-2">
-                    <div className="w-7 h-7 rounded-full bg-[#102A56] text-[#E5F36D] gt-font-display text-[12px] flex items-center justify-center shrink-0">
-                      {article.authorAvatar ? (
-                        <img
-                          src={article.authorAvatar}
-                          alt={authorName}
-                          className="w-full h-full rounded-full object-cover"
-                        />
-                      ) : (
-                        authorInitial || <User className="w-3.5 h-3.5" />
-                      )}
-                    </div>
-                    <span itemProp="author" className="font-semibold" style={{ color: activeTheme.text }}>
-                      {authorName}
-                    </span>
-                  </div>
-
-                  <span className="opacity-35">&bull;</span>
-
-                  <span className="inline-flex items-center gap-1.5">
-                    <Calendar className="w-3.5 h-3.5 text-[#DA440D]" />
-                    <time dateTime={article.date} itemProp="datePublished">
-                      {formatNfDate(article.date)}
-                    </time>
-                  </span>
-
-                  <span className="opacity-35">&bull;</span>
-
                   <span className="inline-flex items-center gap-1.5">
                     <Clock className="w-3.5 h-3.5 text-[#0944BA]" />
                     <span>{article.readTime || '4 min read'}</span>
+                  </span>
+                  <span className="opacity-35">&bull;</span>
+                  <span className="inline-flex items-center gap-1 text-[#15803D] font-semibold">
+                    <ShieldCheck className="w-3.5 h-3.5" />
+                    <span>Verified Clean Guide</span>
                   </span>
                 </div>
               </div>
@@ -1064,14 +1041,14 @@ export default function GudTreeArticleView({
                   <ShieldCheck className="w-5 h-5 text-[#0944BA] shrink-0 mt-0.5" />
                   <div className="text-[13.5px] leading-relaxed">
                     <strong className="block mb-0.5 font-semibold">
-                      {siteName} Nutrition &amp; Patient Advisory
+                      {siteName} Nutrition Advisory
                     </strong>
                     <span
                       style={{
                         color: activeTheme.isDark ? activeTheme.muted : '#334155',
                       }}
                     >
-                      Our blogs focus on honest snack labels, clean pantry swaps, and everyday good eating. For personal medical conditions, please consult a qualified nutritionist or doctor.
+                      Our guides focus on honest snack labels, clean pantry swaps, and everyday good eating. For personal health advice, please consult a qualified dietitian or doctor.
                     </span>
                   </div>
                 </div>
@@ -1305,9 +1282,7 @@ export default function GudTreeArticleView({
                           className="flex items-center gap-2 text-[11px] font-semibold"
                           style={{ color: activeTheme.muted }}
                         >
-                          <span>{formatNfDate(rel.date)}</span>
-                          <span>&bull;</span>
-                          <span className="shrink-0">{rel.readTime || '4 min read'}</span>
+                          <span className="shrink-0 text-[#0944BA]">{rel.readTime || '4 min read'}</span>
                         </div>
 
                         <Link

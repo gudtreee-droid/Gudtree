@@ -131,11 +131,11 @@ export function GudTreeStoryCard({
         )}
 
         <div className="mt-auto pt-3 border-t border-[#ADC3DE]/40 flex items-center justify-between text-[12.5px] text-[#334155]">
-          <span className="font-semibold text-[#102A56] truncate max-w-[150px]">
-            {article.author || 'GudTree Nutrition'}
+          <span className="font-semibold text-[#102A56]">
+            Clean Snack Guide
           </span>
-          <span className="gt-font-mono text-[11px] text-[#999999]">
-            {formatNfDate(article.date)}
+          <span className="gt-font-mono text-[11px] text-[#0944BA]">
+            {article.readTime || '4 min read'}
           </span>
         </div>
       </Link>
