@@ -120,7 +120,7 @@ export function buildArticleJsonLd(article: Article, articleUrl: string) {
     '@context': 'https://schema.org',
     '@graph': [
       {
-        '@type': 'NewsArticle',
+        '@type': ['Article', 'MedicalWebPage'],
         '@id': `${articleUrl}#article`,
         isPartOf: {
           '@type': 'WebSite',
@@ -137,6 +137,8 @@ export function buildArticleJsonLd(article: Article, articleUrl: string) {
         ],
         datePublished: isoDate,
         dateModified: isoDate,
+        inLanguage: 'en-IN',
+        isAccessibleForFree: true,
         mainEntityOfPage: {
           '@type': 'WebPage',
           '@id': articleUrl,
@@ -145,10 +147,8 @@ export function buildArticleJsonLd(article: Article, articleUrl: string) {
         keywords: keywordList,
         author: [
           {
-            '@type': 'Person',
-            name: article.author || `${siteConfig.name} Editorial Team`,
-            jobTitle: article.authorRole || 'Editor',
-            image: article.authorAvatar,
+            '@type': 'Organization',
+            name: `${siteConfig.name} Editorial Team`,
             url: `${baseUrl}/write-for-us`,
           },
         ],
@@ -157,6 +157,10 @@ export function buildArticleJsonLd(article: Article, articleUrl: string) {
           '@id': `${baseUrl}/#organization`,
           name: siteConfig.name,
           url: baseUrl,
+          logo: {
+            '@type': 'ImageObject',
+            url: `${baseUrl}/images/gudtree-logo.png`,
+          },
         },
       },
       {
@@ -173,6 +177,22 @@ export function buildArticleJsonLd(article: Article, articleUrl: string) {
           { '@type': 'ListItem', position: 3, name: article.title, item: articleUrl },
         ],
       },
+      ...(article.sections && article.sections.length >= 2
+        ? [
+            {
+              '@type': 'FAQPage',
+              '@id': `${articleUrl}#faq`,
+              mainEntity: article.sections.map((sec) => ({
+                '@type': 'Question',
+                name: sec.heading,
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: sec.content,
+                },
+              })),
+            },
+          ]
+        : []),
     ],
   };
 }

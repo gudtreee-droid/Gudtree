@@ -11,14 +11,14 @@ import FaviconManager from '@/components/FaviconManager';
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+    process.env.NEXT_PUBLIC_SITE_URL || 'https://www.gudtree.in'
   ),
   title: {
     default: 'GudTree | Clean Eating, Healthy Snacking & Nutrition for India',
     template: '%s | GudTree',
   },
   description:
-    'GudTree is India’s premier clean snacking and nutrition publication, delivering honest packed food audits, desi diet frameworks, and patient-safe wellness guides.',
+    'GudTree is India’s premier clean snacking and nutrition publication, delivering honest packed food audits, desi diet frameworks, and health-first wellness guides.',
   keywords: [
     'GudTree',
     'Healthy Snacking',
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     'Weight Loss Snacks India',
     'Zero Palm Oil Snacks',
   ],
-  authors: [{ name: 'GudTree Editorial Team', url: 'http://localhost:3000' }],
+  authors: [{ name: 'GudTree Editorial Team', url: 'https://www.gudtree.in' }],
   creator: 'GudTree',
   publisher: 'GudTree',
   applicationName: 'GudTree',
@@ -51,8 +51,8 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'GudTree | Clean Eating, Healthy Snacking & Nutrition for India',
     description:
-      'GudTree is India’s premier clean snacking and nutrition publication, delivering honest packed food audits, desi diet frameworks, and patient-safe wellness guides.',
-    url: 'http://localhost:3000',
+      'GudTree is India’s premier clean snacking and nutrition publication, delivering honest packed food audits, desi diet frameworks, and health-first wellness guides.',
+    url: 'https://www.gudtree.in',
     siteName: 'GudTree',
     images: [
       {
@@ -69,13 +69,15 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'GudTree | Clean Eating, Healthy Snacking & Nutrition for India',
     description:
-      'GudTree is India’s premier clean snacking and nutrition publication, delivering honest packed food audits, desi diet frameworks, and patient-safe wellness guides.',
+      'GudTree is India’s premier clean snacking and nutrition publication, delivering honest packed food audits, desi diet frameworks, and health-first wellness guides.',
     site: '@gudtree',
     creator: '@gudtree',
     images: ['/icon.png'],
   },
   verification: {
-    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || '',
+    google:
+      process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ||
+      't9na2oTjNEA-Mnwuiyo_dsyflp-do8ND3iAhF4KAMVY',
   },
   robots: {
     index: true,
@@ -93,25 +95,36 @@ export const metadata: Metadata = {
 const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  '@id': 'http://localhost:3000/#organization',
+  '@id': 'https://www.gudtree.in/#organization',
   name: 'GudTree',
-  url: 'http://localhost:3000/',
-  logo: 'http://localhost:3000/images/gudtree-logo.png',
+  url: 'https://www.gudtree.in/',
+  logo: 'https://www.gudtree.in/icon.png',
   description:
-    'GudTree is India’s premier healthy eating and snacking publication, delivering honest nutrition guides, clean snacking reviews, and patient-safe diet frameworks.',
+    'GudTree is India’s premier healthy eating and snacking publication, delivering honest nutrition guides, clean snacking reviews, and health-first diet frameworks.',
+  sameAs: [
+    'https://twitter.com/gudtree',
+    'https://www.instagram.com/gudtree',
+    'https://www.linkedin.com/company/gudtree',
+    'https://www.youtube.com/@gudtree',
+  ],
 };
 
 const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
-  '@id': 'http://localhost:3000/#website',
-  url: 'http://localhost:3000/',
+  '@id': 'https://www.gudtree.in/#website',
+  url: 'https://www.gudtree.in/',
   name: 'GudTree',
   description: 'Clean Eating, Healthy Snacking & Nutrition for India.',
   publisher: {
-    '@id': 'http://localhost:3000/#organization',
+    '@id': 'https://www.gudtree.in/#organization',
   },
   inLanguage: 'en-IN',
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: 'https://www.gudtree.in/category?q={search_term_string}',
+    'query-input': 'required name=search_term_string',
+  },
 };
 
 export default function RootLayout({
