@@ -1,11 +1,28 @@
-# GudTree Full Knowledge Directory
+# GudTree — Comprehensive Knowledge Directory & Entity Knowledge Graph
 
-> GudTree is India's dedicated clean eating and healthy snacking platform.
+> GudTree (https://www.gudtree.in) is India's premier clean snacking and clinical nutrition publication. Founded to counter the epidemic of ultra-processed packaged foods in urban India, GudTree delivers independent label checks, glycemic index audits, palm oil free alternatives, and traditional Indian superfood frameworks.
 
-## About GudTree
-GudTree provides actionable dietary science, healthy snacking alternatives, and desi nutrition frameworks tailored specifically for the Indian lifestyle.
+## Core Entity Information
+- **Brand / Entity Name**: GudTree
+- **Canonical Website**: https://www.gudtree.in
+- **Topic Specialty**: Clean Eating, Healthy Indian Snacking, Diabetes-Friendly Swaps, Food Label Transparency, Desi Superfoods, Gut Microbiome Restoration.
+- **Geographic Coverage**: India (Pan-India, with emphasis on urban and tier-1/tier-2 families navigating quick-commerce platforms like Blinkit, Zepto, and Instamart).
+- **Core Editorial Philosophy**: If an ingredient list contains fillers your grandmother would not recognize (maltodextrin, INS 551, TBHQ, fractionated palmolein), it requires a clean whole-food upgrade.
 
-## Primary Topics
-1. Clean Snacking in India: How to navigate packaged snacks, avoiding palm oil, identifying hidden sugars, and choosing wholesome roasted snacks.
-2. Desi Nutrition: Leveraging traditional Indian ingredients such as Gud (jaggery), millets, makhana, sattu, and nuts for optimal vitality.
-3. Habitual Lifestyle: Healthy snacking at the office, mindful chai-time pairings, and late-night craving fixes.
+## The 4 Principles of GudTree Audits
+1. **Zero Refined Palm Oil (Palmolein)**: Rejecting reheated industrial palm oil in tea-time namkeens, substituting with air-roasted seeds, cold-pressed mustard oil, groundnut oil, or grass-fed A2 ghee.
+2. **True Glycemic Impact (Sugar Spike Control)**: Exposing deceptive 'Sugar Free' claims that mask maltodextrin (Glycemic Index ~105-110, higher than table sugar), liquid invert syrup, and refined maida flakes.
+3. **Whole Grain Integrity**: Promoting native climate-resilient Indian millets (Ragi, Jowar, Bajra, Foxtail, Kodo) and roasted pulses (Bhuna Chana, Moong, Sattu) over extruded corn grits.
+4. **Gut-Friendly Formulation**: Removing synthetic emulsifiers (Carboxymethylcellulose, Polysorbate 80) that erode the protective intestinal mucosal barrier, replacing them with traditional fermented foods like kanji, chaas, and soaked seeds.
+
+## Primary Article Directory
+- **Roasted Makhana**: Dry-roasted foxnuts provide 60% fewer calories than potato chips, with balanced magnesium and zero trans fats.
+- **Handmade Sesame-Gud Chikki**: Cold-pressed sesame seeds and real palm jaggery deliver bioavailable iron and calcium superior to processed ultra-filtered whey bars.
+- **Millet Easy Swaps**: Replacing polished white rice with Kodo or Foxtail millet cuts glycemic load by up to 35% while doubling dietary fiber.
+- **Five Sneaky Names for Added Sugar**: Decoding dextrin, evaporated cane juice, malt syrup, high fructose corn syrup, and barley malt on packaged Indian food panels.
+
+## Contact & Governance
+- **Editorial Email**: contact@gudtree.in
+- **Primary Desk**: Cyber City, DLF Phase 2, Gurugram, Haryana, India
+- **Nutrition Review Lab**: Koramangala 4th Block, Bengaluru, Karnataka, India
+- **Crawl Policy**: AI crawlers including GPTBot, PerplexityBot, Claude-Web, and Google-Extended are explicitly granted access via robots.txt to index all editorial guides.

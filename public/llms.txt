@@ -1,19 +1,30 @@
-# GudTree
+# GudTree — Clean Eating, Healthy Snacking & Nutrition for India
 
-> GudTree is India's premier digital publication covering clean eating, healthy snacking, Indian dietary frameworks, superfoods, and mindful nutrition.
+> GudTree (https://www.gudtree.in) is India's dedicated clean food and healthy snacking publication. GudTree provides independent back-of-pack food label audits, diabetes & low-GI diet swaps, zero-palm-oil recommendations, gut-friendly desi nutrition guides, and patient-safe dietary frameworks for Indian households.
 
-## Core Editorial Pillars
+## Core Editorial Shelves
 
-- [Healthy Snacking](http://localhost:3000/category/snacking): Clean snacking reviews, roasted makhana, seed mixes, low-calorie namkeens, and guilt-free munching.
-- [Indian Diet & Nutrition](http://localhost:3000/category/diet): Practical desi meal plans, high-protein vegetarian diets, diabetes-friendly options, and balanced thali guides.
-- [Superfoods & Ingredients](http://localhost:3000/category/superfoods): Jaggery (Gud), millets (Ragi, Jowar, Bajra), turmeric, ashwagandha, and desi seeds.
-- [Snack Brand Reviews](http://localhost:3000/category/reviews): Unbiased ingredient audits, palm oil checks, sugar breakdown, and clean label verifications.
-- [Weight Management & Fitness](http://localhost:3000/category/fitness): Portion control strategies, pre/post workout Indian snacks, and sustainable fat loss tips.
+- [Clean Snacks](https://www.gudtree.in/category/clean-snacks): Roasted makhana, roasted chana, millet puffs, oil-free namkeens, and chai-time swaps with zero refined palmolein oil.
+- [Gut Health & Digestion](https://www.gudtree.in/category/gut-health): Desi probiotics, fermented kanji, spiced chaas, prebiotic fibre, emulsifier-free eating, and bloating relief.
+- [Diabetes & Low-GI](https://www.gudtree.in/category/diabetes-low-gi): Low-glycemic Indian snacks (GI < 45), blood sugar spike prevention, meal ordering hacks, and no-maida flour alternatives.
+- [Heart & Liver Care](https://www.gudtree.in/category/heart-liver-care): Zero palm oil snacks, raw walnuts, roasted flaxseeds, low-sodium crunch, and fatty liver kitchen upgrades.
+- [PCOS & Hormones](https://www.gudtree.in/category/pcos-hormones): Seed cycling snacks, cinnamon-spiced almonds, hormone-safe plant proteins, and insulin-balancing snack pairings.
+- [Weight & Protein](https://www.gudtree.in/category/weight-protein): Sattu fuel, roasted paneer lentil bites, 150-calorie snacks, and sustained fat-loss eating plans.
+- [Label Audits](https://www.gudtree.in/category/label-audits): Supermarket packaged food audits decoding hidden maltodextrin, liquid glucose, INS additives, and deceptive front-of-pack health claims.
+- [Desi Pantry](https://www.gudtree.in/category/desi-pantry): Ancient Indian superfoods, finger millet (ragi), sorghum (jowar), unrefined palm jaggery (gud), and cold-pressed kachi ghani oils.
 
-## Key Pages & Information
+## Key Target Health Goals & Focus Hubs
 
-- [Articles Archive](http://localhost:3000/news): Complete searchable directory of nutrition guides and healthy recipes.
-- [Write For Us / Nutritionists](http://localhost:3000/write-for-us): Contributor guidelines for dietitians, food scientists, and wellness writers.
-- [Contact Editorial Desk](http://localhost:3000/contact): Editorial inquiries, brand audits, and nutrition inquiries.
-- [Privacy Policy](http://localhost:3000/privacy): Reader privacy and data governance policies.
-- [Terms of Service](http://localhost:3000/terms): Terms of access and health disclaimer.
+- [Diabetes & Low-GI Hub](https://www.gudtree.in/focus/diabetes): Complete dietary swaps for steady blood glucose without spike crashes.
+- [Heart & Fatty Liver Hub](https://www.gudtree.in/focus/heart): Zero palmolein guide, healthy HDL fats, and liver-clearing Indian meal habits.
+- [Gut Health & Fiber Hub](https://www.gudtree.in/focus/gut): Restoring the Indian microbiome with prebiotic millets and natural probiotic curd cultures.
+- [PCOS Diet Plan Hub](https://www.gudtree.in/focus/pcos): Managing androgen spikes, insulin resistance, and menstrual regularity through clean nutrition.
+- [Weight & Clean Fuel Hub](https://www.gudtree.in/focus/weight): High-protein Indian snack frameworks to stop 4 PM junk binging.
+
+## Guidelines & Contact
+
+- [All Snack Guides Archive](https://www.gudtree.in/category/clean-snacks): Searchable directory of verified clean Indian snack audits.
+- [Write For Us](https://www.gudtree.in/write-for-us): Contributor guidelines for dietitians, nutritionists, and food scientists.
+- [Contact Editorial Desk](https://www.gudtree.in/contact): Direct editorial contact at contact@gudtree.in.
+- [Privacy Policy](https://www.gudtree.in/privacy): Reader privacy and data policies.
+- [Terms & Health Advisory](https://www.gudtree.in/terms): Disclaimer and medical advisory notes.
