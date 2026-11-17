@@ -35,34 +35,34 @@ function ColorLightning({
 
 const NEED_DOMES = [
   {
-    id: 'desk',
-    label: 'Desk Fuel',
-    img: '/images/card-diabetes.png',
-  },
-  {
-    id: 'pcos',
-    label: "Women's Health",
+    id: 'kids',
+    label: 'Kids Tiffin',
     img: '/images/card-pcos.png',
   },
   {
-    id: 'vegan',
-    label: 'Vegan & Plant',
-    img: '/images/card-heart.png',
+    id: 'desk',
+    label: 'Desk & Study',
+    img: '/images/card-diabetes.png',
   },
   {
     id: 'weight',
-    label: 'Budget Protein',
+    label: 'Gym Protein',
     img: '/images/card-weight.png',
   },
   {
-    id: 'gut',
-    label: 'Bloat Relief',
-    img: '/images/card-gut.png',
+    id: 'heart',
+    label: 'Hangover Reset',
+    img: '/images/card-heart.png',
   },
   {
-    id: 'packed',
-    label: 'Label Audits',
-    img: '/images/gudtree-hero-sticker.png',
+    id: 'pcos',
+    label: "Women's Care",
+    img: '/images/card-pcos.png',
+  },
+  {
+    id: 'gut',
+    label: 'Pet Ka Gas',
+    img: '/images/card-gut.png',
   },
 ];
 
@@ -148,9 +148,9 @@ export default function CuratedNeedsAndGuidesBand({
       >
         <div className="max-w-[1060px] mx-auto">
           {/* Header Flanked by Citrus Lime Lightning Bolts */}
-          <div className="flex items-center justify-center gap-3 mb-8 sm:mb-10">
+          <div className="flex items-center justify-center gap-3 mb-6 sm:mb-10">
             <ColorLightning fill="#E5F36D" stroke="#073124" />
-            <h2 className="gt-hero-comic-title text-[28px] sm:text-[38px] lg:text-[42px] text-center tracking-[0.01em]">
+            <h2 className="gt-hero-comic-title text-[21px] sm:text-[36px] lg:text-[40px] text-center tracking-[0.01em]">
               READ BY NEEDS
             </h2>
             <ColorLightning fill="#E5F36D" stroke="#073124" />
@@ -198,9 +198,9 @@ export default function CuratedNeedsAndGuidesBand({
         className="w-full bg-[#FFFFFF] py-10 sm:py-12 px-4 sm:px-6 border-b border-[#ADC3DE]/35"
       >
         <div className="max-w-[1060px] mx-auto">
-          <div className="flex items-center justify-center gap-2.5 mb-7 sm:mb-8">
+          <div className="flex items-center justify-center gap-2.5 mb-6 sm:mb-8">
             <ColorLightning fill="#F59E0B" stroke="#102A56" />
-            <h2 className="gt-font-display text-[24px] sm:text-[32px] leading-[1.1] tracking-[-0.02em] text-[#102A56] text-center">
+            <h2 className="gt-font-display text-[20px] sm:text-[30px] leading-[1.1] tracking-[-0.02em] text-[#102A56] text-center">
               Best guides on clean habits
             </h2>
             <ColorLightning fill="#F59E0B" stroke="#102A56" />
@@ -254,9 +254,9 @@ export default function CuratedNeedsAndGuidesBand({
         }}
       >
         <div className="max-w-[980px] mx-auto">
-          <div className="flex items-center justify-center gap-3 mb-8 sm:mb-10">
+          <div className="flex items-center justify-center gap-3 mb-6 sm:mb-10">
             <ColorLightning fill="#64B5FF" stroke="#102A56" />
-            <h2 className="gt-hero-comic-title text-[28px] sm:text-[38px] lg:text-[42px] text-center tracking-[0.01em]">
+            <h2 className="gt-hero-comic-title text-[21px] sm:text-[36px] lg:text-[40px] text-center tracking-[0.01em]">
               QUICK DIET READS
             </h2>
             <ColorLightning fill="#64B5FF" stroke="#102A56" />

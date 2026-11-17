@@ -280,18 +280,18 @@ export default function GudTreeHomeView({ articles }: { articles: Article[] }) {
         >
           <div className="max-w-[1060px] mx-auto px-4 sm:px-5">
             {/* Centered Header Matching Rest of Site */}
-            <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
-              <span className="inline-block px-3 py-1 rounded-full bg-[#EEF4FF] text-[#2F54EB] text-[11px] font-bold uppercase tracking-[0.1em] mb-2.5">
+            <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-10">
+              <span className="inline-block px-3 py-1 rounded-full bg-[#EEF4FF] text-[#2F54EB] text-[11px] font-bold uppercase tracking-[0.1em] mb-2">
                 {selectedCondition !== 'all' && activeConditionMeta
                   ? `Curated Focus • ${activeConditionMeta.giFocus}`
                   : 'Clean Pantry • Healthy Snacking'}
               </span>
-              <h2 className="gt-font-display text-[28px] sm:text-[36px] lg:text-[40px] leading-[1.08] tracking-[-0.025em] text-[#102A56]">
+              <h2 className="gt-font-display text-[22px] sm:text-[32px] lg:text-[38px] leading-[1.12] tracking-[-0.02em] text-[#102A56]">
                 {selectedCondition !== 'all' && activeConditionMeta
                   ? activeConditionMeta.label
                   : 'Clean Snacks & Smart Swaps'}
               </h2>
-              <p className="mt-2 text-[14.5px] sm:text-[15.5px] text-[#334155] leading-[1.5]">
+              <p className="mt-1.5 text-[13.5px] sm:text-[15px] text-[#334155] leading-[1.5]">
                 {selectedCondition !== 'all' && activeConditionMeta
                   ? activeConditionMeta.hinglishHint
                   : 'Roasted makhana, millet crunch, and zero-palm-oil alternatives tested for daily tea-time.'}
@@ -341,14 +341,14 @@ export default function GudTreeHomeView({ articles }: { articles: Article[] }) {
       {healthCategoryArticles.length > 0 && (
         <section className="w-full max-w-full overflow-x-clip bg-[#FFF9EC] py-12 sm:py-16">
           <div className="max-w-[1060px] mx-auto px-4 sm:px-5">
-            <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
-              <span className="inline-block px-3 py-1 rounded-full bg-[#FFFFFF] border border-[#ADC3DE]/60 text-[#DA440D] text-[11px] font-bold uppercase tracking-[0.1em] mb-2.5">
+            <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-10">
+              <span className="inline-block px-3 py-1 rounded-full bg-[#FFFFFF] border border-[#ADC3DE]/60 text-[#DA440D] text-[11px] font-bold uppercase tracking-[0.1em] mb-2">
                 Daily Nutrition • Gut Wellness &amp; Diets
               </span>
-              <h2 className="gt-font-display text-[28px] sm:text-[36px] lg:text-[40px] leading-[1.08] tracking-[-0.025em] text-[#102A56]">
+              <h2 className="gt-font-display text-[22px] sm:text-[32px] lg:text-[38px] leading-[1.12] tracking-[-0.02em] text-[#102A56]">
                 Gut Health &amp; Daily Diet Guides
               </h2>
-              <p className="mt-2 text-[14.5px] sm:text-[15.5px] text-[#334155] leading-[1.55]">
+              <p className="mt-1.5 text-[13.5px] sm:text-[15px] text-[#334155] leading-[1.55]">
                 Practical probiotic foods, low-GI meal ordering hacks, and label audits for Indian families.
               </p>
             </div>
