@@ -2,60 +2,53 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { XCircle, CheckCircle2, ArrowRight } from 'lucide-react';
-import { GT_EASE } from './MotionPrimitives';
+import { ArrowRight, ArrowRightLeft } from 'lucide-react';
 
 interface SwapItem {
   id: string;
   junkName: string;
-  junkProblem: string;
-  junkStats: string;
+  junkIssue: string;
   cleanName: string;
   cleanBenefit: string;
-  cleanStats: string;
+  savings: string;
   categoryLink: string;
 }
 
 const SWAP_MATRIX: SwapItem[] = [
   {
     id: 'bhujia-makhana',
-    junkName: 'Aloo Bhujia & Packaged Sev',
-    junkProblem: '35% Refined Palm Oil + High Sodium + Acidity Jalan',
-    junkStats: '280 kcal • 18g Bad Fat • Insulin Spike',
+    junkName: 'Packaged Aloo Bhujia',
+    junkIssue: '35% palm oil, excessive sodium & trans fats',
     cleanName: 'Desi Ghee Roasted Makhana',
-    cleanBenefit: 'Zero Palm Oil + Potassium + Pachan Me Halka',
-    cleanStats: '120 kcal • 3g Desi Ghee • GI < 40',
+    cleanBenefit: 'Zero palm oil, high potassium & digestive ease',
+    savings: '120 kcal vs 280 kcal • 0% Palm Oil',
     categoryLink: '/category/clean-snacks',
   },
   {
     id: 'biscuit-chana',
-    junkName: 'Atta / Digestive Biscuits',
-    junkProblem: '60% Maida + Invert Sugar Syrup + Emulsifiers',
-    junkStats: '190 kcal • 12g Hidden Sugar • 4 PM Crash',
-    cleanName: 'Bhuna Chana & 4 Badam',
-    cleanBenefit: 'Natural Slow-Release Fiber + 8g Clean Protein',
-    cleanStats: '110 kcal • 0g Added Sugar • 3-Hr Energy',
+    junkName: 'Digestive & Atta Biscuits',
+    junkIssue: '60% refined maida & hidden invert sugar syrups',
+    cleanName: 'Roasted Chana & 4 Almonds',
+    cleanBenefit: 'Slow-release complex carbs + 8g clean plant protein',
+    savings: 'Zero Added Sugar • 3-Hr Energy',
     categoryLink: '/category/diabetes-low-gi',
   },
   {
     id: 'noodles-chilla',
     junkName: '2-Minute Instant Noodles',
-    junkProblem: 'Flash-Fried Maida + Synthetic MSG + Waxy Coating',
-    junkStats: '340 kcal • Heavy Gut Bloat • Fat Slump',
+    junkIssue: 'Flash-fried maida, wax coatings & MSG slump',
     cleanName: 'Besan Chilla with Paneer',
-    cleanBenefit: 'Zero Maida + Iron + Calcium Se Bhara Tiffin',
-    cleanStats: '180 kcal • 14g Real Protein • High Digestion',
+    cleanBenefit: '14g bioavailable protein + whole chickpea fiber',
+    savings: '180 kcal vs 340 kcal • No Maida',
     categoryLink: '/category/kids-tiffin',
   },
   {
     id: 'energydrink-coconut',
-    junkName: 'Canned Energy Drink / Cola',
-    junkProblem: '32g Liquid Sugar + Synthetic Caffeine Crash',
-    junkStats: '140 kcal • Dehydration • Liver Acid Load',
-    cleanName: 'Nariyal Pani + Sendha Namak',
-    cleanBenefit: 'World Ka Best Natural Electrolyte + Fast Liver Reset',
-    cleanStats: '45 kcal • 400mg Potassium • Instant Hydration',
+    junkName: 'Canned Energy Drinks & Colas',
+    junkIssue: '32g liquid high-fructose corn syrup & chemical crash',
+    cleanName: 'Coconut Water + Rock Salt',
+    cleanBenefit: 'Nature’s pure electrolytes + rapid liver rehydration',
+    savings: '45 kcal • 400mg Potassium',
     categoryLink: '/category/heart-liver-care',
   },
 ];
@@ -63,97 +56,85 @@ const SWAP_MATRIX: SwapItem[] = [
 export default function CleanPlateSwapMatrix() {
   return (
     <section
-      aria-label="Clean Food Swaps Comparison"
-      className="w-full max-w-full overflow-x-clip bg-[#07241A] text-white py-14 sm:py-20 relative overflow-hidden"
-      style={{
-        backgroundImage:
-          'radial-gradient(ellipse at 80% 20%, rgba(229, 243, 109, 0.08) 0%, transparent 60%)',
-      }}
+      aria-label="Smart Food Swaps Comparison"
+      className="w-full max-w-full overflow-x-clip bg-[#FFF9EC] py-10 sm:py-14 border-b border-[#ADC3DE]/35"
     >
       <div className="max-w-[1060px] mx-auto px-4 sm:px-5">
-        {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 text-[#E5F36D] text-[11px] font-bold uppercase tracking-[0.1em] mb-2.5 border border-white/15">
-            <span>Dukan Ka Packet vs GudTree Kitchen Swap</span>
+        {/* Compact Header */}
+        <div className="text-center max-w-2xl mx-auto mb-7 sm:mb-9">
+          <span className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#FFFFFF] border border-[#ADC3DE]/60 text-[#2F54EB] text-[10.5px] sm:text-[11px] font-bold uppercase tracking-[0.08em] mb-2">
+            <ArrowRightLeft className="w-3 h-3 text-[#2F54EB]" />
+            <span>Smart Swaps • Whole-Food Alternatives</span>
           </span>
-          <h2 className="gt-hero-comic-title text-[24px] sm:text-[36px] lg:text-[42px] tracking-[0.01em] text-white">
-            KYA KHANA BAND KAREIN VS KYA SHURU KAREIN
+          <h2 className="gt-font-display text-[22px] sm:text-[30px] lg:text-[34px] leading-[1.12] tracking-[-0.02em] text-[#102A56]">
+            Simple Food Swaps for Everyday Junk
           </h2>
-          <p className="mt-2 text-[14px] sm:text-[15.5px] text-white/80 leading-[1.55]">
-            Har dukan ke packet ka ek sasta, swadisht aur clean desi option hota hai. Dekhiye sidha farak:
+          <p className="mt-1 text-[13px] sm:text-[14.5px] text-[#475569] leading-[1.5]">
+            Trade ultra-processed snacks for clean, pocket-friendly Indian kitchen staples.
           </p>
         </div>
 
-        {/* 4 Side-by-Side Comparison Cards (Grid on desktop, horizontal scroll on mobile) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-          {SWAP_MATRIX.map((item, idx) => (
-            <motion.div
+        {/* Compact 2x2 Grid of Sleek Comparison Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5 sm:gap-4">
+          {SWAP_MATRIX.map((item) => (
+            <div
               key={item.id}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.45, delay: idx * 0.07, ease: GT_EASE }}
-              className="bg-[#0C3527] rounded-[20px] p-4 sm:p-5 border border-white/12 flex flex-col justify-between hover:border-[#E5F36D]/40 transition-colors"
+              className="bg-[#FFFFFF] rounded-[16px] p-3.5 sm:p-4 border border-[#ADC3DE]/40 shadow-[0_4px_16px_-4px_rgba(16,42,86,0.05)] hover:border-[#2F54EB]/50 transition-all flex flex-col justify-between"
             >
-              <div className="flex flex-col gap-3">
-                {/* JUNK ROW (RED TINT) */}
-                <div className="bg-[#2A1515] rounded-[14px] p-3 sm:p-3.5 border border-[#EF4444]/30">
-                  <div className="flex items-center justify-between gap-2 mb-1">
-                    <span className="text-[14.5px] sm:text-[15.5px] font-bold text-[#FCA5A5] flex items-center gap-1.5">
-                      <XCircle className="w-4 h-4 text-[#EF4444] shrink-0" />
-                      <span>{item.junkName}</span>
-                    </span>
-                    <span className="text-[10px] font-bold uppercase tracking-wider bg-[#EF4444]/20 text-[#FCA5A5] px-2 py-0.5 rounded-full">
-                      Avoid
-                    </span>
+              <div className="flex flex-col gap-2.5">
+                {/* Comparison Row */}
+                <div className="flex items-center justify-between gap-2 text-[13px] sm:text-[14px]">
+                  {/* Avoid Side */}
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-1.5 mb-0.5">
+                      <span className="px-1.5 py-0.5 rounded bg-[#FEE2E2] text-[#DC2626] text-[10px] font-bold uppercase">
+                        Avoid
+                      </span>
+                      <span className="font-semibold text-[#64748B] line-through truncate text-[13px] sm:text-[13.5px]">
+                        {item.junkName}
+                      </span>
+                    </div>
+                    <p className="text-[11.5px] text-[#94A3B8] leading-[1.3] truncate">
+                      {item.junkIssue}
+                    </p>
                   </div>
-                  <p className="text-[12.5px] sm:text-[13px] text-[#F87171] leading-[1.4]">
-                    {item.junkProblem}
-                  </p>
-                  <div className="mt-1.5 text-[11px] font-semibold text-white/60">
-                    {item.junkStats}
+
+                  {/* Arrow Indicator */}
+                  <div className="shrink-0 px-1 text-[#2F54EB] font-bold text-[14px]">
+                    &rarr;
+                  </div>
+
+                  {/* Clean Side */}
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-1.5 mb-0.5">
+                      <span className="px-1.5 py-0.5 rounded bg-[#DCFCE7] text-[#15803D] text-[10px] font-bold uppercase">
+                        Clean
+                      </span>
+                      <span className="font-bold text-[#102A56] truncate text-[13px] sm:text-[13.5px]">
+                        {item.cleanName}
+                      </span>
+                    </div>
+                    <p className="text-[11.5px] text-[#15803D] font-medium leading-[1.3] truncate">
+                      {item.cleanBenefit}
+                    </p>
                   </div>
                 </div>
 
-                {/* SWAP ARROW */}
-                <div className="flex items-center justify-center -my-1">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#E5F36D] bg-[#07241A] px-2.5 py-0.5 rounded-full border border-white/10 flex items-center gap-1">
-                    <span>Clean Desi Swap</span>
-                    <span>&darr;</span>
+                {/* Stat Pill & Quick Link */}
+                <div className="pt-2 border-t border-[#F1F5F9] flex items-center justify-between text-[11px] sm:text-[11.5px]">
+                  <span className="font-semibold text-[#0944BA] bg-[#EEF4FF] px-2 py-0.5 rounded-md">
+                    {item.savings}
                   </span>
-                </div>
-
-                {/* CLEAN ROW (GREEN TINT) */}
-                <div className="bg-[#124231] rounded-[14px] p-3 sm:p-3.5 border border-[#E5F36D]/40">
-                  <div className="flex items-center justify-between gap-2 mb-1">
-                    <span className="text-[14.5px] sm:text-[15.5px] font-bold text-[#E5F36D] flex items-center gap-1.5">
-                      <CheckCircle2 className="w-4 h-4 text-[#4ADE80] shrink-0" />
-                      <span>{item.cleanName}</span>
-                    </span>
-                    <span className="text-[10px] font-bold uppercase tracking-wider bg-[#4ADE80]/20 text-[#86EFAC] px-2 py-0.5 rounded-full">
-                      Recommended
-                    </span>
-                  </div>
-                  <p className="text-[12.5px] sm:text-[13px] text-white/90 leading-[1.4]">
-                    {item.cleanBenefit}
-                  </p>
-                  <div className="mt-1.5 text-[11px] font-semibold text-[#86EFAC]">
-                    {item.cleanStats}
-                  </div>
+                  <Link
+                    href={item.categoryLink}
+                    className="font-semibold text-[#2F54EB] hover:text-[#DA440D] inline-flex items-center gap-0.5 no-underline transition-colors"
+                  >
+                    <span>Read Swaps</span>
+                    <ArrowRight className="w-3 h-3" />
+                  </Link>
                 </div>
               </div>
-
-              {/* Read Full Guide Link */}
-              <div className="mt-4 pt-3 border-t border-white/10 flex justify-end">
-                <Link
-                  href={item.categoryLink}
-                  className="text-[12.5px] font-semibold text-[#E5F36D] hover:underline inline-flex items-center gap-1 no-underline"
-                >
-                  <span>Explore Clean Swaps In This Category</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </Link>
-              </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

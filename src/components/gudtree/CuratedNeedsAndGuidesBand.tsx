@@ -36,7 +36,7 @@ function ColorLightning({
 const NEED_DOMES = [
   {
     id: 'desk-study',
-    label: '1 AM Padhai Fuel',
+    label: 'Late-Night Study',
     img: '/images/card-diabetes.png',
     href: '/category/clean-snacks',
   },
@@ -48,25 +48,25 @@ const NEED_DOMES = [
   },
   {
     id: 'hangover-reset',
-    label: 'Hangover Reset',
+    label: 'Morning Reset',
     img: '/images/card-heart.png',
     href: '/category/heart-liver-care',
   },
   {
     id: 'kids-tiffin',
-    label: 'School Tiffin',
+    label: '10-Min Tiffin',
     img: '/images/card-pcos.png',
     href: '/category/kids-tiffin',
   },
   {
     id: 'label-check',
-    label: 'Blinkit Packet Check',
+    label: 'Packet Check',
     img: '/images/card-gut.png',
     href: '/category/label-audits',
   },
   {
     id: 'vrat-food',
-    label: 'Upwas & Vrat Food',
+    label: 'Fasting Bites',
     img: '/images/card-diabetes.png',
     href: '/category/desi-pantry',
   },
@@ -74,24 +74,24 @@ const NEED_DOMES = [
 
 const FEATURE_SPOTLIGHT_BANNERS = [
   {
-    brand: 'CHAI SE PEHLE 4 BADAM',
-    subtitle: 'Glucose Curve & Acidity 60% Kam',
+    brand: '4 ALMONDS BEFORE CHAI',
+    subtitle: 'Flattens Glucose Spike & Morning Acidity',
     gradient: 'from-[#FFF0E5] via-[#FFE6D4] to-[#FFD8BD]',
     accent: '#9A3412',
     img: '/images/card-diabetes.png',
     href: '/category/heart-liver-care',
   },
   {
-    brand: 'PEHLE SALAD, PHIR ROTI',
-    subtitle: 'Sugar Spike & Pachan Control Hack',
+    brand: 'FIBRE BEFORE CARBS',
+    subtitle: 'Simple Blood Sugar & Digestion Hack',
     gradient: 'from-[#EAF5EC] via-[#D8EEDD] to-[#C6E5CD]',
     accent: '#0F5132',
     img: '/images/card-gut.png',
     href: '/category/diabetes-low-gi',
   },
   {
-    brand: '₹15 ME 18G SATTU',
-    subtitle: 'Gym Ke Liye Sasta Desi Muscle Fuel',
+    brand: '₹15 DESI SATTU PROTEIN',
+    subtitle: '18g Natural Muscle Fuel Without Whey Powder',
     gradient: 'from-[#EAF2FF] via-[#DCEAFF] to-[#CCDEFF]',
     accent: '#102A56',
     img: '/images/card-weight.png',
@@ -157,7 +157,7 @@ export default function CuratedNeedsAndGuidesBand({
           <div className="flex items-center justify-center gap-3 mb-6 sm:mb-10">
             <ColorLightning fill="#E5F36D" stroke="#073124" />
             <h2 className="gt-hero-comic-title text-[21px] sm:text-[36px] lg:text-[40px] text-center tracking-[0.01em]">
-              HAR MAUKE KA HEALTHY SWAP
+              CLEAN SWAPS FOR EVERY OCCASION
             </h2>
             <ColorLightning fill="#E5F36D" stroke="#073124" />
           </div>

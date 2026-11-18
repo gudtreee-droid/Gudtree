@@ -412,13 +412,13 @@ export default function GudTreeHomeView({ articles }: { articles: Article[] }) {
           <div className="max-w-[1060px] mx-auto px-4 sm:px-5">
             <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-10">
               <span className="inline-block px-3 py-1 rounded-full bg-[#EEF4FF] text-[#2F54EB] text-[11px] font-bold uppercase tracking-[0.1em] mb-2">
-                Bachhon Ka Tiffin &amp; Healthy Treats
+                Kids Lunchbox &amp; Safe Treats
               </span>
               <h2 className="gt-font-display text-[22px] sm:text-[32px] lg:text-[38px] leading-[1.12] tracking-[-0.02em] text-[#102A56]">
-                Subah Ka School Tiffin &amp; Shaam Ki Bhookh
+                10-Minute School Tiffin &amp; Evening Snacks
               </h2>
               <p className="mt-1.5 text-[13.5px] sm:text-[15px] text-[#334155] leading-[1.55]">
-                Subah 10-minute me banne wale no-maida tiffin ideas aur shaam ke kurkure treats jo bache dabba pura khali karein.
+                Fast, zero-maida lunchbox recipes and wholesome finger-foods your children will actually finish.
               </p>
             </div>
 
@@ -454,13 +454,13 @@ export default function GudTreeHomeView({ articles }: { articles: Article[] }) {
           <div className="max-w-[1060px] mx-auto px-4 sm:px-5">
             <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-10">
               <span className="inline-block px-3 py-1 rounded-full bg-[#FFFFFF] border border-[#ADC3DE]/60 text-[#DA440D] text-[11px] font-bold uppercase tracking-[0.1em] mb-2">
-                Daily Protein On Budget • Gym &amp; Muscle
+                Budget Protein • Everyday Fitness
               </span>
               <h2 className="gt-font-display text-[22px] sm:text-[32px] lg:text-[38px] leading-[1.12] tracking-[-0.02em] text-[#102A56]">
-                ₹50 Ke Andar Desi Protein &amp; Pre-Workout
+                Under ₹50 Daily Protein &amp; Pre-Workout Fuel
               </h2>
               <p className="mt-1.5 text-[13.5px] sm:text-[15px] text-[#334155] leading-[1.55]">
-                Mehenge imported powder aur chemical supplements ke bina daily 60g protein pura karne ke aasan desi tareeqe.
+                Affordable roasted sattu shakes, black chana, and clean peanut butter hacks for hostel and home gym.
               </p>
             </div>
 
@@ -482,7 +482,7 @@ export default function GudTreeHomeView({ articles }: { articles: Article[] }) {
                 href="/category/weight-protein"
                 className="w-full sm:w-auto sm:min-w-[300px] h-11 px-8 rounded-full bg-[#102A56] hover:bg-[#DA440D] text-[#FFFFFF] text-[14px] font-semibold inline-flex items-center justify-center gap-1.5 no-underline transition-colors shadow-sm"
               >
-                <span>Explore Sasta Protein &amp; Gym Munches</span>
+                <span>Explore Budget Protein &amp; Gym Guides</span>
                 <span aria-hidden="true">&raquo;</span>
               </Link>
             </div>
@@ -499,13 +499,13 @@ export default function GudTreeHomeView({ articles }: { articles: Article[] }) {
           <div className="max-w-[1060px] mx-auto px-4 sm:px-5">
             <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-10">
               <span className="inline-block px-3 py-1 rounded-full bg-[#EEF4FF] text-[#2F54EB] text-[11px] font-bold uppercase tracking-[0.1em] mb-2">
-                Hydration &amp; Liver Reset • Zero Chemical Sips
+                Hydration &amp; Liver Care • Pure Desi Sips
               </span>
               <h2 className="gt-font-display text-[22px] sm:text-[32px] lg:text-[38px] leading-[1.12] tracking-[-0.02em] text-[#102A56]">
-                Roz Ke Desi Sips &amp; Daru Ka Hangover Reset
+                Everyday Clean Sips &amp; Morning Hangover Reset
               </h2>
               <p className="mt-1.5 text-[13.5px] sm:text-[15px] text-[#334155] leading-[1.55]">
-                Party ke baad subah sir-dard aur dehydration 30 minute me shant karne wale gharelu sharbat aur daily gut coolers.
+                Headache-relieving electrolyte drinks, digestive buttermilk, and natural alternatives to chemical energy cans.
               </p>
             </div>
 
@@ -541,13 +541,13 @@ export default function GudTreeHomeView({ articles }: { articles: Article[] }) {
           <div className="max-w-[1060px] mx-auto px-4 sm:px-5">
             <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-10">
               <span className="inline-block px-3 py-1 rounded-full bg-[#FFFFFF] border border-[#ADC3DE]/60 text-[#DA440D] text-[11px] font-bold uppercase tracking-[0.1em] mb-2">
-                Label Audits • Quick Commerce Truth
+                Packaged Label Audits • Quick Commerce
               </span>
               <h2 className="gt-font-display text-[22px] sm:text-[32px] lg:text-[38px] leading-[1.12] tracking-[-0.02em] text-[#102A56]">
-                Blinkit &amp; Zepto Ke Namkeen-Biscuit Ka Sach
+                The Truth Behind Packaged Chips &amp; Biscuits
               </h2>
               <p className="mt-1.5 text-[13.5px] sm:text-[15px] text-[#334155] leading-[1.55]">
-                Packet ke peeche chhupi maida, palm oil, aur chini ke 5 alag-alag chemical naamon ki jaanch.
+                Spotting hidden palm oil, 60% maida in 'atta' biscuits, and deceptive sugar names on Blinkit and Zepto.
               </p>
             </div>
 
@@ -583,13 +583,13 @@ export default function GudTreeHomeView({ articles }: { articles: Article[] }) {
           <div className="max-w-[1060px] mx-auto px-4 sm:px-5">
             <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-10">
               <span className="inline-block px-3 py-1 rounded-full bg-[#EEF4FF] text-[#2F54EB] text-[11px] font-bold uppercase tracking-[0.1em] mb-2">
-                Women's Nutrition • Hormones &amp; Skin
+                Women's Health • Hormones &amp; Skin
               </span>
               <h2 className="gt-font-display text-[22px] sm:text-[32px] lg:text-[38px] leading-[1.12] tracking-[-0.02em] text-[#102A56]">
-                PCOS, Period Cramps &amp; Hormonal Glow
+                PCOS Nutrition, Period Cramps &amp; Hormonal Glow
               </h2>
               <p className="mt-1.5 text-[13.5px] sm:text-[15px] text-[#334155] leading-[1.55]">
-                Period cycle ke hisaab se seed cycling, namkeen protein breakfast aur chin ke dardnak pimples ka ilaj.
+                Cycle-synced seed blends, savoury protein breakfasts, and natural remedies for persistent chin acne.
               </p>
             </div>
 
@@ -611,7 +611,7 @@ export default function GudTreeHomeView({ articles }: { articles: Article[] }) {
                 href="/category/pcos-hormones"
                 className="w-full sm:w-auto sm:min-w-[300px] h-11 px-8 rounded-full bg-[#EEF4FF] hover:bg-[#DCE8FF] text-[#2F54EB] text-[14px] font-bold inline-flex items-center justify-center gap-1.5 no-underline transition-colors"
               >
-                <span>Explore Women's Care &amp; PCOS Guides</span>
+                <span>Explore Women's Health &amp; PCOS Guides</span>
                 <span aria-hidden="true">&raquo;</span>
               </Link>
             </div>

@@ -79,9 +79,9 @@ export const BLOG_SHELF_TABS: BlogShelfTab[] = [
   },
   {
     id: 'gut',
-    label: 'Pet Ka\nGas & Bloat',
+    label: 'Gut &\nDigestion',
     thumbSrc: '/images/card-gut.png',
-    pillText: 'Pet Ka Gas',
+    pillText: 'Gut Health',
     href: '/focus/gut',
     fallbackOffset: 25,
     keywords: ['gut health', 'bloat', 'acidity', 'chaas', 'kanji', 'emulsifier', 'chia', 'sitting', 'gas'],
@@ -106,9 +106,9 @@ export const BLOG_SHELF_TABS: BlogShelfTab[] = [
   },
   {
     id: 'vrat',
-    label: 'Vrat &\nTyohar',
+    label: 'Fasting &\nPantry',
     thumbSrc: '/images/card-heart.png',
-    pillText: 'Vrat Tyohar',
+    pillText: 'Clean Pantry',
     href: '/category/desi-pantry',
     fallbackOffset: 40,
     keywords: ['vrat', 'upwas', 'tyohar', 'jaggery', 'gud', 'cold-pressed', 'millets', 'mithai', 'til'],

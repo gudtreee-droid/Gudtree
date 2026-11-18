@@ -20,7 +20,7 @@ export const AUDIENCE_FOCUS_CARDS: AudienceCardItem[] = [
     id: 'diabetes',
     title: 'Sugar & Pre-Diabetes Diet',
     description:
-      'Roti-chawal ka krama, chai se pehle 4 badam, aur bina-chini ke low-GI crunch',
+      'Meal sequencing hacks, 4 almonds before chai, and zero-spike low-GI crunch',
     blobColor: '#FF5A3D',
     blobRotation: -8,
     imageSrc: '/images/card-diabetes.png',
@@ -30,7 +30,7 @@ export const AUDIENCE_FOCUS_CARDS: AudienceCardItem[] = [
     id: 'pcos',
     title: "PCOS & Hormones Diet",
     description:
-      'Seed cycling bars, namkeen protein nashta, aur facial pimples rokne wale foods',
+      'Seed cycling snack bars, savoury protein breakfasts, and acne-clearing whole foods',
     blobColor: '#4CC36B',
     blobRotation: 9,
     imageSrc: '/images/card-pcos.png',
@@ -38,9 +38,9 @@ export const AUDIENCE_FOCUS_CARDS: AudienceCardItem[] = [
   },
   {
     id: 'weight',
-    title: 'Hostel & Sasta Protein (<₹50)',
+    title: 'Budget Protein (<₹50)',
     description:
-      '₹15 ka sattu drink, bhuna chana, aur bina palm oil wala 100% peanut butter',
+      '₹15 roasted sattu drink, black chana, and 100% clean peanut butter daily guide',
     blobColor: '#F5A623',
     blobRotation: -5,
     imageSrc: '/images/card-weight.png',
@@ -48,9 +48,9 @@ export const AUDIENCE_FOCUS_CARDS: AudienceCardItem[] = [
   },
   {
     id: 'gut',
-    title: 'Pet, Gas & Acidity Reset',
+    title: 'Gut Health & Bloat Relief',
     description:
-      'Desk par baithe phoola pet shaant karne wali jeera chaas aur fermented kanji',
+      'Probiotic jeera chaas, fermented beet kanji, and zero desk-bloat meal habits',
     blobColor: '#9B51E0',
     blobRotation: -15,
     imageSrc: '/images/card-gut.png',
@@ -58,9 +58,9 @@ export const AUDIENCE_FOCUS_CARDS: AudienceCardItem[] = [
   },
   {
     id: 'heart',
-    title: 'Fatty Liver & Detox Sips',
+    title: 'Liver Care & Detox Sips',
     description:
-      'Party ke agle din 30-min liver reset, taaza nariyal sharbat & zero palm oil diet',
+      'Next-morning liver rehydration, electrolyte sips, and zero palm oil swaps',
     blobColor: '#2BA6FF',
     blobRotation: 12,
     imageSrc: '/images/card-heart.png',
@@ -122,10 +122,10 @@ export default function AudienceFocusCards({
           className="text-center max-w-2xl mx-auto mb-10 sm:mb-14"
         >
           <h2 className="gt-font-display text-[26px] sm:text-[36px] lg:text-[42px] leading-[1.08] tracking-[-0.03em] text-[#102A56]">
-            Everyday Condition Diets: Kya Khayein, Kya Chhodein
+            Everyday Condition Diets: What to Eat &amp; What to Avoid
           </h2>
           <p className="mt-2.5 text-[14.5px] sm:text-[16px] text-[#334155] leading-[1.55]">
-            PCOS, Sugar, Pet Ka Bloat aur Sasta Protein: Ghar ke khane me simple food swaps aur practical diet rules.
+            Practical Indian diet charts, clean swaps, and plate rules for PCOS, Diabetes, Gut Bloating &amp; Lean Protein.
           </p>
         </motion.div>
 

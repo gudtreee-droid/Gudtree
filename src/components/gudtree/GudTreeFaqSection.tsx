@@ -12,39 +12,39 @@ interface FaqItem {
 
 const FAQS: FaqItem[] = [
   {
-    category: 'Daily Diet & Munching',
-    q: 'Agar wazan ghatana ho ya 4 PM office slump ho, toh chai ke sath kya khayein?',
-    a: 'Samosa, rusk aur bakery ke digestive biscuits sabse pehle band karein. Uski jagah 1 mutthi roasted black chana (bhuna chana) ya desi ghee me bhuna sendha namak makhana lein. Inka glycemic index 35 se kam hota hai, jisse insulin spike nahi hota aur sham 7 baje tak aalas ya bhookh nahi lagti.',
+    category: 'Daily Snacking',
+    q: 'What should I snack on during the 4 PM office slump?',
+    a: 'Skip fried samosas, rusk, and digestive biscuits. Instead, pick dry-roasted black chana (bhuna chana) or ghee-roasted makhana. Their low glycemic index (< 35) prevents insulin spikes and eliminates the post-tea energy crash.',
   },
   {
-    category: 'Market Labels & Truth',
-    q: 'Kya packet par likha "Sugar-Free" ya "Baked Not Fried" sach me safe hota hai?',
-    a: 'Bilkul nahi! 90% "Sugar-Free" biscuits aur namkeen me maltodextrin ya maltitol syrup daala jata hai jiska Glycemic Index normal chini se bhi jyada hota hai. Aur "Baked Not Fried" chips me crunch lane ke liye upar se 20% refined palm oil aur emulsifiers spray kiye jate hain. Hamesha peeche ka ingredient list check karein.',
+    category: 'Label Audits',
+    q: 'Are "Sugar-Free" and "Baked Not Fried" snacks actually healthy?',
+    a: 'Rarely. Most "sugar-free" snacks replace sugar with maltodextrin or chemical syrups like maltitol, which spike blood glucose faster than table sugar. Meanwhile, "baked" chips are often flash-sprayed with 20% refined palm oil to achieve crunch.',
   },
   {
-    category: 'Drinks & Hangover',
-    q: 'Daru ke hangover me subah kya peena chahiye aur kis cheez se bachna chahiye?',
-    a: 'Hangover ke waqt kadak doodh wali chai, coffee ya khali pet paracetamol lene ki galti na karein — ye liver ko aur thaka deti hain aur acidity badhati hain. Sabse pehle taaza nariyal pani me 1 chutki sendha namak milakar piyein, ya thandi jeera chaas lein. Nariyal pani ka potassium aur jeera ka cooling effect 30 minute me sir dard aur dehydration shant karta hai.',
+    category: 'Hydration & Hangover',
+    q: 'What is the fastest natural way to recover from an alcohol hangover?',
+    a: 'Avoid bed-tea or black coffee—caffeine worsens dehydration and triggers acid reflux. Drink fresh coconut water with a pinch of rock salt (sendha namak) or chilled jeera chaas to restore electrolytes and rehydrate your liver within 30 minutes.',
   },
   {
     category: 'Budget Protein',
-    q: 'Hostel me bina gas chulhe ke ₹50 ke andar daily protein kaise pura karein?',
-    a: 'Mehenge imported whey powder ki jarurat nahi hai. Thande pani me 2 chammach bhuna sattu gholein (18g protein, kharcha ₹15), 1 katori roasted peanuts khayein (12g protein, kharcha ₹15), aur 1 mutthi bhuna chana lein (8g protein, kharcha ₹10). Total ₹40 me 38g se 40g tak clean desi protein mil jata hai bina pachan kharab hue.',
+    q: 'How can I hit 35g+ clean protein daily on a budget under ₹50?',
+    a: 'Mix 2 tablespoons of roasted sattu in chilled water (18g protein, ~₹15), have a small bowl of roasted peanuts (12g protein, ~₹15), and a handful of roasted chana (8g protein, ~₹10). That gives you ~38g of clean plant protein without expensive whey.',
   },
   {
     category: 'Kids Tiffin',
-    q: 'Bache tiffin me roti-sabji chhod dete hain, tiffin dabba kaise healthy banayein?',
-    a: 'Bacho ko dry roti-sabji thandi hone par pasand nahi aati. Isliye finger-friendly format chunein: jaise stone-ground wheat roti ke andar paneer bhurji ka roll, besan chilla ke chote square bites, ya ragi banana sweet coins. Ye dopehar 1 baje tak soft rehte hain aur bacha bina nakhre ke pura dabba khali karke laata hai.',
+    q: 'How do I pack a healthy school lunchbox kids will actually finish?',
+    a: 'Kids dislike cold, soggy sabzi-roti. Switch to finger-friendly formats: whole wheat paneer bhurji rolls, square besan chilla bites, or naturally sweet ragi-banana mini pancakes that stay soft until lunch break.',
   },
   {
-    category: 'PCOS & Hormones',
-    q: 'PCOS me chin ke pimples aur pet ke fat ko kam karne ke liye kya khana chahiye?',
-    a: 'PCOS me androgen testosterone badhne se acne aur belly fat banta hai. Subah ki meethi chai aur oats ki jagah namkeen besan chilla ya paneer nashta lein. Sham ko spearmint (pudina) chai piyein aur sunflower-pumpkin seeds ki cycling karein. 3 hafte me hormonal sujan (inflammation) aur pimples kam hone lagte hain.',
+    category: 'Women’s Health & PCOS',
+    q: 'What foods help reduce hormonal acne and belly bloat in PCOS?',
+    a: 'Start the day with a savoury, protein-rich breakfast like besan chilla or paneer to stabilize morning insulin. Drink spearmint tea and practice pumpkin-flax seed cycling to naturally reduce androgen levels and inflammatory breakouts.',
   },
   {
-    category: 'Pet & Pachan',
-    q: 'Khane ke baad kursi par baithne se pet tight kyu ho jata hai aur iska kya hal hai?',
-    a: 'Dopehar ke khane ke turant baad baithne se pachan enzymes slow pad jate hain aur gas banti hai. Khane ke 20 minute baad 1 glass taaza mathi hui jeera chaas piyein ya 1 chammach bhiga hua sabja seed paani me lein. Khane ke baad 100 kadam walk karein aur lunch ke sath chilled soda ya cold drink bilkul na lein.',
+    category: 'Gut & Digestion',
+    q: 'Why does sitting at a desk cause bloating, and how can I fix it?',
+    a: 'Prolonged sitting slows digestive motility and traps gas. Drink a glass of fresh roasted jeera chaas 20 minutes after lunch, take a brisk 5-minute walk, and avoid icy cold drinks or carbonated soda with meals.',
   },
 ];
 
@@ -58,58 +58,58 @@ export default function GudTreeFaqSection() {
   return (
     <section
       aria-label="Frequently Asked Questions"
-      className="w-full max-w-full overflow-x-clip bg-[#FFFFFF] py-14 sm:py-20 border-t border-[#ADC3DE]/35"
+      className="w-full max-w-full overflow-x-clip bg-[#FFFFFF] py-10 sm:py-14 border-t border-[#ADC3DE]/35"
     >
-      <div className="max-w-[880px] mx-auto px-4 sm:px-5">
-        {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#EEF4FF] text-[#2F54EB] text-[11px] font-bold uppercase tracking-[0.1em] mb-2.5">
-            <HelpCircle className="w-3.5 h-3.5" />
-            <span>Got Questions? • Real Nutrition Answers</span>
+      <div className="max-w-[780px] mx-auto px-4 sm:px-5">
+        {/* Compact Header */}
+        <div className="text-center max-w-xl mx-auto mb-7 sm:mb-9">
+          <span className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#EEF4FF] text-[#2F54EB] text-[10.5px] sm:text-[11px] font-bold uppercase tracking-[0.08em] mb-2">
+            <HelpCircle className="w-3 h-3" />
+            <span>Nutrition FAQ • Direct Answers</span>
           </span>
-          <h2 className="gt-font-display text-[26px] sm:text-[36px] lg:text-[42px] leading-[1.12] tracking-[-0.02em] text-[#102A56]">
-            Aapke Sabse Zyada Pooche Jane Wale Sawal
+          <h2 className="gt-font-display text-[22px] sm:text-[30px] lg:text-[34px] leading-[1.12] tracking-[-0.02em] text-[#102A56]">
+            Frequently Asked Questions
           </h2>
-          <p className="mt-2 text-[14.5px] sm:text-[16px] text-[#334155] leading-[1.55]">
-            Clean snacking, daily diet, label audits aur GudTree ke baare me sab kuch saaf-saaf bina kisi marketing dhokhe ke.
+          <p className="mt-1 text-[13px] sm:text-[14.5px] text-[#475569] leading-[1.5]">
+            Evidence-backed answers on clean snacking, everyday diets, and label audits.
           </p>
         </div>
 
-        {/* Accordion List */}
-        <div className="flex flex-col gap-3.5 sm:gap-4">
+        {/* Compact Accordion List */}
+        <div className="flex flex-col gap-2.5 sm:gap-3">
           {FAQS.map((faq, idx) => {
             const isOpen = openIndex === idx;
             return (
               <div
                 key={faq.q}
-                className={`rounded-[18px] border transition-all duration-300 overflow-hidden ${
+                className={`rounded-[14px] border transition-all duration-200 overflow-hidden ${
                   isOpen
-                    ? 'bg-[#FFF9EC] border-[#2F54EB]/40 shadow-[0_8px_20px_-6px_rgba(16,42,86,0.08)]'
-                    : 'bg-[#F9FBFC] border-[#ADC3DE]/40 hover:border-[#ADC3DE]'
+                    ? 'bg-[#FFF9EC] border-[#2F54EB]/40 shadow-[0_4px_12px_-4px_rgba(16,42,86,0.06)]'
+                    : 'bg-[#F9FBFC] border-[#ADC3DE]/35 hover:border-[#ADC3DE]/70'
                 }`}
               >
                 <button
                   type="button"
                   onClick={() => toggleFaq(idx)}
-                  className="w-full text-left px-5 sm:px-6 py-4 sm:py-5 flex items-start justify-between gap-4 cursor-pointer"
+                  className="w-full text-left px-4 sm:px-5 py-3 sm:py-3.5 flex items-center justify-between gap-3 cursor-pointer"
                   aria-expanded={isOpen}
                 >
-                  <div className="flex-1 pr-2">
-                    <span className="inline-block text-[11px] font-bold uppercase tracking-wider text-[#2F54EB] mb-1">
+                  <div className="flex-1 min-w-0 pr-2">
+                    <span className="block text-[10px] font-bold uppercase tracking-wider text-[#2F54EB] mb-0.5">
                       {faq.category}
                     </span>
-                    <h3 className="text-[16px] sm:text-[17.5px] font-bold text-[#102A56] leading-[1.35]">
+                    <h3 className="text-[14px] sm:text-[15px] font-bold text-[#102A56] leading-[1.35]">
                       {faq.q}
                     </h3>
                   </div>
                   <span
-                    className={`mt-1 shrink-0 w-7 h-7 rounded-full flex items-center justify-center transition-transform duration-300 ${
+                    className={`shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-[12px] transition-transform duration-200 ${
                       isOpen
                         ? 'bg-[#102A56] text-[#E5F36D] rotate-180'
-                        : 'bg-[#FFFFFF] border border-[#ADC3DE]/50 text-[#102A56]'
+                        : 'bg-[#FFFFFF] border border-[#ADC3DE]/40 text-[#102A56]'
                     }`}
                   >
-                    <ChevronDown className="w-4 h-4" />
+                    <ChevronDown className="w-3.5 h-3.5" />
                   </span>
                 </button>
 
@@ -119,9 +119,9 @@ export default function GudTreeFaqSection() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: 'easeInOut' }}
+                      transition={{ duration: 0.22, ease: 'easeInOut' }}
                     >
-                      <div className="px-5 sm:px-6 pb-5 sm:pb-6 pt-1 text-[14px] sm:text-[15px] leading-[1.65] text-[#334155] border-t border-[#ADC3DE]/20 mt-1">
+                      <div className="px-4 sm:px-5 pb-3.5 pt-1 text-[13px] sm:text-[13.5px] leading-[1.6] text-[#334155] border-t border-[#ADC3DE]/20">
                         {faq.a}
                       </div>
                     </motion.div>
@@ -132,10 +132,10 @@ export default function GudTreeFaqSection() {
           })}
         </div>
 
-        {/* Small Trust Note at Bottom of FAQ */}
-        <div className="mt-10 text-center text-[12.5px] text-[#64748B] bg-[#F5F7FA] rounded-xl p-3 border border-[#ADC3DE]/30">
+        {/* Small Trust Note */}
+        <div className="mt-8 text-center text-[11.5px] text-[#64748B] bg-[#F8FAFC] rounded-lg p-2.5 border border-[#ADC3DE]/30">
           <span>
-            💡 <strong>GudTree Pledge:</strong> Hum kisi FMCG brand se paise lekar unke packets promote nahi karte. Hamari sari recommendations independent kitchen testing par aadharit hain.
+            💡 <strong>GudTree Pledge:</strong> We never accept brand sponsorships. All guides are independently tested in real Indian home kitchens.
           </span>
         </div>
       </div>

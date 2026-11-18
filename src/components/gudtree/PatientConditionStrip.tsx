@@ -29,7 +29,7 @@ export const PATIENT_CONDITIONS: ConditionOption[] = [
   {
     id: 'all',
     label: 'All Clean Munches',
-    hinglishHint: 'Ghar, office aur school ke liye zero-palm-oil clean snacking hub',
+    hinglishHint: 'Zero-palm-oil clean snacking guide tested for home, work, and school',
     safeSnacks: 'Roasted Makhana, Desi Sattu, Bhuna Chana, Seed Mixes, Palm Gud',
     avoidIngredients: 'Refined Palmolein Oil, Maltodextrin, High-Fructose Syrups',
     giFocus: 'Whole-Food Nutrition',
@@ -38,8 +38,8 @@ export const PATIENT_CONDITIONS: ConditionOption[] = [
   },
   {
     id: 'kids',
-    label: 'Bachhon Ka Tiffin',
-    hinglishHint: 'Subah 10-minute me banne wale no-maida lunchbox ideas',
+    label: 'Kids Lunchbox',
+    hinglishHint: '10-minute zero-maida school tiffin ideas and wholesome treats',
     safeSnacks: 'Ragi Banana Roll, Homemade Peanut Spread, Roasted Makhana, Samak Chilla',
     avoidIngredients: 'Maida Biscuits, Palm Oil Chocolate Spreads, High-Sugar Juices',
     giFocus: 'Zero-Maida Kids Fuel',
@@ -49,7 +49,7 @@ export const PATIENT_CONDITIONS: ConditionOption[] = [
   {
     id: 'desk',
     label: 'Desk & Study Munches',
-    hinglishHint: 'Keyboard-safe dry crunch jo 1 AM aur 4 PM par neend bhagaye',
+    hinglishHint: 'Non-greasy, keyboard-safe crunch for late-night focus and 4 PM slumps',
     safeSnacks: 'Air-Roasted Makhana, Dry Bhuna Chana, Jowar Puffs, Spiced Murmura',
     avoidIngredients: 'Oily Chips, Samosa Trans Fats, Sugar-Dusted Biscuits',
     giFocus: 'Zero Brain-Fog & High Crunch',
@@ -58,8 +58,8 @@ export const PATIENT_CONDITIONS: ConditionOption[] = [
   },
   {
     id: 'weight',
-    label: 'Gym & Sasta Protein',
-    hinglishHint: '₹50 ke andar 20g natural protein bina mehenge dabbo ke',
+    label: 'Budget Protein (<₹50)',
+    hinglishHint: 'Hitting 20g+ natural plant protein without expensive whey powders',
     safeSnacks: '₹20 Bhuna Chana, Chana Sattu Shake, Sprouted Moong, Boiled Kala Chana',
     avoidIngredients: 'Hydrogenated Peanut Butter Palm Oil, Fake 20g Protein Bars',
     giFocus: '20g+ Protein / < 180 kcal',
@@ -69,7 +69,7 @@ export const PATIENT_CONDITIONS: ConditionOption[] = [
   {
     id: 'heart',
     label: 'Drinks & Hangover Reset',
-    hinglishHint: 'Roz ke desi sharbat aur weekend party ke baad hangover ka reset',
+    hinglishHint: 'Fast-acting liver rehydration drinks and daily digestive sips',
     safeSnacks: 'Nariyal Pani with Sendha Namak, Roasted Jeera Chaas, Chilled Sattu, Kanji',
     avoidIngredients: 'Canned Chemical Energy Drinks, Sugar Syrups, Fizzy Soda',
     giFocus: 'Liver Flush & Electrolytes',
@@ -78,8 +78,8 @@ export const PATIENT_CONDITIONS: ConditionOption[] = [
   },
   {
     id: 'pcos',
-    label: "Women's Care (PCOS)",
-    hinglishHint: 'PCOS me wazan, period ke pet dard aur pimples ka aasan hal',
+    label: "Women's Health (PCOS)",
+    hinglishHint: 'Hormone-balancing seed blends, anti-inflammatory bites & skin nutrition',
     safeSnacks: 'Pumpkin & Flax Seed Mix, 70% Dark Chocolate, Cinnamon Makhana, Til-Gud',
     avoidIngredients: 'Maltodextrin "Diet" Namkeens, Excess Dairy Sugars, Soy Isolates',
     giFocus: 'Insulin Sensitivity & Zinc/Magnesium',
@@ -88,8 +88,8 @@ export const PATIENT_CONDITIONS: ConditionOption[] = [
   },
   {
     id: 'gut',
-    label: 'Pet Ka Gas & Bloat',
-    hinglishHint: '8 ghante kursi par baithne se phoola hua pet aur acidity ka ilaj',
+    label: 'Gut Health & Bloat Relief',
+    hinglishHint: 'Soothing desk-bloat, gut inflammation, and acid reflux naturally',
     safeSnacks: 'Roasted Jeera Chaas, Beet Kanji, Soaked Sabja Water, Prebiotic Millets',
     avoidIngredients: 'Emulsifiers (INS 471), Refined Maida, Deep-Fried Namkeen',
     giFocus: 'Prebiotic Fiber & Zero Acidity',
@@ -98,8 +98,8 @@ export const PATIENT_CONDITIONS: ConditionOption[] = [
   },
   {
     id: 'packed',
-    label: 'Market Packets Ka Sach',
-    hinglishHint: 'Blinkit, Too Yumm aur bakery biscuits ke packet ka sach',
+    label: 'Packaged Label Audits',
+    hinglishHint: 'Unmasking hidden palm oil, maltodextrin, and deceptive health claims',
     safeSnacks: '100% Ingredient Verified Brands (Real Whole Seeds, Zero Palm Oil)',
     avoidIngredients: '"Diet" claims hiding 35% Maltodextrin and INS 150d Caramel Color',
     giFocus: '100% Ingredient Honesty',
@@ -108,8 +108,8 @@ export const PATIENT_CONDITIONS: ConditionOption[] = [
   },
   {
     id: 'diabetes',
-    label: 'Sugar & Diabetes Crunch',
-    hinglishHint: 'Chai ke sath aisi crunch jo blood sugar bilkul normal rakhe',
+    label: 'Sugar-Smart & Low-GI',
+    hinglishHint: 'Crunchy tea-time snacks with low glycemic index that prevent sugar spikes',
     safeSnacks: 'Roasted Kala Chana, Raw Walnuts, Methi Khakhra, Foxtail Millet Puffs',
     avoidIngredients: 'Liquid Glucose, Maltodextrin, White Maida, Dextrose',
     giFocus: 'Glycemic Index < 50',
