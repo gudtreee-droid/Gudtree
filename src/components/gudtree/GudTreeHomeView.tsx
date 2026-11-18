@@ -19,7 +19,6 @@ import AudienceFocusCards from './AudienceFocusCards';
 import BlogDiscoveryTabsShelf from './BlogDiscoveryTabsShelf';
 import CuratedNeedsAndGuidesBand from './CuratedNeedsAndGuidesBand';
 import HeroPlayfulMascots from './HeroPlayfulMascots';
-import CleanPlateSwapMatrix from './CleanPlateSwapMatrix';
 import GudTreeFaqSection from './GudTreeFaqSection';
 
 function getCardRating(slug: string): { rating: string; mins: string } {
@@ -490,8 +489,6 @@ export default function GudTreeHomeView({ articles }: { articles: Article[] }) {
         </section>
       )}
 
-      {/* BAND 10: CLEAN PLATE COMPARISON MATRIX (JUNK VS CLEAN DESI SWAP) */}
-      <CleanPlateSwapMatrix />
 
       {/* BAND 11: DRINKS, DETOX & HANGOVER RESET */}
       {drinksCategoryArticles.length > 0 && (
