@@ -314,12 +314,18 @@ export default function BlogDiscoveryTabsShelf({
     >
       <div className="w-full max-w-[1060px] mx-auto px-4 sm:px-5 min-w-0 overflow-hidden">
         {/* Centered Heading Flanked by Lightning Icons */}
-        <div className="flex items-center justify-center gap-2.5 sm:gap-3 mb-6 sm:mb-8">
-          <LightningIcon />
-          <h2 className="gt-font-display text-[26px] sm:text-[34px] lg:text-[38px] leading-[1.08] tracking-[-0.025em] text-[#102A56] text-center">
-            Blogs you can&apos;t miss
-          </h2>
-          <LightningIcon />
+        <div className="text-center mb-6 sm:mb-8">
+          <div className="flex items-center justify-center gap-2.5 sm:gap-3">
+            <LightningIcon />
+            <h2 className="gt-font-display text-[26px] sm:text-[34px] lg:text-[38px] leading-[1.08] tracking-[-0.025em] text-[#102A56] text-center">
+              Blogs You Can&apos;t Miss
+            </h2>
+            <LightningIcon />
+          </div>
+          <p className="mt-2 text-center text-[13.5px] sm:text-[15px] text-[#334155] max-w-lg mx-auto leading-[1.5]">
+            Handpicked food guides and honest palm-oil-free swaps.
+            <br className="hidden sm:inline" /> Select your daily snacking situation to discover clean reads.
+          </p>
         </div>
 
         {/* Category Tabs: Contained Horizontal Swipe on Mobile + Continuous Faded Curved Folder Line on sm+ */}

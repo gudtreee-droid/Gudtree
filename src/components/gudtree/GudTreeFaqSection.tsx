@@ -91,8 +91,9 @@ export default function GudTreeFaqSection() {
           <h2 className="gt-hero-comic-title text-[24px] sm:text-[34px] lg:text-[38px] tracking-[0.01em] text-[#102A56]">
             FREQUENTLY ASKED QUESTIONS
           </h2>
-          <p className="mt-1 text-[13.5px] sm:text-[15px] text-[#475569] leading-[1.5]">
-            No brand sponsorships, no marketing buzzwords. Just honest, practical nutrition answers.
+          <p className="mt-2 text-[13.5px] sm:text-[15px] text-[#475569] leading-[1.5] max-w-lg mx-auto">
+            No brand sponsorships and no confusing marketing buzzwords.
+            <br className="hidden sm:inline" /> Clear, direct nutrition answers for everyday Indian snacking.
           </p>
         </div>
 

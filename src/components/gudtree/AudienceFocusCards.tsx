@@ -20,7 +20,7 @@ export const AUDIENCE_FOCUS_CARDS: AudienceCardItem[] = [
     id: 'diabetes',
     title: 'Low-Sugar Diet',
     description:
-      'Meal sequencing hacks, 4 almonds before chai, and zero-spike low-GI crunch',
+      'Zero-spike evening crunch & meal hacks. Simple habits to keep daily blood sugar steady.',
     blobColor: '#FF5A3D',
     blobRotation: -8,
     imageSrc: '/images/card-diabetes.png',
@@ -30,7 +30,7 @@ export const AUDIENCE_FOCUS_CARDS: AudienceCardItem[] = [
     id: 'pcos',
     title: 'PCOS Food Guide',
     description:
-      'Seed cycling snack bars, savoury protein breakfasts, and acne-clearing whole foods',
+      'Seed cycling blends & savoury breakfasts. Wholesome foods to calm acne and balance energy.',
     blobColor: '#4CC36B',
     blobRotation: 9,
     imageSrc: '/images/card-pcos.png',
@@ -40,7 +40,7 @@ export const AUDIENCE_FOCUS_CARDS: AudienceCardItem[] = [
     id: 'weight',
     title: 'Budget Protein',
     description:
-      '₹15 roasted sattu drink, black chana, and 100% clean peanut butter daily guide',
+      'Roasted sattu drinks & black chana. Real daily protein sources under ₹50 without whey.',
     blobColor: '#F5A623',
     blobRotation: -5,
     imageSrc: '/images/card-weight.png',
@@ -50,7 +50,7 @@ export const AUDIENCE_FOCUS_CARDS: AudienceCardItem[] = [
     id: 'gut',
     title: 'Bloat & Acidity',
     description:
-      'Probiotic jeera chaas, fermented beet kanji, and zero desk-bloat meal habits',
+      'Probiotic jeera chaas & fermented kanji. Soothing kitchen remedies to banish belly bloat.',
     blobColor: '#9B51E0',
     blobRotation: -15,
     imageSrc: '/images/card-gut.png',
@@ -60,7 +60,7 @@ export const AUDIENCE_FOCUS_CARDS: AudienceCardItem[] = [
     id: 'heart',
     title: 'Hangover Reset',
     description:
-      'Next-morning liver rehydration, electrolyte sips, and zero palm oil swaps',
+      'Morning liver hydration & electrolyte sips. Fast relief from dry mouth, nausea, and headache.',
     blobColor: '#2BA6FF',
     blobRotation: 12,
     imageSrc: '/images/card-heart.png',
@@ -122,10 +122,11 @@ export default function AudienceFocusCards({
           className="text-center max-w-2xl mx-auto mb-10 sm:mb-14"
         >
           <h2 className="gt-font-display text-[26px] sm:text-[36px] lg:text-[42px] leading-[1.08] tracking-[-0.03em] text-[#102A56]">
-            Everyday Condition Diets: What to Eat &amp; What to Avoid
+            Everyday Diet &amp; Health Focus
           </h2>
-          <p className="mt-2.5 text-[14.5px] sm:text-[16px] text-[#334155] leading-[1.55]">
-            Practical Indian diet charts, clean swaps, and plate rules for PCOS, Diabetes, Gut Bloating &amp; Lean Protein.
+          <p className="mt-2 text-[14px] sm:text-[15.5px] text-[#334155] leading-[1.5] max-w-xl mx-auto">
+            Clean food guides, daily plate swaps, and practical eating habits.
+            <br className="hidden sm:inline" /> Find the right snacks for your body condition and daily routine.
           </p>
         </motion.div>
 

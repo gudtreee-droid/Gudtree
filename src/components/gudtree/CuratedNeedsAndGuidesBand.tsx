@@ -154,12 +154,18 @@ export default function CuratedNeedsAndGuidesBand({
       >
         <div className="max-w-[1060px] mx-auto">
           {/* Header Flanked by Citrus Lime Lightning Bolts */}
-          <div className="flex items-center justify-center gap-3 mb-6 sm:mb-10">
-            <ColorLightning fill="#E5F36D" stroke="#073124" />
-            <h2 className="gt-hero-comic-title text-[21px] sm:text-[36px] lg:text-[40px] text-center tracking-[0.01em]">
-              CLEAN SWAPS FOR EVERY OCCASION
-            </h2>
-            <ColorLightning fill="#E5F36D" stroke="#073124" />
+          <div className="text-center mb-6 sm:mb-10">
+            <div className="flex items-center justify-center gap-3">
+              <ColorLightning fill="#E5F36D" stroke="#073124" />
+              <h2 className="gt-hero-comic-title text-[21px] sm:text-[36px] lg:text-[40px] text-center tracking-[0.01em]">
+                CLEAN SWAPS FOR EVERY OCCASION
+              </h2>
+              <ColorLightning fill="#E5F36D" stroke="#073124" />
+            </div>
+            <p className="mt-2 text-center text-[13.5px] sm:text-[15px] text-[#E5F36D]/95 leading-[1.5] max-w-xl mx-auto">
+              Tested snacks for late-night study, school tiffins, and tea breaks.
+              <br className="hidden sm:inline" /> Pure ingredients and real budget without misleading marketing.
+            </p>
           </div>
 
           {/* Arched Botanical Domes Row: Horizontal Swipe on Mobile + 6-Col Desktop Grid */}
@@ -260,12 +266,18 @@ export default function CuratedNeedsAndGuidesBand({
         }}
       >
         <div className="max-w-[980px] mx-auto">
-          <div className="flex items-center justify-center gap-3 mb-6 sm:mb-10">
-            <ColorLightning fill="#64B5FF" stroke="#102A56" />
-            <h2 className="gt-hero-comic-title text-[21px] sm:text-[36px] lg:text-[40px] text-center tracking-[0.01em]">
-              QUICK DIET READS
-            </h2>
-            <ColorLightning fill="#64B5FF" stroke="#102A56" />
+          <div className="text-center mb-6 sm:mb-10">
+            <div className="flex items-center justify-center gap-3">
+              <ColorLightning fill="#64B5FF" stroke="#102A56" />
+              <h2 className="gt-hero-comic-title text-[21px] sm:text-[36px] lg:text-[40px] text-center tracking-[0.01em]">
+                QUICK DIET READS
+              </h2>
+              <ColorLightning fill="#64B5FF" stroke="#102A56" />
+            </div>
+            <p className="mt-2 text-center text-[13.5px] sm:text-[15px] text-[#FFFFFF]/90 leading-[1.5] max-w-xl mx-auto">
+              Fast 5-minute guides for blood sugar balance and lean protein.
+              <br className="hidden sm:inline" /> Tap any target to filter verified swaps instantly.
+            </p>
           </div>
 
           <div className="gt-hscroll-sm sm:grid sm:grid-cols-4 gap-3.5 sm:gap-6 pb-2 sm:pb-0">

@@ -229,7 +229,8 @@ export default function GudTreeHomeView({ articles }: { articles: Article[] }) {
             </h1>
 
             <p className="mt-1.5 sm:mt-2 text-[13.5px] sm:text-[15.5px] font-medium text-[#FFFFFF] leading-[1.42] max-w-xl drop-shadow-[0_1px_2px_rgba(16,42,86,0.22)]">
-              We audit packed Indian snacks, expose hidden sugars &amp; palm oil, and find healthy swaps your family will actually love.
+              Zero palm oil, zero hidden sugars, and real food label audits.
+              <br className="hidden sm:inline" /> Simple healthy snack swaps your whole family will actually love.
             </p>
 
             {/* 4 Real-Blinking 3D Animated Characters (Eating, Reading, Exercising vs Junk Fatigue) */}
@@ -320,7 +321,12 @@ export default function GudTreeHomeView({ articles }: { articles: Article[] }) {
               <p className="mt-1.5 text-[13.5px] sm:text-[15px] text-[#334155] leading-[1.5]">
                 {selectedCondition !== 'all' && activeConditionMeta
                   ? activeConditionMeta.hinglishHint
-                  : 'Roasted makhana, millet crunch, and zero-palm-oil alternatives tested for daily tea-time.'}
+                  : (
+                    <>
+                      Roasted makhana, light puffed millets, and dry crunchy bites.
+                      <br className="hidden sm:inline" /> Zero oil on keyboards and clean energy for long work hours.
+                    </>
+                  )}
               </p>
 
               {selectedCondition !== 'all' && (
@@ -375,7 +381,8 @@ export default function GudTreeHomeView({ articles }: { articles: Article[] }) {
                 Gut Health &amp; Bloat Relief
               </h2>
               <p className="mt-1.5 text-[13.5px] sm:text-[15px] text-[#334155] leading-[1.55]">
-                Practical probiotic foods, low-GI meal ordering hacks, and label audits for Indian families.
+                Probiotic kitchen coolers, fermented sips, and digestion hacks.
+                <br className="hidden sm:inline" /> Gentle everyday remedies to stop gas, acid reflux, and heavy stomach.
               </p>
             </div>
 
@@ -417,7 +424,8 @@ export default function GudTreeHomeView({ articles }: { articles: Article[] }) {
                 Kids School Lunchbox
               </h2>
               <p className="mt-1.5 text-[13.5px] sm:text-[15px] text-[#334155] leading-[1.55]">
-                Fast, zero-maida lunchbox recipes and wholesome finger-foods your children will actually finish.
+                Quick 10-minute maida-free recipes and crunchy afternoon treats.
+                <br className="hidden sm:inline" /> Wholesome tiffins without palm oil that kids actually finish.
               </p>
             </div>
 
@@ -459,7 +467,8 @@ export default function GudTreeHomeView({ articles }: { articles: Article[] }) {
                 Budget Protein
               </h2>
               <p className="mt-1.5 text-[13.5px] sm:text-[15px] text-[#334155] leading-[1.55]">
-                Affordable roasted sattu shakes, black chana, and clean peanut butter hacks for hostel and home gym.
+                Real muscle fuel and high-protein snacking under ₹50 a day.
+                <br className="hidden sm:inline" /> Affordable sattu shakes and roasted chana without expensive powders.
               </p>
             </div>
 
@@ -502,7 +511,8 @@ export default function GudTreeHomeView({ articles }: { articles: Article[] }) {
                 Clean Sips &amp; Hangover Reset
               </h2>
               <p className="mt-1.5 text-[13.5px] sm:text-[15px] text-[#334155] leading-[1.55]">
-                Headache-relieving electrolyte drinks, digestive buttermilk, and natural alternatives to chemical energy cans.
+                Everyday digestive tonics and natural hangover remedies.
+                <br className="hidden sm:inline" /> Calm morning headaches and dehydration with zero artificial syrups.
               </p>
             </div>
 
@@ -544,7 +554,8 @@ export default function GudTreeHomeView({ articles }: { articles: Article[] }) {
                 Packaged Label Audits
               </h2>
               <p className="mt-1.5 text-[13.5px] sm:text-[15px] text-[#334155] leading-[1.55]">
-                Spotting hidden palm oil, 60% maida in 'atta' biscuits, and deceptive sugar names on Blinkit and Zepto.
+                Exposing hidden palm oil, maltodextrin, and deceptive claims.
+                <br className="hidden sm:inline" /> We read the tiny ingredient print so your family eats safe.
               </p>
             </div>
 
@@ -586,7 +597,8 @@ export default function GudTreeHomeView({ articles }: { articles: Article[] }) {
                 PCOS &amp; Hormonal Health
               </h2>
               <p className="mt-1.5 text-[13.5px] sm:text-[15px] text-[#334155] leading-[1.55]">
-                Cycle-synced seed blends, savoury protein breakfasts, and natural remedies for persistent chin acne.
+                Cycle-synced seed blends and savoury protein breakfast swaps.
+                <br className="hidden sm:inline" /> Targeted food habits for steady energy, mood balance, and clear skin.
               </p>
             </div>
 
