@@ -10,7 +10,7 @@ export const ARTICLES: Article[] = [
       "Kids Tiffin",
       "kids-tiffin"
     ],
-    "subcategory": "School Lunch (Tiffin)",
+    "subcategory": "School Lunch",
     "region": "India",
     "contentType": "Kids Lunchbox Guide",
     "tag": "Kids Tiffin",
@@ -55,7 +55,7 @@ export const ARTICLES: Article[] = [
       "Kids Tiffin",
       "kids-tiffin"
     ],
-    "subcategory": "Doodh & Drinks",
+    "subcategory": "Milk & Sips",
     "region": "India",
     "contentType": "Drink Audit",
     "tag": "Kids Tiffin",
@@ -145,7 +145,7 @@ export const ARTICLES: Article[] = [
       "Kids Tiffin",
       "kids-tiffin"
     ],
-    "subcategory": "Shaam Ke Snacks",
+    "subcategory": "Evening Bites",
     "region": "India",
     "contentType": "Toddler Food Guide",
     "tag": "Kids Tiffin",
@@ -235,7 +235,7 @@ export const ARTICLES: Article[] = [
       "Desk Munches",
       "clean-snacks"
     ],
-    "subcategory": "Raat Ki Padhai",
+    "subcategory": "Late-Night Study",
     "region": "India",
     "contentType": "Desk Nutrition Guide",
     "tag": "Desk Munches",
@@ -280,7 +280,7 @@ export const ARTICLES: Article[] = [
       "Desk Munches",
       "clean-snacks"
     ],
-    "subcategory": "Laptop-Safe Crunch",
+    "subcategory": "Keyboard-Safe Bites",
     "region": "India",
     "contentType": "Desk Nutrition Guide",
     "tag": "Desk Munches",
@@ -325,7 +325,7 @@ export const ARTICLES: Article[] = [
       "Desk Munches",
       "clean-snacks"
     ],
-    "subcategory": "Office 4 PM Chai",
+    "subcategory": "4 PM Chai Crunch",
     "region": "India",
     "contentType": "Office Wellness Guide",
     "tag": "Desk Munches",
@@ -370,7 +370,7 @@ export const ARTICLES: Article[] = [
       "Desk Munches",
       "clean-snacks"
     ],
-    "subcategory": "Laptop-Safe Crunch",
+    "subcategory": "Keyboard-Safe Bites",
     "region": "India",
     "contentType": "Label Audit",
     "tag": "Desk Munches",
@@ -460,7 +460,7 @@ export const ARTICLES: Article[] = [
       "Women Care",
       "pcos-hormones"
     ],
-    "subcategory": "PCOS & PCOD",
+    "subcategory": "PCOS & Hormones",
     "region": "India",
     "contentType": "Hormonal Nutrition Guide",
     "tag": "Women Care",
@@ -505,7 +505,7 @@ export const ARTICLES: Article[] = [
       "Women Care",
       "pcos-hormones"
     ],
-    "subcategory": "PCOS & PCOD",
+    "subcategory": "PCOS & Hormones",
     "region": "India",
     "contentType": "Clinical Nutrition Audit",
     "tag": "Women Care",
@@ -550,7 +550,7 @@ export const ARTICLES: Article[] = [
       "Women Care",
       "pcos-hormones"
     ],
-    "subcategory": "Periods & PMS",
+    "subcategory": "Periods & Cramps",
     "region": "India",
     "contentType": "Menstrual Wellness Guide",
     "tag": "Women Care",
@@ -595,7 +595,7 @@ export const ARTICLES: Article[] = [
       "Women Care",
       "pcos-hormones"
     ],
-    "subcategory": "Chehre Ke Pimples & Glow",
+    "subcategory": "Clear Skin & Glow",
     "region": "India",
     "contentType": "Dermatological Nutrition Guide",
     "tag": "Women Care",
@@ -640,7 +640,7 @@ export const ARTICLES: Article[] = [
       "Women Care",
       "pcos-hormones"
     ],
-    "subcategory": "Pregnancy & New Moms",
+    "subcategory": "Pregnancy & Moms",
     "region": "India",
     "contentType": "Maternal Nutrition Guide",
     "tag": "Women Care",
@@ -685,7 +685,7 @@ export const ARTICLES: Article[] = [
       "Gym & Protein",
       "weight-protein"
     ],
-    "subcategory": "Daily Sasta Protein",
+    "subcategory": "Budget Protein",
     "region": "India",
     "contentType": "Plant Nutrition Guide",
     "tag": "Gym & Protein",
@@ -730,7 +730,7 @@ export const ARTICLES: Article[] = [
       "Fasting Munch",
       "desi-pantry"
     ],
-    "subcategory": "Mota Anaaj (Millets)",
+    "subcategory": "Native Millets",
     "region": "India",
     "contentType": "Digestive Wellness Guide",
     "tag": "Fasting Munch",
@@ -820,7 +820,7 @@ export const ARTICLES: Article[] = [
       "Low-Sugar Crunch",
       "diabetes-low-gi"
     ],
-    "subcategory": "Bina Chini Ke Sweets",
+    "subcategory": "Clean Sweet Treats",
     "region": "India",
     "contentType": "Traditional Plant Sweets",
     "tag": "Low-Sugar Crunch",
@@ -865,7 +865,7 @@ export const ARTICLES: Article[] = [
       "Sips & Hangover",
       "heart-liver-care"
     ],
-    "subcategory": "Hangover & Party Reset",
+    "subcategory": "Hangover Reset",
     "region": "India",
     "contentType": "Plant Protein Guide",
     "tag": "Sips & Hangover",
@@ -955,7 +955,7 @@ export const ARTICLES: Article[] = [
       "Packet Truth",
       "label-audits"
     ],
-    "subcategory": "Biscuit & Bakery",
+    "subcategory": "Biscuits & Bakery",
     "region": "India",
     "contentType": "Food Label Investigation",
     "tag": "Packet Truth",
@@ -1000,7 +1000,7 @@ export const ARTICLES: Article[] = [
       "Packet Truth",
       "label-audits"
     ],
-    "subcategory": "Protein Bars & Peanut Butter",
+    "subcategory": "Protein Bars & Butters",
     "region": "India",
     "contentType": "Fitness Label Audit",
     "tag": "Packet Truth",
@@ -1045,7 +1045,7 @@ export const ARTICLES: Article[] = [
       "Packet Truth",
       "label-audits"
     ],
-    "subcategory": "Blinkit & Zepto Packs",
+    "subcategory": "Quick Commerce Audits",
     "region": "India",
     "contentType": "Quick-Commerce Buying Guide",
     "tag": "Packet Truth",
@@ -1135,7 +1135,7 @@ export const ARTICLES: Article[] = [
       "Gym & Protein",
       "weight-protein"
     ],
-    "subcategory": "Wazan Ghatana (Fat Loss)",
+    "subcategory": "Fat Loss Snacks",
     "region": "India",
     "contentType": "Satiety Nutrition Guide",
     "tag": "Gym & Protein",
@@ -1180,7 +1180,7 @@ export const ARTICLES: Article[] = [
       "Gym & Protein",
       "weight-protein"
     ],
-    "subcategory": "Daily Sasta Protein",
+    "subcategory": "Budget Protein",
     "region": "India",
     "contentType": "Budget Fitness Guide",
     "tag": "Gym & Protein",
@@ -1225,7 +1225,7 @@ export const ARTICLES: Article[] = [
       "Gym & Protein",
       "weight-protein"
     ],
-    "subcategory": "Muscle & Strength",
+    "subcategory": "Strength & Stamina",
     "region": "India",
     "contentType": "Fitness Label Audit",
     "tag": "Gym & Protein",
@@ -1270,7 +1270,7 @@ export const ARTICLES: Article[] = [
       "Gym & Protein",
       "weight-protein"
     ],
-    "subcategory": "Daily Sasta Protein",
+    "subcategory": "Budget Protein",
     "region": "India",
     "contentType": "Cost-Benefit Nutrition Analysis",
     "tag": "Gym & Protein",
@@ -1315,7 +1315,7 @@ export const ARTICLES: Article[] = [
       "Gym & Protein",
       "weight-protein"
     ],
-    "subcategory": "Pre & Post Workout",
+    "subcategory": "Workout Fuel",
     "region": "India",
     "contentType": "Workout Nutrition Guide",
     "tag": "Gym & Protein",
@@ -1360,7 +1360,7 @@ export const ARTICLES: Article[] = [
       "Gut & Bloat",
       "gut-health"
     ],
-    "subcategory": "Gas & Bloating",
+    "subcategory": "Bloat & Acidity",
     "region": "India",
     "contentType": "Digestive Science Guide",
     "tag": "Gut & Bloat",
@@ -1405,7 +1405,7 @@ export const ARTICLES: Article[] = [
       "Gut & Bloat",
       "gut-health"
     ],
-    "subcategory": "Kabz & Fiber",
+    "subcategory": "High Fiber & Digestion",
     "region": "India",
     "contentType": "Microbiome Science Audit",
     "tag": "Gut & Bloat",
@@ -1450,7 +1450,7 @@ export const ARTICLES: Article[] = [
       "Gut & Bloat",
       "gut-health"
     ],
-    "subcategory": "Acidity & Jalan",
+    "subcategory": "Acidity & Heartburn",
     "region": "India",
     "contentType": "Comparative Nutritional Guide",
     "tag": "Gut & Bloat",
@@ -1495,7 +1495,7 @@ export const ARTICLES: Article[] = [
       "Gut & Bloat",
       "gut-health"
     ],
-    "subcategory": "Dahi & Fermented",
+    "subcategory": "Fermented & Probiotic",
     "region": "India",
     "contentType": "Traditional Probiotic Guide",
     "tag": "Gut & Bloat",
@@ -1540,7 +1540,7 @@ export const ARTICLES: Article[] = [
       "Low-Sugar Crunch",
       "diabetes-low-gi"
     ],
-    "subcategory": "Sugar Spike Control Hacks",
+    "subcategory": "Glucose Control Hacks",
     "region": "India",
     "contentType": "Metabolic Sequencing Guide",
     "tag": "Low-Sugar Crunch",
@@ -1720,7 +1720,7 @@ export const ARTICLES: Article[] = [
       "Fasting Munch",
       "desi-pantry"
     ],
-    "subcategory": "Gud & Til Snacks",
+    "subcategory": "Jaggery & Sesame",
     "region": "India",
     "contentType": "Traditional Pantry Audit",
     "tag": "Fasting Munch",
@@ -1765,7 +1765,7 @@ export const ARTICLES: Article[] = [
       "Fasting Munch",
       "desi-pantry"
     ],
-    "subcategory": "Upwas (Vrat) Food",
+    "subcategory": "Fasting (Vrat) Bites",
     "region": "India",
     "contentType": "Pantry Organization Guide",
     "tag": "Fasting Munch",
