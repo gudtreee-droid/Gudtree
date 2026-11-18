@@ -51,7 +51,7 @@ export default function GudTreeFooter() {
 
   const visibleCats = CATEGORIES.filter(
     (c) => c.slug !== 'home' && c.isVisible !== false
-  ).slice(0, 8);
+  );
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -62,8 +62,8 @@ export default function GudTreeFooter() {
 
   const mainLinks = [
     { label: 'Home', href: '/' },
-    { label: 'All Guides', href: '/category/clean-snacks' },
-    { label: 'Topics', href: '/category' },
+    { label: 'Packet Truth', href: '/category/label-audits' },
+    { label: 'All Topics', href: '/category' },
     { label: 'Write for Us', href: '/write-for-us' },
     { label: 'Contact', href: '/contact' },
     { label: 'Privacy', href: '/privacy' },
@@ -193,14 +193,14 @@ export default function GudTreeFooter() {
           {/* Health Goal Focus Hubs (Pillar Pages for Topic Authority) */}
           <div className="flex flex-wrap items-center justify-center gap-2 mb-3">
             <span className="text-[11px] font-extrabold uppercase tracking-wider text-[#FFFFFF]/70 mr-1">
-              Health Goals:
+              Everyday Diet Focus:
             </span>
             {[
-              { label: 'Diabetes & Low-GI', href: '/focus/diabetes' },
-              { label: 'Gut & Digestion', href: '/focus/gut' },
-              { label: 'Heart & Zero Palm Oil', href: '/focus/heart' },
-              { label: 'PCOS Clean Diet', href: '/focus/pcos' },
-              { label: 'Weight & Fuel', href: '/focus/weight' },
+              { label: 'Low-Sugar Diet', href: '/focus/diabetes' },
+              { label: 'PCOS Food Guide', href: '/focus/pcos' },
+              { label: 'Budget Protein', href: '/focus/weight' },
+              { label: 'Bloat & Acidity', href: '/focus/gut' },
+              { label: 'Hangover Reset', href: '/focus/heart' },
             ].map((hub) => (
               <Link
                 key={hub.href}

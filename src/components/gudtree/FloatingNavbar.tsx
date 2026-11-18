@@ -89,8 +89,8 @@ export default function FloatingNavbar() {
 
   const navLinks = [
     { label: 'Home', href: '/' },
-    { label: 'Snack Audits', href: '/category/clean-snacks' },
-    { label: 'Health Goals', href: '/#health-goals' },
+    { label: 'Packet Truth', href: '/category/label-audits' },
+    { label: 'Diet Focus', href: '/#diet-focus' },
     { label: 'Topics', href: '/category' },
     { label: 'Contact', href: '/contact' },
   ];
@@ -305,8 +305,8 @@ export default function FloatingNavbar() {
               </div>
 
               <div className="pt-4 border-t border-[#ADC3DE]/60">
-                <div className="text-[11px] font-bold uppercase tracking-widest text-[#334155] mb-3">
-                  Browse Categories
+                <div className="text-[11px] font-bold uppercase tracking-widest text-[#334155] mb-2.5">
+                  9 Core Pillars
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {visibleCats.map((cat) => (
@@ -314,9 +314,33 @@ export default function FloatingNavbar() {
                       key={cat.slug}
                       href={`/category/${cat.slug}`}
                       onClick={() => setIsDrawerOpen(false)}
-                      className="min-h-[40px] inline-flex items-center px-3.5 py-2 rounded-full bg-white border border-[#ADC3DE] text-[13px] font-medium text-[#102A56] hover:border-[#DA440D] no-underline"
+                      className="min-h-[38px] inline-flex items-center px-3 py-1.5 rounded-full bg-white border border-[#ADC3DE] text-[12.5px] font-medium text-[#102A56] hover:border-[#DA440D] no-underline"
                     >
                       {normalizeCatName(cat.name)}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              <div className="pt-4 border-t border-[#ADC3DE]/60">
+                <div className="text-[11px] font-bold uppercase tracking-widest text-[#DA440D] mb-2.5">
+                  Everyday Diet Focus
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {[
+                    { label: 'Low-Sugar Diet', href: '/focus/diabetes' },
+                    { label: 'PCOS Food Guide', href: '/focus/pcos' },
+                    { label: 'Budget Protein', href: '/focus/weight' },
+                    { label: 'Bloat & Acidity', href: '/focus/gut' },
+                    { label: 'Hangover Reset', href: '/focus/heart' },
+                  ].map((hub) => (
+                    <Link
+                      key={hub.href}
+                      href={hub.href}
+                      onClick={() => setIsDrawerOpen(false)}
+                      className="min-h-[38px] inline-flex items-center px-3 py-1.5 rounded-full bg-white border border-[#ADC3DE] text-[12px] font-semibold text-[#102A56] hover:border-[#0944BA] no-underline"
+                    >
+                      {hub.label}
                     </Link>
                   ))}
                 </div>

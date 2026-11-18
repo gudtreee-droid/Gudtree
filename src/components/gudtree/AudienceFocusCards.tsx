@@ -109,9 +109,11 @@ export default function AudienceFocusCards({
 }) {
   return (
     <section
+      id="diet-focus"
       aria-label="Target Audience and Diet Plans"
-      className="w-full max-w-full overflow-x-clip bg-[#FFF9EC] pt-8 sm:pt-12 pb-12 sm:pb-16"
+      className="w-full max-w-full overflow-x-clip bg-[#FFF9EC] pt-8 sm:pt-12 pb-12 sm:pb-16 scroll-mt-20 relative"
     >
+      <div id="health-goals" className="absolute -top-16 left-0 pointer-events-none" />
       <div className="max-w-[1060px] mx-auto px-4 sm:px-5">
         {/* Centered Header (clean editorial focus matching Bullen's section) */}
         <motion.div
