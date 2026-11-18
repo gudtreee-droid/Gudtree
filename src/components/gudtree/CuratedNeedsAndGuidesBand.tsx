@@ -35,61 +35,67 @@ function ColorLightning({
 
 const NEED_DOMES = [
   {
-    id: 'kids',
-    label: 'Kids Tiffin',
-    img: '/images/card-pcos.png',
-  },
-  {
-    id: 'desk',
-    label: 'Desk & Study',
+    id: 'desk-study',
+    label: '1 AM Padhai Fuel',
     img: '/images/card-diabetes.png',
+    href: '/category/clean-snacks',
   },
   {
-    id: 'weight',
-    label: 'Gym Protein',
+    id: 'office-chai',
+    label: 'Office 4 PM Chai',
     img: '/images/card-weight.png',
+    href: '/category/clean-snacks',
   },
   {
-    id: 'heart',
+    id: 'hangover-reset',
     label: 'Hangover Reset',
     img: '/images/card-heart.png',
+    href: '/category/heart-liver-care',
   },
   {
-    id: 'pcos',
-    label: "Women's Care",
+    id: 'kids-tiffin',
+    label: 'School Tiffin',
     img: '/images/card-pcos.png',
+    href: '/category/kids-tiffin',
   },
   {
-    id: 'gut',
-    label: 'Pet Ka Gas',
+    id: 'label-check',
+    label: 'Blinkit Packet Check',
     img: '/images/card-gut.png',
+    href: '/category/label-audits',
+  },
+  {
+    id: 'vrat-food',
+    label: 'Upwas & Vrat Food',
+    img: '/images/card-diabetes.png',
+    href: '/category/desi-pantry',
   },
 ];
 
 const FEATURE_SPOTLIGHT_BANNERS = [
   {
-    brand: 'MAKHANA',
-    subtitle: '65% Fewer Calories Swaps',
+    brand: 'CHAI SE PEHLE 4 BADAM',
+    subtitle: 'Glucose Curve & Acidity 60% Kam',
     gradient: 'from-[#FFF0E5] via-[#FFE6D4] to-[#FFD8BD]',
     accent: '#9A3412',
     img: '/images/card-diabetes.png',
-    href: '/category/clean-snacks',
+    href: '/category/heart-liver-care',
   },
   {
-    brand: 'GUT FIBRE',
-    subtitle: 'Desi Dahi, Chia & Millets',
+    brand: 'PEHLE SALAD, PHIR ROTI',
+    subtitle: 'Sugar Spike & Pachan Control Hack',
     gradient: 'from-[#EAF5EC] via-[#D8EEDD] to-[#C6E5CD]',
     accent: '#0F5132',
     img: '/images/card-gut.png',
-    href: '/category/gut-health',
+    href: '/category/diabetes-low-gi',
   },
   {
-    brand: 'LOW-GI DIET',
-    subtitle: 'Steady Sugar & Clean Labels',
+    brand: '₹15 ME 18G SATTU',
+    subtitle: 'Gym Ke Liye Sasta Desi Muscle Fuel',
     gradient: 'from-[#EAF2FF] via-[#DCEAFF] to-[#CCDEFF]',
     accent: '#102A56',
-    img: '/images/card-heart.png',
-    href: '/category/diabetes-low-gi',
+    img: '/images/card-weight.png',
+    href: '/category/weight-protein',
   },
 ];
 
@@ -151,7 +157,7 @@ export default function CuratedNeedsAndGuidesBand({
           <div className="flex items-center justify-center gap-3 mb-6 sm:mb-10">
             <ColorLightning fill="#E5F36D" stroke="#073124" />
             <h2 className="gt-hero-comic-title text-[21px] sm:text-[36px] lg:text-[40px] text-center tracking-[0.01em]">
-              READ BY NEEDS
+              HAR MAUKE KA HEALTHY SWAP
             </h2>
             <ColorLightning fill="#E5F36D" stroke="#073124" />
           </div>
@@ -160,7 +166,7 @@ export default function CuratedNeedsAndGuidesBand({
           <div className="gt-hscroll-sm sm:grid sm:grid-cols-3 lg:grid-cols-6 gap-3.5 sm:gap-5 pb-2 sm:pb-0">
             {NEED_DOMES.map((item) => {
               const targetHref =
-                item.id === 'packed' ? '/news' : `/focus/${item.id}`;
+                item.href || (item.id === 'packed' ? '/news' : `/focus/${item.id}`);
               return (
                 <motion.div
                   key={item.id}

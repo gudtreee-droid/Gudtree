@@ -19,6 +19,8 @@ import AudienceFocusCards from './AudienceFocusCards';
 import BlogDiscoveryTabsShelf from './BlogDiscoveryTabsShelf';
 import CuratedNeedsAndGuidesBand from './CuratedNeedsAndGuidesBand';
 import HeroPlayfulMascots from './HeroPlayfulMascots';
+import CleanPlateSwapMatrix from './CleanPlateSwapMatrix';
+import GudTreeFaqSection from './GudTreeFaqSection';
 
 function getCardRating(slug: string): { rating: string; mins: string } {
   let hash = 0;
@@ -179,6 +181,31 @@ export default function GudTreeHomeView({ articles }: { articles: Article[] }) {
       : safeArticles.filter((a) => !usedSlugs.has(a.slug))
     ).slice(0, 4);
   }, [safeArticles, snacksCategoryArticles]);
+
+  // Kids & School Tiffin Articles
+  const kidsCategoryArticles = useMemo(() => {
+    return safeArticles.filter((a) => (a.category || '').toLowerCase().includes('kid')).slice(0, 4);
+  }, [safeArticles]);
+
+  // Gym & Budget Fitness Articles
+  const gymCategoryArticles = useMemo(() => {
+    return safeArticles.filter((a) => (a.category || '').toLowerCase().includes('gym')).slice(0, 4);
+  }, [safeArticles]);
+
+  // Drinks & Hangover Detox Articles
+  const drinksCategoryArticles = useMemo(() => {
+    return safeArticles.filter((a) => (a.category || '').toLowerCase().includes('drink')).slice(0, 4);
+  }, [safeArticles]);
+
+  // Market Packet Check Articles
+  const marketCategoryArticles = useMemo(() => {
+    return safeArticles.filter((a) => (a.category || '').toLowerCase().includes('market')).slice(0, 4);
+  }, [safeArticles]);
+
+  // Women's Care & Hormones Articles
+  const womenCategoryArticles = useMemo(() => {
+    return safeArticles.filter((a) => (a.category || '').toLowerCase().includes('women')).slice(0, 4);
+  }, [safeArticles]);
 
   return (
     <div className="w-full max-w-full overflow-x-clip flex flex-col bg-[#FFF9EC] text-[#102A56]">
@@ -378,6 +405,222 @@ export default function GudTreeHomeView({ articles }: { articles: Article[] }) {
           </div>
         </section>
       )}
+
+      {/* BAND 8: KIDS & SCHOOL TIFFIN GUIDES */}
+      {kidsCategoryArticles.length > 0 && (
+        <section className="w-full max-w-full overflow-x-clip bg-[#FFFFFF] py-12 sm:py-16 border-b border-[#ADC3DE]/35">
+          <div className="max-w-[1060px] mx-auto px-4 sm:px-5">
+            <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-10">
+              <span className="inline-block px-3 py-1 rounded-full bg-[#EEF4FF] text-[#2F54EB] text-[11px] font-bold uppercase tracking-[0.1em] mb-2">
+                Bachhon Ka Tiffin &amp; Healthy Treats
+              </span>
+              <h2 className="gt-font-display text-[22px] sm:text-[32px] lg:text-[38px] leading-[1.12] tracking-[-0.02em] text-[#102A56]">
+                Subah Ka School Tiffin &amp; Shaam Ki Bhookh
+              </h2>
+              <p className="mt-1.5 text-[13.5px] sm:text-[15px] text-[#334155] leading-[1.55]">
+                Subah 10-minute me banne wale no-maida tiffin ideas aur shaam ke kurkure treats jo bache dabba pura khali karein.
+              </p>
+            </div>
+
+            <div className="gt-hscroll-sm sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 pb-2 sm:pb-0">
+              {kidsCategoryArticles.map((article, idx) => (
+                <div key={article.slug} className="w-[224px] sm:w-auto min-w-0">
+                  <UnifiedCleanBlogCard
+                    article={article}
+                    index={idx + 8}
+                    isSaved={savedSlugs.includes(article.slug)}
+                    onToggleSave={toggleSave}
+                  />
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-7 flex justify-center">
+              <Link
+                href="/category/kids-tiffin"
+                className="w-full sm:w-auto sm:min-w-[300px] h-11 px-8 rounded-full bg-[#EEF4FF] hover:bg-[#DCE8FF] text-[#2F54EB] text-[14px] font-bold inline-flex items-center justify-center gap-1.5 no-underline transition-colors"
+              >
+                <span>Explore Kids &amp; Tiffin Guides</span>
+                <span aria-hidden="true">&raquo;</span>
+              </Link>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* BAND 9: GYM, HOSTEL & SASTA PROTEIN (< ₹50) */}
+      {gymCategoryArticles.length > 0 && (
+        <section className="w-full max-w-full overflow-x-clip bg-[#FFF9EC] py-12 sm:py-16 border-b border-[#ADC3DE]/35">
+          <div className="max-w-[1060px] mx-auto px-4 sm:px-5">
+            <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-10">
+              <span className="inline-block px-3 py-1 rounded-full bg-[#FFFFFF] border border-[#ADC3DE]/60 text-[#DA440D] text-[11px] font-bold uppercase tracking-[0.1em] mb-2">
+                Daily Protein On Budget • Gym &amp; Muscle
+              </span>
+              <h2 className="gt-font-display text-[22px] sm:text-[32px] lg:text-[38px] leading-[1.12] tracking-[-0.02em] text-[#102A56]">
+                ₹50 Ke Andar Desi Protein &amp; Pre-Workout
+              </h2>
+              <p className="mt-1.5 text-[13.5px] sm:text-[15px] text-[#334155] leading-[1.55]">
+                Mehenge imported powder aur chemical supplements ke bina daily 60g protein pura karne ke aasan desi tareeqe.
+              </p>
+            </div>
+
+            <div className="gt-hscroll-sm sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 pb-2 sm:pb-0">
+              {gymCategoryArticles.map((article, idx) => (
+                <div key={article.slug} className="w-[224px] sm:w-auto min-w-0">
+                  <UnifiedCleanBlogCard
+                    article={article}
+                    index={idx + 12}
+                    isSaved={savedSlugs.includes(article.slug)}
+                    onToggleSave={toggleSave}
+                  />
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-7 flex justify-center">
+              <Link
+                href="/category/weight-protein"
+                className="w-full sm:w-auto sm:min-w-[300px] h-11 px-8 rounded-full bg-[#102A56] hover:bg-[#DA440D] text-[#FFFFFF] text-[14px] font-semibold inline-flex items-center justify-center gap-1.5 no-underline transition-colors shadow-sm"
+              >
+                <span>Explore Sasta Protein &amp; Gym Munches</span>
+                <span aria-hidden="true">&raquo;</span>
+              </Link>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* BAND 10: CLEAN PLATE COMPARISON MATRIX (JUNK VS CLEAN DESI SWAP) */}
+      <CleanPlateSwapMatrix />
+
+      {/* BAND 11: DRINKS, DETOX & HANGOVER RESET */}
+      {drinksCategoryArticles.length > 0 && (
+        <section className="w-full max-w-full overflow-x-clip bg-[#FFFFFF] py-12 sm:py-16 border-b border-[#ADC3DE]/35">
+          <div className="max-w-[1060px] mx-auto px-4 sm:px-5">
+            <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-10">
+              <span className="inline-block px-3 py-1 rounded-full bg-[#EEF4FF] text-[#2F54EB] text-[11px] font-bold uppercase tracking-[0.1em] mb-2">
+                Hydration &amp; Liver Reset • Zero Chemical Sips
+              </span>
+              <h2 className="gt-font-display text-[22px] sm:text-[32px] lg:text-[38px] leading-[1.12] tracking-[-0.02em] text-[#102A56]">
+                Roz Ke Desi Sips &amp; Daru Ka Hangover Reset
+              </h2>
+              <p className="mt-1.5 text-[13.5px] sm:text-[15px] text-[#334155] leading-[1.55]">
+                Party ke baad subah sir-dard aur dehydration 30 minute me shant karne wale gharelu sharbat aur daily gut coolers.
+              </p>
+            </div>
+
+            <div className="gt-hscroll-sm sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 pb-2 sm:pb-0">
+              {drinksCategoryArticles.map((article, idx) => (
+                <div key={article.slug} className="w-[224px] sm:w-auto min-w-0">
+                  <UnifiedCleanBlogCard
+                    article={article}
+                    index={idx + 16}
+                    isSaved={savedSlugs.includes(article.slug)}
+                    onToggleSave={toggleSave}
+                  />
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-7 flex justify-center">
+              <Link
+                href="/category/heart-liver-care"
+                className="w-full sm:w-auto sm:min-w-[300px] h-11 px-8 rounded-full bg-[#EEF4FF] hover:bg-[#DCE8FF] text-[#2F54EB] text-[14px] font-bold inline-flex items-center justify-center gap-1.5 no-underline transition-colors"
+              >
+                <span>Explore Drinks &amp; Detox Guides</span>
+                <span aria-hidden="true">&raquo;</span>
+              </Link>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* BAND 12: MARKET PACKET CHECK (BLINKIT & ZEPTO AUDITS) */}
+      {marketCategoryArticles.length > 0 && (
+        <section className="w-full max-w-full overflow-x-clip bg-[#FFF9EC] py-12 sm:py-16 border-b border-[#ADC3DE]/35">
+          <div className="max-w-[1060px] mx-auto px-4 sm:px-5">
+            <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-10">
+              <span className="inline-block px-3 py-1 rounded-full bg-[#FFFFFF] border border-[#ADC3DE]/60 text-[#DA440D] text-[11px] font-bold uppercase tracking-[0.1em] mb-2">
+                Label Audits • Quick Commerce Truth
+              </span>
+              <h2 className="gt-font-display text-[22px] sm:text-[32px] lg:text-[38px] leading-[1.12] tracking-[-0.02em] text-[#102A56]">
+                Blinkit &amp; Zepto Ke Namkeen-Biscuit Ka Sach
+              </h2>
+              <p className="mt-1.5 text-[13.5px] sm:text-[15px] text-[#334155] leading-[1.55]">
+                Packet ke peeche chhupi maida, palm oil, aur chini ke 5 alag-alag chemical naamon ki jaanch.
+              </p>
+            </div>
+
+            <div className="gt-hscroll-sm sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 pb-2 sm:pb-0">
+              {marketCategoryArticles.map((article, idx) => (
+                <div key={article.slug} className="w-[224px] sm:w-auto min-w-0">
+                  <UnifiedCleanBlogCard
+                    article={article}
+                    index={idx + 20}
+                    isSaved={savedSlugs.includes(article.slug)}
+                    onToggleSave={toggleSave}
+                  />
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-7 flex justify-center">
+              <Link
+                href="/category/label-audits"
+                className="w-full sm:w-auto sm:min-w-[300px] h-11 px-8 rounded-full bg-[#102A56] hover:bg-[#DA440D] text-[#FFFFFF] text-[14px] font-semibold inline-flex items-center justify-center gap-1.5 no-underline transition-colors shadow-sm"
+              >
+                <span>Explore Market Packet Audits</span>
+                <span aria-hidden="true">&raquo;</span>
+              </Link>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* BAND 13: WOMEN'S CARE & HORMONES */}
+      {womenCategoryArticles.length > 0 && (
+        <section className="w-full max-w-full overflow-x-clip bg-[#FFFFFF] py-12 sm:py-16 border-b border-[#ADC3DE]/35">
+          <div className="max-w-[1060px] mx-auto px-4 sm:px-5">
+            <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-10">
+              <span className="inline-block px-3 py-1 rounded-full bg-[#EEF4FF] text-[#2F54EB] text-[11px] font-bold uppercase tracking-[0.1em] mb-2">
+                Women's Nutrition • Hormones &amp; Skin
+              </span>
+              <h2 className="gt-font-display text-[22px] sm:text-[32px] lg:text-[38px] leading-[1.12] tracking-[-0.02em] text-[#102A56]">
+                PCOS, Period Cramps &amp; Hormonal Glow
+              </h2>
+              <p className="mt-1.5 text-[13.5px] sm:text-[15px] text-[#334155] leading-[1.55]">
+                Period cycle ke hisaab se seed cycling, namkeen protein breakfast aur chin ke dardnak pimples ka ilaj.
+              </p>
+            </div>
+
+            <div className="gt-hscroll-sm sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 pb-2 sm:pb-0">
+              {womenCategoryArticles.map((article, idx) => (
+                <div key={article.slug} className="w-[224px] sm:w-auto min-w-0">
+                  <UnifiedCleanBlogCard
+                    article={article}
+                    index={idx + 24}
+                    isSaved={savedSlugs.includes(article.slug)}
+                    onToggleSave={toggleSave}
+                  />
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-7 flex justify-center">
+              <Link
+                href="/category/pcos-hormones"
+                className="w-full sm:w-auto sm:min-w-[300px] h-11 px-8 rounded-full bg-[#EEF4FF] hover:bg-[#DCE8FF] text-[#2F54EB] text-[14px] font-bold inline-flex items-center justify-center gap-1.5 no-underline transition-colors"
+              >
+                <span>Explore Women's Care &amp; PCOS Guides</span>
+                <span aria-hidden="true">&raquo;</span>
+              </Link>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* BAND 14: FREQUENTLY ASKED QUESTIONS (FAQ) */}
+      <GudTreeFaqSection />
     </div>
   );
 }

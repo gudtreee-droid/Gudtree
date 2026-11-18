@@ -17,10 +17,10 @@ export interface AudienceCardItem {
 
 export const AUDIENCE_FOCUS_CARDS: AudienceCardItem[] = [
   {
-    id: 'desk',
-    title: 'Desk & Study Fuel',
+    id: 'diabetes',
+    title: 'Sugar & Pre-Diabetes Diet',
     description:
-      'Non-greasy makhana, roasted chana, zero brain fog for late-night & 4 PM work',
+      'Roti-chawal ka krama, chai se pehle 4 badam, aur bina-chini ke low-GI crunch',
     blobColor: '#FF5A3D',
     blobRotation: -8,
     imageSrc: '/images/card-diabetes.png',
@@ -28,43 +28,43 @@ export const AUDIENCE_FOCUS_CARDS: AudienceCardItem[] = [
   },
   {
     id: 'pcos',
-    title: "Women's Health & PCOS",
+    title: "PCOS & Hormones Diet",
     description:
-      'Seed cycling bars, cinnamon almonds, PMS cramp relief & hormonal acne swaps',
+      'Seed cycling bars, namkeen protein nashta, aur facial pimples rokne wale foods',
     blobColor: '#4CC36B',
     blobRotation: 9,
     imageSrc: '/images/card-pcos.png',
     imageAlt: 'Seed-cycling granola bars and almonds',
   },
   {
-    id: 'vegan',
-    title: 'Vegan & Plant-Based',
+    id: 'weight',
+    title: 'Hostel & Sasta Protein (<₹50)',
     description:
-      'Desi sattu protein shakes, lactose-free chai munches, clean oat milk audits',
-    blobColor: '#2BA6FF',
-    blobRotation: 12,
-    imageSrc: '/images/card-heart.png',
-    imageAlt: 'Walnuts, avocado and flaxseed clean bowl',
+      '₹15 ka sattu drink, bhuna chana, aur bina palm oil wala 100% peanut butter',
+    blobColor: '#F5A623',
+    blobRotation: -5,
+    imageSrc: '/images/card-weight.png',
+    imageAlt: 'Crispy multigrain lentil stack with paneer and greens',
   },
   {
     id: 'gut',
-    title: 'Gut & Bloat Relief',
+    title: 'Pet, Gas & Acidity Reset',
     description:
-      'Probiotic jeera chaas, beet kanji, prebiotic millet crisps, zero desk bloat',
+      'Desk par baithe phoola pet shaant karne wali jeera chaas aur fermented kanji',
     blobColor: '#9B51E0',
     blobRotation: -15,
     imageSrc: '/images/card-gut.png',
     imageAlt: 'Probiotic yogurt jar with chia seeds and millet crackers',
   },
   {
-    id: 'weight',
-    title: 'Budget Fitness (<₹50)',
+    id: 'heart',
+    title: 'Fatty Liver & Detox Sips',
     description:
-      'Under ₹40 clean protein, sattu vs whey, peanut butter palm oil audits',
-    blobColor: '#F5A623',
-    blobRotation: -5,
-    imageSrc: '/images/card-weight.png',
-    imageAlt: 'Crispy multigrain lentil stack with paneer and greens',
+      'Party ke agle din 30-min liver reset, taaza nariyal sharbat & zero palm oil diet',
+    blobColor: '#2BA6FF',
+    blobRotation: 12,
+    imageSrc: '/images/card-heart.png',
+    imageAlt: 'Walnuts, avocado and flaxseed clean bowl',
   },
 ];
 
@@ -121,11 +121,11 @@ export default function AudienceFocusCards({
           transition={{ duration: 0.55, ease: GT_EASE }}
           className="text-center max-w-2xl mx-auto mb-10 sm:mb-14"
         >
-          <h2 className="gt-font-display text-[30px] sm:text-[38px] lg:text-[42px] leading-[1.08] tracking-[-0.03em] text-[#102A56]">
-            India&apos;s Top Diet &amp; Patient Focus
+          <h2 className="gt-font-display text-[26px] sm:text-[36px] lg:text-[42px] leading-[1.08] tracking-[-0.03em] text-[#102A56]">
+            Everyday Condition Diets: Kya Khayein, Kya Chhodein
           </h2>
-          <p className="mt-2.5 text-[15px] sm:text-[16px] text-[#334155] leading-[1.55]">
-            Clean snacking &amp; clinical diet guides built for the 5 biggest everyday nutrition battles.
+          <p className="mt-2.5 text-[14.5px] sm:text-[16px] text-[#334155] leading-[1.55]">
+            PCOS, Sugar, Pet Ka Bloat aur Sasta Protein: Ghar ke khane me simple food swaps aur practical diet rules.
           </p>
         </motion.div>
 
