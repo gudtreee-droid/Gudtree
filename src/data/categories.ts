@@ -2,129 +2,129 @@ import { Category } from '@/types';
 
 export const CATEGORIES: Category[] = [
   {
-    name: "Kids (Bachhe)",
+    name: "Kids Tiffin",
     slug: "kids-tiffin",
-    description: "Subah ka easy school lunchbox, shaam ke kurkure snacks, aur bina palm oil ke healthy treats.",
+    description: "Quick school lunchboxes, crisp evening bites, and 100% palm-oil-free treats kids love.",
     layout: "kids-tiffin-layout",
     order: 1,
     isVisible: true,
     subcategories: [
-      { name: "School Lunch (Tiffin)", slug: "school-lunch", description: "Subah 10-minute me banne wale no-maida tiffin ideas jo dopahar tak kharab na ho." },
-      { name: "Shaam Ke Snacks", slug: "shaam-ke-snacks", description: "School se lautne ke baad bhookh mitane wale kurkure aur safe snacks." },
-      { name: "Weekend Treats", slug: "weekend-treats", description: "Sunday ko pizza aur burger ki jagah bachhon ke liye tasty homemade swaps." },
-      { name: "Doodh & Drinks", slug: "doodh-drinks", description: "Bournvita ke badle real dry-fruits mix, sattu shakes aur fruit coolers." }
+      { name: "School Lunch", slug: "school-lunch", description: "Quick 10-minute maida-free lunchbox ideas that stay fresh until noon." },
+      { name: "Evening Bites", slug: "shaam-ke-snacks", description: "Wholesome and crunchy post-school hunger busters." },
+      { name: "Weekend Treats", slug: "weekend-treats", description: "Homemade healthy swaps for pizza and burgers." },
+      { name: "Milk & Sips", slug: "doodh-drinks", description: "Nut mixes, sattu shakes, and real fruit coolers instead of chemical malt drinks." }
     ]
   },
   {
-    name: "Desk & Study",
+    name: "Desk Munches",
     slug: "clean-snacks",
-    description: "Laptop keyboard-safe crunch, raat ki padhai ke snacks, aur 4 PM office slump ka aasan hal.",
+    description: "Keyboard-clean crunch, late-night study fuel, and 4 PM slump busters with zero mess.",
     layout: "clean-snacks-layout",
     order: 2,
     isVisible: true,
     subcategories: [
-      { name: "Raat Ki Padhai", slug: "raat-ki-padhai", description: "1 AM study aur coding ke waqt dimaag fresh rakhne wale light snacks." },
-      { name: "Office 4 PM Chai", slug: "office-4pm-chai", description: "Samosa aur bakery biscuit chhod kar energy dene wale chai companions." },
-      { name: "Hostel & Library", slug: "hostel-library", description: "Bina gas-chulhe aur fridge ke mahino chalne wale saste pocket-friendly snacks." },
-      { name: "Laptop-Safe Crunch", slug: "laptop-safe-crunch", description: "Aise kurkure snacks jisse keyboard par tel ya peela masala na lage." }
+      { name: "Late-Night Study", slug: "raat-ki-padhai", description: "Brain-fueling, light snacks for 1 AM study and coding sessions." },
+      { name: "4 PM Chai Crunch", slug: "office-4pm-chai", description: "Clean chai companions to replace oily samosas and bakery biscuits." },
+      { name: "Hostel & Library", slug: "hostel-library", description: "Budget-friendly, shelf-stable snacks requiring no stove or fridge." },
+      { name: "Keyboard-Safe Bites", slug: "laptop-safe-crunch", description: "Crispy snacks that leave zero oil or turmeric stains on your keyboard." }
     ]
   },
   {
-    name: "Gym & Fitness",
+    name: "Gym & Protein",
     slug: "weight-protein",
-    description: "Body aur muscles ke liye ₹50 ke andar sasta protein, bina mehenge whey powder ke.",
+    description: "Real budget protein under ₹50 a day without expensive whey supplements.",
     layout: "weight-protein-layout",
     order: 3,
     isVisible: true,
     subcategories: [
-      { name: "Daily Sasta Protein", slug: "daily-sasta-protein", description: "Hostel aur room par rehne walo ke liye bhuna chana, moong aur sattu hacks." },
-      { name: "Pre & Post Workout", slug: "pre-post-workout", description: "Gym se pehle natural energy aur gym ke baad clean muscle recovery." },
-      { name: "Wazan Ghatana (Fat Loss)", slug: "fat-loss-snacks", description: "Pet pura bharne wale 150-calorie low-calorie crunch." },
-      { name: "Muscle & Strength", slug: "muscle-strength", description: "Natural desi khana jisse strength badhe bina pachan kharab hue." }
+      { name: "Budget Protein", slug: "daily-sasta-protein", description: "Roasted chana, moong, and sattu power hacks for everyday nutrition." },
+      { name: "Workout Fuel", slug: "pre-post-workout", description: "Natural pre-workout energy and clean post-workout muscle recovery." },
+      { name: "Fat Loss Snacks", slug: "fat-loss-snacks", description: "High-satiety, crunchy bites under 150 calories." },
+      { name: "Strength & Stamina", slug: "muscle-strength", description: "Wholesome traditional foods that build stamina without gut distress." }
     ]
   },
   {
-    name: "Drinks & Detox",
+    name: "Sips & Hangover",
     slug: "heart-liver-care",
-    description: "Roz ke pet-friendly desi sharbat aur weekend party ke baad daru ka hangover utarne ke nuskhe.",
+    description: "Everyday gut-cooling tonics and fast morning hangover remedies.",
     layout: "heart-liver-care-layout",
     order: 4,
     isVisible: true,
     subcategories: [
-      { name: "Hangover & Party Reset", slug: "hangover-party-reset", description: "Daru ka hangover, sir-dard aur ulti 30 minute me shant karne wale desi drinks." },
-      { name: "Roz Ke Desi Sips", slug: "roz-ke-desi-sips", description: "Jeera chaas, chilled sattu cooler, aur dahi ke natural probiotics." },
-      { name: "Chai & Coffee Swaps", slug: "chai-coffee-swaps", description: "Chai peene se gas aur acidity na bane, uske aasan tarike." },
-      { name: "Energy & Hydration", slug: "energy-hydration", description: "Nariyal pani aur sendha namak electrolytes bina packaged chemical drinks ke." }
+      { name: "Hangover Reset", slug: "hangover-party-reset", description: "Natural remedies to calm headaches, nausea, and dehydration in 30 minutes." },
+      { name: "Everyday Coolers", slug: "roz-ke-desi-sips", description: "Jeera buttermilk, chilled sattu sharbat, and natural probiotics." },
+      { name: "Chai & Coffee Swaps", slug: "chai-coffee-swaps", description: "Smooth alternatives that prevent acidity and gastric burning." },
+      { name: "Hydration & Electrolytes", slug: "energy-hydration", description: "Coconut water and pink salt hydration without artificial sports drinks." }
     ]
   },
   {
-    name: "Women's Care",
+    name: "Women Care",
     slug: "pcos-hormones",
-    description: "PCOS me wazan aur pimples control, period ke pet dard, aur pregnancy ke safe snacks.",
+    description: "Hormone-balancing snacks, seed cycling, and clean food remedies for PCOS and period cramps.",
     layout: "pcos-hormones-layout",
     order: 5,
     isVisible: true,
     subcategories: [
-      { name: "PCOS & PCOD", slug: "pcos-pcod", description: "Sugar aur testosterone control karne wale seed cycling aur snacks." },
-      { name: "Periods & PMS", slug: "periods-pms", description: "Period se pehle pet ke marod (cramps) aur meetha khane ki craving ka hal." },
-      { name: "Pregnancy & New Moms", slug: "pregnancy-new-moms", description: "Subah ki ulti (morning sickness) aur sugar control ke safe snacks." },
-      { name: "Chehre Ke Pimples & Glow", slug: "skin-pimples-glow", description: "Doodh wali chai chhod kar chin aur jawline ke dardnak pimples thik karna." }
+      { name: "PCOS & Hormones", slug: "pcos-pcod", description: "Seed cycling and low-insulin snacks to balance hormones naturally." },
+      { name: "Periods & Cramps", slug: "periods-pms", description: "Soothing remedies for abdominal cramps and pre-period sugar cravings." },
+      { name: "Pregnancy & Moms", slug: "pregnancy-new-moms", description: "Gentle morning sickness remedies and nutrient-rich pregnancy snacks." },
+      { name: "Clear Skin & Glow", slug: "skin-pimples-glow", description: "Clean nutrition habits that calm hormonal acne and boost skin health." }
     ]
   },
   {
-    name: "Pet & Pachan",
+    name: "Gut & Bloat",
     slug: "gut-health",
-    description: "8 ghante kursi par baithne se phoola hua pet aur khane ke baad seene ki jalan ka ilaj.",
+    description: "Gentle digestive remedies to banish acidity, bloating, and post-meal heavy stomach.",
     layout: "gut-health-layout",
     order: 6,
     isVisible: true,
     subcategories: [
-      { name: "Gas & Bloating", slug: "gas-bloating", description: "Baithe-baithe pet phoolna aur tight jeans ki takleef shant karna." },
-      { name: "Acidity & Jalan", slug: "acidity-jalan", description: "Office coffee ke baad gale aur seene ki aag thandi karne wale gharelu seeds." },
-      { name: "Dahi & Fermented", slug: "dahi-fermented", description: "Beetroot kanji aur dahi se pachan aur aanto ko majboot banana." },
-      { name: "Kabz & Fiber", slug: "kabz-fiber", description: "Subah pet khul kar saaf hone ke liye unpolished desi grains." }
+      { name: "Bloat & Acidity", slug: "gas-bloating", description: "Fast relief from desk-bound belly bloat and tight waistbands." },
+      { name: "Acidity & Heartburn", slug: "acidity-jalan", description: "Kitchen spices and seeds that extinguish post-coffee chest burn." },
+      { name: "Fermented & Probiotic", slug: "dahi-fermented", description: "Beet kanji, homemade curd, and traditional gut-strengthening ferments." },
+      { name: "High Fiber & Digestion", slug: "kabz-fiber", description: "Unpolished native grains for effortless morning digestion." }
     ]
   },
   {
-    name: "Market Packet Check",
+    name: "Packet Truth",
     slug: "label-audits",
-    description: "Blinkit, Zepto aur dukaan ke chips, biscuit aur namkeen ke packet ka sach.",
+    description: "Honest label audits of chips, biscuits, and namkeen sold on quick-commerce apps.",
     layout: "label-audits-layout",
     order: 7,
     isVisible: true,
     subcategories: [
-      { name: "Chips & Namkeen", slug: "chips-namkeen", description: "Too Yumm aur Haldiram ke packet me palm oil aur maltodextrin ka sach." },
-      { name: "Biscuit & Bakery", slug: "biscuit-bakery", description: "Whole wheat bol kar 60% maida aur chini bechne wale digestive biscuits." },
-      { name: "Protein Bars & Peanut Butter", slug: "protein-bars-peanut-butter", description: "Maltitol chemical syrup aur hydrogenated palm oil ki jaanch." },
-      { name: "Blinkit & Zepto Packs", slug: "blinkit-zepto-packs", description: "Quick delivery app par milne wale 5 sabse clean aur safe namkeen packet." }
+      { name: "Chips & Namkeen", slug: "chips-namkeen", description: "Exposing hidden palm oil, maltodextrin, and synthetic seasonings." },
+      { name: "Biscuits & Bakery", slug: "biscuit-bakery", description: "Checking whole wheat claims vs actual maida and sugar content." },
+      { name: "Protein Bars & Butters", slug: "protein-bars-peanut-butter", description: "Investigating maltitol syrups and hydrogenated vegetable oils." },
+      { name: "Quick Commerce Audits", slug: "blinkit-zepto-packs", description: "Ranking the 5 cleanest and safest snacks on Blinkit and Zepto." }
     ]
   },
   {
-    name: "Sugar & Diabetes",
+    name: "Low-Sugar Crunch",
     slug: "diabetes-low-gi",
-    description: "Sugar ke mareez aur jinka sugar achanak badhta hai, unke liye safe evening crunch.",
+    description: "Low-GI snacks and zero-spike evening bites designed for blood sugar balance.",
     layout: "diabetes-low-gi-layout",
     order: 8,
     isVisible: true,
     subcategories: [
-      { name: "Low-GI Crunch", slug: "low-gi-crunch", description: "Makhana aur bhuna chana jo sugar ko bilkul normal rakhte hain." },
-      { name: "Sugar-Free Namkeen", slug: "sugar-free-namkeen", description: "Bina maida ke kurkure methi khakhra aur roasted grains." },
-      { name: "Sugar Spike Control Hacks", slug: "sugar-spike-hacks", description: "Khana khane ka sahi krama aur chai se pehle badam khane ka fayda." },
-      { name: "Bina Chini Ke Sweets", slug: "bina-chini-sweets", description: "Khajoor, til aur nariyal se bane safe aur meethe treats." }
+      { name: "Low-GI Crunch", slug: "low-gi-crunch", description: "Roasted makhana and chana that keep blood sugar rock steady." },
+      { name: "Sugar-Free Namkeen", slug: "sugar-free-namkeen", description: "Crisp roasted seed mixes and fenugreek khakhra with no maida." },
+      { name: "Glucose Control Hacks", slug: "sugar-spike-hacks", description: "Smart meal sequencing and pre-meal almonds to stop glucose spikes." },
+      { name: "Clean Sweet Treats", slug: "bina-chini-sweets", description: "Naturally sweet dates, sesame, and coconut bites without white sugar." }
     ]
   },
   {
-    name: "Vrat & Tyohar",
+    name: "Fasting Munch",
     slug: "desi-pantry",
-    description: "Upwas (vrat) me bina tel-masale ke energy aur tyohar par bina white sugar ki mithai.",
+    description: "Clean energy snacks and guilt-free festive treats without palm oil or refined sugar.",
     layout: "desi-pantry-layout",
     order: 9,
     isVisible: true,
     subcategories: [
-      { name: "Upwas (Vrat) Food", slug: "upwas-vrat-food", description: "Sabudana vada chhod kar roasted makhana aur samak ke clean snacks." },
-      { name: "Tyohar Ki Mithai", slug: "tyohar-ki-mithai", description: "Diwali aur Rakhi par bina khoya aur bina white sugar ke natural laddoo." },
-      { name: "Mota Anaaj (Millets)", slug: "mota-anaaj-millets", description: "Ragi, jowar aur bajra se ghar par banayein crispy snacks." },
-      { name: "Gud & Til Snacks", slug: "gud-til-snacks", description: "Asli palm jaggery, karupatti aur calcium se bhari til chikki." }
+      { name: "Fasting (Vrat) Bites", slug: "upwas-vrat-food", description: "Roasted foxnuts and barnyard millet treats to replace oily sabudana vada." },
+      { name: "Festive Sweets", slug: "tyohar-ki-mithai", description: "Natural homemade laddoos made with pure jaggery and zero refined sugar." },
+      { name: "Native Millets", slug: "mota-anaaj-millets", description: "Crispy homemade snacks crafted from ragi, jowar, and bajra." },
+      { name: "Jaggery & Sesame", slug: "gud-til-snacks", description: "Traditional iron-rich sesame chikki and authentic palm jaggery snacks." }
     ]
   }
 ];

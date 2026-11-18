@@ -38,7 +38,7 @@ export const PATIENT_CONDITIONS: ConditionOption[] = [
   },
   {
     id: 'kids',
-    label: 'Kids Lunchbox',
+    label: 'Kids Tiffin',
     hinglishHint: '10-minute zero-maida school tiffin ideas and wholesome treats',
     safeSnacks: 'Ragi Banana Roll, Homemade Peanut Spread, Roasted Makhana, Samak Chilla',
     avoidIngredients: 'Maida Biscuits, Palm Oil Chocolate Spreads, High-Sugar Juices',
@@ -48,7 +48,7 @@ export const PATIENT_CONDITIONS: ConditionOption[] = [
   },
   {
     id: 'desk',
-    label: 'Desk & Study Munches',
+    label: 'Desk Munches',
     hinglishHint: 'Non-greasy, keyboard-safe crunch for late-night focus and 4 PM slumps',
     safeSnacks: 'Air-Roasted Makhana, Dry Bhuna Chana, Jowar Puffs, Spiced Murmura',
     avoidIngredients: 'Oily Chips, Samosa Trans Fats, Sugar-Dusted Biscuits',
@@ -58,7 +58,7 @@ export const PATIENT_CONDITIONS: ConditionOption[] = [
   },
   {
     id: 'weight',
-    label: 'Budget Protein (<₹50)',
+    label: 'Budget Protein',
     hinglishHint: 'Hitting 20g+ natural plant protein without expensive whey powders',
     safeSnacks: '₹20 Bhuna Chana, Chana Sattu Shake, Sprouted Moong, Boiled Kala Chana',
     avoidIngredients: 'Hydrogenated Peanut Butter Palm Oil, Fake 20g Protein Bars',
@@ -68,7 +68,7 @@ export const PATIENT_CONDITIONS: ConditionOption[] = [
   },
   {
     id: 'heart',
-    label: 'Drinks & Hangover Reset',
+    label: 'Sips & Hangover',
     hinglishHint: 'Fast-acting liver rehydration drinks and daily digestive sips',
     safeSnacks: 'Nariyal Pani with Sendha Namak, Roasted Jeera Chaas, Chilled Sattu, Kanji',
     avoidIngredients: 'Canned Chemical Energy Drinks, Sugar Syrups, Fizzy Soda',
@@ -78,7 +78,7 @@ export const PATIENT_CONDITIONS: ConditionOption[] = [
   },
   {
     id: 'pcos',
-    label: "Women's Health (PCOS)",
+    label: 'Women Care',
     hinglishHint: 'Hormone-balancing seed blends, anti-inflammatory bites & skin nutrition',
     safeSnacks: 'Pumpkin & Flax Seed Mix, 70% Dark Chocolate, Cinnamon Makhana, Til-Gud',
     avoidIngredients: 'Maltodextrin "Diet" Namkeens, Excess Dairy Sugars, Soy Isolates',
@@ -88,7 +88,7 @@ export const PATIENT_CONDITIONS: ConditionOption[] = [
   },
   {
     id: 'gut',
-    label: 'Gut Health & Bloat Relief',
+    label: 'Gut & Bloat',
     hinglishHint: 'Soothing desk-bloat, gut inflammation, and acid reflux naturally',
     safeSnacks: 'Roasted Jeera Chaas, Beet Kanji, Soaked Sabja Water, Prebiotic Millets',
     avoidIngredients: 'Emulsifiers (INS 471), Refined Maida, Deep-Fried Namkeen',
@@ -98,7 +98,7 @@ export const PATIENT_CONDITIONS: ConditionOption[] = [
   },
   {
     id: 'packed',
-    label: 'Packaged Label Audits',
+    label: 'Packet Truth',
     hinglishHint: 'Unmasking hidden palm oil, maltodextrin, and deceptive health claims',
     safeSnacks: '100% Ingredient Verified Brands (Real Whole Seeds, Zero Palm Oil)',
     avoidIngredients: '"Diet" claims hiding 35% Maltodextrin and INS 150d Caramel Color',
@@ -108,7 +108,7 @@ export const PATIENT_CONDITIONS: ConditionOption[] = [
   },
   {
     id: 'diabetes',
-    label: 'Sugar-Smart & Low-GI',
+    label: 'Low-Sugar Crunch',
     hinglishHint: 'Crunchy tea-time snacks with low glycemic index that prevent sugar spikes',
     safeSnacks: 'Roasted Kala Chana, Raw Walnuts, Methi Khakhra, Foxtail Millet Puffs',
     avoidIngredients: 'Liquid Glucose, Maltodextrin, White Maida, Dextrose',

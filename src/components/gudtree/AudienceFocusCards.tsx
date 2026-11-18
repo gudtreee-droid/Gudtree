@@ -18,7 +18,7 @@ export interface AudienceCardItem {
 export const AUDIENCE_FOCUS_CARDS: AudienceCardItem[] = [
   {
     id: 'diabetes',
-    title: 'Sugar & Pre-Diabetes Diet',
+    title: 'Low-Sugar Diet',
     description:
       'Meal sequencing hacks, 4 almonds before chai, and zero-spike low-GI crunch',
     blobColor: '#FF5A3D',
@@ -28,7 +28,7 @@ export const AUDIENCE_FOCUS_CARDS: AudienceCardItem[] = [
   },
   {
     id: 'pcos',
-    title: "PCOS & Hormones Diet",
+    title: 'PCOS Food Guide',
     description:
       'Seed cycling snack bars, savoury protein breakfasts, and acne-clearing whole foods',
     blobColor: '#4CC36B',
@@ -38,7 +38,7 @@ export const AUDIENCE_FOCUS_CARDS: AudienceCardItem[] = [
   },
   {
     id: 'weight',
-    title: 'Budget Protein (<₹50)',
+    title: 'Budget Protein',
     description:
       '₹15 roasted sattu drink, black chana, and 100% clean peanut butter daily guide',
     blobColor: '#F5A623',
@@ -48,7 +48,7 @@ export const AUDIENCE_FOCUS_CARDS: AudienceCardItem[] = [
   },
   {
     id: 'gut',
-    title: 'Gut Health & Bloat Relief',
+    title: 'Bloat & Acidity',
     description:
       'Probiotic jeera chaas, fermented beet kanji, and zero desk-bloat meal habits',
     blobColor: '#9B51E0',
@@ -58,7 +58,7 @@ export const AUDIENCE_FOCUS_CARDS: AudienceCardItem[] = [
   },
   {
     id: 'heart',
-    title: 'Liver Care & Detox Sips',
+    title: 'Hangover Reset',
     description:
       'Next-morning liver rehydration, electrolyte sips, and zero palm oil swaps',
     blobColor: '#2BA6FF',

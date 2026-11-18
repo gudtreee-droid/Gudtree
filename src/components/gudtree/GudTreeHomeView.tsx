@@ -310,12 +310,12 @@ export default function GudTreeHomeView({ articles }: { articles: Article[] }) {
               <span className="inline-block px-3 py-1 rounded-full bg-[#EEF4FF] text-[#2F54EB] text-[11px] font-bold uppercase tracking-[0.1em] mb-2">
                 {selectedCondition !== 'all' && activeConditionMeta
                   ? `Curated Focus • ${activeConditionMeta.giFocus}`
-                  : 'Clean Pantry • Healthy Snacking'}
+                  : 'Desk & Study Munches'}
               </span>
               <h2 className="gt-font-display text-[22px] sm:text-[32px] lg:text-[38px] leading-[1.12] tracking-[-0.02em] text-[#102A56]">
                 {selectedCondition !== 'all' && activeConditionMeta
                   ? activeConditionMeta.label
-                  : 'Clean Snacks & Smart Swaps'}
+                  : 'Desk & Study Munches'}
               </h2>
               <p className="mt-1.5 text-[13.5px] sm:text-[15px] text-[#334155] leading-[1.5]">
                 {selectedCondition !== 'all' && activeConditionMeta
@@ -369,10 +369,10 @@ export default function GudTreeHomeView({ articles }: { articles: Article[] }) {
           <div className="max-w-[1060px] mx-auto px-4 sm:px-5">
             <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-10">
               <span className="inline-block px-3 py-1 rounded-full bg-[#FFFFFF] border border-[#ADC3DE]/60 text-[#DA440D] text-[11px] font-bold uppercase tracking-[0.1em] mb-2">
-                Daily Nutrition • Gut Wellness &amp; Diets
+                Gut &amp; Bloat • Daily Digestion
               </span>
               <h2 className="gt-font-display text-[22px] sm:text-[32px] lg:text-[38px] leading-[1.12] tracking-[-0.02em] text-[#102A56]">
-                Gut Health &amp; Daily Diet Guides
+                Gut Health &amp; Bloat Relief
               </h2>
               <p className="mt-1.5 text-[13.5px] sm:text-[15px] text-[#334155] leading-[1.55]">
                 Practical probiotic foods, low-GI meal ordering hacks, and label audits for Indian families.
@@ -411,10 +411,10 @@ export default function GudTreeHomeView({ articles }: { articles: Article[] }) {
           <div className="max-w-[1060px] mx-auto px-4 sm:px-5">
             <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-10">
               <span className="inline-block px-3 py-1 rounded-full bg-[#EEF4FF] text-[#2F54EB] text-[11px] font-bold uppercase tracking-[0.1em] mb-2">
-                Kids Lunchbox &amp; Safe Treats
+                Kids Tiffin &amp; Safe Treats
               </span>
               <h2 className="gt-font-display text-[22px] sm:text-[32px] lg:text-[38px] leading-[1.12] tracking-[-0.02em] text-[#102A56]">
-                10-Minute School Tiffin &amp; Evening Snacks
+                Kids School Lunchbox
               </h2>
               <p className="mt-1.5 text-[13.5px] sm:text-[15px] text-[#334155] leading-[1.55]">
                 Fast, zero-maida lunchbox recipes and wholesome finger-foods your children will actually finish.
@@ -447,16 +447,16 @@ export default function GudTreeHomeView({ articles }: { articles: Article[] }) {
         </section>
       )}
 
-      {/* BAND 9: GYM, HOSTEL & SASTA PROTEIN (< ₹50) */}
+      {/* BAND 9: BUDGET PROTEIN */}
       {gymCategoryArticles.length > 0 && (
         <section className="w-full max-w-full overflow-x-clip bg-[#FFF9EC] py-12 sm:py-16 border-b border-[#ADC3DE]/35">
           <div className="max-w-[1060px] mx-auto px-4 sm:px-5">
             <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-10">
               <span className="inline-block px-3 py-1 rounded-full bg-[#FFFFFF] border border-[#ADC3DE]/60 text-[#DA440D] text-[11px] font-bold uppercase tracking-[0.1em] mb-2">
-                Budget Protein • Everyday Fitness
+                Budget Protein • Daily Muscle Fuel
               </span>
               <h2 className="gt-font-display text-[22px] sm:text-[32px] lg:text-[38px] leading-[1.12] tracking-[-0.02em] text-[#102A56]">
-                Under ₹50 Daily Protein &amp; Pre-Workout Fuel
+                Budget Protein
               </h2>
               <p className="mt-1.5 text-[13.5px] sm:text-[15px] text-[#334155] leading-[1.55]">
                 Affordable roasted sattu shakes, black chana, and clean peanut butter hacks for hostel and home gym.
@@ -496,10 +496,10 @@ export default function GudTreeHomeView({ articles }: { articles: Article[] }) {
           <div className="max-w-[1060px] mx-auto px-4 sm:px-5">
             <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-10">
               <span className="inline-block px-3 py-1 rounded-full bg-[#EEF4FF] text-[#2F54EB] text-[11px] font-bold uppercase tracking-[0.1em] mb-2">
-                Hydration &amp; Liver Care • Pure Desi Sips
+                Sips &amp; Hangover Reset
               </span>
               <h2 className="gt-font-display text-[22px] sm:text-[32px] lg:text-[38px] leading-[1.12] tracking-[-0.02em] text-[#102A56]">
-                Everyday Clean Sips &amp; Morning Hangover Reset
+                Clean Sips &amp; Hangover Reset
               </h2>
               <p className="mt-1.5 text-[13.5px] sm:text-[15px] text-[#334155] leading-[1.55]">
                 Headache-relieving electrolyte drinks, digestive buttermilk, and natural alternatives to chemical energy cans.
@@ -538,10 +538,10 @@ export default function GudTreeHomeView({ articles }: { articles: Article[] }) {
           <div className="max-w-[1060px] mx-auto px-4 sm:px-5">
             <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-10">
               <span className="inline-block px-3 py-1 rounded-full bg-[#FFFFFF] border border-[#ADC3DE]/60 text-[#DA440D] text-[11px] font-bold uppercase tracking-[0.1em] mb-2">
-                Packaged Label Audits • Quick Commerce
+                Packet Truth • Quick Commerce Audits
               </span>
               <h2 className="gt-font-display text-[22px] sm:text-[32px] lg:text-[38px] leading-[1.12] tracking-[-0.02em] text-[#102A56]">
-                The Truth Behind Packaged Chips &amp; Biscuits
+                Packaged Label Audits
               </h2>
               <p className="mt-1.5 text-[13.5px] sm:text-[15px] text-[#334155] leading-[1.55]">
                 Spotting hidden palm oil, 60% maida in 'atta' biscuits, and deceptive sugar names on Blinkit and Zepto.
@@ -580,10 +580,10 @@ export default function GudTreeHomeView({ articles }: { articles: Article[] }) {
           <div className="max-w-[1060px] mx-auto px-4 sm:px-5">
             <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-10">
               <span className="inline-block px-3 py-1 rounded-full bg-[#EEF4FF] text-[#2F54EB] text-[11px] font-bold uppercase tracking-[0.1em] mb-2">
-                Women's Health • Hormones &amp; Skin
+                Women Care • Hormones &amp; Glow
               </span>
               <h2 className="gt-font-display text-[22px] sm:text-[32px] lg:text-[38px] leading-[1.12] tracking-[-0.02em] text-[#102A56]">
-                PCOS Nutrition, Period Cramps &amp; Hormonal Glow
+                PCOS &amp; Hormonal Health
               </h2>
               <p className="mt-1.5 text-[13.5px] sm:text-[15px] text-[#334155] leading-[1.55]">
                 Cycle-synced seed blends, savoury protein breakfasts, and natural remedies for persistent chin acne.
