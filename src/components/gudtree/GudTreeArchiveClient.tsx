@@ -70,6 +70,7 @@ export default function GudTreeArchiveClient({
   };
 
   const [activeCategory, setActiveCategory] = useState<string>(resolveInitialCategory);
+  const [selectedSubcategory, setSelectedSubcategory] = useState<string>('all');
   const [showSavedOnly, setShowSavedOnly] = useState(false);
   const [searchQuery, setSearchQuery] = useState(() => searchParams.get('q') || '');
   const [visibleCount, setVisibleCount] = useState<number>(12);
@@ -85,6 +86,12 @@ export default function GudTreeArchiveClient({
       // ignore storage errors
     }
   }, []);
+
+  // Reset subcategory filter whenever main category changes
+  useEffect(() => {
+    setSelectedSubcategory('all');
+    setVisibleCount(12);
+  }, [activeCategory]);
 
   const toggleSave = (e: React.MouseEvent, slug: string) => {
     e.preventDefault();
@@ -118,20 +125,56 @@ export default function GudTreeArchiveClient({
     return counts;
   }, [articles, visibleCats]);
 
+  // Active category object from database taxonomy
+  const currentCatObj = useMemo(() => {
+    if (!activeCategory || activeCategory === 'all') return null;
+    const norm = normalizeKey(activeCategory);
+    return (
+      visibleCats.find(
+        (c) => normalizeKey(c.slug) === norm || normalizeKey(c.name) === norm
+      ) || null
+    );
+  }, [visibleCats, activeCategory]);
+
+  // Subcategory list & real-time counts for active category
+  const subcategoryData = useMemo(() => {
+    if (!currentCatObj || !currentCatObj.subcategories || currentCatObj.subcategories.length === 0) {
+      return { list: [], counts: {} as Record<string, number> };
+    }
+
+    const normCat = normalizeKey(currentCatObj.slug);
+    const catArticles = articles.filter((a) => articleMatchesCategory(a, normCat));
+
+    const counts: Record<string, number> = { all: catArticles.length };
+
+    currentCatObj.subcategories.forEach((sub) => {
+      const subNorm = normalizeKey(sub.name);
+      counts[sub.name] = catArticles.filter(
+        (a) => normalizeKey(a.subcategory) === subNorm
+      ).length;
+    });
+
+    return { list: currentCatObj.subcategories, counts };
+  }, [currentCatObj, articles]);
+
   const filteredArticles = useMemo(() => {
     const normCat = normalizeKey(activeCategory);
     const q = searchQuery.trim().toLowerCase();
+    const subNorm = normalizeKey(selectedSubcategory);
 
     return articles.filter((art) => {
       if (showSavedOnly && !savedSlugs.includes(art.slug)) return false;
       if (!articleMatchesCategory(art, normCat)) return false;
+      if (selectedSubcategory !== 'all' && normalizeKey(art.subcategory) !== subNorm) {
+        return false;
+      }
       if (q) {
-        const hay = `${art.title} ${art.excerpt || ''} ${art.category || ''} ${art.keywords || ''}`.toLowerCase();
+        const hay = `${art.title} ${art.excerpt || ''} ${art.category || ''} ${art.subcategory || ''} ${art.keywords || ''}`.toLowerCase();
         if (!hay.includes(q)) return false;
       }
       return true;
     });
-  }, [articles, activeCategory, showSavedOnly, savedSlugs, searchQuery]);
+  }, [articles, activeCategory, selectedSubcategory, showSavedOnly, savedSlugs, searchQuery]);
 
   const isDedicatedCategoryRoute = pathname?.startsWith('/category/');
 
@@ -273,31 +316,135 @@ export default function GudTreeArchiveClient({
           </div>
         )}
 
+        {/* INTERACTIVE SUBCATEGORY FILTER PILLS BAR */}
+        {currentCatObj && subcategoryData.list.length > 0 && (
+          <div className="w-full mb-7 sm:mb-9 p-3 sm:p-4 rounded-[18px] bg-white border border-[#ADC3DE]/60 shadow-[0_2px_10px_rgba(16,42,86,0.04)]">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 mb-2.5">
+              <div className="flex items-center gap-2">
+                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#102A56] text-[#E5F36D] text-[10.5px] font-bold uppercase tracking-[0.06em]">
+                  Topics Focus
+                </span>
+                <span className="text-[13px] font-bold text-[#102A56]">
+                  Filter by Subcategory:
+                </span>
+              </div>
+
+              {selectedSubcategory !== 'all' && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSelectedSubcategory('all');
+                    setVisibleCount(12);
+                  }}
+                  className="self-start sm:self-auto inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#FFF2EB] text-[#DA440D] hover:bg-[#DA440D] hover:text-white text-[11.5px] font-bold cursor-pointer transition-colors border border-[#FFD8C7]"
+                >
+                  <X className="w-3.5 h-3.5" />
+                  <span>Show All {currentCatObj.name} Guides</span>
+                </button>
+              )}
+            </div>
+
+            {/* Subcategory Pills Row — Swipeable on Mobile, Wrap on Desktop */}
+            <div className="gt-hscroll-sm sm:flex sm:flex-wrap items-center gap-2 pb-1">
+              <button
+                type="button"
+                onClick={() => {
+                  setSelectedSubcategory('all');
+                  setVisibleCount(12);
+                }}
+                className={`shrink-0 min-h-[38px] sm:min-h-0 px-3.5 py-1.5 rounded-full text-[12.5px] sm:text-[13px] transition-all cursor-pointer inline-flex items-center gap-1.5 border ${
+                  selectedSubcategory === 'all'
+                    ? 'bg-[#102A56] text-[#E5F36D] border-[#102A56] shadow-sm font-bold'
+                    : 'bg-[#FFFFFF] text-[#102A56] border-[#ADC3DE]/80 hover:border-[#102A56] hover:bg-[#F8FAFC]'
+                }`}
+              >
+                <span>All {currentCatObj.name}</span>
+                <span
+                  className={`text-[11px] px-2 py-0.2 rounded-full font-bold ${
+                    selectedSubcategory === 'all'
+                      ? 'bg-[#E5F36D] text-[#102A56]'
+                      : 'bg-[#F1F5F9] text-[#64748B]'
+                  }`}
+                >
+                  {subcategoryData.counts.all || 0}
+                </span>
+              </button>
+
+              {subcategoryData.list.map((sub) => {
+                const isSelected = selectedSubcategory === sub.name;
+                const count = subcategoryData.counts[sub.name] || 0;
+                return (
+                  <button
+                    key={sub.slug}
+                    type="button"
+                    onClick={() => {
+                      setSelectedSubcategory(sub.name);
+                      setVisibleCount(12);
+                    }}
+                    className={`shrink-0 min-h-[38px] sm:min-h-0 px-3.5 py-1.5 rounded-full text-[12.5px] sm:text-[13px] transition-all cursor-pointer inline-flex items-center gap-1.5 border ${
+                      isSelected
+                        ? 'bg-[#102A56] text-[#E5F36D] border-[#102A56] shadow-sm font-bold'
+                        : count > 0
+                        ? 'bg-[#FFFFFF] text-[#102A56] border-[#ADC3DE]/80 hover:border-[#102A56] hover:bg-[#F8FAFC]'
+                        : 'bg-[#F8FAFC] text-[#94A3B8] border border-[#E2E8F0] hover:border-[#CBD5E1]'
+                    }`}
+                  >
+                    <span>{sub.name}</span>
+                    <span
+                      className={`text-[11px] px-2 py-0.2 rounded-full font-bold ${
+                        isSelected
+                          ? 'bg-[#E5F36D] text-[#102A56]'
+                          : count > 0
+                          ? 'bg-[#F1F5F9] text-[#64748B]'
+                          : 'bg-[#E2E8F0] text-[#94A3B8]'
+                      }`}
+                    >
+                      {count}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
         {/* Instant Filtered Results */}
         {filteredArticles.length === 0 ? (
-          <div className="p-12 rounded-[28px] bg-white border border-[#ADC3DE] text-center max-w-xl mx-auto">
+          <div className="p-10 sm:p-14 rounded-[28px] bg-white border border-[#ADC3DE] text-center max-w-xl mx-auto my-6 shadow-sm">
+            <div className="w-12 h-12 rounded-full bg-[#FFF2EB] text-[#DA440D] flex items-center justify-center mx-auto mb-3">
+              <BookOpen className="w-6 h-6" />
+            </div>
             <h3 className="sc-display-h3 text-[#102A56] mb-2">
-              No matching blogs found
+              {selectedSubcategory !== 'all'
+                ? `No guides in "${selectedSubcategory}" yet`
+                : 'No matching blogs found'}
             </h3>
-            <p className="text-[15px] text-[#334155] mb-5">
-              Try switching to All Blogs or clearing your search keywords.
+            <p className="text-[14.5px] text-[#334155] mb-5 max-w-md mx-auto">
+              {selectedSubcategory !== 'all'
+                ? `Our editors are preparing evidence-based guides for ${selectedSubcategory}. Check back soon!`
+                : 'Try switching to All Blogs or clearing your search keywords.'}
             </p>
             <button
               type="button"
               onClick={() => {
                 setSearchQuery('');
-                setActiveCategory('all');
+                setSelectedSubcategory('all');
+                if (!isDedicatedCategoryRoute) {
+                  setActiveCategory('all');
+                }
                 setShowSavedOnly(false);
               }}
-              className="px-6 py-2.5 rounded-full bg-[#DA440D] text-white text-[14px] font-semibold cursor-pointer"
+              className="px-6 py-2.5 rounded-full bg-[#102A56] hover:bg-[#DA440D] text-[#E5F36D] hover:text-white text-[14px] font-bold cursor-pointer transition-colors shadow-sm"
             >
-              Show All Blogs
+              {isDedicatedCategoryRoute
+                ? `Show All ${currentCatObj?.name || ''} Guides (${subcategoryData.counts.all || 0})`
+                : 'Show All Blogs'}
             </button>
           </div>
         ) : (
           <AnimatePresence mode="wait">
             <motion.div
-              key={`${activeCategory}-${showSavedOnly}-${searchQuery}`}
+              key={`${activeCategory}-${selectedSubcategory}-${showSavedOnly}-${searchQuery}`}
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}
@@ -341,9 +488,18 @@ export default function GudTreeArchiveClient({
 
                     <div className="flex-1 min-w-0 flex flex-col">
                       <div className="mb-1 sm:mb-1.5 flex items-center justify-between gap-2">
-                        <span className="inline-block px-2 py-0.5 rounded-[6px] bg-[#EEF3FF] text-[#0944BA] text-[11px] font-semibold truncate">
-                          {normalizeCatName(article.category)}
-                        </span>
+                        <div className="flex items-center gap-1.5 flex-wrap min-w-0">
+                          {article.subcategory && (
+                            <span className="inline-block px-2 py-0.5 rounded-[6px] bg-[#FFF2EB] text-[#DA440D] border border-[#FFD8C7] text-[10.5px] font-bold truncate">
+                              {article.subcategory}
+                            </span>
+                          )}
+                          {!isDedicatedCategoryRoute && (
+                            <span className="inline-block px-2 py-0.5 rounded-[6px] bg-[#EEF3FF] text-[#0944BA] text-[10.5px] font-semibold truncate">
+                              {normalizeCatName(article.category)}
+                            </span>
+                          )}
+                        </div>
                         <button
                           type="button"
                           onClick={(e) => toggleSave(e, article.slug)}
