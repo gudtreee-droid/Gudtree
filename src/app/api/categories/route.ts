@@ -6,6 +6,7 @@ import {
   upsertCategoryInDB,
   bulkSaveCategoriesInDB,
 } from '@/lib/supabaseService';
+import { verifyAdminAuth } from '@/lib/adminAuth';
 
 export const dynamic = 'force-dynamic';
 
@@ -23,6 +24,14 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
+  const auth = verifyAdminAuth(request);
+  if (!auth.authenticated) {
+    return NextResponse.json(
+      { error: 'Unauthorized: Admin authentication required.' },
+      { status: 401 }
+    );
+  }
+
   try {
     const data = await request.json();
 
@@ -62,6 +71,14 @@ export async function POST(request: Request) {
 }
 
 export async function PUT(request: Request) {
+  const auth = verifyAdminAuth(request);
+  if (!auth.authenticated) {
+    return NextResponse.json(
+      { error: 'Unauthorized: Admin authentication required.' },
+      { status: 401 }
+    );
+  }
+
   try {
     const updatedCategory: CategoryInfo = await request.json();
     if (!updatedCategory.slug) {
@@ -86,6 +103,14 @@ export async function PUT(request: Request) {
 }
 
 export async function DELETE(request: Request) {
+  const auth = verifyAdminAuth(request);
+  if (!auth.authenticated) {
+    return NextResponse.json(
+      { error: 'Unauthorized: Admin authentication required.' },
+      { status: 401 }
+    );
+  }
+
   try {
     const { searchParams } = new URL(request.url);
     const slug = searchParams.get('slug');

@@ -7,6 +7,7 @@ import {
   deleteArticleFromDB,
 } from '@/lib/supabaseService';
 import { stripArticleForSummary } from '@/lib/articleSummary';
+import { verifyAdminAuth } from '@/lib/adminAuth';
 
 export const dynamic = 'force-dynamic';
 
@@ -27,6 +28,14 @@ export async function GET(request: Request) {
 }
 
 export async function POST(request: Request) {
+  const auth = verifyAdminAuth(request);
+  if (!auth.authenticated) {
+    return NextResponse.json(
+      { error: 'Unauthorized: Admin authentication required.' },
+      { status: 401 }
+    );
+  }
+
   try {
     const newArticle: Article = await request.json();
     if (!newArticle.title) {
@@ -72,6 +81,14 @@ export async function POST(request: Request) {
 }
 
 export async function PUT(request: Request) {
+  const auth = verifyAdminAuth(request);
+  if (!auth.authenticated) {
+    return NextResponse.json(
+      { error: 'Unauthorized: Admin authentication required.' },
+      { status: 401 }
+    );
+  }
+
   try {
     const updatedArticle: Article = await request.json();
     if (!updatedArticle.title) {
@@ -117,6 +134,14 @@ export async function PUT(request: Request) {
 }
 
 export async function DELETE(request: Request) {
+  const auth = verifyAdminAuth(request);
+  if (!auth.authenticated) {
+    return NextResponse.json(
+      { error: 'Unauthorized: Admin authentication required.' },
+      { status: 401 }
+    );
+  }
+
   try {
     const { searchParams } = new URL(request.url);
     const id = searchParams.get('id');

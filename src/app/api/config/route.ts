@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { getSiteConfig, saveSiteConfig } from '@/data/db';
 import { getSiteConfigFromDB, saveSiteConfigInDB } from '@/lib/supabaseService';
+import { verifyAdminAuth } from '@/lib/adminAuth';
 
 export const dynamic = 'force-dynamic';
 
@@ -33,6 +34,14 @@ export async function GET() {
 }
 
 export async function PUT(request: Request) {
+  const auth = verifyAdminAuth(request);
+  if (!auth.authenticated) {
+    return NextResponse.json(
+      { error: 'Unauthorized: Admin authentication required.' },
+      { status: 401 }
+    );
+  }
+
   try {
     const newConfig = await request.json();
     if (!newConfig.name) {

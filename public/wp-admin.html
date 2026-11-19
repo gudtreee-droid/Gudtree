@@ -543,24 +543,11 @@
 
       <!-- Login Form -->
       <form onsubmit="performGatewayLogin(event)" autocomplete="off" class="space-y-4 text-xs">
-        <!-- Default Credentials Helper Pill -->
-        <div class="bg-emerald-950/40 border border-emerald-600/40 rounded-lg p-2.5 text-[11px] text-emerald-200 flex items-center justify-between">
-          <div class="flex items-center gap-1.5">
-            <i class="fas fa-key text-emerald-400"></i>
-            <span class="text-gray-300 font-medium">Default:</span>
-            <code class="text-white font-mono font-bold bg-emerald-900/60 px-1 py-0.5 rounded">admin</code> /
-            <code class="text-white font-mono font-bold bg-emerald-900/60 px-1 py-0.5 rounded">admin123</code>
-          </div>
-          <button type="button" onclick="autoFillCredentials()" class="text-[10px] bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-2 py-0.5 rounded cursor-pointer transition-colors shadow-xs">
-            Auto Fill
-          </button>
-        </div>
-
         <div>
           <label class="block font-bold text-gray-300 mb-1">Username / Work Email</label>
           <div class="relative">
-            <input type="text" name="apex_gateway_user_field" id="login-username" value="admin" autocomplete="off"
-              data-lpignore="true" data-form-type="other" placeholder="Enter username or email" required
+            <input type="text" name="apex_gateway_user_field" id="login-username" value="" autocomplete="username"
+              data-lpignore="true" data-form-type="other" placeholder="Enter administrator username" required
               class="w-full bg-[#111827] border border-gray-700 text-white rounded-lg p-2.5 focus:border-[#f7413e] outline-none pl-9 font-mono text-xs">
             <i class="fas fa-user absolute left-3 top-3.5 text-gray-500"></i>
           </div>
@@ -569,8 +556,8 @@
         <div>
           <label class="block font-bold text-gray-300 mb-1">Password</label>
           <div class="relative">
-            <input type="password" name="apex_gateway_pass_field" id="login-password" value="admin123"
-              autocomplete="new-password" data-lpignore="true" data-form-type="other" placeholder="Enter password"
+            <input type="password" name="apex_gateway_pass_field" id="login-password" value=""
+              autocomplete="current-password" data-lpignore="true" data-form-type="other" placeholder="Enter administrator password"
               required
               class="w-full bg-[#111827] border border-gray-700 text-white rounded-lg p-2.5 focus:border-[#f7413e] outline-none pl-9 pr-9 font-mono text-xs">
             <i class="fas fa-lock absolute left-3 top-3.5 text-gray-500"></i>
@@ -6144,6 +6131,15 @@ http://localhost:3000/the-modi-doctrine-redefining-indias-global-economic-power<
     let savedSelectionRange = null;
     let currentLinkAnchorNode = null;
 
+    function adminFetch(url, options = {}) {
+      const token = localStorage.getItem('gudtree_auth_token') || '';
+      const headers = { ...(options.headers || {}) };
+      if (token && !headers['Authorization']) {
+        headers['Authorization'] = 'Bearer ' + token;
+      }
+      return fetch(url, { ...options, headers, credentials: 'same-origin' });
+    }
+
     // GudTree CATEGORIES AND DEFAULTS
     const defaultEmCategories = [
   {
@@ -8261,7 +8257,7 @@ http://localhost:3000/the-modi-doctrine-redefining-indias-global-economic-power<
       renderCategoriesManager();
 
       if (newCatPayload) {
-        fetch('/api/categories', {
+        adminFetch('/api/categories', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(newCatPayload)
@@ -8299,7 +8295,7 @@ http://localhost:3000/the-modi-doctrine-redefining-indias-global-economic-power<
       renderCategoriesChecklist();
 
       // Sync to live API
-      fetch('/api/categories', {
+      adminFetch('/api/categories', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newCat)
@@ -8335,7 +8331,7 @@ http://localhost:3000/the-modi-doctrine-redefining-indias-global-economic-power<
       renderCategoriesChecklist();
 
       // Sync to live API
-      fetch(`/api/categories?slug=${encodeURIComponent(slugToDelete)}`, {
+      adminFetch(`/api/categories?slug=${encodeURIComponent(slugToDelete)}`, {
         method: 'DELETE'
       }).then(r => r.json()).then(res => {
         console.log('Category deleted on server:', res);
@@ -9365,7 +9361,7 @@ http://localhost:3000/the-modi-doctrine-redefining-indias-global-economic-power<
         target.views = count;
         saveState();
 
-        fetch('/api/articles', {
+        adminFetch('/api/articles', {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ slug: target.slug || target.id, top10VisitCount: count, views: count })
@@ -9382,7 +9378,7 @@ http://localhost:3000/the-modi-doctrine-redefining-indias-global-economic-power<
         target.excludeFromPopularPosts = isExcluded;
         saveState();
 
-        fetch('/api/articles', {
+        adminFetch('/api/articles', {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ slug: target.slug || target.id, excludeFromPopularPosts: isExcluded })
@@ -9787,7 +9783,7 @@ http://localhost:3000/the-modi-doctrine-redefining-indias-global-economic-power<
           sections: []
         };
 
-        fetch('/api/articles', {
+        adminFetch('/api/articles', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(apiPayload)
@@ -11698,7 +11694,7 @@ http://localhost:3000/the-modi-doctrine-redefining-indias-global-economic-power<
 
       // Sync to API
       try {
-        fetch('/api/articles', {
+        adminFetch('/api/articles', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(p)
@@ -11739,7 +11735,7 @@ http://localhost:3000/the-modi-doctrine-redefining-indias-global-economic-power<
     function deletePermanently(id) {
       const p = posts.find(item => item.id === id);
       if (p && p.slug) {
-        fetch('/api/articles?slug=' + encodeURIComponent(p.slug), {
+        adminFetch('/api/articles?slug=' + encodeURIComponent(p.slug), {
           method: 'DELETE'
         }).catch(e => console.warn('Delete API warning:', e));
       }
@@ -11782,7 +11778,7 @@ http://localhost:3000/the-modi-doctrine-redefining-indias-global-economic-power<
         selectedIds.forEach(id => {
           const p = posts.find(item => item.id === id);
           if (p && p.slug) {
-            fetch('/api/articles?slug=' + encodeURIComponent(p.slug), { method: 'DELETE' }).catch(e => { });
+            adminFetch('/api/articles?slug=' + encodeURIComponent(p.slug), { method: 'DELETE' }).catch(e => { });
           }
         });
         posts = posts.filter(p => !selectedIds.includes(p.id));
@@ -13097,7 +13093,7 @@ http://localhost:3000/the-modi-doctrine-redefining-indias-global-economic-power<
       // Automatically sync settings, brand logo & favicon to server API
       if (activeLogo || siteSettings.logoLight || siteSettings.logoDark || siteSettings.faviconUrl || siteSettings.siteTitle) {
         try {
-          fetch('/api/config', {
+          adminFetch('/api/config', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -13198,19 +13194,7 @@ http://localhost:3000/the-modi-doctrine-redefining-indias-global-economic-power<
       }, 80);
     }
 
-    function autoFillCredentials() {
-      autoFillDemoCredentials();
-    }
-
-    function autoFillDemoCredentials() {
-      const u = document.getElementById('login-username');
-      const p = document.getElementById('login-password');
-      if (u) u.value = 'admin';
-      if (p) p.value = 'admin123';
-      showToast('Credentials Filled', 'Ready to sign in with admin / admin123.');
-    }
-
-    function performGatewayLogin(event) {
+    async function performGatewayLogin(event) {
       if (event) event.preventDefault();
       const user = document.getElementById('login-username')?.value?.trim();
       const pass = document.getElementById('login-password')?.value;
@@ -13226,50 +13210,103 @@ http://localhost:3000/the-modi-doctrine-redefining-indias-global-economic-power<
         return;
       }
 
-      const storedHash = localStorage.getItem('gudtree_admin_password_hash');
-      const passTrim = pass ? pass.trim() : '';
-      const defaultPassMatch = (
-        passTrim === 'admin123' ||
-        passTrim === 'admin' ||
-        passTrim === 'gudtree2026' ||
-        passTrim === 'gudtree' ||
-        passTrim === 'apex2026' ||
-        passTrim === 'password'
-      );
-      const customPassMatch = storedHash && (btoa(passTrim) === storedHash);
-      const isValidUser = Boolean(user && user.length > 0);
-
-      if (!(defaultPassMatch || customPassMatch) || !isValidUser) {
-        if (errAlert && errText) {
-          errText.innerText = 'Invalid username or password. (Default: admin / admin123)';
-          errAlert.classList.remove('hidden');
-        }
-        return;
-      }
-
       if (errAlert) errAlert.classList.add('hidden');
-      if (btnText) btnText.innerHTML = '<i class="fas fa-spinner fa-spin mr-1"></i> Authenticating...';
+      if (btnText) btnText.innerHTML = '<i class="fas fa-spinner fa-spin mr-1.5"></i> Authenticating with server...';
 
-      setTimeout(() => {
-        const authData = {
-          user: 'GudTree Admin',
-          email: user,
-          workspace: 'classic',
-          loginTime: new Date().toISOString()
-        };
-        localStorage.setItem('gudtree_auth_session', JSON.stringify(authData));
+      try {
+        const res = await fetch('/api/admin/auth', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'same-origin',
+          body: JSON.stringify({
+            action: 'login',
+            username: user,
+            password: pass,
+          }),
+        });
 
-        document.getElementById('gateway-overlay').classList.add('hidden');
+        const data = await res.json();
+
+        if (!res.ok || !data.success) {
+          if (errAlert && errText) {
+            errText.innerText = data.error || 'Authentication failed. Access denied.';
+            errAlert.classList.remove('hidden');
+          }
+          if (btnText) btnText.innerText = 'Sign In & Launch Workspace';
+          return;
+        }
+
+        // Store secure token and session state
+        if (data.token) {
+          localStorage.setItem('gudtree_auth_token', data.token);
+        }
+        localStorage.setItem(
+          'gudtree_auth_session',
+          JSON.stringify({
+            user: data.user?.username || user,
+            role: 'admin',
+            loginTime: new Date().toISOString(),
+          })
+        );
+
+        // Unlock Workstation
+        document.getElementById('gateway-overlay')?.classList.add('hidden');
         if (btnText) btnText.innerText = 'Sign In & Launch Workspace';
 
-        switchView('dashboard');
-        showToast('Welcome to GudTree WP Suite!', 'Rank Math SEO and editorial tools unlocked.');
+        // Clear password input for security
+        const passInput = document.getElementById('login-password');
+        if (passInput) passInput.value = '';
 
+        switchView('dashboard');
+        showToast('Workstation Unlocked', 'Authenticated with GudTree Editorial Core.');
         if (typeof confetti === 'function') confetti({ particleCount: 70, spread: 80, origin: { y: 0.7 } });
-      }, 300);
+      } catch (err) {
+        console.error('Login network error:', err);
+        if (errAlert && errText) {
+          errText.innerText = 'Connection error. Unable to reach authentication server.';
+          errAlert.classList.remove('hidden');
+        }
+        if (btnText) btnText.innerText = 'Sign In & Launch Workspace';
+      }
     }
 
-    function logoutSession() {
+    async function checkAdminServerSession() {
+      try {
+        const token = localStorage.getItem('gudtree_auth_token') || '';
+        const res = await fetch('/api/admin/auth', {
+          method: 'GET',
+          credentials: 'same-origin',
+          headers: token ? { Authorization: `Bearer ${token}` } : {},
+        });
+
+        if (res.ok) {
+          const data = await res.json();
+          if (data.authenticated) {
+            document.getElementById('gateway-overlay')?.classList.add('hidden');
+            switchView('dashboard');
+            return true;
+          }
+        }
+      } catch (e) {
+        console.warn('Session verification notice:', e);
+      }
+
+      // If not authenticated, lock workstation
+      localStorage.removeItem('gudtree_auth_token');
+      localStorage.removeItem('gudtree_auth_session');
+      openWorkspaceSelector();
+      return false;
+    }
+
+    async function logoutSession() {
+      try {
+        await fetch('/api/admin/auth', {
+          method: 'DELETE',
+          credentials: 'same-origin',
+        });
+      } catch (e) {}
+
+      localStorage.removeItem('gudtree_auth_token');
       localStorage.removeItem('gudtree_auth_session');
       openWorkspaceSelector();
       showToast('Logged Out', 'Signed out from workstation session.');
@@ -13305,19 +13342,8 @@ http://localhost:3000/the-modi-doctrine-redefining-indias-global-economic-power<
       handleSnippetChange();
       updateSchemaPreview();
 
-      // Check Authentication Session
-      const session = localStorage.getItem('gudtree_auth_session');
-      if (!session) {
-        openWorkspaceSelector();
-      } else {
-        try {
-          JSON.parse(session);
-          document.getElementById('gateway-overlay')?.classList.add('hidden');
-          switchView('dashboard');
-        } catch (e) {
-          openWorkspaceSelector();
-        }
-      }
+      // Check Cryptographic Server-Side Authentication Session
+      checkAdminServerSession();
 
       const editor = document.getElementById('editor-content');
       if (editor) {
