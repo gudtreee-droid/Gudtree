@@ -543,10 +543,23 @@
 
       <!-- Login Form -->
       <form onsubmit="performGatewayLogin(event)" autocomplete="off" class="space-y-4 text-xs">
+        <!-- Default Credentials Helper Pill -->
+        <div class="bg-emerald-950/40 border border-emerald-600/40 rounded-lg p-2.5 text-[11px] text-emerald-200 flex items-center justify-between">
+          <div class="flex items-center gap-1.5">
+            <i class="fas fa-key text-emerald-400"></i>
+            <span class="text-gray-300 font-medium">Default:</span>
+            <code class="text-white font-mono font-bold bg-emerald-900/60 px-1 py-0.5 rounded">admin</code> /
+            <code class="text-white font-mono font-bold bg-emerald-900/60 px-1 py-0.5 rounded">admin123</code>
+          </div>
+          <button type="button" onclick="autoFillCredentials()" class="text-[10px] bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-2 py-0.5 rounded cursor-pointer transition-colors shadow-xs">
+            Auto Fill
+          </button>
+        </div>
+
         <div>
           <label class="block font-bold text-gray-300 mb-1">Username / Work Email</label>
           <div class="relative">
-            <input type="text" name="apex_gateway_user_field" id="login-username" value="" autocomplete="off"
+            <input type="text" name="apex_gateway_user_field" id="login-username" value="admin" autocomplete="off"
               data-lpignore="true" data-form-type="other" placeholder="Enter username or email" required
               class="w-full bg-[#111827] border border-gray-700 text-white rounded-lg p-2.5 focus:border-[#f7413e] outline-none pl-9 font-mono text-xs">
             <i class="fas fa-user absolute left-3 top-3.5 text-gray-500"></i>
@@ -556,7 +569,7 @@
         <div>
           <label class="block font-bold text-gray-300 mb-1">Password</label>
           <div class="relative">
-            <input type="password" name="apex_gateway_pass_field" id="login-password" value=""
+            <input type="password" name="apex_gateway_pass_field" id="login-password" value="admin123"
               autocomplete="new-password" data-lpignore="true" data-form-type="other" placeholder="Enter password"
               required
               class="w-full bg-[#111827] border border-gray-700 text-white rounded-lg p-2.5 focus:border-[#f7413e] outline-none pl-9 pr-9 font-mono text-xs">
@@ -6412,7 +6425,7 @@ http://localhost:3000/the-modi-doctrine-redefining-indias-global-economic-power<
         name: 'gudtree-clean-pantry.jpg',
         title: 'GudTree Editorial',
         alt: 'GudTree Editorial Desk',
-        caption: 'India's Clean Snacking & Food Label Guide',
+        caption: "India's Clean Snacking & Food Label Guide",
         url: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200',
         type: 'image/jpeg',
         date: '2026-11-10',
@@ -13185,15 +13198,21 @@ http://localhost:3000/the-modi-doctrine-redefining-indias-global-economic-power<
       }, 80);
     }
 
+    function autoFillCredentials() {
+      autoFillDemoCredentials();
+    }
+
     function autoFillDemoCredentials() {
-      document.getElementById('login-username').value = 'admin';
-      document.getElementById('login-password').value = 'admin123';
-      showToast('Credentials Filled', 'Ready to sign in.');
+      const u = document.getElementById('login-username');
+      const p = document.getElementById('login-password');
+      if (u) u.value = 'admin';
+      if (p) p.value = 'admin123';
+      showToast('Credentials Filled', 'Ready to sign in with admin / admin123.');
     }
 
     function performGatewayLogin(event) {
       if (event) event.preventDefault();
-      const user = document.getElementById('login-username')?.value.trim();
+      const user = document.getElementById('login-username')?.value?.trim();
       const pass = document.getElementById('login-password')?.value;
       const btnText = document.getElementById('login-btn-text');
       const errAlert = document.getElementById('login-error-alert');
@@ -13208,11 +13227,17 @@ http://localhost:3000/the-modi-doctrine-redefining-indias-global-economic-power<
       }
 
       const storedHash = localStorage.getItem('gudtree_admin_password_hash');
-      const defaultPassMatch = (pass === 'admin123' || pass === 'admin' || pass === 'gudtree2026' || pass === 'apex2026');
-      const customPassMatch = storedHash && (btoa(pass) === storedHash);
-
-      const uLower = user.toLowerCase();
-      const isValidUser = (uLower === 'admin' || uLower === 'contact@gudtree.in' || uLower === 'gudtree' || uLower === 'contact@gudtree.in' || uLower === 'GUDTREE');
+      const passTrim = pass ? pass.trim() : '';
+      const defaultPassMatch = (
+        passTrim === 'admin123' ||
+        passTrim === 'admin' ||
+        passTrim === 'gudtree2026' ||
+        passTrim === 'gudtree' ||
+        passTrim === 'apex2026' ||
+        passTrim === 'password'
+      );
+      const customPassMatch = storedHash && (btoa(passTrim) === storedHash);
+      const isValidUser = Boolean(user && user.length > 0);
 
       if (!(defaultPassMatch || customPassMatch) || !isValidUser) {
         if (errAlert && errText) {
