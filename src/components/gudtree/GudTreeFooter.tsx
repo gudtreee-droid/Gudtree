@@ -62,6 +62,7 @@ export default function GudTreeFooter() {
 
   const mainLinks = [
     { label: 'Home', href: '/' },
+    { label: 'Blog', href: '/blog' },
     { label: 'Packet Truth', href: '/category/label-audits' },
     { label: 'All Topics', href: '/category' },
     { label: 'Write for Us', href: '/write-for-us' },

@@ -4,8 +4,6 @@ import { getArticlesFromDB } from '@/lib/supabaseService';
 import { stripArticleForSummary } from '@/lib/articleSummary';
 import GudTreeHomeView from '@/components/gudtree/GudTreeHomeView';
 
-export const dynamic = 'force-dynamic';
-
 export default async function HomePage() {
   const dbArticles = await getArticlesFromDB();
   const articles =

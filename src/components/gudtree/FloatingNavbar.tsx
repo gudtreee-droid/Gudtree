@@ -88,11 +88,10 @@ export default function FloatingNavbar() {
   );
 
   const navLinks = [
-    { label: 'Home', href: '/' },
-    { label: 'Packet Truth', href: '/category/label-audits' },
-    { label: 'Diet Focus', href: '/#diet-focus' },
-    { label: 'Topics', href: '/category' },
-    { label: 'Contact', href: '/contact' },
+    { label: 'Explore Blogs', href: '/blog' },
+    { label: 'Food Audits', href: '/category/label-audits' },
+    { label: 'Health Swaps', href: '/#blogs-shelf' },
+    { label: 'All Topics', href: '/category' },
   ];
 
   return (
@@ -139,9 +138,9 @@ export default function FloatingNavbar() {
                     )}
                     <Link
                       href={item.href}
-                      className={`text-[13px] lg:text-[13.5px] tracking-[-0.01em] whitespace-nowrap transition-colors no-underline ${active
-                        ? 'font-bold text-[#14181E]'
-                        : 'font-medium text-[#14181E]/75 hover:text-[#14181E]'
+                      className={`text-[13.5px] lg:text-[14px] tracking-[-0.01em] whitespace-nowrap transition-colors no-underline ${active
+                        ? 'font-bold text-[#2F54EB]'
+                        : 'font-medium text-[#102A56]/80 hover:text-[#2F54EB]'
                         }`}
                     >
                       {item.label}
@@ -292,21 +291,32 @@ export default function FloatingNavbar() {
               </div>
 
               <div className="flex flex-col gap-1.5">
-                {navLinks.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    onClick={() => setIsDrawerOpen(false)}
-                    className="min-h-[44px] flex items-center px-4 py-2.5 rounded-2xl gt-font-display text-[17px] text-[#102A56] hover:bg-[#D6EDFF]/70 no-underline transition-colors"
-                  >
-                    {item.label}
-                  </Link>
-                ))}
+                {navLinks.map((item) => {
+                  const active =
+                    item.href === '/'
+                      ? pathname === '/'
+                      : pathname?.startsWith(item.href.split('#')[0]) &&
+                      item.href !== '/';
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      onClick={() => setIsDrawerOpen(false)}
+                      className={`min-h-[44px] flex items-center px-4 py-2.5 rounded-2xl text-[16px] transition-colors no-underline ${
+                        active
+                          ? 'font-bold bg-[#EEF4FF] text-[#2F54EB]'
+                          : 'font-semibold text-[#102A56] hover:bg-white'
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                  );
+                })}
               </div>
 
               <div className="pt-4 border-t border-[#ADC3DE]/60">
                 <div className="text-[11px] font-bold uppercase tracking-widest text-[#334155] mb-2.5">
-                  9 Core Pillars
+                  9 Clean Categories
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {visibleCats.map((cat) => (
@@ -314,7 +324,7 @@ export default function FloatingNavbar() {
                       key={cat.slug}
                       href={`/category/${cat.slug}`}
                       onClick={() => setIsDrawerOpen(false)}
-                      className="min-h-[38px] inline-flex items-center px-3 py-1.5 rounded-full bg-white border border-[#ADC3DE] text-[12.5px] font-medium text-[#102A56] hover:border-[#DA440D] no-underline"
+                      className="min-h-[38px] inline-flex items-center px-3 py-1.5 rounded-full bg-white border border-[#ADC3DE] text-[12.5px] font-medium text-[#102A56] hover:border-[#2F54EB] hover:text-[#2F54EB] no-underline"
                     >
                       {normalizeCatName(cat.name)}
                     </Link>

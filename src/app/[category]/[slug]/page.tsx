@@ -12,8 +12,6 @@ import {
   selectArticleRecommendations,
 } from '@/lib/articlePageHelpers';
 
-export const dynamic = 'force-dynamic';
-
 interface PageProps {
   params: Promise<{
     category: string;

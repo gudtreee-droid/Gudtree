@@ -52,15 +52,15 @@ export default function EditorialTitle({
   const { prefix, firstLetter, rest } = splitFirstLetter(title);
 
   const bigLetterScaleMap: Record<NonNullable<EditorialTitleProps['variant']>, string> = {
-    hero: 'text-[2.1em] sm:text-[2.3em] leading-[0.8] mr-[0.04em]',
-    feature: 'text-[1.95em] sm:text-[2.15em] leading-[0.82] mr-[0.04em]',
-    card: 'text-[1.85em] leading-[0.84] mr-[0.03em]',
-    compact: 'text-[1.68em] leading-[0.86] mr-[0.03em]',
+    hero: 'text-[1.2em] leading-none mr-[0.02em]',
+    feature: 'text-[1.1em] leading-none mr-[0.01em]',
+    card: 'text-current',
+    compact: 'text-current',
   };
 
   const accentColorClass = light
     ? 'text-[#E5F36D]'
-    : 'text-[#DA440D] group-hover:text-[#0944BA] transition-colors duration-200';
+    : 'text-current transition-colors duration-200';
 
   return (
     <Tag

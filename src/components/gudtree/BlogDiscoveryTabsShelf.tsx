@@ -35,7 +35,7 @@ export const BLOG_SHELF_TABS: BlogShelfTab[] = [
   {
     id: 'kids',
     label: 'Kids Tiffin',
-    thumbSrc: '/images/card-pcos.png',
+    thumbSrc: '/images/categories/kids-tiffin.svg',
     pillText: 'Kids Fuel',
     href: '/category/kids-tiffin',
     fallbackOffset: 0,
@@ -89,7 +89,7 @@ export const BLOG_SHELF_TABS: BlogShelfTab[] = [
   {
     id: 'labels',
     label: 'Packet Truth',
-    thumbSrc: '/images/gudtree-hero-sticker.png',
+    thumbSrc: '/images/categories/label-audits.svg',
     pillText: 'Label Audit',
     href: '/category/label-audits',
     fallbackOffset: 30,
@@ -98,7 +98,7 @@ export const BLOG_SHELF_TABS: BlogShelfTab[] = [
   {
     id: 'diabetes',
     label: 'Low Sugar',
-    thumbSrc: '/images/card-diabetes.png',
+    thumbSrc: '/images/categories/low-sugar.svg',
     pillText: 'Low-GI Pick',
     href: '/focus/diabetes',
     fallbackOffset: 35,
@@ -107,7 +107,7 @@ export const BLOG_SHELF_TABS: BlogShelfTab[] = [
   {
     id: 'vrat',
     label: 'Clean Pantry',
-    thumbSrc: '/images/card-heart.png',
+    thumbSrc: '/images/categories/clean-pantry.svg',
     pillText: 'Fasting Clean',
     href: '/category/desi-pantry',
     fallbackOffset: 40,
@@ -182,7 +182,17 @@ export default function BlogDiscoveryTabsShelf({
     const btn = tabButtonRefs.current[activeTabId];
     if (!track || !btn) return;
 
-    const trackWidth = track.scrollWidth;
+    const firstTab = BLOG_SHELF_TABS[0];
+    const lastTab = BLOG_SHELF_TABS[BLOG_SHELF_TABS.length - 1];
+    const firstBtn = tabButtonRefs.current[firstTab.id];
+    const lastBtn = tabButtonRefs.current[lastTab.id];
+
+    // Left and right padding: strictly ends where the last button ends + symmetric margin
+    const padding = firstBtn ? firstBtn.offsetLeft : 12;
+    const contentWidth = lastBtn
+      ? lastBtn.offsetLeft + lastBtn.offsetWidth + padding
+      : track.clientWidth;
+    const trackWidth = Math.max(track.clientWidth, contentWidth);
     const trackHeight = track.offsetHeight;
     const activeLeft = btn.offsetLeft;
     const activeWidth = btn.offsetWidth;
@@ -258,13 +268,19 @@ export default function BlogDiscoveryTabsShelf({
 
   const handleTabSwitch = (id: string) => {
     setActiveTabId(id);
+    const track = tabsTrackRef.current;
     const btn = tabButtonRefs.current[id];
-    if (btn) {
-      btn.scrollIntoView({
-        behavior: 'smooth',
-        inline: 'center',
-        block: 'nearest',
-      });
+    if (track && btn) {
+      const lastTab = BLOG_SHELF_TABS[BLOG_SHELF_TABS.length - 1];
+      const lastBtn = tabButtonRefs.current[lastTab.id];
+      const totalContentWidth = lastBtn ? lastBtn.offsetLeft + lastBtn.offsetWidth + 16 : track.scrollWidth;
+      const maxScroll = Math.max(0, totalContentWidth - track.clientWidth);
+      if (maxScroll > 2) {
+        const btnLeft = btn.offsetLeft;
+        const idealLeft = btnLeft - (track.clientWidth - btn.offsetWidth) / 2;
+        const targetLeft = Math.max(0, Math.min(maxScroll, idealLeft));
+        track.scrollTo({ left: targetLeft, behavior: 'smooth' });
+      }
     }
     if (scrollerRef.current) {
       scrollerRef.current.scrollTo({ left: 0, behavior: 'smooth' });
@@ -284,22 +300,25 @@ export default function BlogDiscoveryTabsShelf({
   const continuousCurvePath = useMemo(() => {
     if (!curveMetrics) return '';
     const { trackWidth, trackHeight, activeLeft, activeWidth } = curveMetrics;
-    const rad = Math.min(18, Math.floor(activeWidth * 0.25));
-    const yBase = Math.max(40, trackHeight - 2);
+    const rad = Math.min(16, Math.floor(activeWidth * 0.22));
+    const yBase = Math.max(40, trackHeight - 4);
     const yTop = 2;
-    const l = Math.max(rad + 4, activeLeft);
-    const r = Math.min(trackWidth - rad - 4, activeLeft + activeWidth);
+    const l = activeLeft;
+    const r = activeLeft + activeWidth;
+
+    const leftFilletRad = Math.min(rad, Math.max(4, l));
+    const rightFilletRad = Math.min(rad, Math.max(4, trackWidth - r));
 
     return [
       `M 0,${yBase}`,
-      `L ${l - rad},${yBase}`,
-      `A ${rad} ${rad} 0 0 0 ${l},${yBase - rad}`,
+      `L ${Math.max(0, l - leftFilletRad)},${yBase}`,
+      `A ${leftFilletRad} ${leftFilletRad} 0 0 0 ${l},${yBase - leftFilletRad}`,
       `L ${l},${yTop + rad}`,
       `A ${rad} ${rad} 0 0 1 ${l + rad},${yTop}`,
       `L ${r - rad},${yTop}`,
       `A ${rad} ${rad} 0 0 1 ${r},${yTop + rad}`,
-      `L ${r},${yBase - rad}`,
-      `A ${rad} ${rad} 0 0 0 ${r + rad},${yBase}`,
+      `L ${r},${yBase - rightFilletRad}`,
+      `A ${rightFilletRad} ${rightFilletRad} 0 0 0 ${Math.min(trackWidth, r + rightFilletRad)},${yBase}`,
       `L ${trackWidth},${yBase}`,
     ].join(' ');
   }, [curveMetrics]);
@@ -328,13 +347,14 @@ export default function BlogDiscoveryTabsShelf({
           </p>
         </div>
 
-        {/* Category Tabs: Contained Horizontal Swipe on Mobile + Continuous Faded Curved Folder Line on sm+ */}
+        {/* Category Tabs: Original Continuous Blue Line with Scrollbar Completely Hidden */}
         <div className="relative w-full pb-1">
           <div
             ref={tabsTrackRef}
-            className="gt-hscroll-sm gap-2 sm:flex sm:items-stretch sm:justify-center sm:gap-2 px-0 sm:px-6 pt-2 pb-2 sm:pb-4"
+            className="relative flex items-center justify-start lg:justify-between gap-1 sm:gap-2.5 overflow-x-auto no-scrollbar scrollbar-none gt-hscroll-none pt-1 pb-2 sm:pb-3 px-4 sm:px-6 w-full"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
-            {/* Smooth Continuous SVG Line on Desktop/Tablet (sm+) */}
+            {/* The Original Seamless Continuous Curved Folder Border */}
             {curveMetrics && continuousCurvePath && (
               <svg
                 width={curveMetrics.trackWidth}
@@ -342,7 +362,11 @@ export default function BlogDiscoveryTabsShelf({
                 viewBox={`0 0 ${curveMetrics.trackWidth} ${curveMetrics.trackHeight}`}
                 fill="none"
                 aria-hidden="true"
-                className="hidden sm:block absolute inset-0 pointer-events-none z-10 overflow-hidden"
+                className="absolute top-0 left-0 pointer-events-none z-10 overflow-hidden"
+                style={{
+                  width: `${curveMetrics.trackWidth}px`,
+                  height: `${curveMetrics.trackHeight}px`,
+                }}
               >
                 <defs>
                   <linearGradient
@@ -353,16 +377,16 @@ export default function BlogDiscoveryTabsShelf({
                     y2="0"
                     gradientUnits="userSpaceOnUse"
                   >
-                    <stop offset="0%" stopColor="#6384E8" stopOpacity="0" />
-                    <stop offset="4.5%" stopColor="#4A6EE0" stopOpacity="1" />
-                    <stop offset="95.5%" stopColor="#4A6EE0" stopOpacity="1" />
-                    <stop offset="100%" stopColor="#6384E8" stopOpacity="0" />
+                    <stop offset="0%" stopColor="#4A6EE0" stopOpacity="0.4" />
+                    <stop offset="3%" stopColor="#2F54EB" stopOpacity="1" />
+                    <stop offset="97%" stopColor="#2F54EB" stopOpacity="1" />
+                    <stop offset="100%" stopColor="#4A6EE0" stopOpacity="0.4" />
                   </linearGradient>
                 </defs>
                 <path
                   d={continuousCurvePath}
                   stroke="url(#gt-folder-curve-fade)"
-                  strokeWidth="1.65"
+                  strokeWidth="1.8"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 />
@@ -380,17 +404,16 @@ export default function BlogDiscoveryTabsShelf({
                   type="button"
                   onClick={() => handleTabSwitch(tab.id)}
                   aria-pressed={isActive}
-                  className={`relative z-20 w-[78px] sm:w-[92px] lg:w-[100px] shrink-0 flex flex-col items-center text-center pt-2 pb-1.5 px-1 cursor-pointer transition-all select-none focus:outline-none border-0 rounded-[14px] sm:rounded-none ${isActive
-                    ? 'bg-[#EEF4FF] sm:bg-transparent'
-                    : 'bg-transparent'
-                    }`}
+                  className="relative z-20 w-[80px] sm:w-[96px] lg:w-[104px] shrink-0 flex flex-col items-center text-center pt-2 pb-2 px-1 cursor-pointer select-none border-0 outline-none focus:outline-none focus-visible:outline-none focus:ring-0 active:outline-none bg-transparent group"
+                  style={{ WebkitTapHighlightColor: 'transparent' }}
                 >
                   {/* Circular / Soft Halo Thumbnail */}
                   <div
-                    className={`w-[46px] h-[46px] sm:w-[60px] sm:h-[60px] rounded-full flex items-center justify-center p-1.5 sm:p-2 mb-1.5 sm:mb-2 transition-transform duration-200 ${isActive
-                      ? 'bg-[#FFFFFF] sm:bg-[#F4F7FF] scale-[1.04] shadow-xs sm:shadow-none'
-                      : 'bg-[#F6F7FA] hover:bg-[#F0F4FF]'
-                      }`}
+                    className={`w-[44px] h-[44px] sm:w-[56px] sm:h-[56px] rounded-full flex items-center justify-center p-1.5 sm:p-2 mb-1.5 transition-transform duration-200 ${
+                      isActive
+                        ? 'bg-[#FFFFFF] ring-2 ring-[#2F54EB]/25 shadow-xs scale-[1.05]'
+                        : 'bg-[#F6F7FA] group-hover:bg-[#EEF4FF] group-hover:scale-105'
+                    }`}
                   >
                     <img
                       src={tab.thumbSrc}
@@ -401,10 +424,11 @@ export default function BlogDiscoveryTabsShelf({
 
                   {/* Two-line Clean Category Name */}
                   <span
-                    className={`whitespace-pre-line text-[11px] sm:text-[12.5px] leading-[1.18] tracking-[-0.01em] transition-colors ${isActive
-                      ? 'font-bold text-[#0A6C33] sm:text-[#2F54EB]'
-                      : 'font-medium text-[#1F2937]/75 hover:text-[#102A56]'
-                      }`}
+                    className={`whitespace-pre-line text-[10.5px] sm:text-[12px] leading-[1.18] tracking-[-0.01em] transition-colors ${
+                      isActive
+                        ? 'font-bold text-[#2F54EB]'
+                        : 'font-semibold text-slate-700 group-hover:text-[#102A56]'
+                    }`}
                   >
                     {tab.label}
                   </span>
@@ -424,9 +448,8 @@ export default function BlogDiscoveryTabsShelf({
               return (
                 <article
                   key={`${activeTab.id}-${article.slug}`}
-                  className={`group w-[212px] sm:w-[230px] md:w-full min-w-0 flex flex-col bg-[#FFFFFF] rounded-[16px] p-2.5 sm:p-3 border border-[#ADC3DE]/35 hover:border-[#2F54EB] transition-all ${
-                    idx >= 4 ? 'lg:hidden' : ''
-                  }`}
+                  className={`group w-[212px] sm:w-[230px] md:w-full min-w-0 flex flex-col bg-[#FFFFFF] rounded-[16px] p-2.5 sm:p-3 border border-[#ADC3DE]/35 hover:border-[#2F54EB] transition-all ${idx >= 4 ? 'lg:hidden' : ''
+                    }`}
                 >
                   {/* Clean Image + Single Subtle Bookmark */}
                   <div className="relative w-full aspect-[16/11] rounded-[12px] bg-[#F5F7FA] overflow-hidden mb-2 border border-[#ADC3DE]/25">

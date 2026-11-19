@@ -9,7 +9,7 @@ export async function POST(req: NextRequest) {
       content = '',
       focusKeyword = '',
       metaDescription = '',
-      category = 'Business',
+      category = 'Clean Snacks',
     } = body;
 
     const apiKey = process.env.GEMINI_API_KEY;
@@ -25,54 +25,54 @@ export async function POST(req: NextRequest) {
 
     // Default smart algorithmic fallback generator with complete ready-to-use drafts
     const generateSmartFallback = (rawTitle: string, rawCat: string, rawExcerpt: string) => {
-      const cleanTitle = rawTitle.trim() || 'Modern Global Industry Trends & Strategic Outlook';
+      const cleanTitle = rawTitle.trim() || 'Everyday Healthy Snacking & Clean Swaps';
       const words = cleanTitle.split(/\s+/);
       const mainSubject = words.slice(0, 4).join(' ');
 
-      const t1 = `Why ${mainSubject} Matters More Than Ever in 2026`;
-      const t2 = `${cleanTitle}: Complete Strategic Analysis & Forecast`;
-      const t3 = `Inside the Shift: ${mainSubject} and the Global Market Outlook`;
+      const t1 = `Is Your ${mainSubject} Truly Healthy? (The Honest Label Check)`;
+      const t2 = `${cleanTitle}: Real Food Label Audit & Clean Swaps`;
+      const t3 = `Clean Swaps for ${mainSubject}: Zero Palm Oil & No Hidden Sugar`;
 
       return {
         overallScore: Math.min(95, Math.max(70, 60 + (cleanTitle.length >= 40 && cleanTitle.length <= 70 ? 25 : 15))),
         scoreLabel: 'Strong Optimization',
         searchIntent: 'Informational & Commercial',
-        topicDepth: 'In-Depth Editorial',
+        topicDepth: 'Clean Food Audit',
         titleSuggestions: [
           {
-            type: 'High CTR & Viral',
+            type: 'High CTR & Curiosity',
             title: t1,
-            hook: 'High curiosity & reader engagement',
-            excerpt: `As structural shifts accelerate across ${rawCat || 'the global economy'}, industry leaders are confronting a pivotal moment in ${mainSubject}. Here is why this transition is reshaping the market in 2026.`,
-            draftHtml: `<h2>The Inflection Point</h2><p>For decades, institutional strategies across <strong>${mainSubject}</strong> were built around incremental optimization. Today, that framework has been replaced by an urgent mandate for technological resilience and structural innovation.</p><blockquote>"The organizations that proactively adapt to this inflection point today will command the competitive landscape of the next decade."</blockquote><h2>Structural Shifts & Market Dynamics</h2><p>Recent industry metrics demonstrate an unprecedented acceleration in capital deployment. Organizations that have reimagined their operational architecture are establishing measurable competitive moats, demonstrating robustness even against broader macroeconomic turbulence.</p><p>As cross-border collaboration and institutional capital converge, the imperative for clear, high-conviction decision-making has never been greater.</p><h2>The Road to 2026 and Beyond</h2><p>Navigating the months ahead will require a meticulous balance between aggressive technological adoption and operational prudence. The evolution of ${mainSubject} is rapidly becoming the defining benchmark for modern enterprise leadership.</p>`,
+            hook: 'Exposes hidden ingredients and hooks readers',
+            excerpt: `Before you buy another packet of ${mainSubject}, check the ingredient label. Here is what big brands hide behind clever marketing and what you should eat instead.`,
+            draftHtml: `<h2>The Hidden Truth on the Packet</h2><p>Most packaged versions of <strong>${mainSubject}</strong> are marketed as 'healthy' or 'diet-friendly', but a quick glance at the back label reveals a different story: cheap palm oil, hidden maltodextrin, and artificial preservatives.</p><blockquote>"If a snack needs six synthetic additives to taste like real food, your body is paying the price."</blockquote><h2>What the Ingredients Actually Mean</h2><p>When you decode the fine print, you realize that refined flours (maida) and cheap vegetable fats are used to cut production costs while inflating shelf life. These ingredients spike blood sugar and trigger sluggish afternoon fatigue.</p><p>Switching to whole-grain, stone-ground, or slow-roasted alternatives restores daily energy and promotes long-term metabolic health.</p><h2>The Honest Clean Swap</h2><p>Always choose snacks made with cold-pressed oils, real jaggery (gud), roasted seeds, or millets. Keep your plate simple, clean, and transparent.</p>`,
           },
           {
             type: 'SEO Search Optimized',
             title: t2,
             hook: 'Matches top Google search queries',
-            excerpt: `An exhaustive analysis of ${cleanTitle}, examining the critical market drivers, strategic capital allocation, and emerging trends defining the sector through 2026.`,
-            draftHtml: `<h2>Executive Overview</h2><p>The strategic emergence of <strong>${cleanTitle}</strong> marks a fundamental milestone in the evolution of ${rawCat || 'modern enterprise'}. Market participants are re-evaluating risk exposure and capital allocation models to capitalize on high-growth opportunities.</p><blockquote>"Strategic foresight in ${mainSubject} is no longer an optional hedge—it is the foundational prerequisite for sustained market relevance."</blockquote><h2>Key Performance Drivers & Market Analysis</h2><p>Granular data from leading industry benchmarks highlights strong tailwinds behind sector-wide modernization. Early institutional adopters have registered substantial gains across productivity, operational throughput, and capital efficiency.</p><p>Furthermore, regulatory clarity and standardizations are paving the way for broader enterprise integration, unlocking previously untapped avenues for long-term growth.</p><h2>Strategic Recommendations for Industry Leaders</h2><p>Stakeholders must prioritize core competency development, strategic alliances, and rigorous governance to maximize the impact of these sector-wide transitions.</p>`,
+            excerpt: `Complete guide to ${cleanTitle}: real ingredient breakdowns, zero-palm-oil alternatives, and verified healthy options for Indian families.`,
+            draftHtml: `<h2>Why Ingredient Transparency Matters</h2><p>When choosing <strong>${cleanTitle}</strong>, looking beyond front-of-pack claims is essential. Food safety and clean eating begin with knowing exactly what enters your kitchen.</p><blockquote>"Real food does not need misleading labels—clean ingredients speak for themselves."</blockquote><h2>Nutritional Breakdown & Healthy Checklist</h2><p>Compare total sugars against dietary fiber. A balanced snack should offer sustained satiety without chemical flavor enhancers (INS numbers) or excessive sodium.</p><p>For children and working professionals alike, clean alternatives protect gut health and support steady cognitive focus.</p><h2>Recommended Swaps for Everyday Routines</h2><p>Prioritize traditional Indian superfoods like roasted makhana, sattu drinks, and sprouted legumes over ultra-processed factory munchies.</p>`,
           },
           {
-            type: 'Executive Editorial',
+            type: 'Nutrition Editorial',
             title: t3,
-            hook: 'Authoritative, Financial Times style tone',
-            excerpt: `In-depth reporting on ${mainSubject}: how structural realignments, institutional investments, and regulatory shifts are reshaping industry fundamentals.`,
-            draftHtml: `<h2>A Paradigm Shift in Industry Architecture</h2><p>In the corridors of global industry, a profound realignment is underway around <strong>${mainSubject}</strong>. Senior decision-makers are navigating a rapidly shifting geopolitical and economic terrain that demands both precision and ambition.</p><blockquote>"We are witnessing a structural reconfiguration that will establish the market leaders of the next economic cycle."</blockquote><h2>Capital Allocation and Execution</h2><p>The convergence of advanced infrastructure, disciplined capital management, and institutional stewardship has established a new standard for operational excellence across the sector.</p><p>Those positioned to execute with speed and rigor will not only withstand sector volatility but actively define the terms of future market expansion.</p><h2>The Long-Term Horizon</h2><p>Looking ahead, the resilience of institutional models will depend directly on their capacity to integrate these strategic shifts into enduring core operations.</p>`,
+            hook: 'Trustworthy, nutritionist-approved tone',
+            excerpt: `Practical, doctor-reviewed tips on ${mainSubject}: how to swap ultra-processed snacks for clean, energizing alternatives without giving up taste.`,
+            draftHtml: `<h2>Rethinking Our Daily Snacking Habits</h2><p>Our daily tea-time and study munching often determine our overall metabolic health. In the context of <strong>${mainSubject}</strong>, small habit changes yield lasting benefits.</p><blockquote>"Healthy snacking is not about deprivation—it is about choosing honest ingredients over industrial shortcuts."</blockquote><h2>What to Look for on the Label</h2><p>Verify that the oil used is unrefined or cold-pressed, and check that jaggery or dates replace refined white sugar and liquid glucose.</p><p>These practical swaps safeguard cardiovascular wellness and prevent blood sugar volatility throughout the day.</p><h2>The Bottom Line</h2><p>Make your snacking honest, wholesome, and palm-oil free. Your family deserves food made from real ingredients.</p>`,
           },
         ],
         suggestedMeta: {
           seoTitle: cleanTitle.length > 60 ? cleanTitle.slice(0, 57) + '...' : cleanTitle,
           metaDescription: rawExcerpt
             ? (rawExcerpt.slice(0, 155) + (rawExcerpt.length > 155 ? '...' : ''))
-            : `Discover the healthy benefits of ${mainSubject}. Expert nutritional advice, clean diet tips, and snacking guides on GudTree.`,
+            : `Zero palm oil, zero hidden sugars, and honest food label audits. Discover clean healthy snack swaps for ${mainSubject} on GudTree.`,
         },
         keywords: [
-          rawCat || 'Business',
-          words[0] || 'Market',
-          words[1] || 'Strategy',
-          'Global Outlook',
-          'Analysis 2026',
+          rawCat || 'Clean Snacks',
+          words[0] || 'Healthy Snacks',
+          words[1] || 'Zero Palm Oil',
+          'Food Label Audit',
+          'Clean Swaps',
         ].filter(Boolean),
         checklist: [
           {
@@ -95,9 +95,9 @@ export async function POST(req: NextRequest) {
           },
         ],
         actionableSuggestions: [
-          `Consider using powerful action verbs like "Breakthrough", "Strategic", or "Forecast" in headline.`,
+          `Consider using powerful health verbs like "Zero Palm Oil", "Clean Swap", or "Label Audit" in headline.`,
           `Include 2-3 subheading sections to improve Google snippet crawling.`,
-          `Add high-resolution cover photography with descriptive alt tags.`,
+          `Add high-resolution photography with descriptive alt tags.`,
         ],
       };
     };
@@ -112,10 +112,10 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    const systemPrompt = `You are an elite Google News & Editorial SEO Specialist for prestigious publications like Bloomberg, Financial Times, and The Economist.
-Analyze the title and category, and provide 3 click-worthy, high-ranking headline alternatives. FOR EACH HEADLINE ALTERNATIVE, also write:
-1. A punchy 2-sentence Lead Summary/Excerpt (140-160 chars).
-2. A complete, rich editorial news draft in clean HTML (<p>, <h2>, <blockquote>) with 3-4 paragraphs of insightful journalism prose.
+    const systemPrompt = `You are an elite Food Nutrition & Food Label Specialist for GudTree (India's Clean Snacking & Nutrition Guide: READ CLEAN. SNACK HONEST.).
+Analyze the snack/food topic and category, and provide 3 click-worthy, high-ranking headline alternatives. FOR EACH HEADLINE ALTERNATIVE, also write:
+1. A punchy 2-sentence Lead Summary/Excerpt (140-160 chars) focusing on zero palm oil, real ingredients, and honest swaps.
+2. A complete, rich editorial draft in clean HTML (<p>, <h2>, <blockquote>) with 3-4 paragraphs analyzing food labels, hidden additives, and clean kitchen alternatives.
 
 Input:
 - Title: "${title || 'Untitled Draft'}"
@@ -127,33 +127,33 @@ Respond ONLY with a valid, parseable JSON object matching this schema:
   "overallScore": 88,
   "scoreLabel": "Excellent",
   "searchIntent": "Informational & Commercial",
-  "topicDepth": "Deep Analysis",
+  "topicDepth": "Clean Food Audit",
   "titleSuggestions": [
     {
-      "type": "High CTR & Viral",
+      "type": "High CTR & Curiosity",
       "title": "Punchy headline under 65 chars",
-      "hook": "Why readers will click",
+      "hook": "Exposes hidden ingredients and hooks readers",
       "excerpt": "A 2-sentence lead summary that hooks the reader...",
-      "draftHtml": "<h2>The Strategic Shift</h2><p>In-depth paragraph 1...</p><blockquote>\\"A memorable thesis quote.\\"</blockquote><h2>Market Implications</h2><p>Paragraph 2...</p><h2>Looking Ahead</h2><p>Paragraph 3...</p>"
+      "draftHtml": "<h2>The Hidden Truth on the Packet</h2><p>Paragraph 1...</p><blockquote>\\"Memorable takeaway quote.\\"</blockquote><h2>What the Ingredients Mean</h2><p>Paragraph 2...</p><h2>The Honest Clean Swap</h2><p>Paragraph 3...</p>"
     },
     {
       "type": "SEO Search Optimized",
       "title": "Keyword-first headline under 60 chars",
       "hook": "Optimized for Google SERP query",
       "excerpt": "A 2-sentence lead summary optimized for search snippet...",
-      "draftHtml": "<h2>Executive Overview</h2><p>Paragraph 1...</p><blockquote>\\"Insight quote.\\"</blockquote><h2>Core Findings</h2><p>Paragraph 2...</p>"
+      "draftHtml": "<h2>Why Ingredient Transparency Matters</h2><p>Paragraph 1...</p><blockquote>\\"Insight quote.\\"</blockquote><h2>Nutritional Breakdown & Checklist</h2><p>Paragraph 2...</p><h2>Recommended Swaps</h2><p>Paragraph 3...</p>"
     },
     {
-      "type": "Executive Editorial",
-      "title": "Authoritative headline under 65 chars",
-      "hook": "Prestigious journalism tone",
-      "excerpt": "A sophisticated lead summary for executive readers...",
-      "draftHtml": "<h2>The Market Reconfiguration</h2><p>Paragraph 1...</p><blockquote>\\"Executive quote.\\"</blockquote><h2>Strategic Analysis</h2><p>Paragraph 2...</p>"
+      "type": "Nutrition Editorial",
+      "title": "Trustworthy headline under 65 chars",
+      "hook": "Nutritionist-approved authority tone",
+      "excerpt": "A sophisticated lead summary for conscious eaters...",
+      "draftHtml": "<h2>Rethinking Our Daily Snacking Habits</h2><p>Paragraph 1...</p><blockquote>\\"Nutritional quote.\\"</blockquote><h2>What to Look for on the Label</h2><p>Paragraph 2...</p><h2>The Bottom Line</h2><p>Paragraph 3...</p>"
     }
   ],
   "suggestedMeta": {
     "seoTitle": "Optimal SEO title max 60 characters",
-    "metaDescription": "A captivating 140-160 character meta summary that directly answers user intent."
+    "metaDescription": "A captivating 140-160 character meta summary that highlights zero palm oil and honest swaps."
   },
   "keywords": ["keyword 1", "keyword 2", "keyword 3", "keyword 4", "keyword 5"],
   "checklist": [

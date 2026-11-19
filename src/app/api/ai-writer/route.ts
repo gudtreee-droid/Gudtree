@@ -6,7 +6,7 @@ export async function POST(req: NextRequest) {
     const {
       action = 'generate-draft', // 'generate-draft' | 'continue-writing' | 'polish' | 'key-takeaways' | 'generate-sections'
       title = '',
-      category = 'Business',
+      category = 'Clean Snacks',
       existingContent = '',
       customPrompt = '',
     } = body;
@@ -18,22 +18,22 @@ export async function POST(req: NextRequest) {
 
     // Fallback Generator
     const generateSmartFallback = () => {
-      const topic = title.trim() || 'Global Technology and Economic Outlook';
+      const topic = title.trim() || 'Clean Indian Snacking & Honest Food Label Swaps';
       
       if (action === 'key-takeaways') {
-        return `<blockquote><strong>Key Editorial Takeaways:</strong><ul><li><strong>Strategic Shift:</strong> Accelerated investment in ${topic} is driving measurable efficiency gains across the sector.</li><li><strong>Market Dynamics:</strong> Early adopters are capturing a disproportionate share of global enterprise capital.</li><li><strong>Foresight & Outlook:</strong> Regulatory frameworks and infrastructure scaling will define the competitive benchmark through 2026.</li></ul></blockquote>`;
+        return `<blockquote><strong>GudTree Clean Nutrition Takeaways:</strong><ul><li><strong>Hidden Additives Check:</strong> Many packaged snacks market themselves as 'healthy' while packing up to 30% palm oil and hidden maltodextrin.</li><li><strong>Zero Blood Sugar Spikes:</strong> Swapping ultra-processed snacks for roasted makhana, chana, or sprouted millets stabilizes 4 PM energy slumps.</li><li><strong>The Clean Swap Rule:</strong> If an ingredient list has words you wouldn't keep in your home kitchen, leave the packet on the shelf.</li></ul></blockquote>`;
       }
 
       if (action === 'continue-writing') {
-        return `<p>Building on these developments, industry leaders are increasingly focusing on sustainable scalability. As capital allocators reassess risk profiles in the current macro environment, the ability to balance aggressive innovation with structural resilience has become the hallmark of institutional success.</p><p>Furthermore, cross-border partnerships and technical standardization are emerging as critical catalysts, ensuring that the momentum behind ${topic} translates into long-term enterprise value.</p>`;
+        return `<p>When analyzing packet labels, always compare total dietary fiber against added sugars and saturated fats. In traditional Indian kitchens, wholesome ingredients like roasted chana, sattu, and cold-pressed mustard or coconut oils provided clean, sustained satiety without spiking triglycerides.</p><p>By prioritizing whole-grain swaps and eliminating industrial palm oils, families can safeguard daily metabolic health without sacrificing taste or crunch.</p>`;
       }
 
       if (action === 'polish') {
-        return `<p>${cleanExisting || `${topic} represents a paradigm shift across global markets, reshaping strategic priorities and institutional workflows.`}</p>`;
+        return `<p>${cleanExisting || `${topic} represents an honest shift toward transparent food choices, helping Indian families ditch misleading marketing and embrace clean, wholesome eating.`}</p>`;
       }
 
       // Default: Full editorial story draft
-      return `<h2>The Strategic Imperative</h2><p>In an increasingly interconnected global economy, the emergence of <strong>${topic}</strong> marks a pivotal inflection point. Industry leaders, institutional investors, and policymakers are recalibrating their strategic frameworks to navigate the structural shifts currently underway.</p><blockquote>"The organizations that recognize and adapt to these fundamental market transitions today will define the competitive landscape of tomorrow."</blockquote><h2>Market Dynamics & Structural Impact</h2><p>Recent data underscores an unprecedented acceleration across capital allocation and technological deployment. Companies integrating modern operational workflows have demonstrated resilience against macroeconomic headwinds, outperforming traditional benchmarks across key performance indicators.</p><p>As supply chain integrity and digital infrastructure continue to converge, the demand for high-conviction decision-making has never been more urgent. Strategic resilience is no longer an optional hedge—it is the foundational prerequisite for sustained growth.</p><h2>Looking Ahead: The 2026 Horizon</h2><p>Over the next eighteen months, market participants must closely monitor regulatory harmonization, liquidity dynamics, and infrastructure capacity. The trajectory of ${topic} will continue to serve as a bellwether for the broader trajectory of modern industry.</p>`;
+      return `<h2>The Reality Behind the Packet Label</h2><p>Walk down any supermarket snack aisle in India, and almost every colourful wrapper screams 'high fiber', 'roasted', or 'diet friendly'. Yet, turning the packet over reveals the uncomfortable truth about <strong>${topic}</strong>: cheap palm olein, hidden maltodextrin, and artificial flavor enhancers (INS codes) engineered to keep you reaching for more.</p><blockquote>"Real health food doesn't need six chemical additives to taste good. If your snack contains industrial palm oil and liquid glucose, it is ultra-processed junk disguised in clean packaging."</blockquote><h2>Decoding the Fine Print: What Big Brands Hide</h2><p>Most commercial brands replace wholesome ingredients with cheap industrial fillers to extend shelf life and maximize profit margins. Palm oil is loaded with saturated fats that trigger sluggish afternoon fatigue, while refined flours (maida) spike blood sugar and trigger vicious hunger cycles within 45 minutes.</p><p>For children's school lunchboxes and office desks alike, these hidden additives quietly erode metabolic health, promote belly bloating, and disrupt natural gut microbiomes.</p><h2>The Honest Clean Swap: What to Eat Instead</h2><p>Eating clean doesn't mean eating boring. Traditional Indian superfoods like slow-roasted makhana (foxnuts), roasted black chana, and unpolished millets (ragi, jowar) offer superior crunch with zero palm oil. Pair them with real palm jaggery (gud) or cold-pressed oils for clean, honest energy that lasts all day.</p>`;
     };
 
     if (!apiKey) {
@@ -47,38 +47,36 @@ export async function POST(req: NextRequest) {
     let systemInstruction = '';
 
     if (action === 'generate-draft') {
-      systemInstruction = `You are a senior editor and chief investigative writer for prestige publications like Financial Times, Bloomberg, and The Economist.
-Write a comprehensive, compelling, and in-depth editorial news article draft for the title: "${title}".
+      systemInstruction = `You are the chief food investigator and nutrition editor for GudTree (India's Clean Snacking & Food Label Audit Guide: READ CLEAN. SNACK HONEST.).
+Write an engaging, brutally honest, and deeply practical food article for: "${title}".
 Category: ${category}.
 ${customPrompt ? `Special Editor Instructions: ${customPrompt}` : ''}
 
-FORMAT REQUIREMENTS:
-- Output clean, semantic HTML directly suitable for a rich WYSIWYG editor.
-- Use <h2> for major section headings.
-- Use <p> for paragraphs with rich, articulate, professional journalism vocabulary.
-- Include one high-impact <blockquote> for a memorable quote or key thesis.
-- Do NOT use markdown code fences (\`\`\`html). Output the raw HTML markup directly.
-- Aim for 350-500 words of deeply engaging editorial prose.`;
+GUIDELINES:
+- Focus on Indian consumers, daily snacking routines (4 PM office chai, school lunchbox, late-night study, gym protein, diabetic low-GI).
+- Brutally decode package labels: call out hidden palm oil, maltodextrin, refined sugar, INS emulsifiers, and fake 'diet/healthy' claims.
+- Recommend clean, accessible Indian kitchen swaps (makhana, sattu, chana, millets, jaggery/gud, cold-pressed oils).
+- Tone: Authoritative yet accessible, scientifically accurate, empathetic to busy Indian families, zero fluff.
+- Format: Clean semantic HTML (<p>, <h2>, <blockquote>, <ul><li>). No markdown fences. Aim for 350-500 words.`;
     } else if (action === 'continue-writing') {
-      systemInstruction = `You are a prestige publication editor continuing an in-progress news story.
+      systemInstruction = `You are GudTree's clean nutrition editor continuing an article on Indian healthy snacking and food label audits.
 Article Title: "${title}"
 Existing Draft Content:
 "${cleanExisting.slice(-1200)}"
 
 TASK:
-Write the natural, high-quality next 2-3 paragraphs continuing this story seamlessly.
-Output clean HTML (<p>, <h2> if needed). Do NOT repeat the existing text. Output only the continuation.`;
+Write the natural, high-quality next 2-3 paragraphs continuing this story seamlessly with clean snack swaps, label reality checks, and practical kitchen tips. Output clean HTML (<p>, <h2>). Do NOT repeat existing text.`;
     } else if (action === 'polish') {
-      systemInstruction = `You are an elite copy editor for Financial Times and Bloomberg.
-Rewrite and elevate the following draft text to make it punchy, authoritative, eloquent, and grammatically flawless:
+      systemInstruction = `You are GudTree's senior nutrition copy editor.
+Elevate the draft text to make it punchy, engaging, science-backed, and focused on clean ingredients and zero palm oil:
 "${cleanExisting}"
 
-Output clean HTML paragraphs (<p>) with elevated prose and sophisticated vocabulary.`;
+Output clean HTML paragraphs (<p>).`;
     } else if (action === 'key-takeaways') {
-      systemInstruction = `Generate a sleek editorial "Key Takeaways" summary box for an article titled "${title}".
-Output a <blockquote> with a bold title and 3-4 concise, high-value bullet points (<ul><li>...) highlighting the critical insights.`;
+      systemInstruction = `Generate a sleek "GudTree Clean Nutrition Takeaways" summary box for an article titled "${title}".
+Output a <blockquote> with a bold title and 3-4 concise, high-value bullet points (<ul><li>...) highlighting palm oil reality, blood sugar impact, and the best clean swap.`;
     } else {
-      systemInstruction = `Write a compelling editorial draft for: "${title}". Output clean HTML (<p>, <h2>, <blockquote>).`;
+      systemInstruction = `Write a compelling clean snacking and food label audit draft for: "${title}". Output clean HTML (<p>, <h2>, <blockquote>).`;
     }
 
     const models = [

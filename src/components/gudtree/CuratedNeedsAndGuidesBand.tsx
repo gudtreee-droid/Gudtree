@@ -35,38 +35,38 @@ function ColorLightning({
 
 const NEED_DOMES = [
   {
-    id: 'desk-study',
-    label: 'Late-Night Study',
+    id: 'diabetes',
+    label: 'Low-Sugar Diet',
     img: '/images/card-diabetes.png',
-    href: '/category/clean-snacks',
+    href: '/focus/diabetes',
   },
   {
-    id: 'office-chai',
-    label: '4 PM Chai Crunch',
-    img: '/images/card-weight.png',
-    href: '/category/clean-snacks',
+    id: 'pcos',
+    label: 'PCOS Guide',
+    img: '/images/card-pcos.png',
+    href: '/focus/pcos',
+  },
+  {
+    id: 'gut',
+    label: 'Gut & Bloat',
+    img: '/images/card-gut.png',
+    href: '/focus/gut',
   },
   {
     id: 'hangover-reset',
     label: 'Hangover Reset',
     img: '/images/card-heart.png',
-    href: '/category/heart-liver-care',
+    href: '/focus/heart',
   },
   {
-    id: 'kids-tiffin',
-    label: 'School Lunchbox',
-    img: '/images/card-pcos.png',
-    href: '/category/kids-tiffin',
-  },
-  {
-    id: 'label-check',
-    label: 'Packet Audit',
-    img: '/images/card-gut.png',
-    href: '/category/label-audits',
+    id: 'weight',
+    label: 'Daily Protein',
+    img: '/images/card-weight.png',
+    href: '/category/weight-protein',
   },
   {
     id: 'vrat-food',
-    label: 'Fasting Bites',
+    label: 'Desi Superfoods',
     img: '/images/card-diabetes.png',
     href: '/category/desi-pantry',
   },
@@ -158,13 +158,13 @@ export default function CuratedNeedsAndGuidesBand({
             <div className="flex items-center justify-center gap-3">
               <ColorLightning fill="#E5F36D" stroke="#073124" />
               <h2 className="gt-hero-comic-title text-[21px] sm:text-[36px] lg:text-[40px] text-center tracking-[0.01em]">
-                CLEAN SWAPS FOR EVERY OCCASION
+                EVERYDAY DIET &amp; HEALTH FOCUS
               </h2>
               <ColorLightning fill="#E5F36D" stroke="#073124" />
             </div>
             <p className="mt-2 text-center text-[13.5px] sm:text-[15px] text-[#E5F36D]/95 leading-[1.5] max-w-xl mx-auto">
-              Tested snacks for late-night study, school tiffins, and tea breaks.
-              <br className="hidden sm:inline" /> Pure ingredients and real budget without misleading marketing.
+              Food guides and daily plate swaps for your specific health goals.
+              <br className="hidden sm:inline" /> Low sugar, PCOS balance, gut digestion, and clean daily protein.
             </p>
           </div>
 

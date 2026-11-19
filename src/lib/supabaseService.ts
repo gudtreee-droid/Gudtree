@@ -84,26 +84,8 @@ export function mapArticleToRow(art: Article): any {
 
 // --- ARTICLES OPERATIONS ---
 export async function getArticlesFromDB(): Promise<Article[] | null> {
-  if (!isSupabaseConfigured) return null;
-  try {
-    const { data, error } = await supabaseAdmin
-      .from('articles')
-      .select('*')
-      .order('created_at', { ascending: false });
-
-    if (error) {
-      console.error('Supabase getArticles error:', error.message);
-      return null;
-    }
-
-    if (data && data.length > 0) {
-      return data.map(mapRowToArticle);
-    }
-    return [];
-  } catch (err) {
-    console.error('Supabase getArticles exception:', err);
-    return null;
-  }
+  // Cleared for architectural sitemap and user flow mapping phase
+  return [];
 }
 
 export async function upsertArticleInDB(article: Article): Promise<boolean> {
@@ -581,21 +563,17 @@ export async function getAnalyticsDataFromDB(): Promise<AnalyticsData> {
 
     // Category breakdown based on actual article views in DB
     const categoryColors: Record<string, string> = {
-      Business: '#002b5c',
-      Markets: '#0891b2',
-      Technology: '#0284c7',
-      Tech: '#0284c7',
-      Startups: '#8b5cf6',
-      Leadership: '#10b981',
-      Marketing: '#f59e0b',
-      Career: '#ec4899',
-      Future: '#6366f1',
-      Culture: '#f7413e',
-      World: '#059669',
-      Lifestyle: '#d97706',
-      Travel: '#7c3aed',
-      Health: '#db2777',
-      AI: '#6366f1',
+      'Kids Tiffin': '#FFAA00',
+      'Clean Snacks': '#2F54EB',
+      'Weight & Protein': '#E11D48',
+      'Desi Pantry': '#059669',
+      'Blood Sugar Friendly': '#0284C7',
+      'Label Audits': '#DA440D',
+      'Gut Health': '#10B981',
+      'Brand Reviews': '#8B5CF6',
+      'Healthy Swaps': '#D97706',
+      'Heart & Liver': '#DC2626',
+      'PCOS & Hormones': '#9333EA',
     };
 
     const categoryMap: Record<string, { views: number; count: number }> = {};

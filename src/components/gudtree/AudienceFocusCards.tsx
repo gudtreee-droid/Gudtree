@@ -13,58 +13,64 @@ export interface AudienceCardItem {
   blobRotation: number;
   imageSrc: string;
   imageAlt: string;
+  href?: string;
 }
 
 export const AUDIENCE_FOCUS_CARDS: AudienceCardItem[] = [
   {
-    id: 'diabetes',
-    title: 'Low-Sugar Diet',
+    id: 'chai-crunch',
+    title: '4 PM Chai Crunch',
     description:
-      'Zero-spike evening crunch & meal hacks. Simple habits to keep daily blood sugar steady.',
-    blobColor: '#FF5A3D',
-    blobRotation: -8,
-    imageSrc: '/images/card-diabetes.png',
-    imageAlt: 'Low-GI roasted makhana and chana bowl',
-  },
-  {
-    id: 'pcos',
-    title: 'PCOS Food Guide',
-    description:
-      'Seed cycling blends & savoury breakfasts. Wholesome foods to calm acne and balance energy.',
-    blobColor: '#4CC36B',
-    blobRotation: 9,
-    imageSrc: '/images/card-pcos.png',
-    imageAlt: 'Seed-cycling granola bars and almonds',
-  },
-  {
-    id: 'weight',
-    title: 'Budget Protein',
-    description:
-      'Roasted sattu drinks & black chana. Real daily protein sources under ₹50 without whey.',
+      'Clean chai companions to replace oily samosas, namkeen, and bakery biscuits.',
     blobColor: '#F5A623',
     blobRotation: -5,
     imageSrc: '/images/card-weight.png',
-    imageAlt: 'Crispy multigrain lentil stack with paneer and greens',
+    imageAlt: 'Clean roasted chai snacks and seeds',
+    href: '/category/clean-snacks',
   },
   {
-    id: 'gut',
-    title: 'Bloat & Acidity',
+    id: 'kids-tiffin',
+    title: 'School Lunchbox',
     description:
-      'Probiotic jeera chaas & fermented kanji. Soothing kitchen remedies to banish belly bloat.',
-    blobColor: '#9B51E0',
-    blobRotation: -15,
-    imageSrc: '/images/card-gut.png',
-    imageAlt: 'Probiotic yogurt jar with chia seeds and millet crackers',
+      'Quick 10-minute palm-oil-free tiffins and crisp evening bites kids actually finish.',
+    blobColor: '#4CC36B',
+    blobRotation: 9,
+    imageSrc: '/images/card-pcos.png',
+    imageAlt: 'Kids healthy tiffin and wholesome snacks',
+    href: '/category/kids-tiffin',
   },
   {
-    id: 'heart',
-    title: 'Hangover Reset',
+    id: 'late-night-study',
+    title: 'Late-Night Study',
     description:
-      'Morning liver hydration & electrolyte sips. Fast relief from dry mouth, nausea, and headache.',
+      'Keyboard-clean roasted snacks and light fuel for 1 AM study and work sessions.',
     blobColor: '#2BA6FF',
     blobRotation: 12,
     imageSrc: '/images/card-heart.png',
-    imageAlt: 'Walnuts, avocado and flaxseed clean bowl',
+    imageAlt: 'Light roasted makhana and millets for study',
+    href: '/category/clean-snacks',
+  },
+  {
+    id: 'label-audits',
+    title: 'Packet Audit',
+    description:
+      'Real food label checks. Exposing hidden palm oil, maltodextrin, and false claims.',
+    blobColor: '#FF5A3D',
+    blobRotation: -8,
+    imageSrc: '/images/card-diabetes.png',
+    imageAlt: 'Honest food label and ingredient audit',
+    href: '/category/label-audits',
+  },
+  {
+    id: 'weight-protein',
+    title: 'Budget Protein',
+    description:
+      'Roasted sattu, chana, and wholesome fuel under ₹50/day without whey powder.',
+    blobColor: '#9B51E0',
+    blobRotation: -15,
+    imageSrc: '/images/card-gut.png',
+    imageAlt: 'Roasted sattu and black chana protein bowl',
+    href: '/category/weight-protein',
   },
 ];
 
@@ -124,11 +130,11 @@ export default function AudienceFocusCards({
           className="text-center max-w-2xl mx-auto mb-10 sm:mb-14"
         >
           <h2 className="gt-font-display text-[26px] sm:text-[36px] lg:text-[42px] leading-[1.08] tracking-[-0.03em] text-[#102A56]">
-            Everyday Diet &amp; Health Focus
+            Clean Swaps for Every Occasion
           </h2>
           <p className="mt-2 text-[14px] sm:text-[15.5px] text-[#334155] leading-[1.5] max-w-xl mx-auto">
-            Clean food guides, daily plate swaps, and practical eating habits.
-            <br className="hidden sm:inline" /> Find the right snacks for your body condition and daily routine.
+            Tested snacks for 4 PM chai, school tiffins, and late-night work.
+            <br className="hidden sm:inline" /> Simple healthy snack swaps your whole family will actually love.
           </p>
         </motion.div>
 
@@ -146,7 +152,7 @@ export default function AudienceFocusCards({
                 className="w-[152px] sm:w-[172px] md:w-full min-w-0"
               >
                 <Link
-                  href={`/focus/${item.id}`}
+                  href={item.href || `/focus/${item.id}`}
                   className={`group w-full min-w-0 flex flex-col items-center text-center bg-transparent p-1.5 sm:p-2 rounded-[22px] no-underline transition-all ${
                     isActive
                       ? 'ring-2 ring-[#102A56]/25 bg-[#FFFFFF]/60 shadow-sm'

@@ -8,8 +8,6 @@ import { getSiteBaseUrl } from '@/lib/articlePageHelpers';
 import { FOCUS_SLUGS, getFocusPageConfig } from '@/data/focusPagesData';
 import SundayCrumbFocusPage from '@/components/gudtree/SundayCrumbFocusPage';
 
-export const dynamic = 'force-dynamic';
-
 interface FocusRouteProps {
   params: Promise<{ slug: string }>;
 }

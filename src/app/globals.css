@@ -104,10 +104,13 @@
   background: #DA440D;
 }
 
-/* Hide scrollbars cleanly */
+/* Hide scrollbars cleanly across all browsers */
 .no-scrollbar::-webkit-scrollbar,
 .nf-no-scrollbar::-webkit-scrollbar,
-.scrollbar-none::-webkit-scrollbar {
+.scrollbar-none::-webkit-scrollbar,
+.gt-hscroll-none::-webkit-scrollbar,
+.gt-hscroll-sm::-webkit-scrollbar,
+.gt-hscroll-md::-webkit-scrollbar {
   display: none !important;
   width: 0 !important;
   height: 0 !important;
@@ -115,9 +118,32 @@
 
 .no-scrollbar,
 .nf-no-scrollbar,
-.scrollbar-none {
+.scrollbar-none,
+.gt-hscroll-none,
+.gt-hscroll-sm,
+.gt-hscroll-md {
   -ms-overflow-style: none !important;
   scrollbar-width: none !important;
+}
+
+/* Eliminate ugly black focus outline boxes on button and link clicks */
+button,
+a,
+[role="button"] {
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+button:focus,
+button:focus-visible,
+button:active,
+a:focus,
+a:focus-visible,
+a:active,
+[role="button"]:focus,
+[role="button"]:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+  -webkit-tap-highlight-color: transparent !important;
 }
 
 /* Article and Card Images */

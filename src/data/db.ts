@@ -33,23 +33,12 @@ function initDB() {
     }
 
     if (!fs.existsSync(CATEGORIES_FILE)) {
-      const initialCategories = CATEGORIES.map((cat, index) => {
-        let layout = 'world-layout';
-        if (cat.slug === 'technology') layout = 'tech-layout';
-        else if (cat.slug === 'culture') layout = 'culture-layout';
-        else if (cat.slug === 'business') layout = 'business-layout';
-        else if (cat.slug === 'lifestyle') layout = 'lifestyle-layout';
-        else if (cat.slug === 'travel') layout = 'travel-layout';
-        else if (cat.slug === 'health') layout = 'health-layout';
-        else if (cat.slug === 'ai') layout = 'ai-layout';
-        
-        return {
-          ...cat,
-          layout,
-          order: index + 1,
-          isVisible: true
-        };
-      });
+      const initialCategories = CATEGORIES.map((cat, index) => ({
+        ...cat,
+        layout: cat.layout || `${cat.slug}-layout`,
+        order: index + 1,
+        isVisible: true
+      }));
       fs.writeFileSync(CATEGORIES_FILE, JSON.stringify(initialCategories, null, 2), 'utf-8');
     }
     dbInitialized = true;

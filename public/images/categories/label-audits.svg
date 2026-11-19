@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <defs>
+    <radialGradient id="la-bg" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#EEF2FF" />
+      <stop offset="100%" stop-color="#E0E7FF" />
+    </radialGradient>
+    <filter id="la-shadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#312E81" flood-opacity="0.15" />
+    </filter>
+  </defs>
+  <!-- Background Circle -->
+  <circle cx="60" cy="60" r="54" fill="url(#la-bg)" />
+  <circle cx="60" cy="60" r="53" fill="none" stroke="#818CF8" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.6" />
+  
+  <!-- Nutrition Packet Card -->
+  <g filter="url(#la-shadow)">
+    <rect x="28" y="26" width="46" height="66" rx="8" fill="#FFFFFF" stroke="#C7D2FE" stroke-width="1.5" />
+    <!-- Barcode Lines -->
+    <rect x="34" y="32" width="3" height="14" fill="#1E1B4B" rx="1" />
+    <rect x="39" y="32" width="1.5" height="14" fill="#1E1B4B" />
+    <rect x="42" y="32" width="4" height="14" fill="#1E1B4B" rx="1" />
+    <rect x="48" y="32" width="2" height="14" fill="#1E1B4B" />
+    <rect x="52" y="32" width="1.5" height="14" fill="#1E1B4B" />
+    <rect x="55" y="32" width="3.5" height="14" fill="#1E1B4B" rx="1" />
+    <rect x="61" y="32" width="2" height="14" fill="#1E1B4B" />
+    <rect x="65" y="32" width="3" height="14" fill="#1E1B4B" rx="1" />
+    
+    <!-- Ingredient Label Rows -->
+    <rect x="34" y="52" width="34" height="3" rx="1.5" fill="#E2E8F0" />
+    <rect x="34" y="58" width="26" height="3" rx="1.5" fill="#E2E8F0" />
+    <rect x="34" y="64" width="30" height="3" rx="1.5" fill="#E2E8F0" />
+    <rect x="34" y="70" width="20" height="3" rx="1.5" fill="#E2E8F0" />
+    
+    <!-- Palm Oil Crossed Stamp -->
+    <rect x="34" y="76" width="34" height="10" rx="3" fill="#FEE2E2" />
+    <text x="51" y="83.5" font-family="sans-serif" font-size="6" font-weight="bold" fill="#DC2626" text-anchor="middle">0% PALM OIL</text>
+  </g>
+  
+  <!-- Magnifying Glass with Verified Check -->
+  <g transform="translate(48, 42)" filter="url(#la-shadow)">
+    <!-- Glass Rim -->
+    <circle cx="28" cy="28" r="22" fill="#2563EB" opacity="0.12" />
+    <circle cx="28" cy="28" r="21" fill="none" stroke="#2563EB" stroke-width="4.5" />
+    <circle cx="28" cy="28" r="17" fill="none" stroke="#93C5FD" stroke-width="1.5" />
+    
+    <!-- Verified Green Checkmark in Glass -->
+    <circle cx="28" cy="28" r="12" fill="#10B981" />
+    <path d="M 23,28 L 26.5,31.5 L 33.5,24.5" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+    
+    <!-- Handle -->
+    <path d="M 44,44 L 56,56" stroke="#1E293B" stroke-width="6.5" stroke-linecap="round" />
+    <path d="M 45,45 L 55,55" stroke="#F59E0B" stroke-width="3" stroke-linecap="round" />
+  </g>
+</svg>

@@ -1,7 +1,5 @@
 import React, { Suspense } from 'react';
-import Link from 'next/link';
 import { Metadata } from 'next';
-import { ChevronRight } from 'lucide-react';
 import { CATEGORIES, getCategorySlug } from '@/data/categories';
 import { getCategorySeo } from '@/data/categorySeo';
 import { getArticleSummaries, getCategories, getSiteConfig } from '@/data/db';
@@ -9,13 +7,11 @@ import { getArticlesFromDB } from '@/lib/supabaseService';
 import { stripArticleForSummary } from '@/lib/articleSummary';
 import { getBlogUrl } from '@/lib/blogUrl';
 import { getSiteBaseUrl } from '@/lib/articlePageHelpers';
-import EditorialTitle from '@/components/gudtree/EditorialTitle';
-import NewsClient from '@/app/news/NewsClient';
-
-export const dynamic = 'force-dynamic';
+import GudTreeCategoryPageView from '@/components/gudtree/GudTreeCategoryPageView';
 
 interface CategoryPageProps {
   params: Promise<{ slug: string }>;
+  searchParams: Promise<{ sub?: string }>;
 }
 
 function normalizeCatKey(value?: string): string {
@@ -56,8 +52,10 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
   };
 }
 
-export default async function CategorySlugPage({ params }: CategoryPageProps) {
+export default async function CategorySlugPage({ params, searchParams }: CategoryPageProps) {
   const { slug } = await params;
+  const sParams = await searchParams;
+  const initialSub = sParams?.sub || 'all';
   const catSlug = slug.toLowerCase();
   const seo = getCategorySeo(catSlug);
   const siteConfig = getSiteConfig();
@@ -117,7 +115,7 @@ export default async function CategorySlugPage({ params }: CategoryPageProps) {
       },
       {
         '@type': 'ItemList',
-        itemListElement: categoryArticles.slice(0, 12).map((art, index) => ({
+        itemListElement: categoryArticles.slice(0, 16).map((art, index) => ({
           '@type': 'ListItem',
           position: index + 1,
           url: `${baseUrl}${getBlogUrl(art)}`,
@@ -133,58 +131,20 @@ export default async function CategorySlugPage({ params }: CategoryPageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-
-      {/* GudTree Category Masthead */}
-      <section className="w-full max-w-full overflow-x-clip bg-[#FFF9EC] text-[#102A56] pt-6 sm:pt-10 pb-2">
-        <div className="gt-container">
-          <nav
-            aria-label="Breadcrumb"
-            className="flex items-center gap-2 pb-4 mb-5 border-b border-[#ADC3DE]/60 text-[12.5px] text-[#334155]"
-          >
-            <Link href="/" className="hover:text-[#DA440D] transition-colors no-underline text-[#102A56]">
-              Home
-            </Link>
-            <ChevronRight className="w-3.5 h-3.5 text-[#999999]" />
-            <Link href="/category" className="hover:text-[#DA440D] transition-colors no-underline text-[#102A56]">
-              Topics
-            </Link>
-            <ChevronRight className="w-3.5 h-3.5 text-[#999999]" />
-            <span className="text-[#0944BA] font-semibold">{catName}</span>
-          </nav>
-
-          <header className="pb-6 border-b border-[#ADC3DE]/60 flex flex-col items-start gap-2.5">
-            <div className="flex items-center gap-3 flex-wrap">
-              <span className="gt-badge-olive">{catName}</span>
-              <span className="text-[12.5px] font-medium text-[#334155]">
-                {categoryArticles.length}{' '}
-                {categoryArticles.length === 1 ? 'guide' : 'guides'}
-              </span>
-            </div>
-
-            <h1 className="gt-font-display text-[32px] sm:text-[42px] leading-[1.08] tracking-[-0.025em] text-[#102A56]">
-              {seo.h1}
-            </h1>
-
-            <p className="text-[15px] sm:text-[16.5px] leading-[1.58] text-[#334155] max-w-2xl">
-              {seo.introContent}
-            </p>
-          </header>
-        </div>
-      </section>
-
       <Suspense
         fallback={
-          <div className="gt-container py-14 text-center">
-            <p className="sc-display-sm text-[18px] text-[#102A56]">
-              Loading {catName} guides...
-            </p>
+          <div className="w-full min-h-screen bg-[#FFFDF9] py-16 text-center text-[#102A56]">
+            <p className="text-[16px] font-bold">Loading {catName} clean guides...</p>
           </div>
         }
       >
-        <NewsClient
-          initialCategory={getCategorySlug(catName)}
-          initialArticles={allArticles}
-          initialCategories={categories}
+        <GudTreeCategoryPageView
+          currentSlug={catSlug}
+          categoryObj={catObj}
+          initialArticles={categoryArticles}
+          allArticles={allArticles}
+          categories={categories}
+          initialSub={initialSub}
         />
       </Suspense>
     </>

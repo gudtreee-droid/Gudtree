@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <defs>
+    <radialGradient id="ls-bg" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#F0FDF4" />
+      <stop offset="100%" stop-color="#DCFCE7" />
+    </radialGradient>
+    <filter id="ls-shadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#065F46" flood-opacity="0.15" />
+    </filter>
+  </defs>
+  <!-- Background Circle -->
+  <circle cx="60" cy="60" r="54" fill="url(#ls-bg)" />
+  <circle cx="60" cy="60" r="53" fill="none" stroke="#86EFAC" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.6" />
+  
+  <!-- Low GI Glucose Wave Meter -->
+  <g filter="url(#ls-shadow)">
+    <!-- Flat Stable Glucose Line (Not Spike!) -->
+    <path d="M 24,70 Q 36,66 48,68 T 72,67 T 96,69" fill="none" stroke="#059669" stroke-width="3.5" stroke-linecap="round" />
+    <!-- Wave Glow -->
+    <path d="M 24,70 Q 36,66 48,68 T 72,67 T 96,69" fill="none" stroke="#6EE7B7" stroke-width="6" stroke-linecap="round" opacity="0.4" />
+  </g>
+  
+  <!-- Healthy Roasted Almonds & Cinnamon -->
+  <g transform="translate(34, 30)" filter="url(#ls-shadow)">
+    <!-- Cinnamon Stick -->
+    <rect x="22" y="10" width="34" height="7" rx="3.5" fill="#92400E" transform="rotate(-30 39 13)" />
+    <rect x="24" y="11" width="30" height="5" rx="2.5" fill="#B45309" transform="rotate(-30 39 13)" />
+    
+    <!-- Almond 1 (Foreground) -->
+    <path d="M 12,28 C 6,20 10,10 20,8 C 28,14 26,26 18,30 C 15,31 13,30 12,28 Z" fill="#D97706" />
+    <path d="M 14,26 C 9,19 12,12 19,10 C 24,15 23,24 17,27 Z" fill="#F59E0B" />
+    <path d="M 16,14 Q 18,20 15,24" fill="none" stroke="#B45309" stroke-width="1" stroke-linecap="round" opacity="0.7" />
+    
+    <!-- Almond 2 (Angled) -->
+    <path d="M 28,32 C 24,24 30,16 38,18 C 44,24 40,34 32,35 C 30,35 28,34 28,32 Z" fill="#B45309" />
+    <path d="M 29,30 C 26,24 31,18 37,20 C 41,24 38,32 32,33 Z" fill="#D97706" />
+  </g>
+  
+  <!-- Zero Sugar Tag Pill -->
+  <g transform="translate(36, 78)">
+    <rect x="0" y="0" width="48" height="15" rx="7.5" fill="#047857" />
+    <text x="24" y="10.5" font-family="sans-serif" font-size="7.5" font-weight="extrabold" fill="#FFFFFF" text-anchor="middle">LOW GI</text>
+  </g>
+</svg>
