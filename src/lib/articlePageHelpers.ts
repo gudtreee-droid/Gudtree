@@ -250,7 +250,7 @@ export function buildArticleJsonLd(article: Article, articleUrl: string) {
 }
 
 export function selectArticleRecommendations(allArticles: Article[], article: Article) {
-  const normCurrentCat = article.category.toLowerCase();
+  const normCurrentCat = (article.category || '').toLowerCase();
   const candidates = allArticles.filter(
     (a) => a.slug !== article.slug && !a.excludeFromPopularPosts
   );
@@ -261,21 +261,36 @@ export function selectArticleRecommendations(allArticles: Article[], article: Ar
       a.categories?.some((c) => c.toLowerCase() === normCurrentCat)
   );
 
+  // Return up to 4 contextual recommendations
   const relatedArticles =
-    sameCategory.length >= 3
-      ? sameCategory.slice(0, 3)
+    sameCategory.length >= 4
+      ? sameCategory.slice(0, 4)
       : [
           ...sameCategory,
           ...candidates.filter((a) => !sameCategory.includes(a)),
-        ].slice(0, 3);
+        ].slice(0, 4);
 
-  const topSidebarArticles = [...candidates]
-    .sort(
-      (a, b) =>
-        (b.top10VisitCount || b.viewsCount || 0) -
-        (a.top10VisitCount || a.viewsCount || 0)
-    )
-    .slice(0, 6);
+  // Smart diverse sidebar articles (curated high-impact audits)
+  const sortedByViews = [...candidates].filter(
+    (a) => (b_val(a)) > 0
+  );
+
+  function b_val(item: Article): number {
+    return Number(item.top10VisitCount || item.viewsCount || (item as any).views || 0);
+  }
+
+  let topSidebarArticles: Article[];
+  if (sortedByViews.length >= 6) {
+    topSidebarArticles = sortedByViews.sort((a, b) => b_val(b) - b_val(a)).slice(0, 6);
+  } else {
+    // Pick diverse top audits across distinct categories based on article slug hash
+    let hash = 0;
+    for (let i = 0; i < (article.slug || '').length; i++) {
+      hash = (hash * 31 + article.slug.charCodeAt(i)) | 0;
+    }
+    const offset = Math.abs(hash) % Math.max(1, candidates.length - 6);
+    topSidebarArticles = [...candidates.slice(offset), ...candidates.slice(0, offset)].slice(0, 6);
+  }
 
   return { relatedArticles, topSidebarArticles };
 }

@@ -3,7 +3,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Bookmark, Clock, X, BookOpen } from 'lucide-react';
+import { Bookmark, Clock, X, BookOpen, ArrowRight, Search, Sparkles } from 'lucide-react';
 import { Article } from '@/types';
 import { getBlogUrl } from '@/lib/blogUrl';
 import { normalizeCatName, formatNfDate } from '@/lib/newsflashFormat';
@@ -80,7 +80,7 @@ function UnifiedCleanBlogCard({
         </span>
       </div>
 
-      <Link href={getBlogUrl(article)} className="no-underline mb-2 flex-1">
+      <Link href={getBlogUrl(article)} className="no-underline mb-1.5 flex-1">
         <EditorialTitle
           title={article.title}
           variant="compact"
@@ -89,14 +89,24 @@ function UnifiedCleanBlogCard({
         />
       </Link>
 
-      <div className="mt-auto pt-1 flex items-center justify-between text-[11.5px] font-medium text-[#334155]">
+      {article.excerpt ? (
+        <p className="text-[12.5px] sm:text-[13px] text-[#4A5568] leading-[1.45] line-clamp-2 mb-2.5 font-normal">
+          {article.excerpt}
+        </p>
+      ) : null}
+
+      <div className="mt-auto pt-2 border-t border-[#ADC3DE]/20 flex items-center justify-between text-[11.5px] font-medium text-[#334155]">
         <span className="inline-flex items-center gap-1 text-[#0944BA] font-semibold">
           <Clock className="w-3 h-3" />
           <span>{article.readTime || meta.mins}</span>
         </span>
-        <span className="text-[10.5px] font-semibold text-[#15803D] bg-[#EAF7EE] px-2 py-0.5 rounded-full">
-          Clean Swap
-        </span>
+        <Link
+          href={getBlogUrl(article)}
+          className="inline-flex items-center gap-1 text-[11.5px] sm:text-[12px] font-bold text-[#DA440D] hover:text-[#B33508] transition-colors group-hover:translate-x-0.5 duration-200 no-underline"
+        >
+          <span>Read Audit</span>
+          <ArrowRight className="w-3 h-3" />
+        </Link>
       </div>
     </article>
   );
@@ -105,6 +115,19 @@ function UnifiedCleanBlogCard({
 export default function GudTreeHomeView({ articles }: { articles: Article[] }) {
   const [selectedCondition, setSelectedCondition] = useState('all');
   const [savedSlugs, setSavedSlugs] = useState<string[]>([]);
+  const [heroQuery, setHeroQuery] = useState('');
+
+  const heroSearchResults = useMemo(() => {
+    const q = heroQuery.trim().toLowerCase();
+    if (!q) return [];
+    return articles.filter((a) => {
+      const titleMatch = (a.title || '').toLowerCase().includes(q);
+      const excerptMatch = (a.excerpt || '').toLowerCase().includes(q);
+      const tagMatch = Boolean(a.tag && a.tag.toLowerCase().includes(q));
+      const catMatch = (a.category || '').toLowerCase().includes(q);
+      return titleMatch || excerptMatch || tagMatch || catMatch;
+    });
+  }, [articles, heroQuery]);
 
   useEffect(() => {
     try {
@@ -235,6 +258,87 @@ export default function GudTreeHomeView({ articles }: { articles: Article[] }) {
 
             {/* 4 Real-Blinking 3D Animated Characters (Eating, Reading, Exercising vs Junk Fatigue) */}
             <HeroPlayfulMascots />
+
+            {/* Live Hero Search & Curiosity Bar */}
+            <div className="w-full max-w-xl mx-auto mt-4 sm:mt-5 relative z-20">
+              <div className="relative flex items-center bg-[#FFFFFF] rounded-[16px] sm:rounded-full border-2 border-[#14181E] shadow-[0_4px_0_#14181E] p-1.5 transition-all focus-within:shadow-[0_6px_0_#14181E]">
+                <Search className="w-5 h-5 text-[#DA440D] ml-2.5 sm:ml-3 shrink-0" />
+                <input
+                  type="text"
+                  value={heroQuery}
+                  onChange={(e) => setHeroQuery(e.target.value)}
+                  placeholder="Search 150+ label audits (e.g. makhana, palm oil, chana)..."
+                  className="w-full bg-transparent px-2.5 py-1.5 text-[13.5px] sm:text-[14.5px] text-[#102A56] font-medium placeholder:text-[#64748B] focus:outline-none"
+                />
+                {heroQuery && (
+                  <button
+                    type="button"
+                    onClick={() => setHeroQuery('')}
+                    aria-label="Clear search"
+                    className="p-1 rounded-full text-[#64748B] hover:text-[#102A56] mr-1 cursor-pointer"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                )}
+              </div>
+
+              {/* Instant Hero Results Dropdown */}
+              {heroQuery.trim().length > 1 && (
+                <div className="absolute left-0 right-0 top-full mt-2 bg-[#FFFFFF] rounded-[16px] border-2 border-[#14181E] shadow-[0_8px_20px_rgba(16,42,86,0.18)] p-2 z-30 max-h-[320px] overflow-y-auto text-left">
+                  {heroSearchResults.length === 0 ? (
+                    <div className="p-3 text-center text-[13px] text-[#64748B]">
+                      No audit found for &quot;{heroQuery}&quot;. Try searching &quot;makhana&quot;, &quot;protein&quot;, or &quot;biscuit&quot;.
+                    </div>
+                  ) : (
+                    <div className="divide-y divide-[#E2E8F0]">
+                      {heroSearchResults.slice(0, 6).map((item) => (
+                        <Link
+                          key={item.slug}
+                          href={getBlogUrl(item)}
+                          className="flex items-center gap-2.5 p-2 hover:bg-[#EEF3FF] rounded-[10px] transition-colors no-underline group"
+                        >
+                          <div className="w-10 h-10 rounded-[8px] overflow-hidden shrink-0 bg-[#F1F5F9]">
+                            <GudTreeImg src={item.image} alt={item.title} className="w-full h-full object-cover" />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <p className="text-[13px] font-bold text-[#102A56] group-hover:text-[#2F54EB] line-clamp-1">
+                              {item.title}
+                            </p>
+                            <p className="text-[11px] text-[#64748B] line-clamp-1">
+                              {item.excerpt || normalizeCatName(item.category)}
+                            </p>
+                          </div>
+                          <ArrowRight className="w-3.5 h-3.5 text-[#DA440D] shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" />
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* Curiosity Audit Chips */}
+              <div className="mt-3 flex items-center justify-center flex-wrap gap-1.5 sm:gap-2">
+                <span className="text-[11px] sm:text-[11.5px] font-bold uppercase tracking-wider text-white/90 mr-1 flex items-center gap-1">
+                  <Sparkles className="w-3 h-3 text-[#E5F36D]" /> Trending:
+                </span>
+                {[
+                  { label: 'Makhana vs Chips', q: 'makhana' },
+                  { label: 'Sasta Protein', q: 'chana' },
+                  { label: 'Palm Oil In Biscuits', q: 'palm oil' },
+                  { label: 'Brown Bread Scam', q: 'bread' },
+                  { label: 'Kids Snacks', q: 'kids' },
+                ].map((chip) => (
+                  <button
+                    key={chip.label}
+                    type="button"
+                    onClick={() => setHeroQuery(chip.q)}
+                    className="px-2.5 py-1 rounded-full bg-[#FFFFFF]/90 hover:bg-[#FFFFFF] text-[#102A56] text-[11px] sm:text-[11.5px] font-bold shadow-sm transition-all hover:scale-105 cursor-pointer border border-[#14181E]/15"
+                  >
+                    {chip.label}
+                  </button>
+                ))}
+              </div>
+            </div>
           </motion.div>
 
           {/* Scalloped Wave Cutout */}

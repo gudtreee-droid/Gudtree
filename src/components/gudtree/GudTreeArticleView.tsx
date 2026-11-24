@@ -20,6 +20,8 @@ import {
   RotateCcw,
   SlidersHorizontal,
   Sparkles,
+  ThumbsUp,
+  MessageCircle,
 } from 'lucide-react';
 import { Article } from '@/types';
 import { getCategorySlug } from '@/data/categories';
@@ -221,6 +223,7 @@ export default function GudTreeArticleView({
   const [tocOpen, setTocOpen] = useState<boolean>(true);
   const [copiedLink, setCopiedLink] = useState<boolean>(false);
   const [isBookmarked, setIsBookmarked] = useState<boolean>(false);
+  const [hasLiked, setHasLiked] = useState<boolean>(false);
 
   // Compact icon popovers (clean UI without clutter)
   const [langMenuOpen, setLangMenuOpen] = useState<boolean>(false);
@@ -829,7 +832,22 @@ export default function GudTreeArticleView({
                   <Bookmark className={`w-4 h-4 ${isBookmarked ? 'fill-current' : ''}`} />
                 </button>
 
-                {/* 4. Share Icon */}
+                {/* 4. WhatsApp Direct Share */}
+                <button
+                  type="button"
+                  onClick={() => handleSocialShare('whatsapp')}
+                  aria-label="Share on WhatsApp"
+                  title="Share on WhatsApp"
+                  className="w-11 h-11 sm:w-9 sm:h-9 rounded-full border inline-flex items-center justify-center transition-colors hover:border-[#25D366] text-[#25D366] cursor-pointer"
+                  style={{
+                    backgroundColor: activeTheme.cardSurface,
+                    borderColor: activeTheme.border,
+                  }}
+                >
+                  <MessageCircle className="w-4 h-4 fill-current" />
+                </button>
+
+                {/* 5. Share Icon */}
                 <button
                   type="button"
                   onClick={() => handleSocialShare('system')}
@@ -1153,6 +1171,45 @@ export default function GudTreeArticleView({
                   <div dangerouslySetInnerHTML={{ __html: processedHtml }} />
                 </div>
 
+                {/* Was this audit helpful? Feedback & Viral Loop */}
+                <div
+                  className="mt-8 p-4 sm:p-5 rounded-[16px] border text-center flex flex-col items-center justify-center gap-3 transition-all"
+                  style={{
+                    borderColor: activeTheme.border,
+                    backgroundColor: activeTheme.cardSurface,
+                  }}
+                >
+                  <div className="flex items-center gap-2">
+                    <Sparkles className="w-4 h-4 text-[#DA440D]" />
+                    <span className="font-bold text-[14px] sm:text-[15px]" style={{ color: activeTheme.text }}>
+                      Did this audit help you choose cleaner snacks?
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-2.5">
+                    <button
+                      type="button"
+                      onClick={() => setHasLiked(true)}
+                      className={`px-4 py-2 rounded-full font-bold text-[13px] inline-flex items-center gap-1.5 transition-all cursor-pointer ${hasLiked
+                        ? 'bg-[#15803D] text-white'
+                        : 'bg-[#EFF6FF] text-[#0944BA] hover:bg-[#DBEAFE]'
+                        }`}
+                    >
+                      <ThumbsUp className={`w-3.5 h-3.5 ${hasLiked ? 'fill-current' : ''}`} />
+                      <span>{hasLiked ? 'Thanks for the feedback! 🌱' : 'Yes, Helpful!'}</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => handleSocialShare('whatsapp')}
+                      className="px-4 py-2 rounded-full font-bold text-[13px] inline-flex items-center gap-1.5 bg-[#25D366] text-white hover:bg-[#20BD5A] transition-colors cursor-pointer"
+                    >
+                      <MessageCircle className="w-3.5 h-3.5 fill-current" />
+                      <span>Share with Family</span>
+                    </button>
+                  </div>
+                </div>
+
                 {/* Clean Nutrition Advisory */}
                 <div
                   className="mt-10 p-4 sm:p-5 rounded-[16px] border flex items-start gap-3.5"
@@ -1437,6 +1494,36 @@ export default function GudTreeArticleView({
             </div>
           </section>
         )}
+
+        {/* Mobile Sticky Bottom Reader Action Bar */}
+        <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#FFFFFF] border-t border-[#E2E8F0] px-4 py-2.5 shadow-[0_-4px_16px_rgba(16,42,86,0.08)] flex items-center justify-between gap-2">
+          <button
+            type="button"
+            onClick={() => setHasLiked(!hasLiked)}
+            className={`px-3 py-1.5 rounded-full text-[12px] font-bold inline-flex items-center gap-1 transition-colors cursor-pointer ${hasLiked ? 'bg-[#15803D] text-white' : 'bg-[#F1F5F9] text-[#102A56]'
+              }`}
+          >
+            <ThumbsUp className={`w-3.5 h-3.5 ${hasLiked ? 'fill-current' : ''}`} />
+            <span>{hasLiked ? 'Helpful' : 'Helpful?'}</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => handleSocialShare('whatsapp')}
+            className="flex-1 max-w-[200px] py-1.5 px-3 rounded-full bg-[#25D366] text-white font-bold text-[12.5px] inline-flex items-center justify-center gap-1.5 shadow-sm active:scale-95 transition-transform cursor-pointer"
+          >
+            <MessageCircle className="w-3.5 h-3.5 fill-current" />
+            <span>Share on WhatsApp</span>
+          </button>
+
+          <Link
+            href="/news"
+            className="px-3 py-1.5 rounded-full text-[12px] font-bold bg-[#EEF3FF] text-[#2F54EB] inline-flex items-center gap-0.5 no-underline"
+          >
+            <span>More</span>
+            <ChevronRight className="w-3.5 h-3.5" />
+          </Link>
+        </div>
       </main>
     </div>
   );

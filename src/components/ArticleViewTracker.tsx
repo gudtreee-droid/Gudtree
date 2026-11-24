@@ -14,7 +14,7 @@ export default function ArticleViewTracker({ slug }: ArticleViewTrackerProps) {
     const alreadyViewed = sessionStorage.getItem(sessionKey);
 
     // Track view (pass isUnique if first time visiting the site today)
-    const visitorKey = 'apex_visitor_tracked';
+    const visitorKey = 'gudtree_visitor_tracked';
     const isNewVisitor = !localStorage.getItem(visitorKey);
 
     if (!alreadyViewed) {

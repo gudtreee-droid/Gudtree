@@ -14,6 +14,7 @@ import {
   ChevronLeft,
   ChevronRight,
   Clock,
+  ArrowRight,
 } from 'lucide-react';
 import { Article } from '@/types';
 import { getBlogUrl } from '@/lib/blogUrl';
@@ -501,15 +502,26 @@ export default function BlogDiscoveryTabsShelf({
                     />
                   </Link>
 
-                  {/* Single Clean Bottom Meta Line */}
-                  <div className="mt-auto flex items-center justify-between text-[11px] sm:text-[12px] font-medium text-[#526071]">
+                  {/* 2-Line Excerpt Preview */}
+                  {article.excerpt ? (
+                    <p className="text-[12px] sm:text-[12.5px] text-[#4A5568] leading-[1.4] line-clamp-2 mb-2 font-normal">
+                      {article.excerpt}
+                    </p>
+                  ) : null}
+
+                  {/* Single Clean Bottom Meta Line with Read Guide CTA */}
+                  <div className="mt-auto pt-2 border-t border-[#ADC3DE]/20 flex items-center justify-between text-[11px] sm:text-[12px] font-medium text-[#526071]">
                     <span className="inline-flex items-center gap-1 text-[#0944BA] font-semibold">
                       <Clock className="w-3 h-3" />
                       <span>{article.readTime || meta.mins}</span>
                     </span>
-                    <span className="text-[10px] sm:text-[10.5px] font-semibold text-[#15803D] bg-[#EAF7EE] px-2 py-0.5 rounded-full">
-                      Clean Swap
-                    </span>
+                    <Link
+                      href={getBlogUrl(article)}
+                      className="inline-flex items-center gap-1 text-[11px] sm:text-[11.5px] font-bold text-[#DA440D] hover:text-[#B33508] transition-colors group-hover:translate-x-0.5 duration-200 no-underline"
+                    >
+                      <span>Read Guide</span>
+                      <ArrowRight className="w-3 h-3" />
+                    </Link>
                   </div>
                 </article>
               );
