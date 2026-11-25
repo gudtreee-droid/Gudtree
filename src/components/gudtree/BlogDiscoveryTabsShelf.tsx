@@ -403,22 +403,24 @@ export default function BlogDiscoveryTabsShelf({
                   {/* Easy-to-Read Blog Title */}
                   <Link
                     href={getBlogUrl(article)}
-                    className="no-underline mb-1.5"
+                    className="no-underline mb-2 block shrink-0"
                   >
                     <EditorialTitle
                       title={article.title}
                       variant="compact"
                       as="h3"
-                      className="text-[13.5px] sm:text-[15px] leading-[1.28] text-[#102A56] group-hover:text-[#2F54EB] transition-colors line-clamp-2"
+                      className="text-[13.5px] sm:text-[15px] leading-[1.32] text-[#102A56] group-hover:text-[#2F54EB] transition-colors line-clamp-2 overflow-hidden"
                     />
                   </Link>
 
                   {/* 2-Line Excerpt Preview */}
                   {article.excerpt ? (
-                    <p className="text-[12px] sm:text-[12.5px] text-[#4A5568] leading-[1.4] line-clamp-2 mb-2 font-normal">
+                    <p className="text-[12px] sm:text-[12.5px] text-[#4A5568] leading-[1.45] line-clamp-2 overflow-hidden mb-2.5 font-normal flex-1">
                       {article.excerpt}
                     </p>
-                  ) : null}
+                  ) : (
+                    <div className="flex-1" />
+                  )}
 
                   {/* Single Clean Bottom Meta Line with Read Guide CTA */}
                   <div className="mt-auto pt-2 border-t border-[#ADC3DE]/20 flex items-center justify-between text-[11px] sm:text-[12px] font-medium text-[#526071]">

@@ -114,7 +114,16 @@ const PAPER_THEMES: Record<
 };
 
 function stripTags(html: string): string {
-  return html.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').trim();
+  return html
+    .replace(/<[^>]+>/g, '')
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&amp;/g, '&')
+    .replace(/&rsquo;|&#39;|&apos;/g, "'")
+    .replace(/&lsquo;/g, "'")
+    .replace(/&ldquo;|&rdquo;|&quot;/g, '"')
+    .replace(/&mdash;/g, '—')
+    .replace(/&ndash;/g, '–')
+    .trim();
 }
 
 function escapeHtmlText(str: string): string {
@@ -220,16 +229,19 @@ export default function GudTreeArticleView({
   const [fontFamily, setFontFamily] = useState<FontFamilyMode>('sans');
   const [paperTheme, setPaperTheme] = useState<PaperThemeMode>('buttercream');
   const [activeTocId, setActiveTocId] = useState<string>('');
+  const [readProgress, setReadProgress] = useState<number>(0);
   const [tocOpen, setTocOpen] = useState<boolean>(true);
   const [copiedLink, setCopiedLink] = useState<boolean>(false);
   const [isBookmarked, setIsBookmarked] = useState<boolean>(false);
   const [hasLiked, setHasLiked] = useState<boolean>(false);
 
-  // Compact icon popovers (clean UI without clutter)
+  // Compact icon popovers & scrollspy refs
   const [langMenuOpen, setLangMenuOpen] = useState<boolean>(false);
   const [displayMenuOpen, setDisplayMenuOpen] = useState<boolean>(false);
   const langPopoverRef = useRef<HTMLDivElement | null>(null);
   const displayPopoverRef = useRef<HTMLDivElement | null>(null);
+  const articlePaperRef = useRef<HTMLDivElement | null>(null);
+  const tocListRef = useRef<HTMLUListElement | null>(null);
 
   // Top-10 reader language switcher state
   const [selectedLang, setSelectedLang] = useState<string>('en');
@@ -475,49 +487,82 @@ export default function GudTreeArticleView({
     if (activeHtmlSource) {
       const linked = linkifyHtml(activeHtmlSource);
       let idx = 0;
-      const withIds = linked.replace(
-        /<(h[23])([^>]*)>([\s\S]*?)<\/\1>/gi,
-        (full, tag, attrs, inner) => {
+      const headingPattern = /<(h[23])([^>]*)>([\s\S]*?)<\/\1>/gi;
+      const extract = (pattern: RegExp) =>
+        linked.replace(pattern, (full, tag, attrs, inner) => {
           const plain = stripTags(inner);
           if (!plain) return full;
-          const id = slugifyHeading(plain, idx++);
+          const existingIdMatch = attrs.match(/\bid\s*=\s*["']([^"']+)["']/i);
+          const id = existingIdMatch ? existingIdMatch[1] : slugifyHeading(plain, idx++);
           headings.push({
             id,
             text: plain,
-            level: tag.toLowerCase() === 'h2' ? 2 : 3,
+            level: tag.toLowerCase() === 'h2' ? 2 : tag.toLowerCase() === 'h3' ? 3 : 3,
           });
-          if (/id=/.test(attrs)) {
+          if (existingIdMatch) {
             return `<${tag}${attrs}>${inner}</${tag}>`;
           }
           return `<${tag}${attrs} id="${id}">${inner}</${tag}>`;
-        }
-      );
+        });
+
+      let withIds = extract(headingPattern);
+      if (headings.length === 0) {
+        withIds = extract(/<(h4)([^>]*)>([\s\S]*?)<\/\1>/gi);
+      }
       return { processedHtml: withIds, tocHeadings: headings };
     }
     return { processedHtml: '', tocHeadings: headings };
   }, [activeHtmlSource]);
 
   useEffect(() => {
-    if (tocHeadings.length === 0) return;
-    setActiveTocId(tocHeadings[0].id);
+    if (tocHeadings.length > 0) {
+      setActiveTocId(tocHeadings[0].id);
+    }
 
     const handleScroll = () => {
-      let currentId = tocHeadings[0].id;
-      for (const h of tocHeadings) {
-        const el = document.getElementById(h.id);
-        if (el) {
-          const rect = el.getBoundingClientRect();
-          if (rect.top <= 140) {
-            currentId = h.id;
+      if (tocHeadings.length > 0) {
+        let currentId = tocHeadings[0].id;
+        for (const h of tocHeadings) {
+          const el = document.getElementById(h.id);
+          if (el) {
+            const rect = el.getBoundingClientRect();
+            if (rect.top <= 165) {
+              currentId = h.id;
+            }
           }
         }
+        setActiveTocId(currentId);
       }
-      setActiveTocId(currentId);
+
+      const paperEl = articlePaperRef.current;
+      if (paperEl) {
+        const rect = paperEl.getBoundingClientRect();
+        const viewportH = window.innerHeight || 800;
+        const scrollableDist = Math.max(1, paperEl.offsetHeight - viewportH * 0.55);
+        const passed = Math.max(0, 140 - rect.top);
+        const pct = Math.min(100, Math.max(0, Math.round((passed / scrollableDist) * 100)));
+        setReadProgress(pct);
+      }
     };
 
+    handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, [tocHeadings]);
+
+  useEffect(() => {
+    const listEl = tocListRef.current;
+    if (!listEl || !activeTocId) return;
+    const activeLink = listEl.querySelector<HTMLElement>(`[data-toc-id="${activeTocId}"]`);
+    if (!activeLink) return;
+    const listRect = listEl.getBoundingClientRect();
+    const itemRect = activeLink.getBoundingClientRect();
+    if (itemRect.top < listRect.top + 8 || itemRect.bottom > listRect.bottom - 8) {
+      const targetTop =
+        activeLink.offsetTop - listEl.offsetTop - listEl.clientHeight / 2 + activeLink.clientHeight / 2;
+      listEl.scrollTo({ top: Math.max(0, targetTop), behavior: 'smooth' });
+    }
+  }, [activeTocId]);
 
   const catSlug = getCategorySlug(article.category);
   const catLabel = normalizeCatName(article.category);
@@ -577,7 +622,7 @@ export default function GudTreeArticleView({
 
   return (
     <div
-      className="w-full max-w-full overflow-x-hidden transition-colors duration-300"
+      className="w-full max-w-full overflow-x-clip transition-colors duration-300"
       style={{
         backgroundColor: activeTheme.bg,
         color: activeTheme.text,
@@ -1022,9 +1067,9 @@ export default function GudTreeArticleView({
         <section className="w-full px-4 sm:px-6 py-7 sm:py-10 lg:pb-14">
           <div className="max-w-[1000px] mx-auto flex flex-col lg:flex-row items-stretch lg:items-start gap-7 lg:gap-10">
             {/* LEFT STICKY RAIL */}
-            <aside className="w-full lg:w-[235px] shrink-0 lg:sticky lg:top-[84px] flex flex-col gap-4">
+            <aside className="w-full lg:w-[248px] shrink-0 lg:sticky lg:top-[84px] lg:self-start flex flex-col gap-3.5 lg:max-h-[calc(100vh-100px)] lg:overflow-y-auto no-scrollbar">
               <div
-                className="rounded-[18px] border overflow-hidden transition-colors"
+                className="rounded-[18px] border overflow-hidden transition-colors shrink-0"
                 style={{
                   borderColor: activeTheme.border,
                   backgroundColor: activeTheme.cardSurface,
@@ -1036,39 +1081,114 @@ export default function GudTreeArticleView({
                   className="w-full px-4 py-3 flex items-center justify-between text-left cursor-pointer"
                   aria-expanded={tocOpen}
                 >
-                  <span className="gt-font-editorial font-bold text-[15.5px] tracking-[-0.015em]">
-                    In This Guide
-                  </span>
+                  <div className="flex flex-col gap-0.5 min-w-0 pr-2">
+                    <span className="gt-font-editorial font-bold text-[15px] tracking-[-0.015em]">
+                      In This Guide
+                    </span>
+                    <span
+                      className="text-[11px] font-semibold"
+                      style={{ color: activeTheme.muted }}
+                    >
+                      Reading progress &bull; {readProgress}%
+                    </span>
+                  </div>
                   <ChevronDown
-                    className={`w-4 h-4 transition-transform duration-200 ${tocOpen ? 'rotate-180' : ''
+                    className={`w-4 h-4 shrink-0 transition-transform duration-200 ${tocOpen ? 'rotate-180' : ''
                       }`}
                     style={{ color: activeTheme.muted }}
                   />
                 </button>
 
+                {/* Live Reading Progress Strip inside Left Sidebar */}
+                <div
+                  className="h-[3px] w-full overflow-hidden"
+                  style={{
+                    backgroundColor: activeTheme.isDark
+                      ? 'rgba(255,255,255,0.08)'
+                      : 'rgba(16,42,86,0.08)',
+                  }}
+                >
+                  <div
+                    className="h-full bg-gradient-to-r from-[#DA440D] to-[#0944BA] transition-[width] duration-150 ease-out"
+                    style={{ width: `${readProgress}%` }}
+                  />
+                </div>
+
+                {/* Live Active Section Indicator (Always Visible Even If Collapsed) */}
+                {tocHeadings.length > 0 && (
+                  <div
+                    className="px-4 py-2 border-t text-[11.5px] leading-snug flex items-center gap-2"
+                    style={{
+                      borderColor: activeTheme.border,
+                      backgroundColor: activeTheme.isDark
+                        ? 'rgba(229,243,109,0.08)'
+                        : '#FFF7F2',
+                    }}
+                  >
+                    <span className="w-2 h-2 rounded-full bg-[#DA440D] shrink-0 animate-pulse" />
+                    <span className="truncate font-semibold" style={{ color: activeTheme.isDark ? '#E5F36D' : '#102A56' }}>
+                      {(tocHeadings.find((h) => h.id === activeTocId) || tocHeadings[0]).text}
+                    </span>
+                  </div>
+                )}
+
                 {tocOpen && (
                   <div
-                    className="border-t px-4 py-3.5"
+                    className="border-t px-2.5 py-2.5"
                     style={{ borderColor: activeTheme.border }}
                   >
                     {tocHeadings.length > 0 ? (
-                      <ul className="space-y-2">
+                      <ul
+                        ref={tocListRef}
+                        className="space-y-1 max-h-[260px] xl:max-h-[340px] overflow-y-auto no-scrollbar pr-0.5"
+                      >
                         {tocHeadings.map((h) => {
                           const isActive = activeTocId === h.id;
                           return (
                             <li key={h.id}>
                               <a
                                 href={`#${h.id}`}
-                                className={`block text-[13px] leading-snug transition-colors no-underline ${h.level === 3 ? 'pl-3' : ''
-                                  } ${isActive
-                                    ? 'font-bold text-[#DA440D]'
-                                    : 'opacity-75 hover:opacity-100'
-                                  }`}
+                                data-toc-id={h.id}
+                                onClick={(e) => {
+                                  const target = document.getElementById(h.id);
+                                  if (target) {
+                                    e.preventDefault();
+                                    setActiveTocId(h.id);
+                                    const y =
+                                      target.getBoundingClientRect().top + window.scrollY - 96;
+                                    window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+                                  }
+                                }}
+                                className={`flex items-start gap-2 rounded-[10px] py-1.5 pr-2.5 text-[12.5px] leading-snug transition-all no-underline border-l-[3px] ${
+                                  h.level === 3 ? 'pl-4' : 'pl-2.5'
+                                } ${
+                                  isActive
+                                    ? activeTheme.isDark
+                                      ? 'bg-white/10 border-[#E5F36D] font-bold text-[#E5F36D]'
+                                      : 'bg-[#FFF0EA] border-[#DA440D] font-bold text-[#DA440D]'
+                                    : 'border-transparent opacity-75 hover:opacity-100 hover:bg-black/[0.03]'
+                                }`}
                                 style={{
-                                  color: isActive ? '#DA440D' : activeTheme.text,
+                                  color: isActive
+                                    ? activeTheme.isDark
+                                      ? '#E5F36D'
+                                      : '#DA440D'
+                                    : activeTheme.text,
                                 }}
                               >
-                                {h.text}
+                                <span
+                                  className={`mt-1.5 w-1.5 h-1.5 rounded-full shrink-0 transition-transform ${
+                                    isActive ? 'scale-110' : 'opacity-40'
+                                  }`}
+                                  style={{
+                                    backgroundColor: isActive
+                                      ? activeTheme.isDark
+                                        ? '#E5F36D'
+                                        : '#DA440D'
+                                      : activeTheme.muted,
+                                  }}
+                                />
+                                <span className="min-w-0 break-words">{h.text}</span>
                               </a>
                             </li>
                           );
@@ -1076,7 +1196,7 @@ export default function GudTreeArticleView({
                       </ul>
                     ) : (
                       <p
-                        className="text-[12.5px] leading-relaxed"
+                        className="text-[12.5px] leading-relaxed px-1.5"
                         style={{ color: activeTheme.muted }}
                       >
                         Quick clean read &mdash; scroll right through.
@@ -1137,7 +1257,7 @@ export default function GudTreeArticleView({
             </aside>
 
             {/* RIGHT MAIN EDITORIAL PAPER CARD */}
-            <div className="flex-1 min-w-0 w-full flex flex-col gap-10">
+            <div ref={articlePaperRef} className="flex-1 min-w-0 w-full flex flex-col gap-10">
               <div
                 className="rounded-[20px] sm:rounded-[24px] border p-4 sm:p-10 shadow-[0_6px_26px_-12px_rgba(16,42,86,0.06)] transition-colors"
                 style={{
@@ -1558,17 +1678,17 @@ export default function GudTreeArticleView({
 
                         <Link
                           href={relHref}
-                          className="flex flex-col gap-1 no-underline"
+                          className="flex flex-col gap-1.5 no-underline"
                         >
                           <EditorialTitle
                             title={rel.title}
                             variant="card"
                             light={activeTheme.isDark}
-                            className="text-[16px] md:text-[17.5px] leading-[1.3] line-clamp-2 group-hover:text-[#0944BA] transition-colors"
+                            className="text-[16px] md:text-[17.5px] leading-[1.32] line-clamp-2 overflow-hidden group-hover:text-[#0944BA] transition-colors"
                           />
                           {relExcerpt && (
                             <p
-                              className="hidden md:block text-[13.5px] leading-[1.55] line-clamp-2 gt-font-sans"
+                              className="hidden md:block text-[13.5px] leading-[1.55] line-clamp-2 overflow-hidden gt-font-sans"
                               style={{ color: activeTheme.muted }}
                             >
                               {relExcerpt}

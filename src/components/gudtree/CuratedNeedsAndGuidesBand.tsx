@@ -218,28 +218,28 @@ export default function CuratedNeedsAndGuidesBand({
               <Link
                 key={banner.brand}
                 href={banner.href}
-                className={`group relative rounded-[20px] bg-gradient-to-r ${banner.gradient} px-5 py-4 w-[274px] md:w-auto h-[108px] flex items-center justify-between gap-3 overflow-hidden border border-[#102A56]/8 shadow-sm hover:shadow-md transition-all no-underline min-w-0`}
+                className={`group relative rounded-[20px] bg-gradient-to-r ${banner.gradient} px-4 sm:px-5 py-4 w-[284px] md:w-auto min-h-[116px] flex items-center justify-between gap-3 overflow-hidden border border-[#102A56]/8 shadow-sm hover:shadow-md transition-all no-underline min-w-0`}
               >
-                <div className="flex flex-col justify-center min-w-0 pr-2">
+                <div className="flex flex-col justify-center gap-1.5 min-w-0 flex-1">
                   <span
-                    className="gt-font-display text-[22px] sm:text-[24px] leading-none tracking-[-0.02em]"
+                    className="gt-font-editorial font-extrabold text-[17px] sm:text-[18.5px] leading-[1.2] tracking-[-0.02em]"
                     style={{ color: banner.accent }}
                   >
                     {banner.brand}
                   </span>
-                  <span className="text-[13px] font-semibold text-[#102A56]/85 mt-1 truncate">
+                  <span className="text-[12.5px] sm:text-[13px] font-semibold text-[#102A56]/85 leading-[1.35] line-clamp-2">
                     {banner.subtitle}
                   </span>
                 </div>
 
-                <div className="relative flex items-center shrink-0 h-full">
+                <div className="relative flex items-center shrink-0">
                   <img
                     src={banner.img}
                     alt={banner.brand}
                     loading="lazy"
-                    className="w-[84px] h-[84px] object-contain drop-shadow-md group-hover:scale-106 transition-transform duration-300 pointer-events-none"
+                    className="w-[64px] h-[64px] sm:w-[74px] sm:h-[74px] object-contain drop-shadow-md group-hover:scale-106 transition-transform duration-300 pointer-events-none"
                   />
-                  <span className="ml-2 w-7 h-7 rounded-full bg-[#102A56] group-hover:bg-[#DA440D] text-white flex items-center justify-center shrink-0 transition-colors">
+                  <span className="ml-1.5 w-7 h-7 rounded-full bg-[#102A56] group-hover:bg-[#DA440D] text-white flex items-center justify-center shrink-0 transition-colors">
                     <ArrowRight className="w-3.5 h-3.5" />
                   </span>
                 </div>

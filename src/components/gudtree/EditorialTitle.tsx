@@ -36,7 +36,7 @@ export default function EditorialTitle({
 
   return (
     <Tag
-      className={`gt-font-editorial ${variantClassMap[variant]} ${lightTintClass} overflow-visible pt-0.5 ${className}`}
+      className={`gt-font-editorial ${variantClassMap[variant]} ${lightTintClass} ${className}`}
       style={{ overflowWrap: 'break-word' }}
     >
       {linkify ? linkifyText(trimmedTitle) : trimmedTitle}

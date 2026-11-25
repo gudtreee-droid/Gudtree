@@ -363,12 +363,12 @@ export default function SundayCrumbFocusPage({
                       </button>
                     </div>
 
-                    <Link href={getBlogUrl(article)} className="no-underline mb-2">
+                    <Link href={getBlogUrl(article)} className="no-underline mb-2 block shrink-0">
                       <EditorialTitle
                         title={article.title}
                         variant="card"
                         as="h3"
-                        className="text-[18px] leading-[1.3] text-[#102A56] group-hover:text-[#0944BA] transition-colors line-clamp-2"
+                        className="text-[17.5px] leading-[1.32] text-[#102A56] group-hover:text-[#0944BA] transition-colors line-clamp-2 overflow-hidden"
                       />
                     </Link>
 
@@ -625,12 +625,12 @@ export default function SundayCrumbFocusPage({
                     {normalizeCatName(article.category)}
                   </span>
 
-                  <Link href={getBlogUrl(article)} className="no-underline mb-2 flex-1">
+                  <Link href={getBlogUrl(article)} className="no-underline mb-2 block shrink-0">
                     <EditorialTitle
                       title={article.title}
                       variant="compact"
                       as="h3"
-                      className="text-[15.5px] leading-[1.32] text-[#102A56] group-hover:text-[#0944BA] transition-colors line-clamp-2"
+                      className="text-[15.5px] leading-[1.32] text-[#102A56] group-hover:text-[#0944BA] transition-colors line-clamp-2 overflow-hidden"
                     />
                   </Link>
 

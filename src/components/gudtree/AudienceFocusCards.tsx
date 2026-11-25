@@ -164,12 +164,12 @@ export default function AudienceFocusCards({
                   </div>
 
                   {/* Bold Centered Card Title */}
-                  <h3 className="mt-2 sm:mt-3 gt-font-display text-[17px] sm:text-[20px] leading-[1.15] tracking-[-0.02em] text-[#102A56] group-hover:text-[#DA440D] transition-colors">
+                  <h3 className="mt-2.5 sm:mt-3 gt-font-display text-[17px] sm:text-[20px] leading-[1.22] tracking-[-0.02em] text-[#102A56] group-hover:text-[#DA440D] transition-colors">
                     {item.title}
                   </h3>
 
                   {/* Crisp 2-Line Description */}
-                  <p className="mt-1 text-[12px] sm:text-[13.5px] leading-[1.45] text-[#334155] max-w-[210px] line-clamp-2 sm:line-clamp-none">
+                  <p className="mt-1.5 text-[12px] sm:text-[13.5px] leading-[1.48] text-[#334155] max-w-[210px] line-clamp-2 sm:line-clamp-none">
                     {item.description}
                   </p>
                 </Link>

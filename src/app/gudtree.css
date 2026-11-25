@@ -395,6 +395,21 @@
   contain: layout paint;
 }
 
+.gt-hero-sky.gt-hero-sky-dropdown {
+  background: transparent;
+  overflow: visible !important;
+  contain: none !important;
+}
+
+.gt-hero-backdrop {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 48%, #47b7ff 0%, #24a3ff 46%, #1492f4 100%);
+  overflow: clip;
+  contain: layout paint;
+  pointer-events: none;
+}
+
 .gt-hero-rays {
   position: absolute;
   inset: 0;
@@ -427,7 +442,7 @@
   text-transform: uppercase;
   color: #ffffff;
   letter-spacing: -0.015em;
-  line-height: 0.94;
+  line-height: 1.04;
   -webkit-text-stroke: 2px #14181e;
   paint-order: stroke fill;
   text-shadow:
