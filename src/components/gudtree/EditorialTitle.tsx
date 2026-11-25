@@ -11,36 +11,10 @@ interface EditorialTitleProps {
 }
 
 /**
- * Splits a blog title so the very first letter is rendered as an
- * oversized Sunday Crumb Lilita One drop-initial, giving every GudTree
- * headline monumental editorial warmth while keeping full SEO/a11y parity.
+ * Renders GudTree article and blog headlines in clean, high-legibility
+ * Plus Jakarta Sans without DOM character splitting so both readers and
+ * search engines parse unbroken semantic headings.
  */
-function splitFirstLetter(rawTitle: string): {
-  prefix: string;
-  firstLetter: string;
-  rest: string;
-} {
-  const trimmed = (rawTitle || '').trim();
-  if (!trimmed) {
-    return { prefix: '', firstLetter: '', rest: '' };
-  }
-
-  const match = trimmed.match(/^(['"“‘(\[]*)([A-Za-z0-9\u0900-\u097F])([\s\S]*)$/);
-  if (match) {
-    return {
-      prefix: match[1] || '',
-      firstLetter: match[2],
-      rest: match[3] || '',
-    };
-  }
-
-  return {
-    prefix: '',
-    firstLetter: trimmed.charAt(0),
-    rest: trimmed.slice(1),
-  };
-}
-
 export default function EditorialTitle({
   title,
   variant = 'card',
@@ -49,35 +23,23 @@ export default function EditorialTitle({
   linkify = false,
   light = false,
 }: EditorialTitleProps) {
-  const { prefix, firstLetter, rest } = splitFirstLetter(title);
+  const trimmedTitle = (title || '').trim();
 
-  const bigLetterScaleMap: Record<NonNullable<EditorialTitleProps['variant']>, string> = {
-    hero: 'text-[1.2em] leading-none mr-[0.02em]',
-    feature: 'text-[1.1em] leading-none mr-[0.01em]',
-    card: 'text-current',
-    compact: 'text-current',
+  const variantClassMap: Record<NonNullable<EditorialTitleProps['variant']>, string> = {
+    hero: 'font-extrabold tracking-[-0.025em] leading-[1.16]',
+    feature: 'font-extrabold tracking-[-0.02em] leading-[1.22]',
+    card: 'font-bold tracking-[-0.018em] leading-[1.28]',
+    compact: 'font-bold tracking-[-0.015em] leading-[1.3]',
   };
 
-  const accentColorClass = light
-    ? 'text-[#E5F36D]'
-    : 'text-current transition-colors duration-200';
+  const lightTintClass = light ? 'text-[#FAF7F2]' : '';
 
   return (
     <Tag
-      className={`gt-title-first-big gt-font-display font-normal tracking-[-0.04em] overflow-visible pt-1.5 ${className}`}
+      className={`gt-font-editorial ${variantClassMap[variant]} ${lightTintClass} overflow-visible pt-0.5 ${className}`}
       style={{ overflowWrap: 'break-word' }}
     >
-      {prefix && <span>{prefix}</span>}
-      {firstLetter && (
-        <span
-          aria-hidden="true"
-          className={`gt-font-display font-normal inline-block align-baseline tracking-[-0.04em] ${bigLetterScaleMap[variant]} ${accentColorClass}`}
-        >
-          {firstLetter}
-        </span>
-      )}
-      <span className="sr-only">{firstLetter}</span>
-      <span>{linkify ? linkifyText(rest) : rest}</span>
+      {linkify ? linkifyText(trimmedTitle) : trimmedTitle}
     </Tag>
   );
 }

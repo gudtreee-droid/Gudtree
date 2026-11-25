@@ -368,7 +368,7 @@ export default function SundayCrumbFocusPage({
                         title={article.title}
                         variant="card"
                         as="h3"
-                        className="text-[20px] leading-[1.22] text-[#102A56] group-hover:text-[#0944BA] transition-colors line-clamp-2"
+                        className="text-[18px] leading-[1.3] text-[#102A56] group-hover:text-[#0944BA] transition-colors line-clamp-2"
                       />
                     </Link>
 

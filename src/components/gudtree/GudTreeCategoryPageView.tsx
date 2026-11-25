@@ -480,7 +480,7 @@ export default function GudTreeCategoryPageView({
                     </span>
 
                     {/* Clean Unified Title */}
-                    <h3 className="text-[14px] sm:text-[15px] font-bold leading-snug line-clamp-2 min-h-[42px] text-[#102A56] group-hover:text-[#2F54EB] transition-colors">
+                    <h3 className="gt-font-editorial text-[14px] sm:text-[15.5px] font-bold leading-snug tracking-[-0.015em] line-clamp-2 min-h-[42px] text-[#102A56] group-hover:text-[#2F54EB] transition-colors">
                       <Link
                         href={getBlogUrl(article)}
                         className="no-underline text-inherit outline-none block"

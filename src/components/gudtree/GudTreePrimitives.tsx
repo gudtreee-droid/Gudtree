@@ -180,7 +180,7 @@ export function GudTreeCompactCard({
           title={article.title}
           variant="compact"
           as="h4"
-          className="text-[18px] sm:text-[19px] leading-[1.18] text-[#102A56] group-hover:text-[#0944BA] transition-colors"
+          className="text-[16px] sm:text-[17px] leading-[1.32] text-[#102A56] group-hover:text-[#0944BA] transition-colors"
         />
       </div>
     </Link>

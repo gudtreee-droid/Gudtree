@@ -537,7 +537,7 @@ export default function GudTreeArticleView({
         ? 'text-[19.5px] leading-[1.82]'
         : 'text-[17.5px] leading-[1.75]';
   const fontFamilyClass =
-    fontFamily === 'display' ? 'gt-font-display tracking-[-0.02em]' : 'gt-font-sans';
+    fontFamily === 'display' ? 'gt-font-editorial font-medium tracking-[-0.012em]' : 'gt-font-sans';
 
   const resolvedPrev = prevArticle || relatedArticles[0] || topSidebarArticles?.[0] || null;
   const resolvedNext = nextArticle || relatedArticles[1] || topSidebarArticles?.[1] || null;
@@ -780,7 +780,7 @@ export default function GudTreeArticleView({
                           style={{ borderColor: activeTheme.border }}
                         >
                           <BookOpen className="w-3 h-3 text-[#DA440D]" />
-                          <span>{fontFamily === 'sans' ? 'Inter' : 'Lilita'}</span>
+                          <span>{fontFamily === 'sans' ? 'Inter' : 'Jakarta'}</span>
                         </button>
                       </div>
 
@@ -919,10 +919,10 @@ export default function GudTreeArticleView({
                   />
                 </div>
 
-                {/* Proportional Editorial Title (Clean 30px-40px, NOT giant 92px!) */}
+                {/* Clean High-Legibility Editorial Title */}
                 <h1
                   itemProp="headline"
-                  className="gt-font-display text-[30px] sm:text-[36px] lg:text-[42px] leading-[1.12] tracking-[-0.025em]"
+                  className="gt-font-editorial font-extrabold text-[28px] sm:text-[34px] lg:text-[40px] leading-[1.2] tracking-[-0.022em]"
                   style={{ color: activeTheme.text }}
                 >
                   {displayTitle}
@@ -998,7 +998,7 @@ export default function GudTreeArticleView({
                       backgroundColor: activeTheme.cardSurface,
                     }}
                   >
-                    <span className="gt-font-display text-[22px] opacity-70">
+                    <span className="gt-font-editorial font-bold text-[20px] opacity-70">
                       {siteName} &mdash; {catLabel}
                     </span>
                   </div>
@@ -1036,7 +1036,7 @@ export default function GudTreeArticleView({
                   className="w-full px-4 py-3 flex items-center justify-between text-left cursor-pointer"
                   aria-expanded={tocOpen}
                 >
-                  <span className="gt-font-display text-[17px] tracking-[-0.02em]">
+                  <span className="gt-font-editorial font-bold text-[15.5px] tracking-[-0.015em]">
                     In This Guide
                   </span>
                   <ChevronDown
@@ -1101,7 +1101,7 @@ export default function GudTreeArticleView({
                 <div>
                   <Link
                     href={`/focus/${focusHub.slug}`}
-                    className="gt-font-display text-[15px] leading-tight text-[#102A56] hover:text-[#0944BA] block transition-colors no-underline"
+                    className="gt-font-editorial font-bold text-[15px] leading-snug tracking-[-0.015em] text-[#102A56] hover:text-[#0944BA] block transition-colors no-underline"
                     style={{ color: activeTheme.isDark ? '#E5F36D' : '#102A56' }}
                   >
                     {focusHub.title}
@@ -1329,7 +1329,7 @@ export default function GudTreeArticleView({
                   className="mt-8 pt-6 border-t flex flex-wrap items-center justify-between gap-4"
                   style={{ borderColor: activeTheme.border }}
                 >
-                  <span className="gt-font-display text-[19px] tracking-[-0.02em]">
+                  <span className="gt-font-editorial font-bold text-[17.5px] tracking-[-0.015em]">
                     Share this guide
                   </span>
 
@@ -1436,7 +1436,7 @@ export default function GudTreeArticleView({
                         <span>Previous</span>
                       </span>
                       <span
-                        className="gt-font-display text-[17px] leading-snug line-clamp-2 group-hover:text-[#0944BA] transition-colors"
+                        className="gt-font-editorial font-bold text-[16px] leading-[1.35] tracking-[-0.015em] line-clamp-2 group-hover:text-[#0944BA] transition-colors"
                         style={{ color: activeTheme.text }}
                       >
                         {resolvedPrev.title}
@@ -1460,7 +1460,7 @@ export default function GudTreeArticleView({
                         <ArrowRight className="w-3.5 h-3.5" />
                       </span>
                       <span
-                        className="gt-font-display text-[17px] leading-snug line-clamp-2 group-hover:text-[#0944BA] transition-colors"
+                        className="gt-font-editorial font-bold text-[16px] leading-[1.35] tracking-[-0.015em] line-clamp-2 group-hover:text-[#0944BA] transition-colors"
                         style={{ color: activeTheme.text }}
                       >
                         {resolvedNext.title}
@@ -1492,13 +1492,13 @@ export default function GudTreeArticleView({
                   <span className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-[#0944BA]">
                     More Honest Reads
                   </span>
-                  <h2 className="gt-font-display text-[28px] sm:text-[34px] leading-tight mt-0.5">
+                  <h2 className="gt-font-editorial font-extrabold text-[24px] sm:text-[30px] leading-[1.2] tracking-[-0.02em] mt-0.5">
                     You Might Also Enjoy
                   </h2>
                 </div>
                 <Link
-                  href="/news"
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full border gt-font-display text-[14.5px] no-underline w-fit transition-colors hover:bg-[#102A56] hover:text-[#E5F36D] hover:border-[#102A56]"
+                  href="/blog"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full border gt-font-editorial font-bold text-[13.5px] tracking-[-0.01em] no-underline w-fit transition-colors hover:bg-[#102A56] hover:text-[#E5F36D] hover:border-[#102A56]"
                   style={{
                     borderColor: activeTheme.border,
                     backgroundColor: activeTheme.cardSurface,
@@ -1564,7 +1564,7 @@ export default function GudTreeArticleView({
                             title={rel.title}
                             variant="card"
                             light={activeTheme.isDark}
-                            className="gt-font-display text-[17px] md:text-[19px] leading-[1.2] line-clamp-2 group-hover:text-[#0944BA] transition-colors"
+                            className="text-[16px] md:text-[17.5px] leading-[1.3] line-clamp-2 group-hover:text-[#0944BA] transition-colors"
                           />
                           {relExcerpt && (
                             <p

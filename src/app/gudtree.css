@@ -29,6 +29,10 @@
   font-weight: 400;
 }
 
+.gt-font-editorial {
+  font-family: var(--font-editorial), var(--font-inter), -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
 .gt-font-sans {
   font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, sans-serif;
   font-feature-settings: "blwf" on, "cv03" on, "cv04" on, "cv09" on, "cv11" on, "ss03" on;
@@ -82,36 +86,36 @@
 }
 
 .sc-display-h3 {
-  font-family: var(--font-lilita), sans-serif;
-  font-weight: 400;
-  font-size: 22px;
-  line-height: 1.1;
-  letter-spacing: -0.04em;
+  font-family: var(--font-editorial), var(--font-inter), sans-serif;
+  font-weight: 800;
+  font-size: 19px;
+  line-height: 1.28;
+  letter-spacing: -0.018em;
 }
 
 @media (min-width: 768px) {
   .sc-display-h3 {
-    font-size: 24px;
+    font-size: 21px;
   }
 }
 
 @media (min-width: 1200px) {
   .sc-display-h3 {
-    font-size: 28px;
+    font-size: 23px;
   }
 }
 
 .sc-display-sm {
-  font-family: var(--font-lilita), sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.5;
-  letter-spacing: -0.02em;
+  font-family: var(--font-editorial), var(--font-inter), sans-serif;
+  font-weight: 700;
+  font-size: 15.5px;
+  line-height: 1.4;
+  letter-spacing: -0.012em;
 }
 
 @media (min-width: 1200px) {
   .sc-display-sm {
-    font-size: 18px;
+    font-size: 17px;
   }
 }
 
@@ -216,13 +220,13 @@
   line-height: 1;
 }
 
-/* Article Editorial Prose Styling (Sunday Crumb Inter + Lilita Display Headings) */
+/* Article Editorial Prose Styling (Inter Body + Plus Jakarta Sans Headings) */
 .gt-article-body,
 .nf-article-body {
   font-family: var(--font-inter), sans-serif;
   font-size: 16.5px;
-  line-height: 1.68;
-  letter-spacing: -0.012em;
+  line-height: 1.7;
+  letter-spacing: -0.008em;
   color: inherit;
   max-width: 100%;
   overflow-wrap: anywhere;
@@ -244,11 +248,11 @@
 
 .gt-article-body h2,
 .nf-article-body h2 {
-  font-family: var(--font-lilita), sans-serif;
-  font-weight: 400;
-  font-size: 28px;
-  line-height: 1.1;
-  letter-spacing: -0.04em;
+  font-family: var(--font-editorial), var(--font-inter), sans-serif;
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 1.24;
+  letter-spacing: -0.02em;
   margin-top: 2.5rem;
   margin-bottom: 1rem;
   scroll-margin-top: 110px;
@@ -258,17 +262,17 @@
 
   .gt-article-body h2,
   .nf-article-body h2 {
-    font-size: 34px;
+    font-size: 29px;
   }
 }
 
 .gt-article-body h3,
 .nf-article-body h3 {
-  font-family: var(--font-lilita), sans-serif;
-  font-weight: 400;
-  font-size: 22px;
-  line-height: 1.15;
-  letter-spacing: -0.03em;
+  font-family: var(--font-editorial), var(--font-inter), sans-serif;
+  font-weight: 700;
+  font-size: 19.5px;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
   margin-top: 2rem;
   margin-bottom: 0.75rem;
   scroll-margin-top: 110px;
