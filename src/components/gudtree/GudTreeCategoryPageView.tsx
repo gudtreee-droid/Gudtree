@@ -35,7 +35,7 @@ export const CATEGORY_SHELF_TABS: CategoryShelfTab[] = [
   {
     id: 'clean-snacks',
     label: 'Desk Munches',
-    thumbSrc: '/images/card-diabetes.png',
+    thumbSrc: '/images/card-diabetes.webp',
     slug: 'clean-snacks',
     href: '/category/clean-snacks',
     categoryNames: ['Desk Munches', 'clean-snacks'],
@@ -43,7 +43,7 @@ export const CATEGORY_SHELF_TABS: CategoryShelfTab[] = [
   {
     id: 'weight-protein',
     label: 'Daily Protein',
-    thumbSrc: '/images/card-weight.png',
+    thumbSrc: '/images/card-weight.webp',
     slug: 'weight-protein',
     href: '/category/weight-protein',
     categoryNames: ['Gym & Protein', 'weight-protein', 'Daily Protein'],
@@ -51,7 +51,7 @@ export const CATEGORY_SHELF_TABS: CategoryShelfTab[] = [
   {
     id: 'heart-liver-care',
     label: 'Sips & Reset',
-    thumbSrc: '/images/card-heart.png',
+    thumbSrc: '/images/card-heart.webp',
     slug: 'heart-liver-care',
     href: '/category/heart-liver-care',
     categoryNames: ['Sips & Hangover', 'heart-liver-care', 'Sips & Reset'],
@@ -59,7 +59,7 @@ export const CATEGORY_SHELF_TABS: CategoryShelfTab[] = [
   {
     id: 'pcos-hormones',
     label: "Women's Health",
-    thumbSrc: '/images/card-pcos.png',
+    thumbSrc: '/images/card-pcos.webp',
     slug: 'pcos-hormones',
     href: '/category/pcos-hormones',
     categoryNames: ['Women Care', 'pcos-hormones', "Women's Health"],
@@ -67,7 +67,7 @@ export const CATEGORY_SHELF_TABS: CategoryShelfTab[] = [
   {
     id: 'gut-health',
     label: 'Gut & Bloat',
-    thumbSrc: '/images/card-gut.png',
+    thumbSrc: '/images/card-gut.webp',
     slug: 'gut-health',
     href: '/category/gut-health',
     categoryNames: ['Gut & Bloat', 'gut-health'],
@@ -406,6 +406,9 @@ export default function GudTreeCategoryPageView({
                       <img
                         src={tab.thumbSrc}
                         alt={tab.label}
+                        loading="lazy"
+                        width={56}
+                        height={56}
                         className="w-full h-full object-contain pointer-events-none"
                       />
                     </div>

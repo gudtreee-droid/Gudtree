@@ -3,14 +3,12 @@
 import React from 'react';
 import Link from 'next/link';
 import { ArrowRight, Clock } from 'lucide-react';
-import { motion } from 'framer-motion';
 import { Article } from '@/types';
 import { getBlogUrl } from '@/lib/blogUrl';
 import { formatNfDate, normalizeCatName } from '@/lib/newsflashFormat';
 import GudTreeImg from './GudTreeImg';
 import EditorialTitle from './EditorialTitle';
 import DietaryBadgePill, { inferWellnessTag } from './DietaryBadgePill';
-import { GT_SPRING } from './MotionPrimitives';
 
 export function GudTreeSectionHeader({
   eyebrow,
@@ -85,11 +83,7 @@ export function GudTreeStoryCard({
   const wellness = inferWellnessTag(article.title, article.category, article.tag);
 
   return (
-    <motion.div
-      whileHover={{ y: -6, scale: 1.01 }}
-      transition={GT_SPRING}
-      className="h-full min-w-0"
-    >
+    <div className="h-full min-w-0 transition-transform duration-200 hover:-translate-y-1.5 hover:scale-[1.01]">
       <Link
         href={url}
         className="group h-full flex flex-col bg-[#FFFFFF] border border-[#ADC3DE]/65 rounded-[24px] p-4 shadow-[0_4px_20px_-4px_rgba(16,42,86,0.06)] hover:shadow-[0_20px_40px_-12px_rgba(16,42,86,0.14)] hover:border-[#DA440D] transition-all duration-300 no-underline"
@@ -139,7 +133,7 @@ export function GudTreeStoryCard({
           </span>
         </div>
       </Link>
-    </motion.div>
+    </div>
   );
 }
 

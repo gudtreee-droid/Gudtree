@@ -4,6 +4,7 @@ import { Metadata } from 'next';
 import { getArticles, getArticleBySlug, getSiteConfig } from '@/data/db';
 import { getArticlesFromDB } from '@/lib/supabaseService';
 import { getCategorySlug } from '@/data/categories';
+import { stripArticleForCard } from '@/lib/articleSummary';
 import GudTreeArticleView from '@/components/gudtree/GudTreeArticleView';
 import {
   getSiteBaseUrl,
@@ -79,10 +80,10 @@ export default async function ArticleDetailPage({ params }: PageProps) {
       />
       <GudTreeArticleView
         article={article}
-        relatedArticles={relatedArticles}
-        topSidebarArticles={topSidebarArticles}
-        prevArticle={prevArticle}
-        nextArticle={nextArticle}
+        relatedArticles={relatedArticles.map(stripArticleForCard)}
+        topSidebarArticles={topSidebarArticles.map(stripArticleForCard)}
+        prevArticle={prevArticle ? stripArticleForCard(prevArticle) : null}
+        nextArticle={nextArticle ? stripArticleForCard(nextArticle) : null}
         showFeaturedImage={shouldShowFeaturedImage}
         shouldShowPopularPosts={shouldShowPopularPosts}
         siteName={siteConfig.name}

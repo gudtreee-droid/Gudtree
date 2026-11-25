@@ -53,21 +53,8 @@ export default function FaviconManager() {
       } catch (e) {}
     };
 
-    // 1. Immediate sync on mount
+    // 1. Immediate sync on mount from local storage (zero network overhead)
     syncFavicon();
-
-    // 2. Fetch latest from API
-    fetch('/api/config')
-      .then((res) => res.json())
-      .then((data) => {
-        if (data && data.favicon) {
-          updateFaviconInHead(data.favicon);
-          try {
-            localStorage.setItem('gudtree_custom_favicon', data.favicon);
-          } catch (e) {}
-        }
-      })
-      .catch(() => {});
 
     // 3. Listen for cross-tab storage changes
     const handleStorage = (e: StorageEvent) => {

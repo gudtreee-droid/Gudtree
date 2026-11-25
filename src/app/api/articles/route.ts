@@ -6,7 +6,7 @@ import {
   upsertArticleInDB,
   deleteArticleFromDB,
 } from '@/lib/supabaseService';
-import { stripArticleForSummary } from '@/lib/articleSummary';
+import { stripArticleForCard, stripArticleForSummary } from '@/lib/articleSummary';
 import { verifyAdminAuth } from '@/lib/adminAuth';
 
 export const dynamic = 'force-dynamic';
@@ -16,15 +16,19 @@ export async function GET(request: Request) {
   const summaryOnly = searchParams.get('summary') === '1';
 
   // Return local articles (populated with latest live scraped data)
-  const articles = summaryOnly ? getArticleSummaries() : getArticles();
+  const articles = summaryOnly ? getArticleSummaries().map(stripArticleForCard) : getArticles();
   if (articles && articles.length > 0) {
-    return NextResponse.json(articles);
+    return NextResponse.json(articles, {
+      headers: summaryOnly
+        ? { 'Cache-Control': 'public, max-age=120, s-maxage=300, stale-while-revalidate=600' }
+        : undefined,
+    });
   }
 
   // Fallback to Supabase if local is empty
   const dbArticles = await getArticlesFromDB();
   const safeDb = dbArticles || [];
-  return NextResponse.json(summaryOnly ? safeDb.map(stripArticleForSummary) : safeDb);
+  return NextResponse.json(summaryOnly ? safeDb.map(stripArticleForCard) : safeDb);
 }
 
 export async function POST(request: Request) {

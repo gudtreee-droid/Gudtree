@@ -1,59 +1,13 @@
 import React, { Suspense } from 'react';
 import { Metadata } from 'next';
-import { permanentRedirect } from 'next/navigation';
-import { CATEGORIES, getCategorySlug } from '@/data/categories';
 import { getArticleSummaries, getCategories, getSiteConfig } from '@/data/db';
+import { stripArticleForCard } from '@/lib/articleSummary';
 import { getSiteBaseUrl } from '@/lib/articlePageHelpers';
 import GudTreeArchiveClient from '@/components/gudtree/GudTreeArchiveClient';
 
-interface BlogPageProps {
-  searchParams: Promise<{
-    category?: string;
-    sub?: string;
-  }>;
-}
-
-export async function generateMetadata({ searchParams }: BlogPageProps): Promise<Metadata> {
-  const params = await searchParams;
+export function generateMetadata(): Metadata {
   const siteConfig = getSiteConfig();
   const baseUrl = getSiteBaseUrl();
-  const rawCat = params.category?.trim();
-  const sub = params.sub?.trim();
-
-  if (rawCat && rawCat.toLowerCase() !== 'all') {
-    const slug = getCategorySlug(rawCat);
-    const catObj = CATEGORIES.find(
-      (c) => c.slug.toLowerCase() === slug.toLowerCase() || c.name.toLowerCase() === rawCat.toLowerCase()
-    );
-    const catName = catObj?.name || rawCat.charAt(0).toUpperCase() + rawCat.slice(1);
-    const canonicalUrl = sub
-      ? `${baseUrl}/category/${slug}?sub=${encodeURIComponent(sub)}`
-      : `${baseUrl}/category/${slug}`;
-
-    const title = `${catName} Articles & Guides | ${siteConfig.name}`;
-    const description =
-      catObj?.description ||
-      `Explore honest ${catName} articles, food label audits, and clean nutrition swaps on ${siteConfig.name}.`;
-
-    return {
-      title,
-      description,
-      alternates: { canonical: canonicalUrl },
-      openGraph: {
-        title,
-        description,
-        url: canonicalUrl,
-        siteName: siteConfig.name,
-        type: 'website',
-      },
-      twitter: {
-        card: 'summary',
-        title,
-        description,
-      },
-    };
-  }
-
   const archiveUrl = `${baseUrl}/blog`;
   const defaultTitle = `Clean Food, Snacking & Nutrition Blog | ${siteConfig.name}`;
   const defaultDescription =
@@ -78,22 +32,9 @@ export async function generateMetadata({ searchParams }: BlogPageProps): Promise
   };
 }
 
-export default async function BlogPage({ searchParams }: BlogPageProps) {
-  const params = await searchParams;
+export default function BlogPage() {
   const siteConfig = getSiteConfig();
   const baseUrl = getSiteBaseUrl();
-  const rawCat = params.category?.trim();
-  const sub = params.sub?.trim();
-
-  if (params.category !== undefined) {
-    if (!rawCat || rawCat.toLowerCase() === 'all') {
-      permanentRedirect('/category');
-    }
-    const cleanSlug = getCategorySlug(rawCat);
-    permanentRedirect(
-      sub ? `/category/${cleanSlug}?sub=${encodeURIComponent(sub)}` : `/category/${cleanSlug}`
-    );
-  }
 
   const pageTitle = `Clean Food & Snacking Blog | ${siteConfig.name}`;
   const pageDescription =
@@ -146,7 +87,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
         }
       >
         <GudTreeArchiveClient
-          initialArticles={getArticleSummaries()}
+          initialArticles={getArticleSummaries().map(stripArticleForCard)}
           initialCategories={getCategories()}
         />
       </Suspense>

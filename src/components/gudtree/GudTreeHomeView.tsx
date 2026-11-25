@@ -2,18 +2,13 @@
 
 import React, { useState, useMemo, useEffect } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 import { Bookmark, Clock, X, BookOpen, ArrowRight, Search, Sparkles } from 'lucide-react';
 import { Article } from '@/types';
 import { getBlogUrl } from '@/lib/blogUrl';
-import { normalizeCatName, formatNfDate } from '@/lib/newsflashFormat';
+import { normalizeCatName } from '@/lib/newsflashFormat';
 import EditorialTitle from './EditorialTitle';
 import GudTreeImg from './GudTreeImg';
-import {
-  MarqueeRibbon,
-  GT_SPRING,
-  GT_EASE,
-} from './MotionPrimitives';
+import { MarqueeRibbon } from './MotionPrimitives';
 import { PATIENT_CONDITIONS } from './PatientConditionStrip';
 import AudienceFocusCards from './AudienceFocusCards';
 import BlogDiscoveryTabsShelf from './BlogDiscoveryTabsShelf';
@@ -116,18 +111,32 @@ export default function GudTreeHomeView({ articles }: { articles: Article[] }) {
   const [selectedCondition, setSelectedCondition] = useState('all');
   const [savedSlugs, setSavedSlugs] = useState<string[]>([]);
   const [heroQuery, setHeroQuery] = useState('');
+  const [allSearchArticles, setAllSearchArticles] = useState<Article[] | null>(null);
+
+  const ensureSearchIndex = () => {
+    if (allSearchArticles) return;
+    fetch('/api/articles?summary=1')
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (Array.isArray(data) && data.length > 0) {
+          setAllSearchArticles(data);
+        }
+      })
+      .catch(() => {});
+  };
 
   const heroSearchResults = useMemo(() => {
     const q = heroQuery.trim().toLowerCase();
     if (!q) return [];
-    return articles.filter((a) => {
+    const source = allSearchArticles || articles;
+    return source.filter((a) => {
       const titleMatch = (a.title || '').toLowerCase().includes(q);
       const excerptMatch = (a.excerpt || '').toLowerCase().includes(q);
       const tagMatch = Boolean(a.tag && a.tag.toLowerCase().includes(q));
       const catMatch = (a.category || '').toLowerCase().includes(q);
       return titleMatch || excerptMatch || tagMatch || catMatch;
     });
-  }, [articles, heroQuery]);
+  }, [allSearchArticles, articles, heroQuery]);
 
   useEffect(() => {
     try {
@@ -236,12 +245,7 @@ export default function GudTreeHomeView({ articles }: { articles: Article[] }) {
         <div className="gt-hero-sky rounded-t-[16px] sm:rounded-t-[20px] flex flex-col items-center justify-center px-3 sm:px-6 pt-5 sm:pt-8 pb-8 sm:pb-12 text-center">
           <div aria-hidden="true" className="gt-hero-rays" />
 
-          <motion.div
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, ease: GT_EASE }}
-            className="relative z-10 flex flex-col items-center max-w-4xl mx-auto w-full"
-          >
+          <div className="relative z-10 flex flex-col items-center max-w-4xl mx-auto w-full">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFFFFF] border-2 border-[#14181E] shadow-[0_3px_0_#14181E] text-[10.5px] sm:text-[11px] font-bold uppercase tracking-[0.06em] text-[#102A56] mb-2.5 sm:mb-3">
               <BookOpen className="w-3.5 h-3.5 text-[#DA440D]" />
               <span>India's Clean Snacking &amp; Nutrition Guide</span>
@@ -266,7 +270,11 @@ export default function GudTreeHomeView({ articles }: { articles: Article[] }) {
                 <input
                   type="text"
                   value={heroQuery}
-                  onChange={(e) => setHeroQuery(e.target.value)}
+                  onFocus={ensureSearchIndex}
+                  onChange={(e) => {
+                    ensureSearchIndex();
+                    setHeroQuery(e.target.value);
+                  }}
                   placeholder="Search 150+ label audits (e.g. makhana, palm oil, chana)..."
                   className="w-full bg-transparent px-2.5 py-1.5 text-[13.5px] sm:text-[14.5px] text-[#102A56] font-medium placeholder:text-[#64748B] focus:outline-none"
                 />
@@ -298,7 +306,7 @@ export default function GudTreeHomeView({ articles }: { articles: Article[] }) {
                           className="flex items-center gap-2.5 p-2 hover:bg-[#EEF3FF] rounded-[10px] transition-colors no-underline group"
                         >
                           <div className="w-10 h-10 rounded-[8px] overflow-hidden shrink-0 bg-[#F1F5F9]">
-                            <GudTreeImg src={item.image} alt={item.title} className="w-full h-full object-cover" />
+                            <GudTreeImg src={item.image} alt={item.title} width={120} className="w-full h-full object-cover" />
                           </div>
                           <div className="flex-1 min-w-0">
                             <p className="text-[13px] font-bold text-[#102A56] group-hover:text-[#2F54EB] line-clamp-1">
@@ -331,7 +339,10 @@ export default function GudTreeHomeView({ articles }: { articles: Article[] }) {
                   <button
                     key={chip.label}
                     type="button"
-                    onClick={() => setHeroQuery(chip.q)}
+                    onClick={() => {
+                      ensureSearchIndex();
+                      setHeroQuery(chip.q);
+                    }}
                     className="px-2.5 py-1 rounded-full bg-[#FFFFFF]/90 hover:bg-[#FFFFFF] text-[#102A56] text-[11px] sm:text-[11.5px] font-bold shadow-sm transition-all hover:scale-105 cursor-pointer border border-[#14181E]/15"
                   >
                     {chip.label}
@@ -339,7 +350,7 @@ export default function GudTreeHomeView({ articles }: { articles: Article[] }) {
                 ))}
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Scalloped Wave Cutout */}
           <div

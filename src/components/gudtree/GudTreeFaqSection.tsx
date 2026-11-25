@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, Sparkles, CheckCircle2, Lightbulb } from 'lucide-react';
 
 interface FaqItem {
@@ -146,38 +145,29 @@ export default function GudTreeFaqSection() {
                   </span>
                 </button>
 
-                <AnimatePresence initial={false}>
-                  {isOpen && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.25, ease: 'easeInOut' }}
-                    >
-                      <div className="px-4 sm:px-5 pb-4 sm:pb-5 pt-1.5 border-t border-[#F1F5F9]">
-                        {/* Golden Rule Highlight Box */}
-                        <div className="mb-2.5 p-2.5 sm:p-3 rounded-[12px] bg-[#EEF5EE] border border-[#15803D]/30 flex items-start gap-2">
-                          <Lightbulb className="w-4 h-4 text-[#15803D] shrink-0 mt-0.5" />
-                          <div className="text-[12px] sm:text-[12.5px] text-[#0F5132] font-semibold leading-[1.4]">
-                            <span className="font-bold text-[#15803D]">Key Takeaway: </span>
-                            {faq.goldenRule}
-                          </div>
-                        </div>
-
-                        {/* Detailed Explanation */}
-                        <p className="text-[13px] sm:text-[14px] leading-[1.6] text-[#334155]">
-                          {faq.a}
-                        </p>
-
-                        {/* Bottom Verified Badge */}
-                        <div className="mt-3 flex items-center gap-1.5 text-[11px] font-semibold text-[#15803D]">
-                          <CheckCircle2 className="w-3.5 h-3.5" />
-                          <span>Tested in real Indian home kitchens • Zero brand bias</span>
-                        </div>
+                {isOpen && (
+                  <div className="px-4 sm:px-5 pb-4 sm:pb-5 pt-1.5 border-t border-[#F1F5F9]">
+                    {/* Golden Rule Highlight Box */}
+                    <div className="mb-2.5 p-2.5 sm:p-3 rounded-[12px] bg-[#EEF5EE] border border-[#15803D]/30 flex items-start gap-2">
+                      <Lightbulb className="w-4 h-4 text-[#15803D] shrink-0 mt-0.5" />
+                      <div className="text-[12px] sm:text-[12.5px] text-[#0F5132] font-semibold leading-[1.4]">
+                        <span className="font-bold text-[#15803D]">Key Takeaway: </span>
+                        {faq.goldenRule}
                       </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                    </div>
+
+                    {/* Detailed Explanation */}
+                    <p className="text-[13px] sm:text-[14px] leading-[1.6] text-[#334155]">
+                      {faq.a}
+                    </p>
+
+                    {/* Bottom Verified Badge */}
+                    <div className="mt-3 flex items-center gap-1.5 text-[11px] font-semibold text-[#15803D]">
+                      <CheckCircle2 className="w-3.5 h-3.5" />
+                      <span>Tested in real Indian home kitchens • Zero brand bias</span>
+                    </div>
+                  </div>
+                )}
               </div>
             );
           })}

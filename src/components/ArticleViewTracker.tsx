@@ -23,14 +23,18 @@ export default function ArticleViewTracker({ slug }: ArticleViewTrackerProps) {
         localStorage.setItem(visitorKey, Date.now().toString());
       }
 
-      fetch('/api/analytics/track', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          slug,
-          isUnique: isNewVisitor,
-        }),
-      }).catch((err) => console.warn('Analytics tracking error:', err));
+      const timer = setTimeout(() => {
+        fetch('/api/analytics/track', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          keepalive: true,
+          body: JSON.stringify({
+            slug,
+            isUnique: isNewVisitor,
+          }),
+        }).catch(() => {});
+      }, 1500);
+      return () => clearTimeout(timer);
     }
   }, [slug]);
 

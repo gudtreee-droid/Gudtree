@@ -37,3 +37,31 @@ export function stripArticleForSummary(article: Article): Article {
     sections: [],
   };
 }
+
+/**
+ * Ultra-slim projection for homepage, category, archive, and recommendation cards.
+ * Keeps only the fields rendered in cards/search (~5x smaller than full summary).
+ */
+export function stripArticleForCard(article: Article): Article {
+  return {
+    id: article.slug,
+    slug: article.slug,
+    title: article.title,
+    category: article.category,
+    ...(article.categories ? { categories: article.categories } : {}),
+    ...(article.subcategory ? { subcategory: article.subcategory } : {}),
+    tag: article.tag || '',
+    image: article.image,
+    readTime: article.readTime,
+    excerpt: article.excerpt,
+    date: '',
+    author: '',
+    authorRole: '',
+    authorAvatar: '',
+    region: 'India',
+    contentType: 'Article',
+    placement: 'category',
+    paragraphs: [],
+    sections: [],
+  };
+}

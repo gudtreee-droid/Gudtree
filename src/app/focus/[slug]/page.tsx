@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { getArticleSummaries } from '@/data/db';
 import { getArticlesFromDB } from '@/lib/supabaseService';
-import { stripArticleForSummary } from '@/lib/articleSummary';
+import { stripArticleForCard } from '@/lib/articleSummary';
 import { getSiteBaseUrl } from '@/lib/articlePageHelpers';
 import { FOCUS_SLUGS, getFocusPageConfig } from '@/data/focusPagesData';
 import SundayCrumbFocusPage from '@/components/gudtree/SundayCrumbFocusPage';
@@ -48,10 +48,9 @@ export default async function FocusCategoryPage({ params }: FocusRouteProps) {
 
   const baseUrl = getSiteBaseUrl();
   const dbArticles = await getArticlesFromDB();
-  const articles =
-    dbArticles && dbArticles.length > 0
-      ? dbArticles.map(stripArticleForSummary)
-      : getArticleSummaries();
+  const rawArticles =
+    dbArticles && dbArticles.length > 0 ? dbArticles : getArticleSummaries();
+  const articles = rawArticles.map(stripArticleForCard);
 
   const jsonLd = {
     '@context': 'https://schema.org',

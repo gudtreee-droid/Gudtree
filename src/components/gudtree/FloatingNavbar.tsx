@@ -3,14 +3,12 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { motion, AnimatePresence } from 'framer-motion';
 import { Search, Menu, X, ArrowRight } from 'lucide-react';
 import { CATEGORIES } from '@/data/categories';
 import { Article, Category } from '@/types';
 import { getBlogUrl } from '@/lib/blogUrl';
-import { normalizeCatName, formatNfDate } from '@/lib/newsflashFormat';
+import { normalizeCatName } from '@/lib/newsflashFormat';
 import EditorialTitle from './EditorialTitle';
-import { GT_SPRING } from './MotionPrimitives';
 
 let cachedSearchArticles: Article[] | null = null;
 
@@ -108,8 +106,10 @@ export default function FloatingNavbar() {
             aria-label="Gud Tree — Healthy Packed Snacks Home"
           >
             <img
-              src="/images/gudtree-logo.png"
+              src="/images/gudtree-logo.webp"
               alt="Gud Tree — Healthy Packed Snacks"
+              width={130}
+              height={40}
               className="h-[34px] sm:h-[40px] w-auto object-contain"
             />
           </Link>
@@ -150,18 +150,15 @@ export default function FloatingNavbar() {
               })}
             </nav>
 
-            <motion.button
+            <button
               type="button"
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.96 }}
-              transition={GT_SPRING}
               onClick={() => setIsSearchOpen(true)}
-              className="inline-flex items-center justify-center w-10 h-10 sm:w-9 sm:h-9 rounded-full text-[#14181E]/75 hover:text-[#14181E] hover:bg-[#14181E]/6 cursor-pointer transition-colors"
+              className="inline-flex items-center justify-center w-10 h-10 sm:w-9 sm:h-9 rounded-full text-[#14181E]/75 hover:text-[#14181E] hover:bg-[#14181E]/6 hover:scale-105 active:scale-95 cursor-pointer transition-all"
               aria-label="Search GudTree"
               title="Search snacks & nutrition (Ctrl+K)"
             >
               <Search className="w-[18px] h-[18px] sm:w-4 sm:h-4" />
-            </motion.button>
+            </button>
 
             <button
               type="button"
@@ -178,23 +175,15 @@ export default function FloatingNavbar() {
       {/* Mobile Drawer Overlay */}
 
       {/* Search Overlay Modal */}
-      <AnimatePresence>
-        {isSearchOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[80] bg-[#102A56]/45 backdrop-blur-sm flex items-start justify-center pt-20 sm:pt-28 px-4"
-            onClick={() => setIsSearchOpen(false)}
+      {isSearchOpen && (
+        <div
+          className="fixed inset-0 z-[80] bg-[#102A56]/45 backdrop-blur-sm flex items-start justify-center pt-20 sm:pt-28 px-4"
+          onClick={() => setIsSearchOpen(false)}
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="w-full max-w-2xl bg-[#FFF9EC] border border-[#ADC3DE] rounded-[28px] shadow-[0_24px_60px_-12px_rgba(16,42,86,0.3)] overflow-hidden animate-gt-fadeup"
           >
-            <motion.div
-              initial={{ opacity: 0, y: -16, scale: 0.98 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -12, scale: 0.98 }}
-              transition={GT_SPRING}
-              onClick={(e) => e.stopPropagation()}
-              className="w-full max-w-2xl bg-[#FFF9EC] border border-[#ADC3DE] rounded-[28px] shadow-[0_24px_60px_-12px_rgba(16,42,86,0.3)] overflow-hidden"
-            >
               <div className="flex items-center gap-3 px-5 py-4 bg-white border-b border-[#ADC3DE]/60">
                 <Search className="w-5 h-5 text-[#DA440D] shrink-0" />
                 <input
@@ -251,33 +240,26 @@ export default function FloatingNavbar() {
                   ))
                 )}
               </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            </div>
+          </div>
+      )}
 
       {/* Mobile Drawer */}
-      <AnimatePresence>
-        {isDrawerOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[80] bg-[#102A56]/45 backdrop-blur-sm flex justify-end"
-            onClick={() => setIsDrawerOpen(false)}
+      {isDrawerOpen && (
+        <div
+          className="fixed inset-0 z-[80] bg-[#102A56]/45 backdrop-blur-sm flex justify-end"
+          onClick={() => setIsDrawerOpen(false)}
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="w-full max-w-xs h-full bg-[#FFF9EC] border-l border-[#ADC3DE] p-6 flex flex-col gap-6 overflow-y-auto"
           >
-            <motion.div
-              initial={{ x: '100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '100%' }}
-              transition={GT_SPRING}
-              onClick={(e) => e.stopPropagation()}
-              className="w-full max-w-xs h-full bg-[#FFF9EC] border-l border-[#ADC3DE] p-6 flex flex-col gap-6 overflow-y-auto"
-            >
               <div className="flex items-center justify-between pb-4 border-b border-[#ADC3DE]/60">
                 <img
-                  src="/images/gudtree-logo.png"
+                  src="/images/gudtree-logo.webp"
                   alt="Gud Tree — Healthy Packed Snacks"
+                  width={104}
+                  height={32}
                   className="h-[32px] w-auto object-contain"
                 />
                 <button
@@ -355,10 +337,9 @@ export default function FloatingNavbar() {
                   ))}
                 </div>
               </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            </div>
+          </div>
+      )}
     </>
   );
 }

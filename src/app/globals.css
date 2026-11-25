@@ -3,11 +3,6 @@
 @tailwind utilities;
 
 :root {
-  /* Fonts */
-  --font-lilita: 'Lilita One', cursive, sans-serif;
-  --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
-
   /* Sunday Crumb × GudTree Color & Typography Tokens */
   --gt-bg-canvas: #FFF9EC;           /* Warm Buttercream Canvas */
   --gt-surface-card: #FFFFFF;         /* Crisp White Surface */
@@ -38,7 +33,6 @@
 
 @layer base {
   html {
-    scroll-behavior: smooth;
     background-color: var(--gt-bg-canvas);
     color: var(--gt-text-primary);
     width: 100%;
@@ -56,7 +50,6 @@
     width: 100%;
     max-width: 100vw;
     overflow-x: clip;
-    transition: background-color 0.25s ease, color 0.25s ease;
   }
 
   ::selection {

@@ -50,7 +50,7 @@ export const FOCUS_PAGES_MAP: Record<FocusPageConfig['slug'], FocusPageConfig> =
     heroSubtitle:
       'Steady blood sugar, roasted desi crunch, and zero hidden glucose spikes across everyday Indian snacks.',
     eyebrow: 'GudTree Clean Diet Hub • Low-GI Focus',
-    imageSrc: '/images/card-diabetes.png',
+    imageSrc: '/images/card-diabetes.webp',
     accentHex: '#FF5A3D',
     statHighlight: 'GI < 45',
     statLabel: '237M+ Indians face diabetes or prediabetes spikes',
@@ -137,7 +137,7 @@ export const FOCUS_PAGES_MAP: Record<FocusPageConfig['slug'], FocusPageConfig> =
     heroSubtitle:
       'Zero palm oil swaps, omega-rich nuts, and clean liver-friendly Indian everyday eating without fried grease.',
     eyebrow: 'GudTree Clean Diet Hub • Heart & Liver Care',
-    imageSrc: '/images/card-heart.png',
+    imageSrc: '/images/card-heart.webp',
     accentHex: '#2BA6FF',
     statHighlight: '0% PALM',
     statLabel: '30–35% Indian adults face fatty liver & lipid imbalance',
@@ -224,7 +224,7 @@ export const FOCUS_PAGES_MAP: Record<FocusPageConfig['slug'], FocusPageConfig> =
     heroSubtitle:
       'Lighter digestion, zero acidity, fermented Indian traditions, and prebiotic fibre snacks free of artificial emulsifiers.',
     eyebrow: 'GudTree Clean Diet Hub • Digestive Wellness',
-    imageSrc: '/images/card-gut.png',
+    imageSrc: '/images/card-gut.webp',
     accentHex: '#9B51E0',
     statHighlight: '70%+ DEMAND',
     statLabel: 'Bloating & acidity trigger massive clean digestive focus',
@@ -311,7 +311,7 @@ export const FOCUS_PAGES_MAP: Record<FocusPageConfig['slug'], FocusPageConfig> =
     heroSubtitle:
       'Seed-cycling snacks, anti-inflammatory nuts, and high-protein clean bites crafted to steady cravings naturally.',
     eyebrow: 'GudTree Clean Diet Hub • Hormone Balance',
-    imageSrc: '/images/card-pcos.png',
+    imageSrc: '/images/card-pcos.webp',
     accentHex: '#4CC36B',
     statHighlight: 'SEED CYCLING',
     statLabel: '1 in 5 Indian women benefit from low-insulin clean snacking',
@@ -398,7 +398,7 @@ export const FOCUS_PAGES_MAP: Record<FocusPageConfig['slug'], FocusPageConfig> =
     heroSubtitle:
       '150-kcal filling clean snacks, high-protein paneer & lentil swaps, and honest calorie truth without starving.',
     eyebrow: 'GudTree Clean Diet Hub • High-Satiety Fuel',
-    imageSrc: '/images/card-weight.png',
+    imageSrc: '/images/card-weight.webp',
     accentHex: '#F5A623',
     statHighlight: '< 150 KCAL',
     statLabel: 'Portion-smart high protein beats starving every single time',

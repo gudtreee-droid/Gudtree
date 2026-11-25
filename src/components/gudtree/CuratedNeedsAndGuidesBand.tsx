@@ -3,8 +3,6 @@
 import React from 'react';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
-import { motion } from 'framer-motion';
-import { GT_SPRING } from './MotionPrimitives';
 
 function ColorLightning({
   fill = '#E5F36D',
@@ -37,37 +35,37 @@ const NEED_DOMES = [
   {
     id: 'diabetes',
     label: 'Low-Sugar Diet',
-    img: '/images/card-diabetes.png',
+    img: '/images/card-diabetes.webp',
     href: '/focus/diabetes',
   },
   {
     id: 'pcos',
     label: 'PCOS Guide',
-    img: '/images/card-pcos.png',
+    img: '/images/card-pcos.webp',
     href: '/focus/pcos',
   },
   {
     id: 'gut',
     label: 'Gut & Bloat',
-    img: '/images/card-gut.png',
+    img: '/images/card-gut.webp',
     href: '/focus/gut',
   },
   {
     id: 'hangover-reset',
     label: 'Hangover Reset',
-    img: '/images/card-heart.png',
+    img: '/images/card-heart.webp',
     href: '/focus/heart',
   },
   {
     id: 'weight',
     label: 'Daily Protein',
-    img: '/images/card-weight.png',
+    img: '/images/card-weight.webp',
     href: '/category/weight-protein',
   },
   {
     id: 'vrat-food',
     label: 'Desi Superfoods',
-    img: '/images/card-diabetes.png',
+    img: '/images/card-diabetes.webp',
     href: '/category/desi-pantry',
   },
 ];
@@ -78,7 +76,7 @@ const FEATURE_SPOTLIGHT_BANNERS = [
     subtitle: 'Flattens Glucose Spike & Morning Acidity',
     gradient: 'from-[#FFF0E5] via-[#FFE6D4] to-[#FFD8BD]',
     accent: '#9A3412',
-    img: '/images/card-diabetes.png',
+    img: '/images/card-diabetes.webp',
     href: '/category/heart-liver-care',
   },
   {
@@ -86,7 +84,7 @@ const FEATURE_SPOTLIGHT_BANNERS = [
     subtitle: 'Simple Blood Sugar & Digestion Hack',
     gradient: 'from-[#EAF5EC] via-[#D8EEDD] to-[#C6E5CD]',
     accent: '#0F5132',
-    img: '/images/card-gut.png',
+    img: '/images/card-gut.webp',
     href: '/category/diabetes-low-gi',
   },
   {
@@ -94,7 +92,7 @@ const FEATURE_SPOTLIGHT_BANNERS = [
     subtitle: '18g Natural Muscle Fuel Without Whey Powder',
     gradient: 'from-[#EAF2FF] via-[#DCEAFF] to-[#CCDEFF]',
     accent: '#102A56',
-    img: '/images/card-weight.png',
+    img: '/images/card-weight.webp',
     href: '/category/weight-protein',
   },
 ];
@@ -174,12 +172,9 @@ export default function CuratedNeedsAndGuidesBand({
               const targetHref =
                 item.href || (item.id === 'packed' ? '/news' : `/focus/${item.id}`);
               return (
-                <motion.div
+                <div
                   key={item.id}
-                  whileHover={{ y: -4 }}
-                  whileTap={{ scale: 0.97 }}
-                  transition={GT_SPRING}
-                  className="w-[132px] sm:w-full min-w-0"
+                  className="w-[132px] sm:w-full min-w-0 transition-transform duration-200 hover:-translate-y-1 active:scale-[0.97]"
                 >
                   <Link
                     href={targetHref}
@@ -197,7 +192,7 @@ export default function CuratedNeedsAndGuidesBand({
                       {item.label}
                     </span>
                   </Link>
-                </motion.div>
+                </div>
               );
             })}
           </div>
@@ -290,12 +285,9 @@ export default function CuratedNeedsAndGuidesBand({
               };
 
               return (
-                <motion.div
+                <div
                   key={`${pill.top}-${pill.bottom}`}
-                  whileHover={{ y: -4, scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
-                  transition={GT_SPRING}
-                  className="w-[144px] sm:w-full min-w-0"
+                  className="w-[144px] sm:w-full min-w-0 transition-transform duration-200 hover:-translate-y-1 hover:scale-[1.03] active:scale-[0.97]"
                 >
                   <Link
                     href={pill.href}
@@ -312,7 +304,7 @@ export default function CuratedNeedsAndGuidesBand({
                       <ArrowRight className="w-3.5 h-3.5" />
                     </span>
                   </Link>
-                </motion.div>
+                </div>
               );
             })}
           </div>

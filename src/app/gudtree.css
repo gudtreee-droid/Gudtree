@@ -572,3 +572,90 @@
     scroll-snap-align: start;
   }
 }
+
+/* ==========================================================================
+   GPU-COMPOSITED CSS ANIMATIONS (ZERO JS / ZERO MAIN-THREAD COST)
+   ========================================================================== */
+@keyframes gtFadeUp {
+  from { opacity: 0; transform: translate3d(0, 12px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+.animate-gt-fadeup {
+  animation: gtFadeUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes gtFloat1 {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(-1.2deg); }
+  50% { transform: translate3d(0, -6px, 0) rotate(1.5deg); }
+}
+@keyframes gtFloat2 {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(-1.5deg); }
+  50% { transform: translate3d(0, -3.5px, 0) rotate(1.5deg); }
+}
+@keyframes gtFloat3 {
+  0%, 100% { transform: translate3d(0, 0, 0) scaleY(1); }
+  45% { transform: translate3d(0, -8px, 0) scaleY(0.96); }
+  75% { transform: translate3d(0, -2px, 0) scaleY(1.03); }
+}
+@keyframes gtFloat4 {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(-1.5deg); }
+  50% { transform: translate3d(0, 2.5px, 0) rotate(0.8deg); }
+}
+@keyframes gtArmFeed {
+  0%, 100% { transform: rotate(0deg); }
+  30% { transform: rotate(-24deg); }
+  55% { transform: rotate(-4deg); }
+  80% { transform: rotate(-22deg); }
+}
+@keyframes gtChew {
+  0%, 100% { transform: scale(1, 1); }
+  25% { transform: scale(1.15, 0.35); }
+  50% { transform: scale(0.95, 1.05); }
+  75% { transform: scale(1.1, 0.4); }
+}
+@keyframes gtDbLeft {
+  0%, 100% { transform: rotate(10deg); }
+  50% { transform: rotate(-24deg); }
+}
+@keyframes gtDbRight {
+  0%, 100% { transform: rotate(-10deg); }
+  50% { transform: rotate(24deg); }
+}
+@keyframes gtPhoneRock {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+@keyframes gtEyeBlink {
+  0%, 92%, 100% { transform: scaleY(1); }
+  95% { transform: scaleY(13); }
+}
+@keyframes gtEyeBlinkSleepy {
+  0%, 90%, 100% { transform: scaleY(1); }
+  94% { transform: scaleY(2.4); }
+}
+@keyframes gtShadowPulse {
+  0%, 100% { transform: scaleX(1); opacity: 0.28; }
+  50% { transform: scaleX(0.86); opacity: 0.16; }
+}
+
+.gt-mascot-1 { animation: gtFloat1 2.2s ease-in-out infinite; will-change: transform; }
+.gt-mascot-2 { animation: gtFloat2 2.8s ease-in-out infinite; will-change: transform; }
+.gt-mascot-3 { animation: gtFloat3 1.5s ease-in-out infinite; will-change: transform; }
+.gt-mascot-4 { animation: gtFloat4 2.6s ease-in-out infinite; will-change: transform; }
+.gt-arm-feed { animation: gtArmFeed 2.2s ease-in-out infinite; transform-origin: 122px 96px; }
+.gt-chew { animation: gtChew 2.2s ease-in-out infinite; transform-origin: 80px 91px; }
+.gt-db-left { animation: gtDbLeft 1.5s ease-in-out infinite; transform-origin: 44px 84px; }
+.gt-db-right { animation: gtDbRight 1.5s ease-in-out infinite; transform-origin: 126px 84px; }
+.gt-phone-rock { animation: gtPhoneRock 2.2s ease-in-out infinite; transform-origin: 42px 110px; }
+.gt-eye-blink { animation: gtEyeBlink 3.4s ease-in-out infinite; }
+.gt-eye-blink-sleepy { animation: gtEyeBlinkSleepy 3.8s ease-in-out infinite; }
+.gt-shadow-pulse { animation: gtShadowPulse 2.2s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .gt-mascot-1, .gt-mascot-2, .gt-mascot-3, .gt-mascot-4,
+  .gt-arm-feed, .gt-chew, .gt-db-left, .gt-db-right, .gt-phone-rock,
+  .gt-eye-blink, .gt-eye-blink-sleepy, .gt-shadow-pulse,
+  .gt-hero-rays, .animate-gt-marquee {
+    animation: none !important;
+  }
+}

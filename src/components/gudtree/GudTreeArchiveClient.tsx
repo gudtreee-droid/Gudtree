@@ -4,14 +4,12 @@ import React, { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import { useSearchParams, usePathname } from 'next/navigation';
 import { Search, X, Bookmark, Clock, BookOpen } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { Article, Category } from '@/types';
 import { CATEGORIES as INITIAL_CATEGORIES } from '@/data/categories';
 import { getBlogUrl } from '@/lib/blogUrl';
-import { normalizeCatName, formatNfDate } from '@/lib/newsflashFormat';
+import { normalizeCatName } from '@/lib/newsflashFormat';
 import EditorialTitle from './EditorialTitle';
 import GudTreeImg from './GudTreeImg';
-import { GT_SPRING } from './MotionPrimitives';
 
 interface GudTreeArchiveClientProps {
   initialCategory?: string;
@@ -442,24 +440,18 @@ export default function GudTreeArchiveClient({
             </button>
           </div>
         ) : (
-          <AnimatePresence mode="wait">
-            <motion.div
+          <>
+            <div
               key={`${activeCategory}-${selectedSubcategory}-${showSavedOnly}-${searchQuery}`}
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.22 }}
               className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-5"
             >
               {filteredArticles.slice(0, visibleCount).map((article, idx) => {
                 const meta = getScoreMeta(article.slug);
                 const isSaved = savedSlugs.includes(article.slug);
                 return (
-                  <motion.article
+                  <article
                     key={article.slug}
-                    whileHover={{ y: -4 }}
-                    transition={GT_SPRING}
-                    className="group h-full min-w-0 flex flex-row sm:flex-col items-stretch gap-3 sm:gap-0 bg-[#FFFFFF] rounded-[20px] sm:rounded-[22px] p-2.5 sm:p-3.5 border border-[#ADC3DE]/45 hover:border-[#0944BA] hover:shadow-[0_14px_30px_-10px_rgba(16,42,86,0.12)] transition-all"
+                    className="group h-full min-w-0 flex flex-row sm:flex-col items-stretch gap-3 sm:gap-0 bg-[#FFFFFF] rounded-[20px] sm:rounded-[22px] p-2.5 sm:p-3.5 border border-[#ADC3DE]/45 hover:border-[#0944BA] hover:-translate-y-1 hover:shadow-[0_14px_30px_-10px_rgba(16,42,86,0.12)] transition-all"
                   >
                     <div className="relative w-[112px] h-[106px] sm:w-full sm:h-auto sm:aspect-[16/10] shrink-0 rounded-[14px] sm:rounded-[16px] bg-[#F5F7FA] overflow-hidden sm:mb-3">
                       <Link
@@ -538,10 +530,10 @@ export default function GudTreeArchiveClient({
                         </span>
                       </div>
                     </div>
-                  </motion.article>
+                  </article>
                 );
               })}
-            </motion.div>
+            </div>
 
             {visibleCount < filteredArticles.length && (
               <div className="mt-8 flex justify-center">
@@ -554,7 +546,7 @@ export default function GudTreeArchiveClient({
                 </button>
               </div>
             )}
-          </AnimatePresence>
+          </>
         )}
       </div>
     </div>

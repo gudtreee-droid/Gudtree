@@ -18,18 +18,21 @@ export default function Analytics() {
       localStorage.setItem(visitorKey, Date.now().toString());
     }
 
-    // Ping site analytics tracker for general daily visits / pageviews
-    // For specific articles, ArticleViewTracker will pass the slug
+    // Ping site analytics tracker after initial paint/hydration settles
     const segments = pathname.split('/').filter(Boolean);
     const isArticlePage = (segments.length === 2 && segments[0] !== 'category' && segments[0] !== 'admin') || pathname.startsWith('/news/');
     if (!isArticlePage) {
-      fetch('/api/analytics/track', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          isUnique: isNewVisitor,
-        }),
-      }).catch((err) => console.warn('Analytics ping error:', err));
+      const timer = setTimeout(() => {
+        fetch('/api/analytics/track', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          keepalive: true,
+          body: JSON.stringify({
+            isUnique: isNewVisitor,
+          }),
+        }).catch(() => {});
+      }, 1500);
+      return () => clearTimeout(timer);
     }
   }, [pathname]);
 
@@ -39,7 +42,7 @@ export default function Analytics() {
       {clarityId && (
         <Script
           id="microsoft-clarity"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           dangerouslySetInnerHTML={{
             __html: `
               (function(c,l,a,r,i,t,y){
@@ -57,12 +60,12 @@ export default function Analytics() {
         <>
           <Script
             id="gtm-loader"
-            strategy="afterInteractive"
+            strategy="lazyOnload"
             src={`https://www.googletagmanager.com/gtm.js?id=${gtmId}`}
           />
           <Script
             id="google-tag-manager"
-            strategy="afterInteractive"
+            strategy="lazyOnload"
             dangerouslySetInnerHTML={{
               __html: `
                 window.dataLayer = window.dataLayer || [];
@@ -78,7 +81,7 @@ export default function Analytics() {
       {/* 3. Plerdy (Heatmaps, Click Tracking & SEO) */}
       <Script
         id="plerdy-tracking"
-        strategy="afterInteractive"
+        strategy="lazyOnload"
         dangerouslySetInnerHTML={{
           __html: `
             (function(w,d){
@@ -90,7 +93,7 @@ export default function Analytics() {
               var s=d.createElement("script");
               s.async=true;
               s.referrerPolicy="strict-origin-when-cross-origin";
-              s.src="https://a.plerdy.com/public/js/click/main.js?v="+Math.random();
+              s.src="https://a.plerdy.com/public/js/click/main.js";
               d.head.appendChild(s);
             })(window,document);
           `,

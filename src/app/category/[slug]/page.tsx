@@ -4,14 +4,13 @@ import { CATEGORIES, getCategorySlug } from '@/data/categories';
 import { getCategorySeo } from '@/data/categorySeo';
 import { getArticleSummaries, getCategories, getSiteConfig } from '@/data/db';
 import { getArticlesFromDB } from '@/lib/supabaseService';
-import { stripArticleForSummary } from '@/lib/articleSummary';
+import { stripArticleForCard } from '@/lib/articleSummary';
 import { getBlogUrl } from '@/lib/blogUrl';
 import { getSiteBaseUrl } from '@/lib/articlePageHelpers';
 import GudTreeCategoryPageView from '@/components/gudtree/GudTreeCategoryPageView';
 
 interface CategoryPageProps {
   params: Promise<{ slug: string }>;
-  searchParams: Promise<{ sub?: string }>;
 }
 
 function normalizeCatKey(value?: string): string {
@@ -52,10 +51,8 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
   };
 }
 
-export default async function CategorySlugPage({ params, searchParams }: CategoryPageProps) {
+export default async function CategorySlugPage({ params }: CategoryPageProps) {
   const { slug } = await params;
-  const sParams = await searchParams;
-  const initialSub = sParams?.sub || 'all';
   const catSlug = slug.toLowerCase();
   const seo = getCategorySeo(catSlug);
   const siteConfig = getSiteConfig();
@@ -67,10 +64,9 @@ export default async function CategorySlugPage({ params, searchParams }: Categor
   const catName = catObj?.name || catSlug.charAt(0).toUpperCase() + catSlug.slice(1);
 
   const dbArticles = await getArticlesFromDB();
-  const allArticles =
-    dbArticles && dbArticles.length > 0
-      ? dbArticles.map(stripArticleForSummary)
-      : getArticleSummaries();
+  const rawArticles =
+    dbArticles && dbArticles.length > 0 ? dbArticles : getArticleSummaries();
+  const allArticles = rawArticles.map(stripArticleForCard);
   const categories = getCategories();
   const normCat = normalizeCatKey(catSlug);
 
@@ -144,7 +140,6 @@ export default async function CategorySlugPage({ params, searchParams }: Categor
           initialArticles={categoryArticles}
           allArticles={allArticles}
           categories={categories}
-          initialSub={initialSub}
         />
       </Suspense>
     </>

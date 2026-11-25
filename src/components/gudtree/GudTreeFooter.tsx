@@ -120,8 +120,11 @@ export default function GudTreeFooter() {
             className="inline-flex items-center px-4 py-2 rounded-full bg-[#FFFFFF] border border-[#102A56]/15 shadow-[0_6px_18px_rgba(16,42,86,0.16)] no-underline mb-5 hover:-translate-y-0.5 transition-transform"
           >
             <img
-              src="/images/gudtree-logo.png"
+              src="/images/gudtree-logo.webp"
               alt="Gud Tree — Healthy Packed Snacks"
+              loading="lazy"
+              width={124}
+              height={38}
               className="h-[34px] sm:h-[38px] w-auto object-contain"
             />
           </Link>

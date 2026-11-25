@@ -1,7 +1,29 @@
 import React, { Suspense } from 'react';
 import type { Metadata } from 'next';
+import { Inter, Lilita_One, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import './gudtree.css';
+
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800'],
+  variable: '--font-inter',
+  display: 'swap',
+});
+
+const lilitaOne = Lilita_One({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-lilita',
+  display: 'swap',
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  weight: ['400', '600', '700'],
+  variable: '--font-mono',
+  display: 'swap',
+});
 import NavigationProgress from '@/components/gudtree/NavigationProgress';
 import FloatingNavbar from '@/components/gudtree/FloatingNavbar';
 import GudTreeFooter from '@/components/gudtree/GudTreeFooter';
@@ -163,18 +185,11 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
+      className={`${inter.variable} ${lilitaOne.variable} ${jetbrainsMono.variable}`}
     >
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Lilita+One&display=swap"
-          rel="stylesheet"
-        />
+        <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://images.unsplash.com" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}

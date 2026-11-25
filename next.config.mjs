@@ -1,5 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  compress: true,
+  poweredByHeader: false,
+  experimental: {
+    optimizePackageImports: ['lucide-react', 'framer-motion'],
+  },
   async rewrites() {
     return [
       {
@@ -39,6 +44,29 @@ const nextConfig = {
       },
       {
         source: '/news',
+        has: [
+          {
+            type: 'query',
+            key: 'category',
+          },
+        ],
+        destination: '/category',
+        permanent: true,
+      },
+      {
+        source: '/blog',
+        has: [
+          {
+            type: 'query',
+            key: 'category',
+            value: '(?<category>[^&]+)',
+          },
+        ],
+        destination: '/category/:category',
+        permanent: true,
+      },
+      {
+        source: '/blog',
         has: [
           {
             type: 'query',

@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import { CATEGORIES } from '@/data/categories';
 import { getArticleSummaries, getCategories, getSiteConfig } from '@/data/db';
 import { getArticlesFromDB } from '@/lib/supabaseService';
-import { stripArticleForSummary } from '@/lib/articleSummary';
+import { stripArticleForCard } from '@/lib/articleSummary';
 import { getSiteBaseUrl } from '@/lib/articlePageHelpers';
 import GudTreeCategoryPageView from '@/components/gudtree/GudTreeCategoryPageView';
 
@@ -31,10 +31,9 @@ export default async function CategoriesIndexPage() {
   const siteConfig = getSiteConfig();
   const baseUrl = getSiteBaseUrl();
   const dbArticles = await getArticlesFromDB();
-  const allArticles =
-    dbArticles && dbArticles.length > 0
-      ? dbArticles.map(stripArticleForSummary)
-      : getArticleSummaries();
+  const rawArticles =
+    dbArticles && dbArticles.length > 0 ? dbArticles : getArticleSummaries();
+  const allArticles = rawArticles.map(stripArticleForCard);
   const categories = getCategories();
 
   const defaultCategory = categories[0] || CATEGORIES[0];

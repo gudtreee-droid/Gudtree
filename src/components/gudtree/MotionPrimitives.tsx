@@ -1,77 +1,64 @@
 'use client';
 
-import React from 'react';
-import {
-  motion,
-  useScroll,
-  useSpring,
-  HTMLMotionProps,
-  Transition,
-} from 'framer-motion';
+import React, { useEffect, useRef } from 'react';
 
-export const GT_SPRING: Transition = {
-  type: 'spring',
-  stiffness: 320,
-  damping: 28,
-  mass: 0.8,
-};
-
-export const GT_GENTLE_SPRING: Transition = {
-  type: 'spring',
-  stiffness: 190,
-  damping: 24,
-};
-
+export const GT_SPRING = { type: 'spring', stiffness: 320, damping: 28, mass: 0.8 } as const;
+export const GT_GENTLE_SPRING = { type: 'spring', stiffness: 190, damping: 24 } as const;
 export const GT_EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 export function TopReadingProgressBar() {
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 220,
-    damping: 32,
-    restDelta: 0.001,
-  });
+  const barRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const el = barRef.current;
+      if (!el) return;
+      const doc = document.documentElement;
+      const max = doc.scrollHeight - doc.clientHeight;
+      const ratio = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+      el.style.transform = `scaleX(${ratio})`;
+    };
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, []);
 
   return (
-    <motion.div
-      style={{ scaleX }}
+    <div
+      ref={barRef}
+      style={{ transform: 'scaleX(0)' }}
       className="fixed top-0 left-0 right-0 h-[3.5px] bg-gradient-to-r from-[#0A6C33] via-[#16A34A] to-[#22C55E] origin-left z-[70] pointer-events-none"
     />
   );
 }
 
-interface FadeUpRevealProps extends HTMLMotionProps<'div'> {
+interface FadeUpRevealProps extends React.HTMLAttributes<HTMLDivElement> {
   delay?: number;
   yOffset?: number;
   children: React.ReactNode;
 }
 
 export function FadeUpReveal({
-  delay = 0,
-  yOffset = 24,
   children,
   className = '',
   ...props
 }: FadeUpRevealProps) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: yOffset }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-40px' }}
-      transition={{
-        duration: 0.6,
-        delay,
-        ease: GT_EASE,
-      }}
-      className={className}
-      {...props}
-    >
+    <div className={className} {...props}>
       {children}
-    </motion.div>
+    </div>
   );
 }
 
-interface TactileCardProps extends HTMLMotionProps<'div'> {
+interface TactileCardProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
 }
 
@@ -81,19 +68,16 @@ export function TactileCard({
   ...props
 }: TactileCardProps) {
   return (
-    <motion.div
-      whileHover={{ y: -6, scale: 1.01 }}
-      whileTap={{ scale: 0.985 }}
-      transition={GT_SPRING}
-      className={className}
+    <div
+      className={`transition-transform duration-200 hover:-translate-y-1.5 hover:scale-[1.01] active:scale-[0.985] ${className}`}
       {...props}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }
 
-interface SquishButtonProps extends HTMLMotionProps<'button'> {
+interface SquishButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
 }
 
@@ -103,15 +87,12 @@ export function SquishButton({
   ...props
 }: SquishButtonProps) {
   return (
-    <motion.button
-      whileHover={{ scale: 1.03 }}
-      whileTap={{ scale: 0.95 }}
-      transition={GT_SPRING}
-      className={className}
+    <button
+      className={`transition-transform duration-150 hover:scale-[1.03] active:scale-95 ${className}`}
       {...props}
     >
       {children}
-    </motion.button>
+    </button>
   );
 }
 
