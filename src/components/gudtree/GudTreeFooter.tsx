@@ -65,6 +65,7 @@ export default function GudTreeFooter() {
     { label: 'Blog', href: '/blog' },
     { label: 'Packet Truth', href: '/category/label-audits' },
     { label: 'All Topics', href: '/category' },
+    { label: 'Editorial Policy', href: '/editorial-policy' },
     { label: 'Write for Us', href: '/write-for-us' },
     { label: 'Contact', href: '/contact' },
     { label: 'Privacy', href: '/privacy' },

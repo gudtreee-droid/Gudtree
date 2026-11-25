@@ -47,36 +47,45 @@ export async function POST(req: NextRequest) {
     let systemInstruction = '';
 
     if (action === 'generate-draft') {
-      systemInstruction = `You are the chief food investigator and nutrition editor for GudTree (India's Clean Snacking & Food Label Audit Guide: READ CLEAN. SNACK HONEST.).
-Write an engaging, brutally honest, and deeply practical food article for: "${title}".
+      systemInstruction = `You are the chief food investigator and clinical nutrition editor for GudTree (https://www.gudtree.in — India's Clean Snacking & Food Label Audit Publication).
+Write a comprehensive, search-intent-first, Google Top-10 ranking article for: "${title}".
 Category: ${category}.
 ${customPrompt ? `Special Editor Instructions: ${customPrompt}` : ''}
 
-GUIDELINES:
-- Focus on Indian consumers, daily snacking routines (4 PM office chai, school lunchbox, late-night study, gym protein, diabetic low-GI).
-- Brutally decode package labels: call out hidden palm oil, maltodextrin, refined sugar, INS emulsifiers, and fake 'diet/healthy' claims.
-- Recommend clean, accessible Indian kitchen swaps (makhana, sattu, chana, millets, jaggery/gud, cold-pressed oils).
-- Tone: Authoritative yet accessible, scientifically accurate, empathetic to busy Indian families, zero fluff.
-- Format: Clean semantic HTML (<p>, <h2>, <blockquote>, <ul><li>). No markdown fences. Aim for 350-500 words.`;
+STRICT COMPETITOR-BEATING SEO & E-E-A-T REQUIREMENTS:
+1. Language: Write in clear, natural, authoritative Indian English (readers can translate to Hindi/Hinglish with the built-in switcher). Never write thin boilerplate.
+2. Length: Aim for 1,400 to 1,800 words of genuinely useful, topic-specific data and practical guidance.
+3. Structure & Format (Clean Semantic HTML: <p>, <h2>, <h3>, <table>, <ul>, <ol>, <blockquote>):
+   - Direct Answer Hook: First 2 sentences must directly answer the user's core search question for Featured Snippets.
+   - Key Takeaways Box: A <blockquote> summarizing 3-4 concrete data-backed takeaways.
+   - 6 to 7 Search-Intent <h2> Sections tailored specifically to "${title}":
+     a) Ingredient & Label Reality Check (decode palmolein, maltodextrin, INS codes, or glycemic load specific to this food)
+     b) Exact Nutritional / Macro Comparison Table (<table> comparing commercial packaged versions vs clean home/brand alternatives with realistic numbers per 100g or per serving)
+     c) Metabolic & Health Impact (blood sugar/insulin, gut microbiome, heart/liver, or child growth)
+     d) Recommended Daily Portion, Best Timing & Side Effects / Who Should Avoid
+     e) Step-by-Step Clean Indian Kitchen Swap / DIY Recipe (under 10 mins, exact quantities)
+     f) Frequently Asked Questions (<h2>Frequently Asked Questions</h2> followed by 4 real question <h3> headings ending with '?' and concise 2-3 sentence <p> answers — these power FAQPage schema!)
+4. Contextual Internal Links: Naturally include 3 internal HTML links inside body paragraphs using relative paths such as <a href="/focus/diabetes">diabetes & low-GI snack guide</a>, <a href="/focus/pcos">PCOS food swaps</a>, <a href="/focus/gut">gut health & bloating hub</a>, <a href="/focus/weight">budget protein hub</a>, or <a href="/category/label-audits">packaged food label audits</a> where topically relevant.
+5. Output ONLY valid HTML without markdown code fences.`;
     } else if (action === 'continue-writing') {
-      systemInstruction = `You are GudTree's clean nutrition editor continuing an article on Indian healthy snacking and food label audits.
+      systemInstruction = `You are GudTree's senior nutrition editor continuing an in-depth Indian clean-eating article.
 Article Title: "${title}"
 Existing Draft Content:
-"${cleanExisting.slice(-1200)}"
+"${cleanExisting.slice(-1500)}"
 
 TASK:
-Write the natural, high-quality next 2-3 paragraphs continuing this story seamlessly with clean snack swaps, label reality checks, and practical kitchen tips. Output clean HTML (<p>, <h2>). Do NOT repeat existing text.`;
+Write 400-600 words of concrete, data-rich continuation (specific Indian gram quantities, FSSAI label checks, side effects/upper limits, or FAQ Q&As ending in '?'). Output clean HTML (<p>, <h2>, <h3>, <ul>). Do NOT repeat existing text.`;
     } else if (action === 'polish') {
-      systemInstruction = `You are GudTree's senior nutrition copy editor.
-Elevate the draft text to make it punchy, engaging, science-backed, and focused on clean ingredients and zero palm oil:
+      systemInstruction = `You are GudTree's senior medical & nutrition copy editor.
+Upgrade the draft below into crisp, authoritative, high-E-E-A-T Indian English with clearer nutritional precision, zero fluff, and direct actionable guidance:
 "${cleanExisting}"
 
 Output clean HTML paragraphs (<p>).`;
     } else if (action === 'key-takeaways') {
-      systemInstruction = `Generate a sleek "GudTree Clean Nutrition Takeaways" summary box for an article titled "${title}".
-Output a <blockquote> with a bold title and 3-4 concise, high-value bullet points (<ul><li>...) highlighting palm oil reality, blood sugar impact, and the best clean swap.`;
+      systemInstruction = `Generate a high-value "Key Nutrition Takeaways" summary box for "${title}".
+Output a <blockquote> with <strong>Key Takeaways:</strong> and 4 specific bullet points (<ul><li>...) covering exact ingredient red flags, glycemic/macro numbers, recommended daily serving, and the #1 clean Indian kitchen swap.`;
     } else {
-      systemInstruction = `Write a compelling clean snacking and food label audit draft for: "${title}". Output clean HTML (<p>, <h2>, <blockquote>).`;
+      systemInstruction = `Write a deep, 1,400+ word Indian nutrition and food label audit article for: "${title}". Output clean HTML (<p>, <h2>, <h3>, <table>, <blockquote>) in authoritative Indian English.`;
     }
 
     const models = [

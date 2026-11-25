@@ -10,103 +10,103 @@ export interface CategorySeoData {
 export const CATEGORY_SEO_DATA: Record<string, CategorySeoData> = {
   'all': {
     slug: 'all',
-    metaTitle: 'All Clean Snacks, Sips & Food Guides | GudTree',
+    metaTitle: 'Healthy Indian Snacks, Diet Swaps & Food Label Audits | GudTree',
     metaDescription:
-      'Ghar ka khana, school tiffin, gym protein, pet ka gas relief aur market packet audits. Simple and honest Indian snacking guides on GudTree.',
+      'Independent back-of-pack food label audits, zero-palm-oil Indian snacks, school tiffin plans, high-protein sattu & chana guides, and clinical nutrition swaps.',
     h1: 'All Clean Food & Snack Guides',
     introContent:
-      'Ghar ke kitchen se leke office desk tak, simple aur honest desi snacks aur drinks ke guides. Bina palm oil, bina faltu chemical.',
-    keywords: 'gudtree, clean snacks india, school tiffin ideas, gym protein under 50, hangover drinks, pcos snacks, pet gas relief',
+      'Honest, ingredient-checked Indian snacking guides from home kitchens to supermarket shelves—zero refined palm oil, zero hidden maltodextrin.',
+    keywords: 'gudtree, healthy snacks india, food label audits, school tiffin ideas, sattu protein, pcos snacks, diabetes low gi snacks',
   },
   'kids-tiffin': {
     slug: 'kids-tiffin',
-    metaTitle: 'Kids School Tiffin & Healthy Treats | GudTree',
+    metaTitle: 'Healthy Indian School Tiffin Ideas & Kids Snacks (No Maida) | GudTree',
     metaDescription:
-      'Subah 10-minute me banne wale no-maida school tiffin ideas, bournvita audits, aur bachhon ke liye safe kurkure snacks.',
-    h1: 'Kids (Bachhe) - School Tiffin & Treats',
+      '10-minute maida-free Indian school tiffin recipes that stay fresh till lunch, plus sugar & ingredient audits of Bournvita, biscuits, and kids snacks.',
+    h1: 'Kids School Tiffin & Clean Treats',
     introContent:
-      'Subah ka school lunchbox jo dopahar tak soggy na ho aur bachha dabba khali karke laaye. Bina maida, bina palm oil ke bachhon ke snacks.',
-    keywords: 'school tiffin ideas, kids lunchbox recipes, no maida tiffin, healthy snacks for kids, bournvita audit, toddlers snacks india',
+      'Practical 10-minute maida-free lunchboxes and palm-oil-free evening snacks designed for growing children and busy Indian parents.',
+    keywords: 'no maida school tiffin ideas india, healthy kids lunchbox recipes, bournvita sugar content, healthy evening snacks for kids',
   },
   'clean-snacks': {
     slug: 'clean-snacks',
-    metaTitle: 'Desk & Study Snacks (Late Night & 4 PM) | GudTree',
+    metaTitle: 'Healthy Desk, 4 PM Chai & Late-Night Snacks India | GudTree',
     metaDescription:
-      'Laptop keyboard safe dry crunch, raat ki padhai ke snacks, aur 4 PM office slump me samosa ke healthy swaps.',
+      'Non-greasy roasted makhana, bhuna chana, and low-GI office snacks to replace oily samosas and bakery biscuits without afternoon energy crashes.',
     h1: 'Desk & Study Munches',
     introContent:
-      'Laptop par kaam karte waqt ya raat ko padhte waqt chabane ke liye non-greasy snacks jisse neend na aaye aur ungliya saaf rahein.',
-    keywords: 'desk snacks, late night study munchies, office 4 pm chai snacks, non greasy laptop snacks, roasted makhana, hostel food',
+      'Crunchy, keyboard-clean Indian snacks for 4 PM office chai and late-night study sessions—engineered for steady focus without sugar crashes.',
+    keywords: 'healthy 4 pm office snacks india, roasted makhana vs chips, late night study snacks india, non greasy desk snacks',
   },
   'weight-protein': {
     slug: 'weight-protein',
-    metaTitle: 'Gym & Fitness Protein Under ₹50 | GudTree',
+    metaTitle: 'High-Protein Indian Snacks Under ₹50 & Weight Loss Guides | GudTree',
     metaDescription:
-      'Body aur muscles ke liye ₹50 ke andar sasta protein, chana sattu shakes, aur pre-post workout snacks bina mehenge whey ke.',
-    h1: 'Gym & Sasta Protein',
+      'Hit 35g+ natural daily protein under ₹50 with sattu, roasted chana, paneer, and honest peanut butter brand comparisons—no expensive whey required.',
+    h1: 'Budget Protein & Weight Management',
     introContent:
-      'Hostel aur room par rehne walo ke liye sasta aur clean protein. Bina ₹6,000 ke dabbo ke 20g natural protein hit karne ke aasan tareeqe.',
-    keywords: 'protein under 50 rupees, sattu protein vs whey, gym bag snacks, pre post workout snacks, fat loss snacks 150 calories',
+      'Affordable, bioavailable Indian vegetarian protein swaps and 150-calorie snacks backed by real macro math.',
+    keywords: 'high protein indian snacks under 50, sattu vs whey protein, best peanut butter india label audit, 150 calorie snacks india',
   },
   'heart-liver-care': {
     slug: 'heart-liver-care',
-    metaTitle: 'Drinks, Chaas & Hangover Reset | GudTree',
+    metaTitle: 'Heart-Safe Zero Palm Oil Drinks, Chaas & Hangover Reset | GudTree',
     metaDescription:
-      'Daru ka hangover utarne ke desi nuskhe, jeera chaas, sattu coolers aur chai peene ke aasan pet-friendly rules.',
-    h1: 'Healthy Drinks & Hangover Reset',
+      'Clean desi coolers, buttermilk electrolytes for fast morning hangover recovery, cold-pressed oil audits, and liver-friendly Indian hydration habits.',
+    h1: 'Clean Sips, Heart Care & Hangover Reset',
     introContent:
-      'Roz ke pet-friendly desi sharbat aur weekend party ke baad daru ka hangover, ulti aur sir-dard 30 minute me shant karne wale desi drinks.',
-    keywords: 'daru ka hangover kaise utare, hangover home remedies india, jeera chaas benefits, desi coolers, chai acidity buffer, liver detox drinks',
+      'Gut-friendly spiced chaas, natural electrolyte hangover recovery drinks, and zero-palm-oil fats to protect heart and liver health.',
+    keywords: 'natural hangover cure drinks india, jeera chaas benefits, palm oil heart risk india, cold pressed mustard oil vs sunflower oil',
   },
   'pcos-hormones': {
     slug: 'pcos-hormones',
-    metaTitle: "Women's Care: PCOS, Periods & Skin | GudTree",
+    metaTitle: "PCOS Diet Snacks, Seed Cycling & Period Relief Foods India | GudTree",
     metaDescription:
-      'PCOS me wazan aur pimples control, period cramps aur meetha khane ki craving shant karne wale safe Indian food swaps.',
-    h1: "Women's Care (PCOS & Periods)",
+      'Insulin-sensitizing Indian breakfasts, seed cycling ratios for PCOS hormone balance, spearmint tea protocols, and period cramp anti-inflammatory foods.',
+    h1: "Women's Care: PCOS, Periods & Skin",
     introContent:
-      'PCOS me insulin balance, periods se pehle pet ke marod (cramps) kam karne wale seeds, aur jawline pimples rokhne ke dairy-free swaps.',
-    keywords: 'pcos snacks india, period cramps relief food, pms craving snacks, seed cycling mix, hormonal acne diet, pregnancy morning sickness snacks',
+      'Evidence-informed Indian diet swaps for PCOS insulin resistance, hormonal acne, and menstrual cramp relief without extreme carb deprivation.',
+    keywords: 'pcos diet snacks india, seed cycling pcos india, foods for hormonal acne india, period cramp relief indian foods',
   },
   'gut-health': {
     slug: 'gut-health',
-    metaTitle: 'Pet Ka Gas & Bloating Relief | GudTree',
+    metaTitle: 'Gut Health, Bloating & Acidity Relief Indian Food Guides | GudTree',
     metaDescription:
-      '8 ghante kursi par baithne se phoola hua pet, khane ke baad acidity aur seene ki jalan shant karne ke desi gharelu nuskhe.',
-    h1: 'Pet & Pachan (Gut Health)',
+      'Fix post-lunch desk bloating, coffee acidity, and sluggish digestion using fermented kanji, roasted jeera chaas, sabja seeds, and emulsifier-free eating.',
+    h1: 'Gut Health, Bloating & Digestion',
     introContent:
-      'Office chair par 8 ghante baithne se achanak pet phoolna aur acidity hona. Dahi, kanji aur sabja seeds se pet ko halka aur thanda rakhna.',
-    keywords: 'pet ka gas relief, desk sitting bloat, acidity after coffee, sabja seeds acidity, dahi probiotics, beetroot kanji benefits',
+      'Targeted everyday digestive relief using traditional Indian probiotics and cutting out gut-irritating commercial emulsifiers.',
+    keywords: 'post lunch bloating relief india, jeera chaas for acidity, beetroot kanji probiotic recipe, emulsifiers gut health',
   },
   'label-audits': {
     slug: 'label-audits',
-    metaTitle: 'Market Packet Check (Blinkit, Chips, Biscuits) | GudTree',
+    metaTitle: 'Indian Packaged Food Label Audits: Palm Oil, Maltodextrin & Sugar | GudTree',
     metaDescription:
-      'Blinkit, Too Yumm aur bakery biscuits ke packet ke piche ka sach. Exposing maltodextrin, hidden palm oil aur fake whole wheat claims.',
-    h1: 'Market Packets Ka Sach',
+      'Independent back-of-pack label audits exposing hidden palm oil, maltodextrin, INS additives, and misleading health claims in Indian biscuits, chips & bars.',
+    h1: 'Market Packaged Food Label Audits',
     introContent:
-      'Supermarket aur delivery apps par milne wale chips aur biscuits ke packet ka sach. Baked bol kar palm oil aur maltodextrin kaise chipkate hain.',
-    keywords: 'market label audit india, blinkit snack audit, too yumm truth, digestive biscuit maida truth, hidden sugar names, protein bar check',
+      'We inspect the tiny ingredient fine print on supermarket and quick-commerce packets so Indian families never fall for health-washed marketing.',
+    keywords: 'indian food label audit, palm oil in biscuits india, maltodextrin hidden sugar, flavored makhana label check, protein bar audit india',
   },
   'diabetes-low-gi': {
     slug: 'diabetes-low-gi',
-    metaTitle: 'Sugar & Diabetes Friendly Crunch | GudTree',
+    metaTitle: 'Diabetic-Friendly Indian Snacks & Low-GI Blood Sugar Guides | GudTree',
     metaDescription:
-      'Sugar ke mareez aur jinka sugar achanak badhta hai, unke liye sham ki chai ke sath safe snacks aur khana khane ka sahi krama.',
-    h1: 'Sugar & Diabetes Crunch',
+      'Tested low-GI (< 45) Indian chai snacks, CGM blood sugar comparisons of digestive biscuits vs roasted chana, and food sequencing hacks to prevent spikes.',
+    h1: 'Diabetes & Low-GI Blood Sugar Crunch',
     introContent:
-      'Chai ke sath aisi crunch jo sugar ko bilkul normal rakhe. Low-GI makhana, bhuna chana aur khana khane ke aasan food sequencing hacks.',
-    keywords: 'low gi snacks india, diabetes friendly chai snacks, sugar spike control, food sequencing hacks, methi khakhra, makhana glycemic index',
+      'Practical glycemic index comparisons and meal-ordering rules to enjoy crispy Indian snacks with flat post-meal glucose curves.',
+    keywords: 'diabetic friendly indian snacks, low gi snacks india, digestive biscuit blood sugar spike, makhana glycemic index diabetes',
   },
   'desi-pantry': {
     slug: 'desi-pantry',
-    metaTitle: 'Vrat & Tyohar Ki Healthy Mithai | GudTree',
+    metaTitle: 'Clean Desi Pantry: Millets, Palm Jaggery (Gud) & Fasting Swaps | GudTree',
     metaDescription:
-      'Upwas me bina tel-masale ke clean snacks, tyohar par bina white sugar ki mithai, aur desi millets (ragi, jowar).',
-    h1: 'Vrat & Tyohar Ki Mithai',
+      'Authentic guides on kachi ghani mustard oil, ragi & jowar millets, real palm jaggery vs fake gud, and acidity-free Navratri vrat fasting foods.',
+    h1: 'Clean Desi Pantry & Fasting Swaps',
     introContent:
-      'Navratri aur fasting me acidity rokhne wale clean snacks, aur tyohar par khoya aur white sugar ke bina khajoor aur palm gud ke laddoo.',
-    keywords: 'healthy upwas snacks, vrat ka khana without acidity, diwali sugar free sweets, palm jaggery karupatti, positive millets ragi jowar',
+      'Reclaiming India’s cleanest traditional staples—unpolished millets, real wood-pressed oils, and refined-sugar-free festive treats.',
+    keywords: 'kachi ghani mustard oil vs refined oil, palm jaggery vs white sugar, healthy vrat fasting snacks india, indian millets nutrition',
   },
   // Legacy aliases
   'vegan-plant-based': {

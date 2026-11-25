@@ -18,6 +18,12 @@ export interface Article {
   author: string;
   authorRole: string;
   authorAvatar: string;
+  reviewedBy?: string;
+  reviewedByRole?: string;
+  updatedDate?: string;
+  noIndex?: boolean;
+  sources?: Array<{ label: string; url: string }>;
+  faqs?: Array<{ q: string; a: string }>;
   image: string;
   readTime: string;
   excerpt: string;

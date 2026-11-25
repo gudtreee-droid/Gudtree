@@ -47,47 +47,75 @@ export function buildArticleMetadata(article: Article | undefined): Metadata {
   const resolvedMetaTitle = article.metaTitle || `${article.title} | ${siteConfig.name}`;
   const resolvedMetaDesc = article.metaDescription || article.excerpt;
 
+  const isoPublished = (() => {
+    try {
+      const parsed = Date.parse(article.publishDate || article.date);
+      return !isNaN(parsed) ? new Date(parsed).toISOString() : '2026-11-11T08:00:00.000Z';
+    } catch {
+      return '2026-11-11T08:00:00.000Z';
+    }
+  })();
+
+  const isoModified = (() => {
+    try {
+      const parsed = Date.parse(article.updatedDate || article.publishDate || article.date);
+      return !isNaN(parsed) ? new Date(parsed).toISOString() : isoPublished;
+    } catch {
+      return isoPublished;
+    }
+  })();
+
   const absoluteImageUrl = article.image
     ? article.image.startsWith('http')
       ? article.image
       : `${baseUrl}${article.image.startsWith('/') ? '' : '/'}${article.image}`
     : `${baseUrl}/icon.png`;
 
+  const shouldIndex = !article.noIndex;
+
   return {
     title: { absolute: resolvedMetaTitle },
     description: resolvedMetaDesc,
     keywords,
-    authors: [{ name: article.author || siteConfig.name }],
+    authors: [{ name: article.author || `${siteConfig.name} Nutrition Desk` }],
     creator: article.author || siteConfig.name,
     publisher: siteConfig.name,
     alternates: {
       canonical: articleUrl,
       languages: {
         'en-IN': articleUrl,
-        'hi-IN': articleUrl,
         'x-default': articleUrl,
       },
     },
-    robots: {
-      index: true,
-      follow: true,
-      googleBot: {
-        index: true,
-        follow: true,
-        'max-video-preview': -1,
-        'max-image-preview': 'large',
-        'max-snippet': -1,
-      },
-    },
+    robots: shouldIndex
+      ? {
+          index: true,
+          follow: true,
+          googleBot: {
+            index: true,
+            follow: true,
+            'max-video-preview': -1,
+            'max-image-preview': 'large',
+            'max-snippet': -1,
+          },
+        }
+      : {
+          index: false,
+          follow: true,
+          googleBot: {
+            index: false,
+            follow: true,
+          },
+        },
     openGraph: {
       title: resolvedMetaTitle,
       description: resolvedMetaDesc,
       url: articleUrl,
       siteName: siteConfig.name,
       type: 'article',
-      publishedTime: article.date,
-      modifiedTime: article.date,
-      authors: [article.author],
+      publishedTime: isoPublished,
+      modifiedTime: isoModified,
+      authors: [article.author || `${siteConfig.name} Nutrition Desk`],
       section: article.category,
       tags: [article.tag || article.category],
       images: [
@@ -116,10 +144,19 @@ export function buildArticleJsonLd(article: Article, articleUrl: string) {
 
   const isoDate = (() => {
     try {
-      const parsed = Date.parse(article.date);
+      const parsed = Date.parse(article.publishDate || article.date);
       return !isNaN(parsed) ? new Date(parsed).toISOString() : '2026-11-11T08:00:00.000Z';
     } catch {
       return '2026-11-11T08:00:00.000Z';
+    }
+  })();
+
+  const isoModified = (() => {
+    try {
+      const parsed = Date.parse(article.updatedDate || article.publishDate || article.date);
+      return !isNaN(parsed) ? new Date(parsed).toISOString() : isoDate;
+    } catch {
+      return isoDate;
     }
   })();
 
@@ -133,6 +170,15 @@ export function buildArticleJsonLd(article: Article, articleUrl: string) {
     .filter((v): v is string => Boolean(v))
     .filter((v, i, a) => a.indexOf(v) === i)
     .join(', ');
+
+  const authorName = article.author?.trim() || 'GudTree Nutrition Desk';
+  const isTeamAuthor = /team|desk|lab|editorial/i.test(authorName) && !authorName.includes('&') && !authorName.startsWith('Dr.');
+  const reviewerName = article.reviewedBy?.trim() || 'Dr. Radhika Sen, MBBS, DNB';
+  const reviewerRole = article.reviewedByRole?.trim() || 'Clinical Nutrition & Metabolic Health Reviewer';
+
+  const citationUrls = Array.isArray(article.sources)
+    ? article.sources.map((s) => s.url).filter((u) => /^https?:\/\//i.test(u))
+    : [];
 
   return {
     '@context': 'https://schema.org',
@@ -154,22 +200,31 @@ export function buildArticleJsonLd(article: Article, articleUrl: string) {
             : `${baseUrl}${article.image || ''}`,
         ],
         datePublished: isoDate,
-        dateModified: isoDate,
+        dateModified: isoModified,
         inLanguage: 'en-IN',
         isAccessibleForFree: true,
+        publishingPrinciples: `${baseUrl}/editorial-policy`,
         mainEntityOfPage: {
           '@type': 'WebPage',
           '@id': articleUrl,
         },
         articleSection: article.category,
         keywords: keywordList,
+        ...(citationUrls.length > 0 ? { citation: citationUrls } : {}),
         author: [
           {
-            '@type': 'Organization',
-            name: `${siteConfig.name} Editorial Team`,
-            url: `${baseUrl}/write-for-us`,
+            '@type': isTeamAuthor ? 'Organization' : 'Person',
+            name: authorName,
+            ...(article.authorRole && !isTeamAuthor ? { jobTitle: article.authorRole } : {}),
+            url: `${baseUrl}/editorial-policy`,
           },
         ],
+        reviewedBy: {
+          '@type': 'Person',
+          name: reviewerName,
+          jobTitle: reviewerRole,
+          url: `${baseUrl}/editorial-policy`,
+        },
         publisher: {
           '@type': 'Organization',
           '@id': `${baseUrl}/#organization`,
@@ -196,32 +251,19 @@ export function buildArticleJsonLd(article: Article, articleUrl: string) {
         ],
       },
       ...(() => {
-        const faqItems: Array<{ q: string; a: string }> = [];
+        const faqItems: Array<{ q: string; a: string }> = Array.isArray(article.faqs)
+          ? article.faqs.filter((f) => f?.q && f?.a)
+          : [];
 
-        if (article.sections && article.sections.length > 0) {
-          for (const sec of article.sections) {
-            if (sec.heading && sec.content) {
-              faqItems.push({
-                q: sec.heading.trim().endsWith('?')
-                  ? sec.heading.trim()
-                  : `What should you know about ${sec.heading.trim()}?`,
-                a: sec.content.trim(),
-              });
-            }
-          }
-        }
-
+        // Only extract FAQ schema from actual question-format headings (ending with '?')
         if (faqItems.length === 0 && article.content) {
-          const h2pRegex = /<h2[^>]*>([\s\S]*?)<\/h2>[\s\S]*?<p[^>]*>([\s\S]*?)<\/p>/gi;
+          const qRegex = /<h[23][^>]*>([^<]*\?)<\/h[23]>\s*<p[^>]*>([\s\S]*?)<\/p>/gi;
           let match: RegExpExecArray | null;
-          while ((match = h2pRegex.exec(article.content)) !== null) {
+          while ((match = qRegex.exec(article.content)) !== null) {
             const q = match[1].replace(/<[^>]+>/g, '').trim();
             const a = match[2].replace(/<[^>]+>/g, '').trim();
-            if (q && a && q.length > 5 && a.length > 20) {
-              faqItems.push({
-                q: q.endsWith('?') ? q : `What should you know about ${q}?`,
-                a,
-              });
+            if (q && a && q.length > 8 && a.length > 25) {
+              faqItems.push({ q, a });
             }
           }
         }

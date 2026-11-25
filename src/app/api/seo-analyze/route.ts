@@ -95,9 +95,9 @@ export async function POST(req: NextRequest) {
           },
         ],
         actionableSuggestions: [
-          `Consider using powerful health verbs like "Zero Palm Oil", "Clean Swap", or "Label Audit" in headline.`,
-          `Include 2-3 subheading sections to improve Google snippet crawling.`,
-          `Add high-resolution photography with descriptive alt tags.`,
+          `Target 1,300-1,800 words with a topic-specific comparison table, daily serving size, and side effects.`,
+          `Include 3-5 contextual internal links to related GudTree audits and /focus/* hubs.`,
+          `Add 4 real question headings ending in '?' under Frequently Asked Questions for FAQ rich schema.`,
         ],
       };
     };
@@ -112,10 +112,10 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    const systemPrompt = `You are an elite Food Nutrition & Food Label Specialist for GudTree (India's Clean Snacking & Nutrition Guide: READ CLEAN. SNACK HONEST.).
+    const systemPrompt = `You are an elite Food Nutrition & SEO Strategist for GudTree (India's Clean Snacking & Food Label Audit Guide).
 Analyze the snack/food topic and category, and provide 3 click-worthy, high-ranking headline alternatives. FOR EACH HEADLINE ALTERNATIVE, also write:
-1. A punchy 2-sentence Lead Summary/Excerpt (140-160 chars) focusing on zero palm oil, real ingredients, and honest swaps.
-2. A complete, rich editorial draft in clean HTML (<p>, <h2>, <blockquote>) with 3-4 paragraphs analyzing food labels, hidden additives, and clean kitchen alternatives.
+1. A punchy 2-sentence Lead Summary/Excerpt (140-160 chars) in clear Indian English focusing on zero palm oil, real ingredients, and honest swaps.
+2. A comprehensive 1,200+ word SEO-ready editorial draft in clean HTML (<p>, <h2>, <h3>, <table>, <blockquote>, <ul>) analyzing label claims, macro/glycemic numbers, side effects, clean Indian kitchen swaps, internal links (/focus/diabetes, /category/label-audits), and 3-4 real FAQ <h3> questions ending in '?'.
 
 Input:
 - Title: "${title || 'Untitled Draft'}"

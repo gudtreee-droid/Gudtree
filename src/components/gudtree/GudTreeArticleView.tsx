@@ -612,7 +612,7 @@ export default function GudTreeArticleView({
                 </Link>
                 <ChevronRight className="w-3.5 h-3.5 opacity-50 shrink-0" />
                 <Link
-                  href="/news"
+                  href="/blog"
                   className="hover:text-[#DA440D] no-underline transition-colors"
                   style={{ color: activeTheme.text }}
                 >
@@ -937,19 +937,43 @@ export default function GudTreeArticleView({
                   </p>
                 )}
 
-                {/* Clean Minimal Inline Meta Row */}
+                {/* E-E-A-T Author, Reviewer, Date & Read Time Meta Strip */}
                 <div
-                  className="pt-2 flex flex-wrap items-center gap-x-4 gap-y-2 text-[13px] font-medium"
+                  className="pt-2.5 flex flex-wrap items-center gap-x-3 gap-y-2 text-[12.5px] sm:text-[13px] font-medium"
                   style={{ color: activeTheme.muted }}
                 >
-                  <span className="inline-flex items-center gap-1.5">
-                    <Clock className="w-3.5 h-3.5 text-[#0944BA]" />
-                    <span>{article.readTime || '4 min read'}</span>
+                  <span className="inline-flex items-center gap-1.5 font-semibold" style={{ color: activeTheme.text }}>
+                    <span className="w-5 h-5 rounded-full bg-[#102A56] text-[#E5F36D] text-[10px] font-bold inline-flex items-center justify-center shrink-0">
+                      {authorInitial}
+                    </span>
+                    <span itemProp="author">{authorName}</span>
+                    {article.authorRole && (
+                      <span className="font-normal opacity-75 hidden sm:inline">
+                        ({article.authorRole})
+                      </span>
+                    )}
                   </span>
                   <span className="opacity-35">&bull;</span>
-                  <span className="inline-flex items-center gap-1 text-[#15803D] font-semibold">
-                    <ShieldCheck className="w-3.5 h-3.5" />
-                    <span>Verified Clean Guide</span>
+                  <Link
+                    href="/editorial-policy"
+                    className="inline-flex items-center gap-1 text-[#15803D] font-semibold hover:underline no-underline"
+                  >
+                    <ShieldCheck className="w-3.5 h-3.5 shrink-0" />
+                    <span>
+                      Reviewed by {article.reviewedBy || 'Dr. Radhika Sen, MBBS, DNB'}
+                    </span>
+                  </Link>
+                  <span className="opacity-35">&bull;</span>
+                  <span className="inline-flex items-center gap-1">
+                    <Calendar className="w-3.5 h-3.5 text-[#DA440D]" />
+                    <time dateTime={article.updatedDate || article.publishDate || article.date}>
+                      Updated {formatNfDate(article.updatedDate || article.date)}
+                    </time>
+                  </span>
+                  <span className="opacity-35">&bull;</span>
+                  <span className="inline-flex items-center gap-1">
+                    <Clock className="w-3.5 h-3.5 text-[#0944BA]" />
+                    <span>{article.readTime || '6 min read'}</span>
                   </span>
                 </div>
               </div>
@@ -1099,7 +1123,7 @@ export default function GudTreeArticleView({
               </div>
 
               <Link
-                href="/news"
+                href="/blog"
                 className="rounded-[16px] border px-4 py-3 flex items-center justify-between text-[13px] font-bold no-underline transition-colors hover:border-[#DA440D]"
                 style={{
                   borderColor: activeTheme.border,
@@ -1208,6 +1232,71 @@ export default function GudTreeArticleView({
                       <span>Share with Family</span>
                     </button>
                   </div>
+                </div>
+
+                {/* Scientific & Regulatory Citations (E-E-A-T Verification) */}
+                {Array.isArray(article.sources) && article.sources.length > 0 && (
+                  <div
+                    className="mt-8 p-4 sm:p-5 rounded-[16px] border"
+                    style={{
+                      borderColor: activeTheme.border,
+                      backgroundColor: activeTheme.surface,
+                    }}
+                  >
+                    <h3 className="text-[14px] font-bold uppercase tracking-wider mb-2.5 flex items-center gap-1.5" style={{ color: activeTheme.text }}>
+                      <BookOpen className="w-4 h-4 text-[#0944BA]" />
+                      <span>Sources &amp; Fact-Check References</span>
+                    </h3>
+                    <ul className="list-disc pl-5 space-y-1.5 text-[13px]" style={{ color: activeTheme.muted }}>
+                      {article.sources.map((src) => (
+                        <li key={src.url}>
+                          <a
+                            href={src.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[#0944BA] hover:underline font-medium"
+                          >
+                            {src.label}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {/* Author & Editorial Review Verification Box */}
+                <div
+                  className="mt-8 p-4 sm:p-5 rounded-[16px] border flex flex-col sm:flex-row sm:items-center justify-between gap-4"
+                  style={{
+                    borderColor: activeTheme.border,
+                    backgroundColor: activeTheme.surface,
+                  }}
+                >
+                  <div className="flex items-start gap-3">
+                    <span className="w-10 h-10 rounded-full bg-[#102A56] text-[#E5F36D] font-bold text-[15px] inline-flex items-center justify-center shrink-0">
+                      {authorInitial}
+                    </span>
+                    <div className="text-[13px] leading-relaxed">
+                      <div className="font-bold" style={{ color: activeTheme.text }}>
+                        Written by {authorName}
+                        {article.authorRole ? ` — ${article.authorRole}` : ''}
+                      </div>
+                      <div style={{ color: activeTheme.muted }}>
+                        Reviewed by{' '}
+                        <strong style={{ color: activeTheme.text }}>
+                          {article.reviewedBy || 'Dr. Radhika Sen, MBBS, DNB'}
+                        </strong>{' '}
+                        ({article.reviewedByRole || 'Clinical Nutrition & Metabolic Health Reviewer'})
+                      </div>
+                    </div>
+                  </div>
+                  <Link
+                    href="/editorial-policy"
+                    className="shrink-0 px-3.5 py-2 rounded-full border text-[12px] font-bold text-[#0944BA] hover:bg-[#EEF4FF] no-underline transition-colors text-center"
+                    style={{ borderColor: activeTheme.border }}
+                  >
+                    Audit Methodology &rarr;
+                  </Link>
                 </div>
 
                 {/* Clean Nutrition Advisory */}
